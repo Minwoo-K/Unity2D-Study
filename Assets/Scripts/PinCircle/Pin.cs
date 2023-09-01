@@ -7,8 +7,8 @@ public class Pin : MonoBehaviour
     [SerializeField]
     private GameObject Bar; // The Pin's Bar Part
 
-    public void ActivateBar()
+    public void ActivateBar(bool isActive)
     {
-        Bar.SetActive(true);
+        Bar.SetActive(isActive);
     }
 }
