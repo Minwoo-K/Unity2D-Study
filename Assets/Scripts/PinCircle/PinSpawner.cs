@@ -12,72 +12,92 @@ public class PinSpawner : MonoBehaviour
     private int NumberOfThrowables; // The Number of Throwable Pins
     [SerializeField]
     private int NumberOfStuck; // The Number of Stuck Pins
+    [SerializeField]
+    private GameObject textPinIndexPrefab;
+    [SerializeField]
+    private Transform indexParent;
 
     private List<Pin> ThrowablePins = new List<Pin>();
     private Vector3 firstSpawningPosition = Vector3.down * 2; // First Pin's Spawning Position
     private float interval = 1.0f;  // The Interval Between Throwable Pins
     private float targetRadius = 0.5f;  // Target's Radius
     private float pinLength = 2f;   // The Pin's Length
-    private float ThrowingAngle = 270; // The Angle when A Pin is thrown
+    private float ThrowingAngle = 270; // The Angle when a Pin is thrown
 
     private void Start()
     {
-        SpawnThrowablePin(NumberOfThrowables);
-        SpawnStuckPin(NumberOfStuck);
-    }
+        for ( int i = 0; i < NumberOfThrowables; i++ )
+        {
+            SpawnThrowablePin(firstSpawningPosition + Vector3.down * interval * i, NumberOfStuck+1+i);
+        }
 
-    // TO-DO
-    // Split behaviours into Spawning A Pin and Throwing A Pin at the Target to reduce redundancy 
+        for ( int i = 0; i < NumberOfStuck; i++ )
+        {
+            SpawnStuckPin(360 / NumberOfStuck * i, i+1); // The Angle is based on the number of pins
+        }
+    }
 
     public Pin SpawnPin(Vector3 position)
     {
-        GameObject clone = Instantiate(PinPrefab);
-        clone.transform.position = position;
-        Pin pin = clone.GetComponent<Pin>();
+        GameObject clone = Instantiate(PinPrefab); // Spawn a Pin
+        clone.transform.position = position; // Set its position to the given parameter
+        Pin pin = clone.GetComponent<Pin>(); // Fetch the Pin component to return
 
         return pin;
     }
 
-    public void SpawnThrowablePin(int count)
+    public void SpawnThrowablePin(Vector3 position, int index)
     {
-        for ( int i = 0; i < count; i++ )
-        {
-            Pin pin = SpawnPin(firstSpawningPosition + Vector3.down * interval * i); // Spawn a Pin and Get Pin Component
-            pin.GetComponent<Pin>().ActivateBar(false); // Deactivate the Bar
-            ThrowablePins.Add(pin); // Store the Pin into the List to handle
-        }
+        Pin pin = SpawnPin(position); // Spawn a Pin and Get Pin Component
+        pin.GetComponent<Pin>().ActivateBar(false); // Deactivate the Bar
+        ThrowablePins.Add(pin); // Store the Pin into the List to handle
+        SpawnIndexUI(pin.transform, index);
     }
 
-    public void SpawnStuckPin(int count)
+    public void SpawnStuckPin(float angle, int index)
     {
-        for ( int i = 0; i < count; i++ )
-        {
-            float angle = 360 / count * i; // The Angle is based on the number of pins
-            Pin pin = SpawnPin(Utils.GetPositionFromAngle(angle, targetRadius + pinLength) + Target.transform.position);
-            // Instantiate the Pin. The given Pin's Position is based on position of the Target + pinLength
-            pin.transform.parent = Target; // Put the Pin under the Target to let it rotate along
-            pin.transform.rotation = Quaternion.Euler(0, 0, angle); // Rotate the Pin to get the Bar properly connected
-            pin.GetComponent<Pin>().ActivateBar(true); // Activate the Bar when stuck to the Target
-        }
+        Pin pin = SpawnPin(Utils.GetPositionFromAngle(angle, targetRadius + pinLength) + Target.transform.position);
+        // Instantiate the Pin. The given Pin's Position is based on position of the Target + pinLength
+        pin.transform.parent = Target; // Put the Pin under the Target to let it rotate along
+        pin.transform.rotation = Quaternion.Euler(0, 0, angle); // Rotate the Pin to get the Bar properly connected
+        pin.GetComponent<Pin>().ActivateBar(true); // Activate the Bar when stuck to the Target
+        SpawnIndexUI(pin.transform, index);
     }
 
     public void ThrowPin()
     {
-        Pin pin = ThrowablePins[0];
+        if (ThrowablePins.Count == 0) return; // if No Pin is left in the List, do nothing.
+
+        Pin pin = ThrowablePins[0]; // Grab the First Pin in the Order.
         pin.transform.position = Utils.GetPositionFromAngle(ThrowingAngle, targetRadius + pinLength) + Target.transform.position;
         // The given Pin's Position is based on position of the Target + pinLength
         pin.transform.parent = Target; // Put the Pin under the Target to let it rotate along
         pin.transform.rotation = Quaternion.Euler(0, 0, ThrowingAngle); // Rotate the Pin to get the Bar properly connected
         pin.GetComponent<Pin>().ActivateBar(true); // Activate the Bar when stuck to the Target
 
-        ThrowablePins.Remove(pin);
+        ThrowablePins.Remove(pin); // Remove the thrown Pin from the List and rearrange the List
 
-        StartCoroutine(MoveUpPins());
+        StartCoroutine(MoveUpPins()); // Move Up all the Pins
+    }
+
+    public void SpawnIndexUI(Transform target, int index)
+    {
+        GameObject clone = Instantiate(textPinIndexPrefab);
+
+        clone.transform.SetParent(indexParent);
+
+        clone.transform.localScale = Vector3.one;
+
+        clone.GetComponent<WorldToScreenPosition>().Setup(target);
+
+        clone.GetComponent<TMPro.TextMeshProUGUI>().text = index.ToString();
     }
 
     public IEnumerator MoveUpPins()
     {
         float moveTime = 0.2f;
+
+        //yield return new WaitForSeconds(moveTime);
 
         for ( int i = 0; i < ThrowablePins.Count; i++ )
         {
