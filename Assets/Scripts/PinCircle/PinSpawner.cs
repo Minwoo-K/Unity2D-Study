@@ -26,13 +26,23 @@ public class PinSpawner : MonoBehaviour
         SpawnStuckPin(NumberOfStuck);
     }
 
+    // TO-DO
+    // Split behaviours into Spawning A Pin and Throwing A Pin at the Target to reduce redundancy 
+
+    public Pin SpawnPin(Vector3 position)
+    {
+        GameObject clone = Instantiate(PinPrefab);
+        clone.transform.position = position;
+        Pin pin = clone.GetComponent<Pin>();
+
+        return pin;
+    }
+
     public void SpawnThrowablePin(int count)
     {
         for ( int i = 0; i < count; i++ )
         {
-            GameObject clone = Instantiate(PinPrefab); // Instantiate the Pin
-            clone.transform.position = firstSpawningPosition + Vector3.down * interval * i; // Position the given Pin relatively
-            Pin pin = clone.GetComponent<Pin>(); // Get Pin Component
+            Pin pin = SpawnPin(firstSpawningPosition + Vector3.down * interval * i); // Spawn a Pin and Get Pin Component
             pin.GetComponent<Pin>().ActivateBar(false); // Deactivate the Bar
             ThrowablePins.Add(pin); // Store the Pin into the List to handle
         }
@@ -43,9 +53,8 @@ public class PinSpawner : MonoBehaviour
         for ( int i = 0; i < count; i++ )
         {
             float angle = 360 / count * i; // The Angle is based on the number of pins
-            GameObject pin = Instantiate(PinPrefab); // Instantiate the Pin
-            pin.transform.position = Utils.GetPositionFromAngle(angle, targetRadius + pinLength) + Target.transform.position;
-            // The given Pin's Position is based on position of the Target + pinLength
+            Pin pin = SpawnPin(Utils.GetPositionFromAngle(angle, targetRadius + pinLength) + Target.transform.position);
+            // Instantiate the Pin. The given Pin's Position is based on position of the Target + pinLength
             pin.transform.parent = Target; // Put the Pin under the Target to let it rotate along
             pin.transform.rotation = Quaternion.Euler(0, 0, angle); // Rotate the Pin to get the Bar properly connected
             pin.GetComponent<Pin>().ActivateBar(true); // Activate the Bar when stuck to the Target
