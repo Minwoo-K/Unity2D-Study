@@ -30,7 +30,7 @@ public class Pin : MonoBehaviour
         float current = 0;
         float percent = 0;
 
-        while ( percent < 1)
+        while ( percent < 1 )
         {
             current += Time.deltaTime;
             percent = current / moveTime;

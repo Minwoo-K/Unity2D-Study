@@ -13,9 +13,18 @@ public class PinSpawner : MonoBehaviour
     private float interval = 1.0f; // The interval between Throwable Pins
     private float radius = 0.5f; // The Target's radius
     private float barLength = 1.5f; // The Length of a Pin
+    private float throwingAngle = 270; // The angle of throwing a pin
 
     public List<Pin> throwablePins { private set; get; } = new List<Pin>();
-    
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && throwablePins.Count != 0)
+        {
+            ThrowPin();
+        }
+    }
+
     /// <summary>
     /// Set up a stage before starting
     /// </summary>
@@ -66,5 +75,21 @@ public class PinSpawner : MonoBehaviour
         pin.transform.rotation = Quaternion.Euler(0, 0, angle);
         // Call the function for when the Pin is in the target
         pin.GetComponent<Pin>().SetItStuck();
+    }
+
+    public void ThrowPin()
+    {
+        // Grab the first Pin in the List
+        Pin pin = throwablePins[0];
+        // Move the Pin to the target with the throwing angle
+        SetPinStuckToTarget(pin.transform, throwingAngle);
+        // Remove the Pin from the List to rearrange
+        throwablePins.RemoveAt(0);
+
+        // Move up all the existing Pins in the List
+        for ( int i = 0; i < throwablePins.Count; i++ )
+        {
+            throwablePins[i].MoveUp(interval);
+        }
     }
 }

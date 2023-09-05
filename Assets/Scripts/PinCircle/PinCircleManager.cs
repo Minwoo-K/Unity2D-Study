@@ -19,10 +19,7 @@ public class PinCircleManager : MonoBehaviour
 
     private void Update()
     {
-        if ( Input.GetMouseButtonDown(0) && pinSpawner.throwablePins.Count != 0 )
-        {
-
-        }
+        
     }
 }
 
