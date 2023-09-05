@@ -14,6 +14,8 @@ public class PinSpawner : MonoBehaviour
     private float radius = 0.5f; // The Target's radius
     private float barLength = 1.5f; // The Length of a Pin
 
+    public List<Pin> throwablePins { private set; get; } = new List<Pin>();
+    
     /// <summary>
     /// Set up a stage before starting
     /// </summary>
@@ -42,6 +44,8 @@ public class PinSpawner : MonoBehaviour
         GameObject clone = Instantiate(pinPrefab);
         // Set its position to the given position
         clone.transform.position = position;
+        // Fetch Pin component to add to the List
+        throwablePins.Add(clone.GetComponent<Pin>());
     }
 
     public void SpawnStuckPin(float angle)
@@ -60,5 +64,7 @@ public class PinSpawner : MonoBehaviour
         pin.transform.SetParent(target);
         // Rotate it to the angle to get the bar connected to the target
         pin.transform.rotation = Quaternion.Euler(0, 0, angle);
+        // Call the function for when the Pin is in the target
+        pin.GetComponent<Pin>().SetItStuck();
     }
 }

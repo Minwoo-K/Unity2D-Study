@@ -11,9 +11,18 @@ public class PinCircleManager : MonoBehaviour
     [SerializeField]
     private int numberOfStucks;
 
+
     private void Start()
     {
         pinSpawner.Setup(numberOfThrowables, numberOfStucks);
+    }
+
+    private void Update()
+    {
+        if ( Input.GetMouseButtonDown(0) && pinSpawner.throwablePins.Count != 0 )
+        {
+
+        }
     }
 }
 
