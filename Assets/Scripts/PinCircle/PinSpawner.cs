@@ -30,8 +30,9 @@ public class PinSpawner : MonoBehaviour
 
         for ( int i = 0; i < stuckPins; i++ )
         {
+            // Position Pins based on the angle
             float angle = 360 / stuckPins * i;
-            SetPinStuckToTarget(angle);
+            SpawnStuckPin(angle);
         }
     }
 
@@ -43,15 +44,21 @@ public class PinSpawner : MonoBehaviour
         clone.transform.position = position;
     }
 
-    public void SetPinStuckToTarget(float angle)
+    public void SpawnStuckPin(float angle)
     {
         // Instantiate a Pin object
         GameObject clone = Instantiate(pinPrefab);
+        // Get it to the Target
+        SetPinStuckToTarget(clone.transform, angle);
+    }
+
+    public void SetPinStuckToTarget(Transform pin, float angle)
+    {
         // Set its position based on the angle
-        clone.transform.position = Utils.GetPositionFromAngle(angle, radius+barLength) + target.position;
+        pin.transform.position = Utils.GetPositionFromAngle(angle, radius+barLength) + target.position;
         // Set its parent to the target so that they rotate together
-        clone.transform.SetParent(target);
+        pin.transform.SetParent(target);
         // Rotate it to the angle to get the bar connected to the target
-        clone.transform.rotation = Quaternion.Euler(0, 0, angle);
+        pin.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }
