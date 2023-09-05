@@ -8,6 +8,10 @@ public class PinSpawner : MonoBehaviour
     private GameObject pinPrefab; // Pin Prefab
     [SerializeField]
     private Transform target; // The Target transform
+    [SerializeField]
+    private GameObject textIndexPrefab; // Index Text Prefab
+    [SerializeField]
+    private Transform indexParent; // The Parent of indexi
 
     private Vector3 startPosition = Vector3.down * 2; // Throwable Pin Starting Position
     private float interval = 1.0f; // The interval between Throwable Pins
@@ -36,18 +40,18 @@ public class PinSpawner : MonoBehaviour
         for ( int i = 0; i < throwablePins; i++ )
         {
             // Position Pins based on the interval value
-            SpawnThrowablePin(startPosition + Vector3.down * interval * i);
+            SpawnThrowablePin(startPosition + Vector3.down * interval * i, stuckPins+1+i);
         }
 
         for ( int i = 0; i < stuckPins; i++ )
         {
             // Position Pins based on the angle
             float angle = 360 / stuckPins * i;
-            SpawnStuckPin(angle);
+            SpawnStuckPin(angle, i+1);
         }
     }
 
-    public void SpawnThrowablePin(Vector3 position)
+    public void SpawnThrowablePin(Vector3 position, int index)
     {
         // Instantiate a Pin object
         GameObject clone = Instantiate(pinPrefab);
@@ -55,14 +59,18 @@ public class PinSpawner : MonoBehaviour
         clone.transform.position = position;
         // Fetch Pin component to add to the List
         throwablePins.Add(clone.GetComponent<Pin>());
+        // Show the Index UI
+        SpawnIndexUI(clone.transform, index);
     }
 
-    public void SpawnStuckPin(float angle)
+    public void SpawnStuckPin(float angle, int index)
     {
         // Instantiate a Pin object
         GameObject clone = Instantiate(pinPrefab);
         // Get it to the Target
         SetPinStuckToTarget(clone.transform, angle);
+        // Show the Index UI
+        SpawnIndexUI(clone.transform, index);
     }
 
     public void SetPinStuckToTarget(Transform pin, float angle)
@@ -91,5 +99,17 @@ public class PinSpawner : MonoBehaviour
         {
             throwablePins[i].MoveUp(interval);
         }
+    }
+
+    public void SpawnIndexUI(Transform target, int index)
+    {
+        // Instantiate the UI object
+        GameObject clone = Instantiate(textIndexPrefab);
+        // Set its parent as the indexParent
+        clone.transform.SetParent(indexParent);
+        // Set up the WorldToScreenPosition component with the Target Transform
+        clone.GetComponent<WorldToScreenPosition>().Setup(target);
+        // Change the text as the given index value
+        clone.GetComponent<TMPro.TextMeshProUGUI>().text = index.ToString();
     }
 }
