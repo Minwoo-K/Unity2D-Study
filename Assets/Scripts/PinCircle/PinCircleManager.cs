@@ -45,7 +45,17 @@ public class PinCircleManager : MonoBehaviour
 
     public void GameOver()
     {
+        stageOver = true;
+        target.GetComponent<Rotator>().SetRotationSpeed(0);
+        Camera.main.backgroundColor = gameOverColor;
+    }
 
+    public void Reset()
+    {
+        stageClear = false;
+        stageOver = false;
+        Camera.main.backgroundColor = gamePlayColor;
+        target.GetComponent<Rotator>().SetRotationSpeed(80);
     }
 }
 

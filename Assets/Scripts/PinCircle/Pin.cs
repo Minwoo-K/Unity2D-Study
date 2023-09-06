@@ -53,7 +53,7 @@ public class Pin : MonoBehaviour
         // if a collision happens with a Pin, Game over
         if ( collision.transform.GetComponent<Pin>() != null )
         {
-            Debug.Log("Game Over!");
+            pinCircleManager.GameOver();
         }
     }
 }
