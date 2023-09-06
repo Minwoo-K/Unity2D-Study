@@ -5,6 +5,8 @@ using UnityEngine;
 public class PinSpawner : MonoBehaviour
 {
     [SerializeField]
+    private PinCircleManager pinCircleManager; // The PinCircle Manager in the game
+    [SerializeField]
     private GameObject pinPrefab; // Pin Prefab
     [SerializeField]
     private Transform target; // The Target transform
@@ -55,6 +57,8 @@ public class PinSpawner : MonoBehaviour
     {
         // Instantiate a Pin object
         GameObject clone = Instantiate(pinPrefab);
+        // Hand over the PinCircle Manager to the Pin
+        clone.GetComponent<Pin>().Setup(pinCircleManager);
         // Set its position to the given position
         clone.transform.position = position;
         // Fetch Pin component to add to the List
@@ -67,6 +71,8 @@ public class PinSpawner : MonoBehaviour
     {
         // Instantiate a Pin object
         GameObject clone = Instantiate(pinPrefab);
+        // Hand over the PinCircle Manager to the Pin
+        clone.GetComponent<Pin>().Setup(pinCircleManager);
         // Get it to the Target
         SetPinStuckToTarget(clone.transform, angle);
         // Show the Index UI

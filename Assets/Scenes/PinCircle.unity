@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed66a4944fe4ee4cb835dec40cf1bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pinCircleManager: {fileID: 0}
   pinPrefab: {fileID: 7962502903991341571, guid: efbcc1ddf294d0c4cac1d1d8add9c7bf, type: 3}
   target: {fileID: 1776944301}
   textIndexPrefab: {fileID: 5714624383183350445, guid: 39176f747e1c0b244b9cab86b4e1006e, type: 3}

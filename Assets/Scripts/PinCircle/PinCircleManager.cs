@@ -20,6 +20,7 @@ public class PinCircleManager : MonoBehaviour
     private Color gameOverColor;
 
     public bool stageClear { private set; get; } = false;
+    public bool stageOver { private set; get; } = false;
 
     private void Start()
     {
@@ -40,6 +41,11 @@ public class PinCircleManager : MonoBehaviour
         stageClear = true;
         target.GetComponent<Rotator>().SetRotationSpeed(350);
         Camera.main.backgroundColor = gameClearColor;
+    }
+
+    public void GameOver()
+    {
+
     }
 }
 

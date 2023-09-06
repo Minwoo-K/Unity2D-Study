@@ -9,6 +9,13 @@ public class Pin : MonoBehaviour
     [SerializeField]
     private float moveTime; // Time of Moving Stand-by Pins
 
+    private PinCircleManager pinCircleManager;
+
+    public void Setup(PinCircleManager pinCircleManager)
+    {
+        this.pinCircleManager = pinCircleManager;
+    }
+
     public void SetItStuck()
     {
         // If the given Pin was a throwable pin, 
@@ -38,6 +45,15 @@ public class Pin : MonoBehaviour
             transform.position = Vector3.Lerp(start, end, percent);
 
             yield return null;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // if a collision happens with a Pin, Game over
+        if ( collision.transform.GetComponent<Pin>() != null )
+        {
+            Debug.Log("Game Over!");
         }
     }
 }
