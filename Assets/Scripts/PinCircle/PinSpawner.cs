@@ -23,7 +23,7 @@ public class PinSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && throwablePins.Count != 0)
+        if ( Input.GetMouseButtonDown(0) && throwablePins.Count != 0 )
         {
             ThrowPin();
         }
