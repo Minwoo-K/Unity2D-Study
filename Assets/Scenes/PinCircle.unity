@@ -684,6 +684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pinSpawner: {fileID: 475504683}
   target: {fileID: 1776944301}
+  mainMenuPanel: {fileID: 1010110281}
   numberOfThrowables: 3
   numberOfStucks: 5
   gamePlayColor: {r: 0.654902, g: 0.6862745, b: 0.7372549, a: 0}
@@ -872,7 +873,7 @@ RectTransform:
   - {fileID: 992934101}
   - {fileID: 1761211155}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -997,7 +998,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1385527168
 GameObject:
@@ -1791,5 +1792,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

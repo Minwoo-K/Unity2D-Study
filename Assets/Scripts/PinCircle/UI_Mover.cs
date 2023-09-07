@@ -35,6 +35,8 @@ public class UI_Mover : MonoBehaviour
         float percent = 0;
         Vector3 start = rectTransform.anchoredPosition;
 
+        isMoving = true;
+
         while ( percent < 1 )
         {
             current += Time.deltaTime;
@@ -44,6 +46,8 @@ public class UI_Mover : MonoBehaviour
 
             yield return null;
         }
+
+        isMoving = false;
 
         onEndMoveEvent.Invoke();
 

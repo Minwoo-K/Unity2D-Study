@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -14,13 +15,38 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnStartButton()
     {
-        ui_Mover.StartMoving(EventOnStart, inactiveMenu);
+        ui_Mover.StartMoving(EventOnGameStart, inactiveMenu);
     }
 
-    private void EventOnStart()
+    private void EventOnGameStart()
     {
         Debug.Log("Game Start");
         pinCircleManager.GameStart();
+    }
+
+    public void BringBackMenu()
+    {
+        if ( pinCircleManager.stageOver == true )
+        {
+            ui_Mover.StartMoving(EventOnGameOver, activeMenu);
+        }
+
+        if ( pinCircleManager.stageClear == true)
+        {
+            ui_Mover.StartMoving(EventOnGameClear, activeMenu);
+        }
+    }
+
+    public void EventOnGameOver()
+    {
+        Debug.Log("Game Over");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void EventOnGameClear()
+    {
+        Debug.Log("Game Clear");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OnResetButton()
