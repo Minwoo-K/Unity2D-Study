@@ -19,8 +19,10 @@ public class PinCircleManager : MonoBehaviour
     [SerializeField]
     private Color gameOverColor;
 
+    public bool gameStarted { private set; get; } = false;
     public bool stageClear { private set; get; } = false;
     public bool stageOver { private set; get; } = false;
+
 
     private void Start()
     {
@@ -36,6 +38,10 @@ public class PinCircleManager : MonoBehaviour
         }
     }
 
+    public void GameStart()
+    {
+        gameStarted = true;
+    }
     public void GameClear()
     {
         stageClear = true;

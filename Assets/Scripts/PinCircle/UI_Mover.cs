@@ -19,7 +19,7 @@ public class UI_Mover : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
     }
 
-    private void StartMoving(UnityAction action, Vector3 end)
+    public void StartMoving(UnityAction action, Vector3 end)
     {
         if ( isMoving == false )
         {
