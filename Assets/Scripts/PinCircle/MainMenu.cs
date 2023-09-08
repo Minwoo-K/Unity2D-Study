@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenuBehaviours : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     [SerializeField]
     private PinCircleManager pinCircleManager;
@@ -12,6 +12,7 @@ public class MainMenuBehaviours : MonoBehaviour
     private Vector3 inactivePosition = Vector3.right * 1080;
     private Vector3 activePosition = Vector3.zero;
 
+    #region START
     public void OnStartButton()
     {
         Debug.Log("Start Button");
@@ -22,12 +23,26 @@ public class MainMenuBehaviours : MonoBehaviour
     {
         pinCircleManager.GameStart();
     }
+    #endregion
 
+    public void OnGameEnded()
+    {
+        ui_Mover.StartMoving(BringBackMenu, activePosition);
+    }
+
+    private void BringBackMenu()
+    {
+       
+    }
+
+    #region RESET
     public void OnResetButton()
     {
         Debug.Log("Reset Button");
     }
+    #endregion
 
+    #region EXIT
     public void OnExitButton()
     {
         #if UNITY_EDITOR
@@ -36,4 +51,5 @@ public class MainMenuBehaviours : MonoBehaviour
             Application.Quit();
         #endif
     }
+    #endregion
 }

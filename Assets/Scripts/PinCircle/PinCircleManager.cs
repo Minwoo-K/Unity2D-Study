@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class PinCircleManager : MonoBehaviour
 {
+    [Header("Essential Settings")]
     [SerializeField]
     private PinSpawner pinSpawner;
     [SerializeField]
     private Transform target;
     [SerializeField]
+    private MainMenu mainMenu;
+
+    [Header("The Number of Pins Settings")]
+    [SerializeField]
     private int numberOfThrowables;
     [SerializeField]
     private int numberOfStucks;
+
+    [Header("In-Game Background Color Settings")]
     [SerializeField]
     private Color gamePlayColor;
     [SerializeField]
@@ -20,8 +27,8 @@ public class PinCircleManager : MonoBehaviour
     private Color gameOverColor;
 
     public bool gameStarted { private set; get; } = false;
-    public bool stageClear { private set; get; } = false;
-    public bool stageOver { private set; get; } = false;
+    public bool gameClear { private set; get; } = false;
+    public bool gameOver { private set; get; } = false;
 
     private void Start()
     {
@@ -30,7 +37,7 @@ public class PinCircleManager : MonoBehaviour
 
     private void Update()
     {
-        if ( pinSpawner.throwablePins.Count == 0 )
+        if ( pinSpawner.throwablePins.Count == 0 && gameOver != true)
         {
             Debug.Log("Game Clear");
             GameClear();
@@ -45,24 +52,31 @@ public class PinCircleManager : MonoBehaviour
 
     public void GameClear()
     {
-        stageClear = true;
+        gameClear = true;
         target.GetComponent<Rotator>().SetRotationSpeed(350);
         Camera.main.backgroundColor = gameClearColor;
+
+        mainMenu.OnGameEnded();
     }
 
     public void GameOver()
     {
-        stageOver = true;
+        gameOver = true;
         target.GetComponent<Rotator>().SetRotationSpeed(0);
         Camera.main.backgroundColor = gameOverColor;
+        
+        mainMenu.OnGameEnded();
     }
 
     public void Reset()
     {
-        stageClear = false;
-        stageOver = false;
+        gameStarted = false;
+        gameClear = false;
+        gameOver = false;
         Camera.main.backgroundColor = gamePlayColor;
         target.GetComponent<Rotator>().Clear();
     }
+
+
 }
 

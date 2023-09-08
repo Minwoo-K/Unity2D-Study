@@ -25,7 +25,7 @@ public class PinSpawner : MonoBehaviour
 
     private void Update()
     {
-        // Stop taking input when the stage has been clear or over
+        // Do not take input when the stage hasn't started
         if (pinCircleManager.gameStarted == false) return;
         // User input for the Game
         if ( Input.GetMouseButtonDown(0) && throwablePins.Count != 0 )
