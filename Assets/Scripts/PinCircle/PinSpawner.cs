@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PinSpawner : MonoBehaviour
 {
-    [Header("Essentials")]
     [SerializeField]
     private PinCircleManager pinCircleManager; // The PinCircle Manager in the game
     [SerializeField]
     private GameObject pinPrefab; // Pin Prefab
     [SerializeField]
     private Transform target; // The Target transform
-
-    [Header("UI Related")]
     [SerializeField]
     private GameObject textIndexPrefab; // Index Text Prefab
     [SerializeField]
