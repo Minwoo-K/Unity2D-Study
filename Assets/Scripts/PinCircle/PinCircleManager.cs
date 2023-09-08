@@ -40,7 +40,7 @@ public class PinCircleManager : MonoBehaviour
         if ( pinSpawner.throwablePins.Count == 0 && gameOver != true)
         {
             Debug.Log("Game Clear");
-            GameClear();
+            StartCoroutine(GameClear());
         }
     }
 
@@ -50,13 +50,20 @@ public class PinCircleManager : MonoBehaviour
         target.GetComponent<Rotator>().SetRotationSpeed(80);
     }
 
-    public void GameClear()
+    public IEnumerator GameClear()
     {
+        yield return new WaitForSeconds(0.1f);
+        
+        if ( gameOver == true )
+        {
+            yield break;
+        }
+
         gameClear = true;
         target.GetComponent<Rotator>().SetRotationSpeed(350);
         Camera.main.backgroundColor = gameClearColor;
 
-        mainMenu.OnGameEnded();
+        StartCoroutine(ExitStage(0.5f));
     }
 
     public void GameOver()
@@ -64,8 +71,8 @@ public class PinCircleManager : MonoBehaviour
         gameOver = true;
         target.GetComponent<Rotator>().SetRotationSpeed(0);
         Camera.main.backgroundColor = gameOverColor;
-        
-        mainMenu.OnGameEnded();
+
+        StartCoroutine(ExitStage(1.0f));
     }
 
     public void Reset()
@@ -77,6 +84,11 @@ public class PinCircleManager : MonoBehaviour
         target.GetComponent<Rotator>().Clear();
     }
 
+    private IEnumerator ExitStage(float time)
+    {
+        yield return new WaitForSeconds(time);
 
+        mainMenu.OnGameEnded();
+    }
 }
 
