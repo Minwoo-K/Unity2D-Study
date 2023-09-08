@@ -19,7 +19,7 @@ public class UI_Mover : MonoBehaviour
     {
         if ( isMoving != true )
         {
-            StopCoroutine("MoveTo");
+            //StopCoroutine("MoveTo");
 
             theEventAfter -= action;
             theEventAfter += action;

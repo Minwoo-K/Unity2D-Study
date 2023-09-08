@@ -30,6 +30,7 @@ public class PinSpawner : MonoBehaviour
         // User input for the Game
         if ( Input.GetMouseButtonDown(0) && throwablePins.Count != 0 )
         {
+            Debug.Log("Game Clear");
             ThrowPin();
         }
     }

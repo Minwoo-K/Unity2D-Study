@@ -37,9 +37,8 @@ public class PinCircleManager : MonoBehaviour
 
     private void Update()
     {
-        if ( pinSpawner.throwablePins.Count == 0 && gameOver != true)
+        if ( pinSpawner.throwablePins.Count == 0 && gameOver == false && gameStarted == true)
         {
-            Debug.Log("Game Clear");
             StartCoroutine(GameClear());
         }
     }

@@ -15,24 +15,27 @@ public class MainMenu : MonoBehaviour
     #region START
     public void OnStartButton()
     {
-        Debug.Log("Start Button");
+        // Move the Menu Panel aside for the user
         ui_Mover.StartMoving(AfterStartButton, inactivePosition);
     }
 
     private void AfterStartButton()
     {
+        // After the Menu Panel aside, Start the Game
         pinCircleManager.GameStart();
     }
     #endregion
 
     public void OnGameEnded()
     {
+        // When the game has ended,
         ui_Mover.StartMoving(BringBackMenu, activePosition);
     }
 
     private void BringBackMenu()
     {
-       
+        pinCircleManager.Reset();
+        // To-Do: Set up the scene to play again
     }
 
     #region RESET
