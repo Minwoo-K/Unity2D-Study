@@ -1243,7 +1243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04307e54e63212b4f99c2dcb5eb1e18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 80
+  rotateSpeed: 0
 --- !u!1 &1823654256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,6 +1254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1823654257}
   - component: {fileID: 1823654259}
+  - component: {fileID: 1823654260}
   - component: {fileID: 1823654258}
   m_Layer: 5
   m_Name: Panel_MainMenu
@@ -1323,6 +1324,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823654256}
   m_CullTransparentMesh: 1
+--- !u!114 &1823654260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823654256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1b152ddee9a8f4ebf5fef20b11735b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1841899876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,6 +1564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd270d2026c64b40b642dfab482b51d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pinCircleManager: {fileID: 756735396}
+  ui_Mover: {fileID: 1823654260}
 --- !u!4 &2073604607
 Transform:
   m_ObjectHideFlags: 0

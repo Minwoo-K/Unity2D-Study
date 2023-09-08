@@ -26,7 +26,7 @@ public class PinSpawner : MonoBehaviour
     private void Update()
     {
         // Stop taking input when the stage has been clear or over
-        if (pinCircleManager.stageClear || pinCircleManager.stageOver) return;
+        if (pinCircleManager.gameStarted == false) return;
         // User input for the Game
         if ( Input.GetMouseButtonDown(0) && throwablePins.Count != 0 )
         {
@@ -34,11 +34,6 @@ public class PinSpawner : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Set up a stage before starting
-    /// </summary>
-    /// <param name="throwablePins"> Number of Throwable Pins to spawn </param>
-    /// <param name="stuckPins"> Number of Stuck Pins to spawn </param>
     public void Setup(int throwablePins, int stuckPins)
     {
         // Spawn Throwable Pins

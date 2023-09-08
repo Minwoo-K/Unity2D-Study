@@ -19,6 +19,7 @@ public class PinCircleManager : MonoBehaviour
     [SerializeField]
     private Color gameOverColor;
 
+    public bool gameStarted { private set; get; } = false;
     public bool stageClear { private set; get; } = false;
     public bool stageOver { private set; get; } = false;
 
@@ -34,6 +35,12 @@ public class PinCircleManager : MonoBehaviour
             Debug.Log("Game Clear");
             GameClear();
         }
+    }
+
+    public void GameStart()
+    {
+        gameStarted = true;
+        target.GetComponent<Rotator>().SetRotationSpeed(80);
     }
 
     public void GameClear()
@@ -55,7 +62,7 @@ public class PinCircleManager : MonoBehaviour
         stageClear = false;
         stageOver = false;
         Camera.main.backgroundColor = gamePlayColor;
-        target.GetComponent<Rotator>().SetRotationSpeed(80);
+        target.GetComponent<Rotator>().Clear();
     }
 }
 

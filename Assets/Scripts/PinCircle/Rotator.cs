@@ -20,6 +20,6 @@ public class Rotator : MonoBehaviour
 
     public void Clear()
     {
-        SetRotationSpeed(80);
+        SetRotationSpeed(0);
     }
 }
