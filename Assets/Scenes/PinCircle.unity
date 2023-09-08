@@ -983,8 +983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39bb29ec577c924db7b30a1e50a1c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pinCircleManager: {fileID: 756735396}
-  ui_Mover: {fileID: 1761211158}
 --- !u!4 &1010110282
 Transform:
   m_ObjectHideFlags: 0
@@ -1591,7 +1589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04307e54e63212b4f99c2dcb5eb1e18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pinCircleManager: {fileID: 756735396}
   rotateSpeed: 80
 --- !u!1 &1975322387
 GameObject:

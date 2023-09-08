@@ -5,15 +5,11 @@ using UnityEngine;
 public class Rotator : MonoBehaviour
 {
     [SerializeField]
-    private PinCircleManager pinCircleManager;
-    [SerializeField]
     private float rotateSpeed;
     private Vector3 direction = Vector3.forward;
 
     private void Update()
     {
-        if ( pinCircleManager.gameStarted == false ) return;
-
         transform.Rotate(direction * rotateSpeed * Time.deltaTime);
     }
 

@@ -4,23 +4,9 @@ using UnityEngine;
 
 public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField]
-    private PinCircleManager pinCircleManager;
-    [SerializeField]
-    private UI_Mover ui_Mover;
-
-    private Vector3 inactiveMenu = Vector3.right * 1080;
-    private Vector3 activeMenu = Vector3.zero;
-
     public void OnStartButton()
     {
-        ui_Mover.StartMoving(EventOnStart, inactiveMenu);
-    }
-
-    private void EventOnStart()
-    {
         Debug.Log("Game Start");
-        pinCircleManager.GameStart();
     }
 
     public void OnResetButton()
