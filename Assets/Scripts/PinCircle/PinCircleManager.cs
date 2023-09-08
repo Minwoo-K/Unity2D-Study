@@ -9,6 +9,8 @@ public class PinCircleManager : MonoBehaviour
     private PinSpawner pinSpawner;
     [SerializeField]
     private Transform target;
+    [SerializeField]
+    private MainMenuUI mainMenuPanel;
 
     [Header("Settings of The Initial Number of Pins")]
     [SerializeField]
@@ -38,7 +40,7 @@ public class PinCircleManager : MonoBehaviour
     {
         if ( pinSpawner.throwablePins.Count == 0 )
         {
-            GameClear();
+            StartCoroutine(GameClear());
         }
     }
 
@@ -47,12 +49,20 @@ public class PinCircleManager : MonoBehaviour
         gameStarted = true;
     }
 
-    public void GameClear()
+    public IEnumerator GameClear()
     {
+        yield return new WaitForSeconds(0.1f);
+        
+        if ( stageOver == true)
+        {
+            yield break;
+        }
+
         stageClear = true;
         target.GetComponent<Rotator>().SetRotationSpeed(350);
         Camera.main.backgroundColor = gameClearColor;
 
+        StartCoroutine(TitleMenuBack(0.5f));
     }
 
     public void GameOver()
@@ -61,6 +71,7 @@ public class PinCircleManager : MonoBehaviour
         target.GetComponent<Rotator>().SetRotationSpeed(0);
         Camera.main.backgroundColor = gameOverColor;
         
+        StartCoroutine(TitleMenuBack(1.0f));
     }
 
     public void Reset()
@@ -72,5 +83,11 @@ public class PinCircleManager : MonoBehaviour
         target.GetComponent<Rotator>().SetRotationSpeed(80);
     }
 
+    private IEnumerator TitleMenuBack(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        mainMenuPanel.BringBackMenu();
+    }
 }
 
