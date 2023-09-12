@@ -9,10 +9,16 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private UI_Mover ui_Mover;
 
+    private SceneManagerEx sceneManager;
     private Vector3 inactivePosition = Vector3.right * 1080;
     private Vector3 activePosition = Vector3.zero;
 
-    #region START
+    private void Awake()
+    {
+        sceneManager = new SceneManagerEx();
+    }
+
+    #region START button
     public void OnStartButton()
     {
         // Move the Menu Panel aside for the user
@@ -26,26 +32,14 @@ public class MainMenu : MonoBehaviour
     }
     #endregion
 
-    public void OnGameEnded()
-    {
-        // When the game has ended,
-        ui_Mover.StartMoving(BringBackMenu, activePosition);
-    }
-
-    private void BringBackMenu()
-    {
-        pinCircleManager.Reset();
-        // To-Do: Set up the scene to play again
-    }
-
-    #region RESET
+    #region RESET button
     public void OnResetButton()
     {
         Debug.Log("Reset Button");
     }
     #endregion
 
-    #region EXIT
+    #region EXIT button
     public void OnExitButton()
     {
         #if UNITY_EDITOR
@@ -55,4 +49,17 @@ public class MainMenu : MonoBehaviour
         #endif
     }
     #endregion
+
+    public void OnGameEnded()
+    {
+        // When the game has ended,
+        ui_Mover.StartMoving(BringBackMenu, activePosition);
+    }
+
+    private void BringBackMenu()
+    {
+        sceneManager.LoadScene("PinCircle");
+        // pinCircleManager.Reset();
+        // To-Do: Set up the scene to play again
+    }
 }

@@ -84,7 +84,7 @@ public class PinCircleManager : MonoBehaviour
         StartCoroutine(ExitStage(1.0f));
     }
 
-    public void Reset()
+    public void Reset(int numberOfThrowables, int numberOfStucks)
     {
         gameStarted = false;
         gameClear = false;
