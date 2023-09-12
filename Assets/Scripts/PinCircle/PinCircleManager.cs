@@ -62,6 +62,7 @@ public class PinCircleManager : MonoBehaviour
         gameLevel = level <= pinCircleLevelData.Count ? level : pinCircleLevelData.Count;
         numberOfThrowables = pinCircleLevelData[gameLevel].numberOfThrowablePins;
         numberOfStucks = pinCircleLevelData[gameLevel].numberOfStuckPins;
+        target.GetComponent<Rotator>().SetRotationSpeed(pinCircleLevelData[gameLevel].targetSpeed);
 
         audioSource = GetComponent<AudioSource>();
         pinSpawner.Setup(numberOfThrowables, numberOfStucks);
@@ -70,7 +71,6 @@ public class PinCircleManager : MonoBehaviour
     public void GameStart()
     {
         gameStarted = true;
-        target.GetComponent<Rotator>().SetRotationSpeed(80);
     }
 
     public IEnumerator GameClear()
@@ -115,7 +115,6 @@ public class PinCircleManager : MonoBehaviour
         gameClear = false;
         gameOver = false;
         Camera.main.backgroundColor = gamePlayColor;
-        target.GetComponent<Rotator>().Clear();
         pinSpawner.Clear();
         SetUpGame(level);
     }

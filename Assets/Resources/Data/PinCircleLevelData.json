@@ -4,19 +4,62 @@
             "level": "1",
             "targetSpeed": "80",
             "numberOfThrowablePins": "3",
-            "numberOfStuckPins": "5"
+            "numberOfStuckPins": "3"
         },
         {
             "level": "2",
             "targetSpeed": "80",
             "numberOfThrowablePins": "4",
-            "numberOfStuckPins": "5"
+            "numberOfStuckPins": "3"
         },
         {
             "level": "3",
             "targetSpeed": "80",
             "numberOfThrowablePins": "4",
+            "numberOfStuckPins": "3"
+        },
+        {
+            "level": "4",
+            "targetSpeed": "90",
+            "numberOfThrowablePins": "5",
+            "numberOfStuckPins": "4"
+        },
+        {
+            "level": "5",
+            "targetSpeed": "90",
+            "numberOfThrowablePins": "6",
+            "numberOfStuckPins": "4"
+        },
+        {
+            "level": "6",
+            "targetSpeed": "100",
+            "numberOfThrowablePins": "6",
+            "numberOfStuckPins": "5"
+        },
+        {
+            "level": "7",
+            "targetSpeed": "110",
+            "numberOfThrowablePins": "6",
+            "numberOfStuckPins": "5"
+        },
+        {
+            "level": "8",
+            "targetSpeed": "110",
+            "numberOfThrowablePins": "7",
+            "numberOfStuckPins": "5"
+        },
+        {
+            "level": "9",
+            "targetSpeed": "120",
+            "numberOfThrowablePins": "7",
+            "numberOfStuckPins": "6"
+        },
+        {
+            "level": "10",
+            "targetSpeed": "120",
+            "numberOfThrowablePins": "8",
             "numberOfStuckPins": "6"
         }
+
     ]
 }
