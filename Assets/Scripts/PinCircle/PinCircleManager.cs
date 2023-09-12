@@ -31,6 +31,8 @@ public class PinCircleManager : MonoBehaviour
     [SerializeField]
     private AudioClip gameOverSound;
 
+    private AudioSource audioSource;
+
     public bool gameStarted { private set; get; } = false;
     public bool gameClear { private set; get; } = false;
     public bool gameOver { private set; get; } = false;
@@ -38,6 +40,7 @@ public class PinCircleManager : MonoBehaviour
     private void Start()
     {
         pinSpawner.Setup(numberOfThrowables, numberOfStucks);
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -57,8 +60,8 @@ public class PinCircleManager : MonoBehaviour
     public IEnumerator GameClear()
     {
         yield return new WaitForSeconds(0.1f);
-        
-        if ( gameOver == true )
+
+        if (gameOver == true)
         {
             yield break;
         }
@@ -75,6 +78,8 @@ public class PinCircleManager : MonoBehaviour
         gameOver = true;
         target.GetComponent<Rotator>().SetRotationSpeed(0);
         Camera.main.backgroundColor = gameOverColor;
+        audioSource.clip = gameOverSound;
+        audioSource.Play();
 
         StartCoroutine(ExitStage(1.0f));
     }

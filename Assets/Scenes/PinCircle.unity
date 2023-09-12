@@ -182,8 +182,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 81652031b64c342cc8dbc59c138d77c5, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -389,8 +389,8 @@ MonoBehaviour:
   gamePlayColor: {r: 0.654902, g: 0.6862745, b: 0.7372549, a: 0}
   gameClearColor: {r: 0.21568628, g: 0.87058824, b: 0.21176471, a: 0}
   gameOverColor: {r: 0.87058824, g: 0, b: 0, a: 0}
-  gameClearSound: {fileID: 0}
-  gameOverSound: {fileID: 0}
+  gameClearSound: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  gameOverSound: {fileID: 8300000, guid: b9eff218e132a4e76be78840eca96fb2, type: 3}
 --- !u!4 &756735397
 Transform:
   m_ObjectHideFlags: 0
@@ -415,8 +415,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
