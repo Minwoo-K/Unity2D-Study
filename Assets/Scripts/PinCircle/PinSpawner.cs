@@ -20,8 +20,15 @@ public class PinSpawner : MonoBehaviour
     private float radius = 0.5f; // The Target's radius
     private float barLength = 1.5f; // The Length of a Pin
     private float throwingAngle = 270; // The angle of throwing a pin
+    private AudioSource audioSource; // AudioSource to play a sound effect when throwing a pin
 
     public List<Pin> throwablePins { private set; get; } = new List<Pin>();
+    public List<Pin> pinsOnTarget { private set; get; } = new List<Pin>();
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -30,7 +37,6 @@ public class PinSpawner : MonoBehaviour
         // User input for the Game
         if ( Input.GetMouseButtonDown(0) && throwablePins.Count != 0 )
         {
-            Debug.Log("Game Clear");
             ThrowPin();
         }
     }
@@ -86,8 +92,12 @@ public class PinSpawner : MonoBehaviour
         pin.transform.SetParent(target);
         // Rotate it to the angle to get the bar connected to the target
         pin.transform.rotation = Quaternion.Euler(0, 0, angle);
+        // Fetch Pin Component
+        Pin pinComponent = pin.GetComponent<Pin>();
         // Call the function for when the Pin is in the target
-        pin.GetComponent<Pin>().SetItStuck();
+        pinComponent.SetItStuck();
+        // Add the pin to the pinsOnTarget List
+        pinsOnTarget.Add(pinComponent);
     }
 
     public void ThrowPin()
@@ -98,6 +108,8 @@ public class PinSpawner : MonoBehaviour
         SetPinStuckToTarget(pin.transform, throwingAngle);
         // Remove the Pin from the List to rearrange
         throwablePins.RemoveAt(0);
+        // Play the Sound Effect
+        audioSource.Play();
 
         // Move up all the existing Pins in the List
         for ( int i = 0; i < throwablePins.Count; i++ )
@@ -116,5 +128,20 @@ public class PinSpawner : MonoBehaviour
         clone.GetComponent<WorldToScreenPosition>().Setup(target);
         // Change the text as the given index value
         clone.GetComponent<TMPro.TextMeshProUGUI>().text = index.ToString();
+    }
+
+    public void Clear()
+    {
+        foreach ( Pin pin in throwablePins )
+        {
+            Destroy(pin.gameObject);
+        }
+        throwablePins.Clear();
+
+        foreach ( Pin pin in pinsOnTarget )
+        {
+            Destroy(pin.gameObject);
+        }
+        pinsOnTarget.Clear();
     }
 }

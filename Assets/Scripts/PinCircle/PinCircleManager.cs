@@ -26,6 +26,11 @@ public class PinCircleManager : MonoBehaviour
     [SerializeField]
     private Color gameOverColor;
 
+    [SerializeField]
+    private AudioClip gameClearSound;
+    [SerializeField]
+    private AudioClip gameOverSound;
+
     public bool gameStarted { private set; get; } = false;
     public bool gameClear { private set; get; } = false;
     public bool gameOver { private set; get; } = false;
@@ -81,6 +86,7 @@ public class PinCircleManager : MonoBehaviour
         gameOver = false;
         Camera.main.backgroundColor = gamePlayColor;
         target.GetComponent<Rotator>().Clear();
+        pinSpawner.Clear();
     }
 
     private IEnumerator ExitStage(float time)
