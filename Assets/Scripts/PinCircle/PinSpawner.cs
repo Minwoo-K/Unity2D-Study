@@ -111,6 +111,12 @@ public class PinSpawner : MonoBehaviour
         // Play the Sound Effect
         audioSource.Play();
 
+        if ( throwablePins.Count == 0 )
+        {
+            StartCoroutine(pinCircleManager.GameClear());
+            return;
+        }
+
         // Move up all the existing Pins in the List
         for ( int i = 0; i < throwablePins.Count; i++ )
         {

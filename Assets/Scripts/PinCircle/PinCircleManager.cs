@@ -34,7 +34,6 @@ public class PinCircleManager : MonoBehaviour
     private int gameLevel;
     private AudioSource audioSource;
     private Dictionary<int, Data.PinCircleDatum> pinCircleLevelData = new Dictionary<int, Data.PinCircleDatum>();
-    private bool levelUpdated = false;
 
     public bool gameStarted { private set; get; } = false;
     public bool gameClear { private set; get; } = false;
@@ -48,12 +47,11 @@ public class PinCircleManager : MonoBehaviour
 
     private void Update()
     {
-        if ( pinSpawner.throwablePins.Count == 0 && gameOver == false && gameStarted == true)
-        {
-            if ( levelUpdated ) return;
-
-            StartCoroutine(GameClear());
-        }
+        //if ( pinSpawner.throwablePins.Count == 0 && gameOver == false && gameStarted == true)
+        //{
+        //
+        //    StartCoroutine(GameClear());
+        //}
     }
 
     public void SetUpGame(int level)
@@ -87,8 +85,11 @@ public class PinCircleManager : MonoBehaviour
         gameClear = true;
         target.GetComponent<Rotator>().SetRotationSpeed(350);
         Camera.main.backgroundColor = gameClearColor;
-        levelUpdated = true;
-        Debug.Log($"Current Game Level: {gameLevel}");
+        audioSource.clip = gameClearSound;
+        audioSource.Play();
+
+        Debug.Log($"Game Level: {gameLevel} Cleared!");
+        gameLevel++;
 
         StartCoroutine(ExitStage(0.5f, gameLevel));
     }
@@ -101,19 +102,18 @@ public class PinCircleManager : MonoBehaviour
         audioSource.clip = gameOverSound;
         audioSource.Play();
 
+        Debug.Log($"Game Level: {gameLevel} Failed ):");
+
         StartCoroutine(ExitStage(1.0f, gameLevel));
     }
 
     public void ResetTo(int level)
     {
-        if (gameClear) level++;
-
-        Debug.Log($"Current Game Level: {gameLevel}");
+        Debug.Log($"Next Game Level: {gameLevel}");
 
         gameStarted = false;
         gameClear = false;
         gameOver = false;
-        levelUpdated = false;
         Camera.main.backgroundColor = gamePlayColor;
         target.GetComponent<Rotator>().Clear();
         pinSpawner.Clear();
