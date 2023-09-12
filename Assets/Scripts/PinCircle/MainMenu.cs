@@ -13,6 +13,8 @@ public class MainMenu : MonoBehaviour
     private Vector3 inactivePosition = Vector3.right * 1080;
     private Vector3 activePosition = Vector3.zero;
 
+    public int gameLevel { private set; get; } = 0;
+
     private void Awake()
     {
         sceneManager = new SceneManagerEx();
@@ -50,16 +52,17 @@ public class MainMenu : MonoBehaviour
     }
     #endregion
 
-    public void OnGameEnded()
+    public void OnGameEnded(int level)
     {
         // When the game has ended,
         ui_Mover.StartMoving(BringBackMenu, activePosition);
+        // Deliver the game level that should be set up
+        gameLevel = level;
     }
 
     private void BringBackMenu()
     {
-        sceneManager.LoadScene("PinCircle");
-        // pinCircleManager.Reset();
-        // To-Do: Set up the scene to play again
+        //sceneManager.LoadScene("PinCircle");
+        pinCircleManager.ResetTo(gameLevel);
     }
 }

@@ -31,26 +31,42 @@ public class PinCircleManager : MonoBehaviour
     [SerializeField]
     private AudioClip gameOverSound;
 
+    private int gameLevel;
     private AudioSource audioSource;
+    private Dictionary<int, Data.PinCircleDatum> pinCircleLevelData = new Dictionary<int, Data.PinCircleDatum>();
+    private bool levelUpdated = false;
 
     public bool gameStarted { private set; get; } = false;
     public bool gameClear { private set; get; } = false;
     public bool gameOver { private set; get; } = false;
 
+    // Start the Game
     private void Start()
     {
-        pinSpawner.Setup(numberOfThrowables, numberOfStucks);
-        audioSource = GetComponent<AudioSource>();
+        SetUpGame(1);
     }
 
     private void Update()
     {
         if ( pinSpawner.throwablePins.Count == 0 && gameOver == false && gameStarted == true)
         {
+            if ( levelUpdated ) return;
+
             StartCoroutine(GameClear());
         }
+    }
 
-        
+    public void SetUpGame(int level)
+    {
+        if (pinCircleLevelData.Count == 0)
+            pinCircleLevelData = DataManager.Data.PinCircle;
+
+        gameLevel = level <= pinCircleLevelData.Count ? level : pinCircleLevelData.Count;
+        numberOfThrowables = pinCircleLevelData[gameLevel].numberOfThrowablePins;
+        numberOfStucks = pinCircleLevelData[gameLevel].numberOfStuckPins;
+
+        audioSource = GetComponent<AudioSource>();
+        pinSpawner.Setup(numberOfThrowables, numberOfStucks);
     }
 
     public void GameStart()
@@ -71,8 +87,10 @@ public class PinCircleManager : MonoBehaviour
         gameClear = true;
         target.GetComponent<Rotator>().SetRotationSpeed(350);
         Camera.main.backgroundColor = gameClearColor;
+        levelUpdated = true;
+        Debug.Log($"Current Game Level: {gameLevel}");
 
-        StartCoroutine(ExitStage(0.5f));
+        StartCoroutine(ExitStage(0.5f, gameLevel));
     }
 
     public void GameOver()
@@ -83,24 +101,30 @@ public class PinCircleManager : MonoBehaviour
         audioSource.clip = gameOverSound;
         audioSource.Play();
 
-        StartCoroutine(ExitStage(1.0f));
+        StartCoroutine(ExitStage(1.0f, gameLevel));
     }
 
-    public void Reset(int numberOfThrowables, int numberOfStucks)
+    public void ResetTo(int level)
     {
+        if (gameClear) level++;
+
+        Debug.Log($"Current Game Level: {gameLevel}");
+
         gameStarted = false;
         gameClear = false;
         gameOver = false;
+        levelUpdated = false;
         Camera.main.backgroundColor = gamePlayColor;
         target.GetComponent<Rotator>().Clear();
         pinSpawner.Clear();
+        SetUpGame(level);
     }
 
-    private IEnumerator ExitStage(float time)
+    private IEnumerator ExitStage(float time, int level)
     {
         yield return new WaitForSeconds(time);
 
-        mainMenu.OnGameEnded();
+        mainMenu.OnGameEnded(level);
     }
 }
 
