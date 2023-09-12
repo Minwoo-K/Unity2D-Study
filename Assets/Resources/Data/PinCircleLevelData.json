@@ -1,0 +1,22 @@
+{
+    "levelData": [
+        {
+            "level": "1",
+            "targetSpeed": "80",
+            "numberOfThrowablePins": "3",
+            "numberOfStuckPins": "5"
+        },
+        {
+            "level": "2",
+            "targetSpeed": "80",
+            "numberOfThrowablePins": "4",
+            "numberOfStuckPins": "5"
+        },
+        {
+            "level": "3",
+            "targetSpeed": "80",
+            "numberOfThrowablePins": "4",
+            "numberOfStuckPins": "6"
+        }
+    ]
+}

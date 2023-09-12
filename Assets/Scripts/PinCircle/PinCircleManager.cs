@@ -49,6 +49,8 @@ public class PinCircleManager : MonoBehaviour
         {
             StartCoroutine(GameClear());
         }
+
+        
     }
 
     public void GameStart()
