@@ -37,7 +37,8 @@ public class MainMenu : MonoBehaviour
     #region RESET button
     public void OnResetButton()
     {
-        Debug.Log("Reset Button");
+        pinCircleManager.ResetTo(1);
+        Debug.Log("Game has been reset");
     }
     #endregion
 
