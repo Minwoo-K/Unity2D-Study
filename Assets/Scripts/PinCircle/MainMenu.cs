@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
     private PinCircleManager pinCircleManager;
     [SerializeField]
     private UI_Mover ui_Mover;
+    [SerializeField]
+    private TMPro.TextMeshProUGUI levelText;
 
     private SceneManagerEx sceneManager;
     private Vector3 inactivePosition = Vector3.right * 1080;
@@ -58,6 +60,7 @@ public class MainMenu : MonoBehaviour
         // When the game has ended,
         ui_Mover.StartMoving(BringBackMenu, activePosition);
         // Deliver the game level that should be set up
+        levelText.text = $"Level {level}";
         gameLevel = level;
     }
 
