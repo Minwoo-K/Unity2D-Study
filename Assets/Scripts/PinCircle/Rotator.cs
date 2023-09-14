@@ -2,24 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotator : MonoBehaviour
+namespace PinCircle
 {
-    [SerializeField]
-    private float rotateSpeed;
-    private Vector3 direction = Vector3.forward;
-
-    private void Update()
+    public class Rotator : MonoBehaviour
     {
-        transform.Rotate(direction * rotateSpeed * Time.deltaTime);
-    }
+        [SerializeField]
+        private float rotateSpeed;
+        private Vector3 direction = Vector3.forward;
 
-    public void SetRotationSpeed(float speed)
-    {
-        rotateSpeed = speed;
-    }
+        private void Update()
+        {
+            transform.Rotate(direction * rotateSpeed * Time.deltaTime);
+        }
 
-    public void Clear()
-    {
-        SetRotationSpeed(0);
+        public void SetRotationSpeed(float speed)
+        {
+            rotateSpeed = speed;
+        }
+
+        public void Clear()
+        {
+            SetRotationSpeed(0);
+        }
     }
 }
