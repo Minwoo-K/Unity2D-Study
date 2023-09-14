@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scaler : MonoBehaviour
+namespace Waveio
 {
-    void Start()
+    public class Scaler : MonoBehaviour
     {
-        
-    }
+        void Start()
+        {
 
-    void Update()
-    {
-        
+        }
+
+        void Update()
+        {
+
+        }
     }
 }
