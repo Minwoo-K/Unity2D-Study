@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Waveio
 {
-    private Movement2D movement;
-
-    private void Start()
+    public class PlayerController : MonoBehaviour
     {
-        movement = GetComponent<Movement2D>();
-    }
+        private Movement2D movement;
 
-    private void FixedUpdate()
-    {
-        movement.MoveInX();
-
-        if ( Input.GetMouseButton(0) )
+        private void Start()
         {
-            movement.MoveInY();
+            movement = GetComponent<Movement2D>();
+        }
+
+        private void FixedUpdate()
+        {
+            movement.MoveInX();
+
+            if (Input.GetMouseButton(0))
+            {
+                movement.MoveInY();
+            }
         }
     }
 }
