@@ -2,26 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Waveio
 {
-    private PlayerMovement playerMovement;  // Player Movement script
-
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
-        // Fetch the component
-        playerMovement = GetComponent<PlayerMovement>();
-    }
+        private Movement2D movement;
 
-    // Mathematic calculation should be in FixedUpdate
-    void FixedUpdate()
-    {
-        // Player always moves within the X axis
-        playerMovement.MoveInX();
-        
-        // Moves up only when the left mouse button is being held down
-        if ( Input.GetMouseButton(0) )
+        private void Start()
         {
-            playerMovement.MoveUpY();
+            movement = GetComponent<Movement2D>();
+        }
+
+        private void FixedUpdate()
+        {
+            movement.MoveInX();
+
+            if (Input.GetMouseButton(0))
+            {
+                movement.MoveInY();
+            }
         }
     }
 }

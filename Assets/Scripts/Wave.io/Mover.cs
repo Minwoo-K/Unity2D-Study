@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Waveio
 {
-
     public class Mover : MonoBehaviour
     {
         [SerializeField]
