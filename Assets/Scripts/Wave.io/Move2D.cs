@@ -4,24 +4,25 @@ using UnityEngine;
 
 namespace Waveio
 {
-    public class Movement2D : MonoBehaviour
+    public class Move2D : MonoBehaviour
     {
         [Header("Horizontal(X axis) Movement")]
         [SerializeField]
-        private float xRange;
-        [SerializeField]
         private float xSpeed;
-        private Vector3 startPosition;
+        [SerializeField]
+        private float xRange;
 
         [Header("Vertical(Y axis) Movement")]
         [SerializeField]
         private float ySpeed;
-        private Rigidbody2D rigidbody;
+
+        private Vector3 startPosition;
+        private Rigidbody2D rigid;
 
         private void Awake()
         {
             startPosition = transform.position;
-            rigidbody = GetComponent<Rigidbody2D>();
+            rigid = GetComponent<Rigidbody2D>();
         }
 
         public void MoveInX()
@@ -32,7 +33,7 @@ namespace Waveio
 
         public void MoveInY()
         {
-            rigidbody.AddForce(Vector2.up * ySpeed, ForceMode2D.Impulse);
+            rigid.AddForce(Vector3.up * ySpeed, ForceMode2D.Impulse);
         }
     }
 }

@@ -9,19 +9,19 @@ namespace Waveio
         [SerializeField]
         private Transform target;
         [SerializeField]
-        private float yOffset;
+        private Vector3 captureOffset = new Vector3(0, 8, -10);
         [SerializeField]
         private float smoothTime;
-        private Vector3 velocity;
 
-        private void FixedUpdate()
+        private Vector3 velocity = Vector3.zero;
+
+        private void Update()
         {
-            // World Position = TransformPoint(LocalPosition)
-            Vector3 targetWorldPosition = target.TransformPoint(new Vector3(0, yOffset, -10));
-
-            targetWorldPosition = new Vector3(0, targetWorldPosition.y, targetWorldPosition.z);
-
-            transform.position = Vector3.SmoothDamp(transform.position, targetWorldPosition, ref velocity, smoothTime);
+            // To get a position value for the camera, BASED ON the target's position
+            // -> target is (standard) | TransformPoint(captureOffset) is the local position for camera with the offset position
+            Vector3 capturePosition = target.TransformPoint(captureOffset);
+            capturePosition.x = 0;
+            transform.position = Vector3.SmoothDamp(transform.position, capturePosition, ref velocity, smoothTime);
         }
     }
 }

@@ -220,8 +220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1872650342}
-  yOffset: 8
-  smoothTime: 0.3
+  captureOffset: {x: 0, y: 8, z: -10}
+  smoothTime: 0.5
 --- !u!1 &1872650340
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,12 +316,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1872650340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dec5ba1104dfba84eaa892ef9b55e8e1, type: 3}
+  m_Script: {fileID: 11500000, guid: d069ade4616ec0445b681288353eb4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xRange: 1
-  xSpeed: 3
-  ySpeed: 0.5
+  xSpeed: 2
+  xRange: 2
+  ySpeed: 0.3
 --- !u!114 &1872650344
 MonoBehaviour:
   m_ObjectHideFlags: 0

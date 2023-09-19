@@ -6,20 +6,20 @@ namespace Waveio
 {
     public class PlayerController : MonoBehaviour
     {
-        private Movement2D movement;
+        private Move2D move;
 
         private void Start()
         {
-            movement = GetComponent<Movement2D>();
+            move = GetComponent<Move2D>();
         }
 
-        private void FixedUpdate()
+        void FixedUpdate()
         {
-            movement.MoveInX();
+            move.MoveInX();
 
-            if (Input.GetMouseButton(0))
-            {
-                movement.MoveInY();
+            if ( Input.GetMouseButton(0) )
+            { 
+                move.MoveInY(); 
             }
         }
     }
