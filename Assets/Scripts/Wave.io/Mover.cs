@@ -6,14 +6,32 @@ namespace Waveio
 {
     public class Mover : MonoBehaviour
     {
+        [Header("X axis")]
         [SerializeField]
-        private float degree;
+        private float xSpeed;
+        [SerializeField]
+        private float xRange;
 
-        private float delta = 50;
+        [Header("Y axis")]
+        [SerializeField]
+        private float ySpeed;
+        [SerializeField]
+        private float yRange;
+
+        private Vector3 startPosition;
+
+        private void Start()
+        {
+            startPosition = transform.position;
+        }
 
         void Update()
         {
-            transform.position = new Vector3(Mathf.Sin(degree), Mathf.Cos(degree), 0) * delta * Time.deltaTime;
+            float x = startPosition.x + xRange * Mathf.Sin(xSpeed * Time.time);
+            transform.position = new Vector3(x, transform.position.y, transform.position.z);
+
+            float y = startPosition.x + yRange * Mathf.Sin(ySpeed * Time.time);
+            transform.position = new Vector3(transform.position.x, y, transform.position.z);
         }
     }
 }
