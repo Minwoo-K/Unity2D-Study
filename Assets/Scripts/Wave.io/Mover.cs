@@ -30,7 +30,7 @@ namespace Waveio
             float x = startPosition.x + xRange * Mathf.Sin(xSpeed * Time.time);
             transform.position = new Vector3(x, transform.position.y, transform.position.z);
 
-            float y = startPosition.x + yRange * Mathf.Sin(ySpeed * Time.time);
+            float y = startPosition.y + yRange * Mathf.Sin(ySpeed * Time.time);
             transform.position = new Vector3(transform.position.x, y, transform.position.z);
         }
     }
