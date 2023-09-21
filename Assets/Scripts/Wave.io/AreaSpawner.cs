@@ -28,7 +28,7 @@ namespace Waveio
 
         private void Update()
         {
-            if ( player.position.y / gapBtwnAreas + 1 == areaIndex)
+            if ( (int)player.position.y / gapBtwnAreas + 1 == areaIndex)
             {
                 SpawnArea();
             }

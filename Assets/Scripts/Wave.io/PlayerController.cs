@@ -22,5 +22,20 @@ namespace Waveio
                 move.MoveInY(); 
             }
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if ( collision.gameObject.tag == "Item")
+            {
+                Debug.Log("Scored!");
+
+                Destroy(collision.gameObject);
+            }
+
+            if (collision.gameObject.tag == "Obstacle")
+            {
+                Debug.Log("GameOver");
+            }
+        }
     }
 }
