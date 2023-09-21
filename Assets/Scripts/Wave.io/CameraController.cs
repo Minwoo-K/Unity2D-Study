@@ -15,7 +15,7 @@ namespace Waveio
 
         private Vector3 velocity = Vector3.zero;
 
-        private void Update()
+        private void FixedUpdate()
         {
             // To get a position value for the camera, BASED ON the target's position
             // -> target is (standard) | TransformPoint(captureOffset) is the local position for camera with the offset position
