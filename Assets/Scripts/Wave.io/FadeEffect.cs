@@ -21,11 +21,9 @@ public class FadeEffect : MonoBehaviour
     {
         while ( true )
         {
-            StartCoroutine(Fade(1, 0));
+            yield return StartCoroutine(Fade(1, 0));
 
-            StartCoroutine(Fade(0, 1));
-
-            yield return null;
+            yield return StartCoroutine(Fade(0, 1));
         }
     }
 
@@ -41,6 +39,7 @@ public class FadeEffect : MonoBehaviour
 
             Color opacity = tmo.color;
             opacity.a = Mathf.Lerp(start, end, percent);
+            tmo.color = opacity;
 
             yield return null;
         }
