@@ -33,7 +33,7 @@ namespace Waveio
         {
             if ( collision.gameObject.tag == "Item")
             {
-                Debug.Log("Scored!");
+                waveioManager.ScoreIncreased();
 
                 Destroy(collision.gameObject);
             }
