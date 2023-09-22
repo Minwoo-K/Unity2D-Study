@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveioManager : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class WaveioManager : MonoBehaviour
     private TextMeshProUGUI textTitle;
     [SerializeField]
     private TextMeshProUGUI textTapToPlay;
+    [SerializeField]
+    private GameObject continueButton;
+
+    public bool gameOver { get; private set; } = false;
 
     private IEnumerator Start()
     {
@@ -34,5 +39,17 @@ public class WaveioManager : MonoBehaviour
     {
         textTitle.gameObject.SetActive(false);
         textTapToPlay.gameObject.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        gameOver = true;
+
+        continueButton.SetActive(true);
+    }
+
+    public void OnContinueButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
