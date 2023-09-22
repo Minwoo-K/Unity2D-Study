@@ -6,6 +6,9 @@ namespace Waveio
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField]
+        private WaveioManager waveioManager;
+
         private Move2D move;
 
         private void Start()
@@ -15,6 +18,9 @@ namespace Waveio
 
         void FixedUpdate()
         {
+            if ( waveioManager.gameOver == true )
+                return;
+
             move.MoveInX();
 
             if ( Input.GetMouseButton(0) )
@@ -27,14 +33,16 @@ namespace Waveio
         {
             if ( collision.gameObject.tag == "Item")
             {
-                Debug.Log("Scored!");
+                waveioManager.ScoreIncreased();
 
                 Destroy(collision.gameObject);
             }
 
             if (collision.gameObject.tag == "Obstacle")
             {
-                Debug.Log("GameOver");
+                Destroy(GetComponent<Rigidbody2D>());
+
+                waveioManager.GameOver();
             }
         }
     }

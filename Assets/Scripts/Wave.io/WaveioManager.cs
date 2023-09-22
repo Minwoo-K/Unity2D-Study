@@ -2,16 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveioManager : MonoBehaviour
 {
+    [Header("UI Control Section")]
     [SerializeField]
     private TextMeshProUGUI textTitle;
     [SerializeField]
     private TextMeshProUGUI textTapToPlay;
+    [SerializeField]
+    private TextMeshProUGUI textScore;
+    [SerializeField]
+    private TextMeshProUGUI textCurrentScore;
+    [SerializeField]
+    private TextMeshProUGUI textBestScore;
+    [SerializeField]
+    private GameObject continueButton;
+
+    private int score = 0;
+    public bool gameOver { get; private set; } = false;
 
     private IEnumerator Start()
     {
+        int bestScore = PlayerPrefs.GetInt("BestScore");
+        textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{bestScore}";
+
         while ( true )
         {
             if ( Input.GetMouseButtonDown(0) )
@@ -34,5 +50,37 @@ public class WaveioManager : MonoBehaviour
     {
         textTitle.gameObject.SetActive(false);
         textTapToPlay.gameObject.SetActive(false);
+        textCurrentScore.gameObject.SetActive(true);
+    }
+
+    public void GameOver()
+    {
+        gameOver = true;
+
+        continueButton.SetActive(true);
+        textScore.gameObject.SetActive(true);
+
+        int bestScore = PlayerPrefs.GetInt("BestScore");
+
+        if (score > bestScore )
+        {
+            PlayerPrefs.SetInt("BestScore", score);
+
+            //textBestScore.gameObject.SetActive(true);
+            textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{score}";
+        }
+
+    }
+
+    public void OnContinueButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ScoreIncreased()
+    {
+        score++;
+
+        textCurrentScore.text = score.ToString();
     }
 }
