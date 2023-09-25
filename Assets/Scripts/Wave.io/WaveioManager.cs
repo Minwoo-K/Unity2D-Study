@@ -19,6 +19,8 @@ public class WaveioManager : MonoBehaviour
     private TextMeshProUGUI textBestScore;
     [SerializeField]
     private GameObject continueButton;
+    [SerializeField]
+    private float gameOverDelayTime;
 
     private int score = 0;
     public bool gameOver { get; private set; } = false;
@@ -57,19 +59,25 @@ public class WaveioManager : MonoBehaviour
     {
         gameOver = true;
 
+        StartCoroutine(OnGameOver());
+    }
+
+    private IEnumerator OnGameOver()
+    {
+        yield return new WaitForSeconds(gameOverDelayTime);
+
         continueButton.SetActive(true);
         textScore.gameObject.SetActive(true);
 
         int bestScore = PlayerPrefs.GetInt("BestScore");
 
-        if (score > bestScore )
+        if (score > bestScore)
         {
             PlayerPrefs.SetInt("BestScore", score);
 
             //textBestScore.gameObject.SetActive(true);
             textBestScore.text = $"<size=50>BEST\n<size=70>{score}";
         }
-
     }
 
     public void OnContinueButton()
