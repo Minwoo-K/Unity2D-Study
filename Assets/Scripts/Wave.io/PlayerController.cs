@@ -8,6 +8,10 @@ namespace Waveio
     {
         [SerializeField]
         private WaveioManager waveioManager;
+        [SerializeField]
+        private CameraController cameraController;
+        [SerializeField]
+        private GameObject playerCrashEffect;
 
         private Move2D move;
 
@@ -35,11 +39,15 @@ namespace Waveio
             {
                 waveioManager.ScoreIncreased();
 
+                cameraController.ChangeBackgroundColor();
+
                 Destroy(collision.gameObject);
             }
 
             if (collision.gameObject.tag == "Obstacle")
             {
+                Instantiate(playerCrashEffect, transform.position, Quaternion.identity);
+                
                 Destroy(GetComponent<Rigidbody2D>());
 
                 waveioManager.GameOver();
