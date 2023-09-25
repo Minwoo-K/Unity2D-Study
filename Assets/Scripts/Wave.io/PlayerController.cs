@@ -8,6 +8,8 @@ namespace Waveio
     {
         [SerializeField]
         private WaveioManager waveioManager;
+        [SerializeField]
+        private CameraController cameraController;
 
         private Move2D move;
 
@@ -34,6 +36,8 @@ namespace Waveio
             if ( collision.gameObject.tag == "Item")
             {
                 waveioManager.ScoreIncreased();
+
+                cameraController.ChangeBackgroundColor();
 
                 Destroy(collision.gameObject);
             }

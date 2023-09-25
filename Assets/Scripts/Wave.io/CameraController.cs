@@ -23,5 +23,12 @@ namespace Waveio
             capturePosition.x = 0;
             transform.position = Vector3.SmoothDamp(transform.position, capturePosition, ref velocity, smoothTime);
         }
+
+        public void ChangeBackgroundColor()
+        {
+            float colorHue = Random.Range(0, 10);
+            colorHue *= 0.1f;
+            Camera.main.backgroundColor = Color.HSVToRGB(colorHue, 0.6f, 0.8f);
+        }
     }
 }
