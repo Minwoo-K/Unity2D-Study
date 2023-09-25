@@ -59,6 +59,8 @@ public class WaveioManager : MonoBehaviour
     {
         gameOver = true;
 
+        CameraShakeEffect.Instance.ShakeCamera(0.5f, 0.1f);
+
         StartCoroutine(OnGameOver());
     }
 
