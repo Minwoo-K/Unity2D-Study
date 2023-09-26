@@ -1509,7 +1509,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveioManager: {fileID: 1301786604}
-  cameraController: {fileID: 42518552}
 --- !u!50 &1872650345
 Rigidbody2D:
   serializedVersion: 4

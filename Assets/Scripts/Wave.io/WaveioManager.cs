@@ -26,7 +26,7 @@ public class WaveioManager : MonoBehaviour
     private IEnumerator Start()
     {
         int bestScore = PlayerPrefs.GetInt("BestScore");
-        textBestScore.text = $"<size=50>BEST\n<size=70>{bestScore}";
+        textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{bestScore}";
 
         while ( true )
         {
@@ -67,7 +67,7 @@ public class WaveioManager : MonoBehaviour
             PlayerPrefs.SetInt("BestScore", score);
 
             //textBestScore.gameObject.SetActive(true);
-            textBestScore.text = $"<size=50>BEST\n<size=70>{score}";
+            textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{score}";
         }
 
     }
