@@ -1020,6 +1020,7 @@ MonoBehaviour:
   textCurrentScore: {fileID: 1457739680}
   textBestScore: {fileID: 1582192600}
   continueButton: {fileID: 472430957}
+  cameraController: {fileID: 42518552}
 --- !u!1 &1457739678
 GameObject:
   m_ObjectHideFlags: 0

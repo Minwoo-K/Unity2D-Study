@@ -4,83 +4,90 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class WaveioManager : MonoBehaviour
+namespace Waveio
 {
-    [Header("UI Control Section")]
-    [SerializeField]
-    private TextMeshProUGUI textTitle;
-    [SerializeField]
-    private TextMeshProUGUI textTapToPlay;
-    [SerializeField]
-    private TextMeshProUGUI textScore;
-    [SerializeField]
-    private TextMeshProUGUI textCurrentScore;
-    [SerializeField]
-    private TextMeshProUGUI textBestScore;
-    [SerializeField]
-    private GameObject continueButton;
-
-    private int score = 0;
-    public bool gameOver { get; private set; } = false;
-
-    private IEnumerator Start()
+    public class WaveioManager : MonoBehaviour
     {
-        int bestScore = PlayerPrefs.GetInt("BestScore");
-        textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{bestScore}";
+        [Header("UI Control Section")]
+        [SerializeField]
+        private TextMeshProUGUI textTitle;
+        [SerializeField]
+        private TextMeshProUGUI textTapToPlay;
+        [SerializeField]
+        private TextMeshProUGUI textScore;
+        [SerializeField]
+        private TextMeshProUGUI textCurrentScore;
+        [SerializeField]
+        private TextMeshProUGUI textBestScore;
+        [SerializeField]
+        private GameObject continueButton;
+        [SerializeField]
+        private CameraController cameraController;
 
-        while ( true )
+        private int score = 0;
+        public bool gameOver { get; private set; } = false;
+
+        private IEnumerator Start()
         {
-            if ( Input.GetMouseButtonDown(0) )
-            {
-                StartGame();
+            int bestScore = PlayerPrefs.GetInt("BestScore");
+            textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{bestScore}";
 
-                yield break;
+            while (true)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    StartGame();
+
+                    yield break;
+                }
+
+                yield return null;
+            }
+        }
+
+        private void Update()
+        {
+
+        }
+
+        private void StartGame()
+        {
+            textTitle.gameObject.SetActive(false);
+            textTapToPlay.gameObject.SetActive(false);
+            textCurrentScore.gameObject.SetActive(true);
+        }
+
+        public void GameOver()
+        {
+            gameOver = true;
+
+            continueButton.SetActive(true);
+            textScore.gameObject.SetActive(true);
+
+            int bestScore = PlayerPrefs.GetInt("BestScore");
+
+            if (score > bestScore)
+            {
+                PlayerPrefs.SetInt("BestScore", score);
+
+                //textBestScore.gameObject.SetActive(true);
+                textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{score}";
             }
 
-            yield return null;
         }
-    }
 
-    private void Update()
-    {
-        
-    }
-
-    private void StartGame()
-    {
-        textTitle.gameObject.SetActive(false);
-        textTapToPlay.gameObject.SetActive(false);
-        textCurrentScore.gameObject.SetActive(true);
-    }
-
-    public void GameOver()
-    {
-        gameOver = true;
-
-        continueButton.SetActive(true);
-        textScore.gameObject.SetActive(true);
-
-        int bestScore = PlayerPrefs.GetInt("BestScore");
-
-        if (score > bestScore )
+        public void OnContinueButton()
         {
-            PlayerPrefs.SetInt("BestScore", score);
-
-             //textBestScore.gameObject.SetActive(true);
-            textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{score}";
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-    }
+        public void ScoreIncreased()
+        {
+            score++;
 
-    public void OnContinueButton()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+            textCurrentScore.text = score.ToString();
 
-    public void ScoreIncreased()
-    {
-        score++;
-
-        textCurrentScore.text = score.ToString();
+            cameraController.ChangeBackgroundColour();
+        }
     }
 }
