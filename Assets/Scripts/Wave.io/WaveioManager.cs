@@ -25,7 +25,10 @@ namespace Waveio
         private CameraController cameraController;
 
         private int score = 0;
+        private float gameDelayTime = 1f;
+
         public bool gameOver { get; private set; } = false;
+
 
         private IEnumerator Start()
         {
@@ -61,6 +64,13 @@ namespace Waveio
         {
             gameOver = true;
 
+            StartCoroutine(OnGameOver());
+        }
+
+        private IEnumerator OnGameOver()
+        {
+            yield return new WaitForSeconds(gameDelayTime);
+
             continueButton.SetActive(true);
             textScore.gameObject.SetActive(true);
 
@@ -73,7 +83,6 @@ namespace Waveio
                 //textBestScore.gameObject.SetActive(true);
                 textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{score}";
             }
-
         }
 
         public void OnContinueButton()
