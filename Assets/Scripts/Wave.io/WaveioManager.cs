@@ -66,7 +66,7 @@ public class WaveioManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("BestScore", score);
 
-            //textBestScore.gameObject.SetActive(true);
+             //textBestScore.gameObject.SetActive(true);
             textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{score}";
         }
 
