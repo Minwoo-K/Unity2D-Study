@@ -44,6 +44,8 @@ namespace Waveio
             {
                 Instantiate(playerCrashEffect, transform.position, Quaternion.identity);
 
+                CameraShakeEffect.Instance.ShakeCamera(0.1f, 0.5f);
+
                 Destroy(GetComponent<Rigidbody2D>());
 
                 waveioManager.GameOver();
