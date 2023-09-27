@@ -21,11 +21,15 @@ namespace Waveio
         private TextMeshProUGUI textBestScore;
         [SerializeField]
         private GameObject continueButton;
+
+        [Space(30)]
         [SerializeField]
         private CameraController cameraController;
 
         private int score = 0;
         private float gameDelayTime = 1f;
+        private Dictionary<int, Data.WaveioDatum> WaveioLevelData = null;
+
 
         public bool gameOver { get; private set; } = false;
 
@@ -55,6 +59,12 @@ namespace Waveio
 
         private void StartGame()
         {
+            if ( WaveioLevelData == null )
+            {
+                WaveioLevelData = new Dictionary<int, Data.WaveioDatum>();
+                WaveioLevelData = DataManager.Data.Waveio;
+            }
+
             textTitle.gameObject.SetActive(false);
             textTapToPlay.gameObject.SetActive(false);
             textCurrentScore.gameObject.SetActive(true);

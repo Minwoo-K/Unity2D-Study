@@ -35,6 +35,7 @@ namespace PinCircle
 
         private int gameLevel;
         private AudioSource audioSource;    // AudioSource to play audio
+
                                             // Dictionary to hold level data
         private Dictionary<int, Data.PinCircleDatum> pinCircleLevelData = null;
 
