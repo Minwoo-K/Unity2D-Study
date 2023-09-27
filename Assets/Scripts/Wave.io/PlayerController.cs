@@ -10,6 +10,8 @@ namespace Waveio
         private WaveioManager waveioManager;
         [SerializeField]
         private GameObject playerCrashEffect;
+        [SerializeField]
+        private GameObject itemTakenEffect;
 
         private Move2D move;
 
@@ -35,6 +37,8 @@ namespace Waveio
         {
             if ( collision.gameObject.tag == "Item")
             {
+                Instantiate(itemTakenEffect, collision.transform.position, Quaternion.identity);
+
                 waveioManager.ScoreIncreased();
 
                 Destroy(collision.gameObject);
