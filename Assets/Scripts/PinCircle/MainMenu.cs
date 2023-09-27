@@ -49,6 +49,8 @@ namespace PinCircle
         #region EXIT button
         public void OnExitButton()
         {
+            DataManager.Data.Clear();
+
             #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
             #else

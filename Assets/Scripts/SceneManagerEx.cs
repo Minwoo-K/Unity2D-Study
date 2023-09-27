@@ -10,6 +10,7 @@ public class SceneManagerEx
     {
         //MainMenu,
         PinCircle,
+        Waveio,
     }
 
     public void LoadScene(string name)

@@ -45,6 +45,7 @@ public class DataManager : MonoBehaviour
     public void Clear()
     {
         PinCircleLevelData.Clear();
+        WaveioLevelData.Clear();
     }
 
     #region PinCircle
@@ -62,4 +63,18 @@ public class DataManager : MonoBehaviour
     }
     #endregion
 
+    #region Wave.io
+    // The Data Table for PinCircle game
+    private Dictionary<int, Data.WaveioDatum> WaveioLevelData = new Dictionary<int, Data.WaveioDatum>();
+    // Property for PinCirclelevelData
+    public Dictionary<int, Data.WaveioDatum> Waveio { get { SetUpWaveio(); return WaveioLevelData; } }
+
+    // When using PinCircle Data, the given method must be used to load data
+    private void SetUpWaveio()
+    {
+        if (WaveioLevelData.Count != 0) return;
+
+        WaveioLevelData = LoadJson<Data.WaveioData, int, Data.WaveioDatum>("WaveioLevelData").LoadData();
+    }
+    #endregion
 }

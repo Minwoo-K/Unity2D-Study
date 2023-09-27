@@ -21,31 +21,35 @@ namespace Waveio
         private TextMeshProUGUI textBestScore;
         [SerializeField]
         private GameObject continueButton;
+
+        [Space(30)]
+        [SerializeField]
+        private PlayerController playerController;
         [SerializeField]
         private CameraController cameraController;
+        [SerializeField]
+        private int currentLevel = 1;
 
         private int score = 0;
         private float gameDelayTime = 1f;
-
+        private Dictionary<int, Data.WaveioDatum> WaveioLevelData = null;
+        
+        public bool gameStart { get; private set; } = false;
         public bool gameOver { get; private set; } = false;
 
 
-        private IEnumerator Start()
+        private void Start()
         {
+            if (WaveioLevelData == null)
+            {
+                WaveioLevelData = new Dictionary<int, Data.WaveioDatum>();
+                WaveioLevelData = DataManager.Data.Waveio;
+            }
+
             int bestScore = PlayerPrefs.GetInt("BestScore");
             textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{bestScore}";
 
-            while (true)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    StartGame();
-
-                    yield break;
-                }
-
-                yield return null;
-            }
+            StartCoroutine(StartGame());
         }
 
         private void Update()
@@ -53,8 +57,18 @@ namespace Waveio
 
         }
 
-        private void StartGame()
+        private IEnumerator StartGame()
         {
+            while ( gameStart == false )
+            {
+                if ( Input.GetMouseButtonDown(0) )
+                {
+                    gameStart = true;
+                }
+
+                yield return null;
+            }
+
             textTitle.gameObject.SetActive(false);
             textTapToPlay.gameObject.SetActive(false);
             textCurrentScore.gameObject.SetActive(true);
@@ -87,7 +101,15 @@ namespace Waveio
 
         public void OnContinueButton()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            ResetTo(currentLevel);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void LevelIncreased()
+        {
+            currentLevel++;
+
+            playerController.SetLevelTo(WaveioLevelData[currentLevel]);
         }
 
         public void ScoreIncreased()
@@ -97,6 +119,22 @@ namespace Waveio
             textCurrentScore.text = score.ToString();
 
             cameraController.ChangeBackgroundColour();
+        }
+
+        public void ResetTo(int level)
+        {
+            gameStart = false;
+            gameOver = false;
+            score = 0;
+            playerController.SetLevelTo(WaveioLevelData[level]);
+            playerController.Reset();
+
+            textTitle.gameObject.SetActive(true);
+            textTapToPlay.gameObject.SetActive(true);
+            textCurrentScore.gameObject.SetActive(false);
+            continueButton.gameObject.SetActive(false);
+
+            StartCoroutine(StartGame());
         }
     }
 }

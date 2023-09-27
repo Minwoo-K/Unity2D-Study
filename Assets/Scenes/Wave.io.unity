@@ -1033,7 +1033,9 @@ MonoBehaviour:
   textCurrentScore: {fileID: 1457739680}
   textBestScore: {fileID: 1582192600}
   continueButton: {fileID: 472430957}
+  playerController: {fileID: 1872650344}
   cameraController: {fileID: 42518552}
+  currentLevel: 1
 --- !u!1 &1457739678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,6 +1527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveioManager: {fileID: 1301786604}
   playerCrashEffect: {fileID: 4440213379964663377, guid: 5667a57b268dc0e4db4940fad6f9a637, type: 3}
+  itemTakenEffect: {fileID: 2046192756355641072, guid: 6f1151e735f30004683ac56fd749eb5e, type: 3}
 --- !u!50 &1872650345
 Rigidbody2D:
   serializedVersion: 4
@@ -1726,3 +1729,4 @@ MonoBehaviour:
   player: {fileID: 1872650342}
   startIndex: 2
   gapBtwnAreas: 30
+  waveioManager: {fileID: 1301786604}

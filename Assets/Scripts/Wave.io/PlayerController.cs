@@ -10,11 +10,16 @@ namespace Waveio
         private WaveioManager waveioManager;
         [SerializeField]
         private GameObject playerCrashEffect;
+        [SerializeField]
+        private GameObject itemTakenEffect;
 
+        private Vector3 startPosition;
         private Move2D move;
+        private Data.WaveioDatum currentLevelData;
 
         private void Start()
         {
+            startPosition = transform.position;
             move = GetComponent<Move2D>();
         }
 
@@ -35,6 +40,8 @@ namespace Waveio
         {
             if ( collision.gameObject.tag == "Item")
             {
+                Instantiate(itemTakenEffect, collision.transform.position, Quaternion.identity);
+
                 waveioManager.ScoreIncreased();
 
                 Destroy(collision.gameObject);
@@ -46,10 +53,24 @@ namespace Waveio
 
                 CameraShakeEffect.Instance.ShakeCamera(0.1f, 0.5f);
 
-                Destroy(GetComponent<Rigidbody2D>());
+                GetComponent<Rigidbody2D>().isKinematic = true;
 
                 waveioManager.GameOver();
             }
+        }
+
+        public void SetLevelTo(Data.WaveioDatum levelData)
+        {
+            currentLevelData = levelData;
+
+            move.ChangeSpeed(currentLevelData.playerXSpeed, currentLevelData.playerYSpeed);   
+        }
+
+        public void Reset()
+        {
+            transform.position = startPosition;
+
+            GetComponent<Rigidbody2D>().isKinematic = false;
         }
     }
 }
