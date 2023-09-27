@@ -14,6 +14,12 @@ namespace Waveio
         private float smoothTime;
 
         private Vector3 velocity = Vector3.zero;
+        private Camera mainCamera = null;
+
+        private void Start()
+        {
+            mainCamera = GetComponent<Camera>();
+        }
 
         private void FixedUpdate()
         {
@@ -24,11 +30,12 @@ namespace Waveio
             transform.position = Vector3.SmoothDamp(transform.position, capturePosition, ref velocity, smoothTime);
         }
 
-        public void ChangeBackgroundColor()
+        public void ChangeBackgroundColour()
         {
-            float colorHue = Random.Range(0, 10);
-            colorHue *= 0.1f;
-            Camera.main.backgroundColor = Color.HSVToRGB(colorHue, 0.6f, 0.8f);
+            float hue = Random.Range(0, 10);
+            hue *= 0.1f;
+
+            mainCamera.backgroundColor = Color.HSVToRGB(hue, 0.6f, 0.8f);
         }
     }
 }
