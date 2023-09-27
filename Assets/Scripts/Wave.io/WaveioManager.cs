@@ -29,27 +29,24 @@ namespace Waveio
         private int score = 0;
         private float gameDelayTime = 1f;
         private Dictionary<int, Data.WaveioDatum> WaveioLevelData = null;
+        public bool gameStart { get; private set; } = false;
 
 
         public bool gameOver { get; private set; } = false;
 
 
-        private IEnumerator Start()
+        private void Start()
         {
+            if (WaveioLevelData == null)
+            {
+                WaveioLevelData = new Dictionary<int, Data.WaveioDatum>();
+                WaveioLevelData = DataManager.Data.Waveio;
+            }
+
             int bestScore = PlayerPrefs.GetInt("BestScore");
             textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{bestScore}";
 
-            while (true)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    StartGame();
-
-                    yield break;
-                }
-
-                yield return null;
-            }
+            StartCoroutine(StartGame());
         }
 
         private void Update()
@@ -57,12 +54,16 @@ namespace Waveio
 
         }
 
-        private void StartGame()
+        private IEnumerator StartGame()
         {
-            if ( WaveioLevelData == null )
+            while ( gameStart == false )
             {
-                WaveioLevelData = new Dictionary<int, Data.WaveioDatum>();
-                WaveioLevelData = DataManager.Data.Waveio;
+                if ( Input.GetMouseButtonDown(0) )
+                {
+                    gameStart = true;
+                }
+
+                yield return null;
             }
 
             textTitle.gameObject.SetActive(false);
@@ -107,6 +108,13 @@ namespace Waveio
             textCurrentScore.text = score.ToString();
 
             cameraController.ChangeBackgroundColour();
+        }
+
+        public void ResetTo(int level)
+        {
+            textTitle.gameObject.SetActive(true);
+            textTapToPlay.gameObject.SetActive(true);
+            textCurrentScore.gameObject.SetActive(false);
         }
     }
 }
