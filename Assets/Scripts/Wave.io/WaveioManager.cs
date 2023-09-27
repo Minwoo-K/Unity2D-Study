@@ -24,14 +24,17 @@ namespace Waveio
 
         [Space(30)]
         [SerializeField]
+        private PlayerController playerController;
+        [SerializeField]
         private CameraController cameraController;
+        [SerializeField]
+        private int currentLevel = 1;
 
         private int score = 0;
         private float gameDelayTime = 1f;
         private Dictionary<int, Data.WaveioDatum> WaveioLevelData = null;
+        
         public bool gameStart { get; private set; } = false;
-
-
         public bool gameOver { get; private set; } = false;
 
 
@@ -98,7 +101,15 @@ namespace Waveio
 
         public void OnContinueButton()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            ResetTo(currentLevel);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void LevelIncreased()
+        {
+            currentLevel++;
+
+            playerController.SetLevelTo(WaveioLevelData[currentLevel]);
         }
 
         public void ScoreIncreased()
@@ -112,9 +123,18 @@ namespace Waveio
 
         public void ResetTo(int level)
         {
+            gameStart = false;
+            gameOver = false;
+            score = 0;
+            playerController.SetLevelTo(WaveioLevelData[level]);
+            playerController.Reset();
+
             textTitle.gameObject.SetActive(true);
             textTapToPlay.gameObject.SetActive(true);
             textCurrentScore.gameObject.SetActive(false);
+            continueButton.gameObject.SetActive(false);
+
+            StartCoroutine(StartGame());
         }
     }
 }

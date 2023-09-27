@@ -14,6 +14,8 @@ namespace Waveio
         private int startIndex = 2;         // Start with 2 Areas 
         [SerializeField]
         private float gapBtwnAreas = 30;    // Gap between Areas
+        [SerializeField]
+        private WaveioManager waveioManager;// To manage the game level
 
         private List<GameObject> spawnedAreas = new List<GameObject>(); // To save and discard areas once used up
         private int areaIndex = 0;          // To track the number of areas spawned
@@ -50,6 +52,12 @@ namespace Waveio
             spawnedAreas.Add(area);
 
             areaIndex++;
+
+            // Every 5 area, the game level goes up
+            if ( areaIndex % 5 == 0 )
+            {
+                waveioManager.LevelIncreased();
+            }
         }
 
         private void DeleteArea()

@@ -1033,7 +1033,9 @@ MonoBehaviour:
   textCurrentScore: {fileID: 1457739680}
   textBestScore: {fileID: 1582192600}
   continueButton: {fileID: 472430957}
+  playerController: {fileID: 1872650344}
   cameraController: {fileID: 42518552}
+  currentLevel: 1
 --- !u!1 &1457739678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,3 +1729,4 @@ MonoBehaviour:
   player: {fileID: 1872650342}
   startIndex: 2
   gapBtwnAreas: 30
+  waveioManager: {fileID: 1301786604}
