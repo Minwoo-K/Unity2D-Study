@@ -15,10 +15,12 @@ namespace Waveio
 
         private Vector3 velocity = Vector3.zero;
         private Camera mainCamera = null;
+        private Color initialBackgroundColor;
 
         private void Start()
         {
             mainCamera = GetComponent<Camera>();
+            initialBackgroundColor = mainCamera.backgroundColor;
         }
 
         private void FixedUpdate()
@@ -36,6 +38,11 @@ namespace Waveio
             hue *= 0.1f;
 
             mainCamera.backgroundColor = Color.HSVToRGB(hue, 0.6f, 0.8f);
+        }
+
+        public void Reset()
+        {
+            mainCamera.backgroundColor = initialBackgroundColor;
         }
     }
 }

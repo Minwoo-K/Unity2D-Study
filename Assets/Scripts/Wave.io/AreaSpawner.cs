@@ -22,10 +22,7 @@ namespace Waveio
 
         private void Awake()
         {
-            for ( int i = 0; i < startIndex; i++ )
-            {
-                SpawnArea();
-            }
+            Reset();
         }
 
         private void Update()
@@ -67,6 +64,26 @@ namespace Waveio
             Destroy(area);
 
             spawnedAreas.RemoveAt(0);
+        }
+
+        private void DeleteAllAreas()
+        {
+            while ( spawnedAreas.Count != 0 )
+            {
+                DeleteArea();
+            }
+        }
+
+        public void Reset()
+        {
+            DeleteAllAreas();
+
+            areaIndex = 0;
+
+            for (int i = 0; i < startIndex; i++)
+            {
+                SpawnArea();
+            }
         }
     }
 }

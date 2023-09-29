@@ -1035,6 +1035,7 @@ MonoBehaviour:
   continueButton: {fileID: 472430957}
   playerController: {fileID: 1872650344}
   cameraController: {fileID: 42518552}
+  areaSpawner: {fileID: 2029935600}
   currentLevel: 1
 --- !u!1 &1457739678
 GameObject:
@@ -1423,9 +1424,9 @@ GameObject:
   - component: {fileID: 1872650341}
   - component: {fileID: 1872650344}
   - component: {fileID: 1872650343}
-  - component: {fileID: 1872650345}
   - component: {fileID: 1872650346}
   - component: {fileID: 1872650347}
+  - component: {fileID: 1872650345}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
