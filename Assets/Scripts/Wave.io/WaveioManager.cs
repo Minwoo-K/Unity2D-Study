@@ -23,10 +23,13 @@ namespace Waveio
         private GameObject continueButton;
 
         [Space(30)]
+        [Header("Core Objects")]
         [SerializeField]
         private PlayerController playerController;
         [SerializeField]
         private CameraController cameraController;
+        [SerializeField]
+        private AreaSpawner areaSpawner;
         [SerializeField]
         private int currentLevel = 1;
 
@@ -123,11 +126,14 @@ namespace Waveio
 
         public void ResetTo(int level)
         {
+            playerController.Reset();
+            areaSpawner.Reset();
+            cameraController.Reset();
+            playerController.SetLevelTo(WaveioLevelData[level]);
+
             gameStart = false;
             gameOver = false;
             score = 0;
-            playerController.SetLevelTo(WaveioLevelData[level]);
-            playerController.Reset();
 
             textTitle.gameObject.SetActive(true);
             textTapToPlay.gameObject.SetActive(true);
