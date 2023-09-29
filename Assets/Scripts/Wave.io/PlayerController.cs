@@ -16,11 +16,13 @@ namespace Waveio
         private Vector3 startPosition;
         private Move2D move;
         private Data.WaveioDatum currentLevelData;
+        private Rigidbody2D rigid2D;
 
         private void Start()
         {
             startPosition = transform.position;
             move = GetComponent<Move2D>();
+            rigid2D = GetComponent<Rigidbody2D>();
         }
 
         void FixedUpdate()
@@ -53,7 +55,8 @@ namespace Waveio
 
                 CameraShakeEffect.Instance.ShakeCamera(0.1f, 0.5f);
 
-                GetComponent<Rigidbody2D>().isKinematic = true;
+                Destroy(rigid2D);
+                rigid2D = null;
 
                 waveioManager.GameOver();
             }
@@ -70,7 +73,10 @@ namespace Waveio
         {
             transform.position = startPosition;
 
-            GetComponent<Rigidbody2D>().isKinematic = false;
+            rigid2D = gameObject.AddComponent<Rigidbody2D>();
+            rigid2D.gravityScale = 0;
+            rigid2D.drag = 2;
+            move.FetchRigid2D();
         }
     }
 }

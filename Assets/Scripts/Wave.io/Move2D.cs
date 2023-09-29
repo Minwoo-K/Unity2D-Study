@@ -22,7 +22,7 @@ namespace Waveio
         private void Awake()
         {
             startPosition = transform.position;
-            rigid = GetComponent<Rigidbody2D>();
+            FetchRigid2D();
         }
 
         public void MoveInX()
@@ -40,6 +40,11 @@ namespace Waveio
         {
             this.xSpeed = xSpeed;
             this.ySpeed = ySpeed;
+        }
+
+        public void FetchRigid2D()
+        {
+            rigid = gameObject.GetComponent<Rigidbody2D>();
         }
     }
 }
