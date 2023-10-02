@@ -66,7 +66,7 @@ namespace Waveio
         {
             currentLevelData = levelData;
 
-            move.ChangeSpeed(currentLevelData.playerXSpeed, currentLevelData.playerYSpeed);   
+            move.ChangeSettings(currentLevelData.playerXRange, currentLevelData.playerYSpeed);   
         }
 
         public void Reset()

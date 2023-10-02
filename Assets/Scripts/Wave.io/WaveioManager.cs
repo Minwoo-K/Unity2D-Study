@@ -65,7 +65,7 @@ namespace Waveio
         {
             while ( gameStart == false )
             {
-                if ( Input.GetMouseButtonDown(0) )
+                if ( Input.GetMouseButtonUp(0) )
                 {
                     gameStart = true;
                 }
@@ -138,6 +138,7 @@ namespace Waveio
             cameraController.Reset();
             playerController.SetLevelTo(WaveioLevelData[level]);
             currentLevel = level;
+            textLevel.text = $"<size=50>LEVEL</size>\n<indent=6%><b>{currentLevel}</b></indent>";
 
             gameStart = false;
             gameOver = false;
