@@ -67,7 +67,7 @@ namespace Waveio
         {
             while ( gameStart == false )
             {
-                if ( Input.GetMouseButtonUp(0) )
+                if ( Input.GetMouseButtonDown(0) )
                 {
                     gameStart = true;
                 }
