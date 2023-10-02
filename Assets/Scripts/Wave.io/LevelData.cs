@@ -9,7 +9,7 @@ namespace Data
     public class WaveioDatum
     {
         public int level;
-        public float playerXSpeed;
+        public float playerXRange;
         public float playerYSpeed;
     }
 
