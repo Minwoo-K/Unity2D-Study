@@ -36,9 +36,9 @@ namespace Waveio
             rigid.AddForce(Vector3.up * ySpeed, ForceMode2D.Impulse);
         }
 
-        public void ChangeSpeed(float xSpeed, float ySpeed)
+        public void ChangeSettings(float xRange, float ySpeed)
         {
-            this.xSpeed = xSpeed;
+            this.xRange = xRange;
             this.ySpeed = ySpeed;
         }
 
