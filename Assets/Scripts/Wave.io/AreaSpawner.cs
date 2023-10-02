@@ -51,7 +51,7 @@ namespace Waveio
             areaIndex++;
 
             // Every 5 area, the game level goes up
-            if ( areaIndex % 5 == 0 )
+            if ( areaIndex % 3 == 0 )
             {
                 waveioManager.LevelIncreased();
             }
