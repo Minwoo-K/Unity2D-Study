@@ -17,6 +17,10 @@ namespace Waveio
         private AreaSpawner areaSpawner;
         [SerializeField]
         private int currentLevel = 1;
+        [SerializeField]
+        private AudioClip scoreSound;
+        [SerializeField]
+        private AudioClip crashSound;
 
         [Header("UI Control Section")]
         [SerializeField]
@@ -36,8 +40,9 @@ namespace Waveio
 
         private int score = 0;
         private float gameDelayTime = 1f;
+        private AudioSource audioSource;
         private Dictionary<int, Data.WaveioDatum> WaveioLevelData = null;
-        
+
         public bool gameStart { get; private set; } = false;
         public bool gameOver { get; private set; } = false;
 
@@ -53,12 +58,9 @@ namespace Waveio
             int bestScore = PlayerPrefs.GetInt("BestScore");
             textBestScore.text = $"<size=50>BEST SCORE\n<size=70>{bestScore}";
 
+            audioSource = GetComponent<AudioSource>();
+
             StartCoroutine(StartGame());
-        }
-
-        private void Update()
-        {
-
         }
 
         private IEnumerator StartGame()
@@ -82,6 +84,7 @@ namespace Waveio
         public void GameOver()
         {
             gameOver = true;
+            audioSource.PlayOneShot(crashSound);
 
             StartCoroutine(OnGameOver());
         }
@@ -127,6 +130,8 @@ namespace Waveio
             score++;
 
             textCurrentScore.text = score.ToString();
+
+            audioSource.Play();
 
             cameraController.ChangeBackgroundColour();
         }
