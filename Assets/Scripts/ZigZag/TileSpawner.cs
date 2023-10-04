@@ -7,14 +7,15 @@ namespace ZigZag
     public class TileSpawner : MonoBehaviour
     {
         [SerializeField]
-        private GameObject tilePrefab;
+        private GameObject tilePrefab;  // Tile Prefab
         [SerializeField]
-        private Transform currentTile;
+        private Transform currentTile;  // Current tile's Transform as a reference
 
-        private int index = 100;
+        private int index = 100;        // The number of tiles to make
 
         private void Start()
         {
+            // Spawn tiles for index times
             for ( int i = 0; i < index; i++ )
             {
                 SpawnTile();
