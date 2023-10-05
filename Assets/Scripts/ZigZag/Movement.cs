@@ -9,12 +9,11 @@ namespace ZigZag
         [SerializeField]
         private float moveSpeed;    // Move Speed of the game object
 
-        private Vector3 direction;  // Direction of the game object
+        private Vector3 direction = Vector3.zero;  // Direction of the game object
 
         private void Start()
         {
-            // Set the initial direction to left(forward)
-            direction = Vector3.forward;
+
         }
 
         private void Update()

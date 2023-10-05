@@ -724,6 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17882578edc7c7f4e96351c37b6dc3de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zigZagManager: {fileID: 1981208484}
 --- !u!1 &1090142931
 GameObject:
   m_ObjectHideFlags: 0
