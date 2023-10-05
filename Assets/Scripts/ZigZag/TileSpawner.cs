@@ -28,11 +28,13 @@ namespace ZigZag
             GameObject tile = Instantiate(tilePrefab);
             // Put the tile under the given gameobject(TileSpawner)
             tile.transform.SetParent(transform);
+            // Set up Tile component
+            tile.GetComponent<Tile>().SetUp(this);
             // Position the tile properly based on the current(last) tile
             PositionTile(tile.transform);
         }
 
-        private void PositionTile(Transform tile)
+        public void PositionTile(Transform tile)
         {
             // Get a Random number either 0 or 1 (50%)
             int random = Random.Range(0, 2);
