@@ -10,7 +10,7 @@ namespace ZigZag
         private ZigZagManager zigZagManager;    // ZigZag Manager
 
         private Movement movement;      // Movement component
-        private float limitY = 0.5f;    // Limit value in Y axis
+        private float limitY = 0.8f;    // Limit value in Y axis
 
         private void Awake()
         {
@@ -35,10 +35,14 @@ namespace ZigZag
 
         private void Update()
         {
+            // If Game over, no input allowed
+            if ( zigZagManager.GameOver == true ) return;
+
             // If the object goes below this in Y axis, Game Over
             if (transform.position.y < limitY)
             {
-                Debug.Log("Game Over");
+                //Debug.Log("Game Over");
+                zigZagManager.OnGameOver();
                 return;
             }
 
