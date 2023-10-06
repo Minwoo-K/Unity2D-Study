@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,26 +9,34 @@ namespace ZigZag
     public class ZigZagManager : MonoBehaviour
     {
         // private
+        private int score;
         // public
+
         // SerializeField
-        // public property
         [Header("Game Start UI")]
         [SerializeField]
         private GameObject gameStartPanel;      // Game Start UI Panel
         [SerializeField]
         private UIFadeEffect[] fadeToStart;     // UI objects to fade at start
+        
+        [Header("In-Game UI")]
+        [SerializeField]
+        private TextMeshProUGUI scoreText;      // In-Game Score
+        
         [Header("Game Over UI")]
         [SerializeField]
         private GameObject gameOverPanel;       // Game Over UI Panel
         [SerializeField]
         private float slowTime;                 // Time to be slow
 
+        // public property
         public bool GameStart { get; private set; } = false;
         public bool GameOver { get; private set; } = false;
 
         private IEnumerator Start()
         {
             Time.timeScale = 1;
+            score = 0;
 
             for (int i = 0; i < fadeToStart.Length; i++)
             {
@@ -52,20 +61,8 @@ namespace ZigZag
             GameStart = true;
 
             gameStartPanel.SetActive(false);
-        }
 
-        public void OnGameOver()
-        {
-            GameOver = true;
-
-            gameOverPanel.SetActive(true);
-
-            StartCoroutine(SlowAndStop());
-        }
-
-        public void OnRestartButton()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            scoreText.gameObject.SetActive(true);
         }
 
         private IEnumerator SlowAndStop()
@@ -86,6 +83,29 @@ namespace ZigZag
 
             // Stop the timeScale
             Time.timeScale = 0;
+        }
+
+        public void OnGameOver()
+        {
+            GameOver = true;
+
+            gameOverPanel.SetActive(true);
+
+            scoreText.gameObject.SetActive(false);
+
+            StartCoroutine(SlowAndStop());
+        }
+
+        public void OnRestartButton()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void IncreaseScore()
+        {
+            score++;
+
+            scoreText.text = score.ToString();
         }
     }
 }
