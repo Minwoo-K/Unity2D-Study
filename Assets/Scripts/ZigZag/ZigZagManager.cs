@@ -27,6 +27,10 @@ namespace ZigZag
         [SerializeField]
         private GameObject gameOverPanel;       // Game Over UI Panel
         [SerializeField]
+        private TextMeshProUGUI endScore;       // The Score at the end of a game
+        [SerializeField]
+        private TextMeshProUGUI bestScore;      // The Best Score
+        [SerializeField]
         private float slowTime;                 // Time to be slow
 
         // public property
@@ -85,6 +89,19 @@ namespace ZigZag
             Time.timeScale = 0;
         }
 
+        // Update the score and Best Score upon GameOver
+        private void UpdateScore()
+        {
+            int best = PlayerPrefs.GetInt("BestScore");
+            
+            best = best >= score ? best : score;
+
+            endScore.text = score.ToString();
+
+            bestScore.text = best.ToString();
+        }
+
+        // Behaviours upon GameOver
         public void OnGameOver()
         {
             GameOver = true;
@@ -92,6 +109,8 @@ namespace ZigZag
             gameOverPanel.SetActive(true);
 
             scoreText.gameObject.SetActive(false);
+
+            UpdateScore();
 
             StartCoroutine(SlowAndStop());
         }
