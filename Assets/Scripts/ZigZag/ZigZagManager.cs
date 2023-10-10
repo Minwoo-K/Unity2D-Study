@@ -120,9 +120,9 @@ namespace ZigZag
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void IncreaseScore()
+        public void IncreaseScore(int point)
         {
-            score++;
+            score += point;
 
             scoreText.text = score.ToString();
         }
