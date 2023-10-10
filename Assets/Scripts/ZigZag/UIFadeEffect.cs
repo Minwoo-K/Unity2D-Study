@@ -13,7 +13,7 @@ namespace ZigZag
         private AnimationCurve fadeCurve;
 
         private TextMeshProUGUI tmp;
-        private float endAlpha;
+        private float endAlpha = 1;
 
         private void Awake()
         {
