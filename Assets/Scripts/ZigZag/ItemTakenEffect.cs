@@ -2,30 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ZigZag
+public class ItemTakenEffect : MonoBehaviour
 {
-    public class ItemTakenEffect : MonoBehaviour
+    private ParticleSystem particleSystem;
+
+    private void Awake()
     {
-        private ParticleSystem particleSystem;
+        particleSystem = GetComponent<ParticleSystem>();   
+    }
 
-        private void Awake()
-        {
-            particleSystem = GetComponent<ParticleSystem>();
-        }
+    private void OnEnable()
+    {
+        // Play the Particle effect upon active
+        particleSystem.Play();
+    }
 
-        private void OnEnable()
+    private void Update()
+    {
+        if ( particleSystem.isPlaying == false )
         {
-            // Play the Particle effect upon active
-            particleSystem.Play();
-        }
-
-        private void Update()
-        {
-            if (particleSystem.isPlaying == false)
-            {
-                // After a play, gets deactivated
-                gameObject.SetActive(false);
-            }
+            // After a play, gets deactivated
+            gameObject.SetActive(false);
         }
     }
 }
