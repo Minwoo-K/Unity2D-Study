@@ -13,7 +13,7 @@ namespace ZigZag
         private AnimationCurve fadeCurve;
 
         private TextMeshProUGUI tmp;
-        private float endAlpha = 1;
+        private float endAlpha;
 
         private void Awake()
         {
@@ -34,7 +34,7 @@ namespace ZigZag
             while ( percent < 1 )
             {
                 current += Time.deltaTime;
-                percent = current / fadeTime;
+                percent = fadeTime / current;
 
                 Color color = tmp.color;
                 color.a = Mathf.Lerp(start, end, fadeCurve.Evaluate(percent));
