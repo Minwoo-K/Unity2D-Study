@@ -50,7 +50,7 @@ namespace ZigZag
 
         public void TilePassed()
         {
-            zigZagManager.IncreaseScore(1);
+            zigZagManager.IncreaseScore();
         }
     }
 }
