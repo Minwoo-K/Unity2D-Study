@@ -10,8 +10,6 @@ namespace ZigZag
         private GameObject tilePrefab;  // Tile Prefab
         [SerializeField]
         private Transform currentTile;  // Current tile's Transform as a reference
-        [SerializeField]
-        private ZigZagManager zigZagManager;    // To track scoring
 
         private int index = 100;        // The number of tiles to make
 
@@ -46,11 +44,6 @@ namespace ZigZag
             tile.position = currentTile.position + direction;
             // Set the current tile to the given tile for the next tile
             currentTile = tile;
-        }
-
-        public void TilePassed()
-        {
-            zigZagManager.IncreaseScore();
         }
     }
 }

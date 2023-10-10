@@ -24,11 +24,6 @@ namespace ZigZag
             // Once the Player has passed
             if ( collision.gameObject.tag.Equals("Player") )
             {
-                if (tileSpawner != null)
-                {
-                    // This tile has been passed by the Player
-                    tileSpawner.TilePassed();
-                }
                 // The tile starts falling down and gets relocated(respawned)
                 StartCoroutine(FallDownAndRespawn());
             }
