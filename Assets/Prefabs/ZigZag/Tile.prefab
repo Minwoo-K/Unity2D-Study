@@ -171,14 +171,13 @@ GameObject:
   - component: {fileID: 3462137728136519248}
   - component: {fileID: 3462137728136519249}
   - component: {fileID: 3462137728136519250}
-  - component: {fileID: 5599259739581447041}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3462137728136519251
 Transform:
   m_ObjectHideFlags: 0
@@ -250,22 +249,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3462137728136519084}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5599259739581447041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3462137728136519084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac4e5c3c3e8843046b7796a04b36c638, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zigZagManager: {fileID: 0}
-  itemTakenEffect: {fileID: 2282375127607922887, guid: 32ab92de7dfdae347a54c520e8b9cb24, type: 3}

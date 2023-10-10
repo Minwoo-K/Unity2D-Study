@@ -6,28 +6,22 @@ namespace ZigZag
 {
     public class ItemTakenEffect : MonoBehaviour
     {
-        private ParticleSystem particle { get; set; }
+        private ParticleSystem particleSystem;
 
-        private void Init()
+        private void Awake()
         {
-            particle = GetComponent<ParticleSystem>();
+            particleSystem = GetComponent<ParticleSystem>();
         }
 
         private void OnEnable()
         {
             // Play the Particle effect upon active
-            if ( particle == null )
-            {
-                Init();
-            }
-
-            particle.Play();
+            particleSystem.Play();
         }
 
         private void Update()
         {
-            if ( particle == null ) return;
-            if (particle.isPlaying == false)
+            if (particleSystem.isPlaying == false)
             {
                 // After a play, gets deactivated
                 gameObject.SetActive(false);
