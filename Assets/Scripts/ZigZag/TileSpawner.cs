@@ -32,6 +32,16 @@ namespace ZigZag
             tile.transform.SetParent(transform);
             // Set up Tile component
             tile.GetComponent<Tile>().SetUp(this);
+            // 20% chances to have an Item on the Tile
+            int random = Random.Range(0, 100);
+            if ( random < 20 )
+            {
+                // Get the Item ready
+                Item item = tile.transform.GetChild(1).GetComponent<Item>();
+                item.gameObject.SetActive(true);
+                item.Setup(zigZagManager);
+            }
+
             // Position the tile properly based on the current(last) tile
             PositionTile(tile.transform);
         }
