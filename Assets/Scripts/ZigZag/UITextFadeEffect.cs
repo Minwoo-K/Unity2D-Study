@@ -9,11 +9,11 @@ namespace ZigZag
     {
         [SerializeField]
         private float fadeTime;
+        [SerializeField]
+        private AnimationCurve curve;
 
         private TextMeshProUGUI tmo;
         private float alpha;
-        private AnimationCurve curve;
-
 
         private void Awake()
         {
