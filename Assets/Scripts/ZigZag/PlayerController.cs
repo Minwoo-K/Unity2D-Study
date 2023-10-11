@@ -6,17 +6,37 @@ namespace ZigZag
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField]
+        private ZigZagManager zigzagManager;
+
         private Movement movement;      // Movement component
         private float limitY = 0.5f;    // Limit value in Y axis
 
-        private void Start()
+        private void Awake()
         {
-            // Fetch the Movement component attached to the object
-            movement = GetComponent<Movement>();    
+            movement = GetComponent<Movement>();
+        }
+
+        private IEnumerator Start()
+        {
+            while ( true )
+            {
+                if ( zigzagManager.gameStart == true )
+                {
+                    movement.ChangeDirection();
+
+                    yield break;
+                }
+
+                yield return null;
+            }
         }
 
         private void Update()
         {
+            // If the game hasn't started, no input allowed
+            //if (zigzagManager.gameStart == false) return;
+
             // If the object goes below this in Y axis, Game Over
             if ( transform.position.y < limitY )
             {

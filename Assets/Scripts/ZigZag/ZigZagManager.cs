@@ -8,14 +8,39 @@ namespace ZigZag
     {
         [Header("GameStart UI")]
         [SerializeField]
-        private UITextFadeEffect[] UIFadeToStart;
+        private GameObject GameStartPanel;
+        [SerializeField]
+        private UITextFadeEffect[] UIFadeToStart;       // To execute fading effect upon the start of the game
 
-        private void Start()
+
+        public bool gameStart { get; private set; } = false;
+        public bool gameOver { get; private set; } = false;
+
+        private IEnumerator Start()
         {
             for ( int i = 0; i < UIFadeToStart.Length; i++ )
             {
                 UIFadeToStart[i].StartFading();
             }
+
+            while ( true )
+            {
+                if ( Input.GetMouseButtonDown(0) )
+                {
+                    OnGameStart();
+
+                    yield break;
+                }
+
+                yield return null;
+            }
+        }
+
+        private void OnGameStart()
+        {
+            GameStartPanel.SetActive(false);
+
+            gameStart = true;
         }
     }
 }

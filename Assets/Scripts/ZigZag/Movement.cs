@@ -13,8 +13,8 @@ namespace ZigZag
 
         private void Start()
         {
-            // Set the initial direction to left(forward)
-            direction = Vector3.forward;
+            // Set the initial direction to zero (for the player to not move at start)
+            direction = Vector3.zero;
         }
 
         private void Update()

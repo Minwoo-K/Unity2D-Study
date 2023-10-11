@@ -442,6 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595205e80263d65409c5c1520a78f985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameStartPanel: {fileID: 920279550}
   UIFadeToStart:
   - {fileID: 839361500}
   - {fileID: 1461813432}
@@ -940,6 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17882578edc7c7f4e96351c37b6dc3de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zigzagManager: {fileID: 775786591}
 --- !u!1 &1090142931
 GameObject:
   m_ObjectHideFlags: 0
