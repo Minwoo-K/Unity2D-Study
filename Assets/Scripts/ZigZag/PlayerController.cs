@@ -10,10 +10,11 @@ namespace ZigZag
         private ZigZagManager zigzagManager;
 
         private Movement movement;      // Movement component
-        private float limitY = 0.5f;    // Limit value in Y axis
+        private float limitY = 0.8f;    // Limit value in Y axis
 
         private void Awake()
         {
+            // Fetch Movement component
             movement = GetComponent<Movement>();
         }
 
@@ -21,8 +22,10 @@ namespace ZigZag
         {
             while ( true )
             {
+                // When the game starts,
                 if ( zigzagManager.gameStart == true )
                 {
+                    // Initialize the direction to start moving
                     movement.ChangeDirection();
 
                     yield break;
@@ -34,13 +37,13 @@ namespace ZigZag
 
         private void Update()
         {
-            // If the game hasn't started, no input allowed
-            //if (zigzagManager.gameStart == false) return;
+            // If Game Over, no input allowed
+            if ( zigzagManager.gameOver == true ) return;
 
             // If the object goes below this in Y axis, Game Over
             if ( transform.position.y < limitY )
             {
-                Debug.Log("Game Over");
+                zigzagManager.GameOver();
                 return;
             }
 
