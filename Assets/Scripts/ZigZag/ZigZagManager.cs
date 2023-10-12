@@ -24,7 +24,13 @@ namespace ZigZag
         [SerializeField]
         private GameObject gameOverPanel;
         [SerializeField]
+        private TextMeshProUGUI finalScore;
+        [SerializeField]
+        private TextMeshProUGUI bestScore;
+        
+        [SerializeField]
         private float delayTime;
+
 
         private int score;
 
@@ -81,14 +87,32 @@ namespace ZigZag
             Time.timeScale = 0f;
         }
 
+        // Update the Final Score and Best Score upon GameOver
+        private void UpdateScoreBoard()
+        {
+            //Update the Final Score
+            finalScore.text = score.ToString();
+            // Retrieve the Best Score from PlayerPrefs
+            int best = PlayerPrefs.GetInt("BestScore");
+            // Get the Best score from between the current score and the previous best score
+            best = best > score ? best : score;
+            // Save the best score on PlayerPrefs
+            PlayerPrefs.SetInt("BestScore", best);
+            // Update the best score on the score board
+            bestScore.text = best.ToString();
+        }
+
         public void GameOver()
         {
+            // IsGameOver flag on
             IsGameOver = true;
-
+            // Turn off the in-Game panel
             inGamePanel.SetActive(false);
-
+            // Show game over panel
             gameOverPanel.SetActive(true);
-
+            // Update the final score board
+            UpdateScoreBoard();
+            // For the Player to fall and stop the timeScale
             StartCoroutine(FallingAndStop());
         }
 
