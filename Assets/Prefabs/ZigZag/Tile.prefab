@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3462137727507755070}
   - component: {fileID: 3462137727507755071}
   - component: {fileID: 1542474019}
-  - component: {fileID: 7722060666777821980}
+  - component: {fileID: 7997397442480834673}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -64,7 +64,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!114 &7722060666777821980
+--- !u!114 &7997397442480834673
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,3 +267,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ffe1202b383eb49b7dc820528058f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zigzagManager: {fileID: 0}
+  itemTakenEffect: {fileID: 4978467443750439666, guid: eedaaf7a3db6e0946aeb8994028c9cd9, type: 3}
