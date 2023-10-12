@@ -10,8 +10,10 @@ namespace ZigZag
         private float fallingTime;          // Falling time once the player passes the tile
         [SerializeField]
         private TileSpawner tileSpawner;    // To relocate the tile once used
-
+        
         private Rigidbody rigid;            // Rigidbody attached to the object
+        private ZigZagManager zigzagManager;// To track scoring
+        private const int point = 1;        // The point a Tile is worth
 
         private void Awake()
         {
@@ -24,6 +26,11 @@ namespace ZigZag
             // Once the Player has passed
             if ( collision.gameObject.tag.Equals("Player") )
             {
+                if ( zigzagManager != null )
+                {
+                    // Player ears a point when passing a tile
+                    zigzagManager.IncreaseScore(point);
+                }
                 // The tile starts falling down and gets relocated(respawned)
                 StartCoroutine(FallDownAndRespawn());
             }
@@ -52,9 +59,11 @@ namespace ZigZag
             }
         }
 
-        public void SetUp(TileSpawner tileSpawner)
+        public void SetUp(TileSpawner tileSpawner, ZigZagManager zigzagManager)
         {
             this.tileSpawner = tileSpawner;
+
+            this.zigzagManager = zigzagManager;
         }
     }
 }

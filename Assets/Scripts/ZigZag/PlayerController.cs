@@ -23,7 +23,7 @@ namespace ZigZag
             while ( true )
             {
                 // When the game starts,
-                if ( zigzagManager.gameStart == true )
+                if ( zigzagManager.IsGameStart == true )
                 {
                     // Initialize the direction to start moving
                     movement.ChangeDirection();
@@ -38,7 +38,7 @@ namespace ZigZag
         private void Update()
         {
             // If Game Over, no input allowed
-            if ( zigzagManager.gameOver == true ) return;
+            if ( zigzagManager.IsGameOver == true ) return;
 
             // If the object goes below this in Y axis, Game Over
             if ( transform.position.y < limitY )

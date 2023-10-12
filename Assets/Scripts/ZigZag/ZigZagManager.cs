@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace ZigZag
@@ -8,21 +9,30 @@ namespace ZigZag
     {
         [Header("GameStart UI")]
         [SerializeField]
-        private GameObject GameStartPanel;
+        private GameObject gameStartPanel;
         [SerializeField]
         private UITextFadeEffect[] UIFadeToStart;       // To execute fading effect upon the start of the game
 
+        [Header("In Game UI")]
+        [SerializeField]
+        private GameObject inGamePanel;
+        [SerializeField]
+        private TextMeshProUGUI scoreText;
+
         [Header("GameOver UI")]
         [SerializeField]
-        private GameObject GameOverPanel;
+        private GameObject gameOverPanel;
         [SerializeField]
         private float delayTime;
 
-        public bool gameStart { get; private set; } = false;
-        public bool gameOver { get; private set; } = false;
+        private int score;
+
+        public bool IsGameStart { get; private set; } = false;
+        public bool IsGameOver { get; private set; } = false;
 
         private IEnumerator Start()
         {
+            score = 0;
             Time.timeScale = 1;
 
             for ( int i = 0; i < UIFadeToStart.Length; i++ )
@@ -34,7 +44,7 @@ namespace ZigZag
             {
                 if ( Input.GetMouseButtonDown(0) )
                 {
-                    OnGameStart();
+                    GameStart();
 
                     yield break;
                 }
@@ -43,22 +53,15 @@ namespace ZigZag
             }
         }
 
-        private void OnGameStart()
+        private void GameStart()
         {
-            GameStartPanel.SetActive(false);
+            gameStartPanel.SetActive(false);
 
-            gameStart = true;
+            inGamePanel.SetActive(true);
+
+            IsGameStart = true;
         }
-
-        public void GameOver()
-        {
-            gameOver = true;
-
-            GameOverPanel.SetActive(true);
-
-            StartCoroutine(FallingAndStop());
-        }
-
+        
         private IEnumerator FallingAndStop()
         {
             float current = 0;
@@ -76,5 +79,24 @@ namespace ZigZag
 
             Time.timeScale = 0f;
         }
+
+        public void GameOver()
+        {
+            IsGameOver = true;
+
+            inGamePanel.SetActive(false);
+
+            gameOverPanel.SetActive(true);
+
+            StartCoroutine(FallingAndStop());
+        }
+
+        public void IncreaseScore(int point)
+        {
+            score += point;
+
+            scoreText.text = score.ToString();
+        }
+
     }
 }

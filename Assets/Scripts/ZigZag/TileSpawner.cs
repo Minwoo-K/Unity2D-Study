@@ -10,6 +10,8 @@ namespace ZigZag
         private GameObject tilePrefab;  // Tile Prefab
         [SerializeField]
         private Transform currentTile;  // Current tile's Transform as a reference
+        [SerializeField]
+        private ZigZagManager zigzagManager; // To Track scoring in tiles
 
         private int index = 100;        // The number of tiles to make
 
@@ -29,7 +31,7 @@ namespace ZigZag
             // Put the tile under the given gameobject(TileSpawner)
             tile.transform.SetParent(transform);
             // Set up Tile component
-            tile.GetComponent<Tile>().SetUp(this);
+            tile.GetComponent<Tile>().SetUp(this, zigzagManager);
             // Position the tile properly based on the current(last) tile
             PositionTile(tile.transform);
         }
