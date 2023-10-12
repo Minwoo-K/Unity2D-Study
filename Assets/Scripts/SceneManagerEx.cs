@@ -11,6 +11,7 @@ public class SceneManagerEx
         //MainMenu,
         PinCircle,
         Waveio,
+        ZigZag
     }
 
     public void LoadScene(string name)

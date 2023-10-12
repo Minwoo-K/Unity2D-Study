@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ZigZag
 {
@@ -98,5 +99,9 @@ namespace ZigZag
             scoreText.text = score.ToString();
         }
 
+        public void OnRestartButton()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
