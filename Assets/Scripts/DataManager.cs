@@ -86,7 +86,7 @@ public class DataManager : MonoBehaviour
 
     private void SetUpZigZag()
     {
-        if (WaveioLevelData.Count != 0) return;
+        if (ZigZagLevelData.Count != 0) return;
 
         ZigZagLevelData = LoadJson<Data.ZigZagData, int, Data.ZigZagDatum>("ZigZagLevelData").LoadData();
     }

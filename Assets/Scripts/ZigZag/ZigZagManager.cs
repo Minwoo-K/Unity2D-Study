@@ -31,8 +31,8 @@ namespace ZigZag
         [SerializeField]
         private float delayTime;
 
-
         private int score;
+        private Dictionary<int, Data.ZigZagDatum> ZigZagLevelData = null;
 
         public bool IsGameStart { get; private set; } = false;
         public bool IsGameOver { get; private set; } = false;
@@ -41,6 +41,7 @@ namespace ZigZag
         {
             score = 0;
             Time.timeScale = 1;
+            ZigZagLevelData = DataManager.Data.ZigZag;
 
             for ( int i = 0; i < UIFadeToStart.Length; i++ )
             {
