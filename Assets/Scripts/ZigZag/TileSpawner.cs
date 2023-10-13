@@ -32,18 +32,6 @@ namespace ZigZag
             tile.transform.SetParent(transform);
             // Set up Tile component
             tile.GetComponent<Tile>().SetUp(this, zigzagManager);
-            // Decide whether to spawn the Item or not
-            int random = Random.Range(0, 100);
-            // Item Spawning Rate - 20%
-            if ( random < 20 ) 
-            {
-                // Fetch Item component
-                Item item = tile.transform.GetChild(1).GetComponent<Item>();
-                // Activate the Item object
-                item.gameObject.SetActive(true);
-                // Set up the Item object
-                item.Setup(zigzagManager);
-            }
             // Position the tile properly based on the current(last) tile
             PositionTile(tile.transform);
         }
@@ -56,6 +44,18 @@ namespace ZigZag
             Vector3 direction = random == 0 ? Vector3.forward : Vector3.right;
             // Position the tile with the direction
             tile.position = currentTile.position + direction;
+            // Decide whether to spawn the Item or not
+            random = Random.Range(0, 100);
+            // Item Spawning Rate - 20%
+            if (random < 20)
+            {
+                // Fetch Item component
+                Item item = tile.GetChild(1).GetComponent<Item>();
+                // Activate the Item object
+                item.gameObject.SetActive(true);
+                // Set up the Item object
+                item.Setup(zigzagManager);
+            }
             // Set the current tile to the given tile for the next tile
             currentTile = tile;
         }
