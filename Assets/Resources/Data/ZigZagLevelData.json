@@ -1,0 +1,44 @@
+{
+    "levelData": [
+        {
+            "level": "1",
+            "playerSpeed": "3"
+        },
+        {
+            "level": "2",
+            "playerSpeed": "3.15"
+        },
+        {
+            "level": "3",
+            "playerSpeed": "3.3"
+        },
+        {
+            "level": "4",
+            "playerSpeed": "3.45"
+        },
+        {
+            "level": "5",
+            "playerSpeed": "3.6"
+        },
+        {
+            "level": "6",
+            "playerSpeed": "3.75"
+        },
+        {
+            "level": "7",
+            "playerSpeed": "3.9"
+        },
+        {
+            "level": "8",
+            "playerSpeed": "4"
+        },
+        {
+            "level": "9",
+            "playerSpeed": "4.1"
+        },
+        {
+            "level": "10",
+            "playerSpeed": "4.2"
+        }
+    ]
+}

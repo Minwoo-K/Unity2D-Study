@@ -64,17 +64,31 @@ public class DataManager : MonoBehaviour
     #endregion
 
     #region Wave.io
-    // The Data Table for PinCircle game
+    // The Data Table for Wave.io game
     private Dictionary<int, Data.WaveioDatum> WaveioLevelData = new Dictionary<int, Data.WaveioDatum>();
-    // Property for PinCirclelevelData
+    // Property for WaveioLevelDdata
     public Dictionary<int, Data.WaveioDatum> Waveio { get { SetUpWaveio(); return WaveioLevelData; } }
 
-    // When using PinCircle Data, the given method must be used to load data
+    // When using Wave.io Data, the given method must be used to load data
     private void SetUpWaveio()
     {
         if (WaveioLevelData.Count != 0) return;
 
         WaveioLevelData = LoadJson<Data.WaveioData, int, Data.WaveioDatum>("WaveioLevelData").LoadData();
+    }
+    #endregion
+
+    #region ZigZag
+    // The Data Table for ZigZag game
+    private Dictionary<int, Data.ZigZagDatum> ZigZagLevelData = new Dictionary<int, Data.ZigZagDatum>();
+    // Property for ZigZagLevelData
+    public Dictionary<int, Data.ZigZagDatum> ZigZag { get { SetUpZigZag(); return ZigZagLevelData; } }
+
+    private void SetUpZigZag()
+    {
+        if (WaveioLevelData.Count != 0) return;
+
+        ZigZagLevelData = LoadJson<Data.ZigZagData, int, Data.ZigZagDatum>("ZigZagLevelData").LoadData();
     }
     #endregion
 }

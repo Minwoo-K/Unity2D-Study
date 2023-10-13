@@ -71,7 +71,7 @@ namespace Data
     }
 
     [Serializable]
-    public class ZigZagData :ILoader<int, ZigZagDatum>
+    public class ZigZagData : ILoader<int, ZigZagDatum>
     {
         public List<ZigZagDatum> levelData = new List<ZigZagDatum>();
 
