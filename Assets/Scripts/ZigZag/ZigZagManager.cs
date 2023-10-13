@@ -27,12 +27,18 @@ namespace ZigZag
         private TextMeshProUGUI finalScore;
         [SerializeField]
         private TextMeshProUGUI bestScore;
-        
+
+        [Header("Game Configuration")]
+        [SerializeField]
+        private int gameLevel;
+        [SerializeField]
+        private PlayerController playerController;
         [SerializeField]
         private float delayTime;
 
         private int score;
         private Dictionary<int, Data.ZigZagDatum> ZigZagLevelData = null;
+        private float levelTimer;   // Level changes based on time passed
 
         public bool IsGameStart { get; private set; } = false;
         public bool IsGameOver { get; private set; } = false;
@@ -42,6 +48,9 @@ namespace ZigZag
             score = 0;
             Time.timeScale = 1;
             ZigZagLevelData = DataManager.Data.ZigZag;
+            gameLevel = 1;
+            GameLevelSetting(gameLevel);
+            levelTimer = 0;
 
             for ( int i = 0; i < UIFadeToStart.Length; i++ )
             {
@@ -58,6 +67,25 @@ namespace ZigZag
                 }
 
                 yield return null;
+            }
+        }
+
+        private void Update()
+        {
+            if ( IsGameStart == false ) return;
+
+            // To Track leveling
+            levelTimer += Time.deltaTime;
+            // Every 10 seconds, gameplay levels up
+            if ( levelTimer >= 10f )
+            {
+                gameLevel++;
+
+                GameLevelSetting(gameLevel);
+
+                Debug.Log("Level UP!");
+
+                levelTimer = 0;
             }
         }
 
@@ -127,6 +155,11 @@ namespace ZigZag
         public void OnRestartButton()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void GameLevelSetting(int level)
+        {
+            playerController.SetSpeed(ZigZagLevelData[gameLevel].playerSpeed);
         }
     }
 }

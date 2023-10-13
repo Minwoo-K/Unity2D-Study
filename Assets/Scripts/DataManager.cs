@@ -46,6 +46,7 @@ public class DataManager : MonoBehaviour
     {
         PinCircleLevelData.Clear();
         WaveioLevelData.Clear();
+        ZigZagLevelData.Clear();
     }
 
     #region PinCircle

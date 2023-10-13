@@ -28,5 +28,10 @@ namespace ZigZag
         {
             direction = direction == Vector3.forward ? Vector3.right : Vector3.forward;
         }
+
+        public void SetSpeed(float speed)
+        {
+            moveSpeed = speed;
+        }
     }
 }

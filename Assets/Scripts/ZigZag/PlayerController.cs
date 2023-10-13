@@ -53,5 +53,10 @@ namespace ZigZag
                 movement.ChangeDirection();
             }
         }
+
+        public void SetSpeed(float speed)
+        {
+            movement.SetSpeed(speed);
+        }
     }
 }

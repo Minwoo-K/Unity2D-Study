@@ -662,6 +662,8 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1016437142}
   finalScore: {fileID: 1692459581}
   bestScore: {fileID: 1912416940}
+  gameLevel: 0
+  playerController: {fileID: 1005718323}
   delayTime: 0.5
 --- !u!4 &775786592
 Transform:
