@@ -2668,8 +2668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 3462137727507755064, guid: 9dcbc2bf4d177274caf7ab86ea85d0f6, type: 3}
-  firstTile: {fileID: 1381691501}
-  currentTile: {fileID: 0}
+  currentTile: {fileID: 1381691501}
   zigzagManager: {fileID: 775786591}
 --- !u!4 &1963565281
 Transform:

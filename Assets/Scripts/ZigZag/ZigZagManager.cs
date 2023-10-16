@@ -131,11 +131,6 @@ namespace ZigZag
             bestScore.text = best.ToString();
         }
 
-        private void ResetTo(int level)
-        {
-            //TO-DO: Reset all the settings to the given level
-        }
-
         public void GameOver()
         {
             // IsGameOver flag on
