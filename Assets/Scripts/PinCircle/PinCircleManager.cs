@@ -68,7 +68,7 @@ namespace PinCircle
             numberOfThrowables = pinCircleLevelData[gameLevel].numberOfThrowablePins;
             numberOfStucks = pinCircleLevelData[gameLevel].numberOfStuckPins;
             // Set target speed
-            target.GetComponent<Rotator>().SetRotationSpeed(pinCircleLevelData[gameLevel].targetSpeed);
+            target.GetComponent<TargetRotator>().SetRotationSpeed(pinCircleLevelData[gameLevel].targetSpeed);
 
             // Get AudioSource component
             audioSource = GetComponent<AudioSource>();
@@ -95,7 +95,7 @@ namespace PinCircle
 
             // GameClear settings
             gameClear = true;
-            target.GetComponent<Rotator>().SetRotationSpeed(350);
+            target.GetComponent<TargetRotator>().SetRotationSpeed(350);
             Camera.main.backgroundColor = gameClearColor;
             audioSource.clip = gameClearSound;
             audioSource.Play();
@@ -111,7 +111,7 @@ namespace PinCircle
         public void GameOver()
         {
             gameOver = true;
-            target.GetComponent<Rotator>().SetRotationSpeed(0);
+            target.GetComponent<TargetRotator>().SetRotationSpeed(0);
             Camera.main.backgroundColor = gameOverColor;
             audioSource.clip = gameOverSound;
             audioSource.Play();

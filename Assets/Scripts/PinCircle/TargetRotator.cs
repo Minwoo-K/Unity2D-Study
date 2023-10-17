@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PinCircle
 {
-    public class Rotator : MonoBehaviour
+    public class TargetRotator : MonoBehaviour
     {
         [SerializeField]
         private float rotateSpeed;
