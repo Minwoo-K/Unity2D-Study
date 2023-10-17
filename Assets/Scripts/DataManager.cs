@@ -14,7 +14,7 @@ public class DataManager : MonoBehaviour
 {
     // Singleton
     private static DataManager _data;
-    public static DataManager Data { get { SetUp(); return _data; } }
+    public static DataManager Data { get { Init(); return _data; } }
 
     // A method to deliver JSON data
     public T LoadJson<T, Key, Value>(string path) where T: ILoader<Key, Value>
@@ -25,8 +25,8 @@ public class DataManager : MonoBehaviour
         return data;
     }
 
-    // Set up the Singleton
-    public static void SetUp()
+    // Initialize the Singleton
+    public static void Init()
     {
         if ( _data == null )
         {

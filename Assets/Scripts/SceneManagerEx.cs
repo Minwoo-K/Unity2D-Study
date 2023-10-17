@@ -14,6 +14,31 @@ public class SceneManagerEx
         ZigZag
     }
 
+    // Singleton
+    private static SceneManagerEx _scene;
+    public static SceneManagerEx Scene { get { Init(); return _scene; } }
+
+    // Initialize the Singleton
+    private static void Init()
+    {
+        if (_scene == null)
+        {
+            GameObject sm = GameObject.Find("#SceneManager");
+            if (sm == null)
+            {
+                sm = new GameObject() { name = "#SceneManager" };
+                sm.AddComponent<DataManager>();
+            }
+
+            _scene = sm.GetComponent<SceneManagerEx>();
+        }
+    }
+
+    private string[] GetAllScenes()
+    {
+        return Enum.GetNames(typeof(SceneTypes));
+    }
+
     public void LoadScene(string name)
     {
         string[] sceneNames = GetAllScenes();
@@ -28,10 +53,5 @@ public class SceneManagerEx
         }
 
         Debug.LogError($"Couldn't find a scene named [{name}] in the scene list registered. Please check again.");
-    }
-
-    private string[] GetAllScenes()
-    {
-        return Enum.GetNames(typeof(SceneTypes));
     }
 }
