@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ClickCasual.unity
+    guid: 32a16513187a4eb41a841ed494635b2f
+  - enabled: 1
     path: Assets/Scenes/PinCircle.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Wave.io.unity
+    guid: 8d4a340e18698284eaf8ef45b8c0bb88
+  - enabled: 1
+    path: Assets/Scenes/ZigZag.unity
+    guid: ac1f6f0b5a769a54592491e7c35c0049
   m_configObjects: {}

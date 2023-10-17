@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 189195176}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1237723216}
+        m_TargetAssemblyTypeName: ClickCasualManager, Assembly-CSharp
+        m_MethodName: OnZigZagButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &189195176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +416,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 628756931}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1237723216}
+        m_TargetAssemblyTypeName: ClickCasualManager, Assembly-CSharp
+        m_MethodName: OnPinCircleButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &628756931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -927,7 +951,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1041951045}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1237723216}
+        m_TargetAssemblyTypeName: ClickCasualManager, Assembly-CSharp
+        m_MethodName: OnExitNoButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1041951045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,6 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ce25ed04f179349b125af898e8c4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exitConfirmation: {fileID: 1315793343}
 --- !u!4 &1237723217
 Transform:
   m_ObjectHideFlags: 0
@@ -1294,7 +1331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1315793344
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1583,7 +1620,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1534315610}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1237723216}
+        m_TargetAssemblyTypeName: ClickCasualManager, Assembly-CSharp
+        m_MethodName: OnWaveioButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1534315610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1704,7 +1753,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1722070211}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1237723216}
+        m_TargetAssemblyTypeName: ClickCasualManager, Assembly-CSharp
+        m_MethodName: OnExitYesButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1722070211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2267,7 +2328,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2120695369}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1237723216}
+        m_TargetAssemblyTypeName: ClickCasualManager, Assembly-CSharp
+        m_MethodName: OnExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2120695369
 MonoBehaviour:
   m_ObjectHideFlags: 0

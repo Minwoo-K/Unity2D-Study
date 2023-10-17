@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneManagerEx
+public class SceneManagerEx : MonoBehaviour
 {
-    private enum SceneTypes
+    public enum SceneTypes
     {
-        //MainMenu,
+        MainMenu,
         PinCircle,
         Waveio,
         ZigZag
@@ -17,6 +17,8 @@ public class SceneManagerEx
     // Singleton
     private static SceneManagerEx _scene;
     public static SceneManagerEx Scene { get { Init(); return _scene; } }
+
+    private string[] sceneNames = null;
 
     // Initialize the Singleton
     private static void Init()
@@ -27,10 +29,12 @@ public class SceneManagerEx
             if (sm == null)
             {
                 sm = new GameObject() { name = "#SceneManager" };
-                sm.AddComponent<DataManager>();
+                sm.AddComponent<SceneManagerEx>();
             }
 
             _scene = sm.GetComponent<SceneManagerEx>();
+
+            _scene.sceneNames = _scene.GetAllScenes();
         }
     }
 
@@ -41,8 +45,6 @@ public class SceneManagerEx
 
     public void LoadScene(string name)
     {
-        string[] sceneNames = GetAllScenes();
-
         for ( int i = 0; i < sceneNames.Length; i++ )
         {
             if ( name.Equals(sceneNames[i]) )
@@ -53,5 +55,15 @@ public class SceneManagerEx
         }
 
         Debug.LogError($"Couldn't find a scene named [{name}] in the scene list registered. Please check again.");
+    }
+
+    public void LoadScene(int index)
+    {
+        SceneManager.LoadScene(sceneNames[index]);
+    }
+
+    public string[] GetAllSceneNames()
+    {
+        return sceneNames;
     }
 }
