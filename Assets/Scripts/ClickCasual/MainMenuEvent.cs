@@ -15,6 +15,8 @@ public class MainMenuEvent : MonoBehaviour
     [SerializeField]
     private GameObject message;
     [SerializeField]
+    private GameObject blockerPanel;
+    [SerializeField]
     private float timeGapBtwnEvent;
 
     private Action events = null;
@@ -47,5 +49,6 @@ public class MainMenuEvent : MonoBehaviour
         yield return new WaitForSeconds(timeGapBtwnEvent);
 
         message.SetActive(true);
+        blockerPanel.SetActive(false);
     }
 }
