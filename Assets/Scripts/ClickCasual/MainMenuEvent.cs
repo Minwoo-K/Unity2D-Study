@@ -9,6 +9,8 @@ public class MainMenuEvent : MonoBehaviour
     private UI_Mover ui_Mover;
 
     [SerializeField]
+    private RectTransform mainTitle;
+    [SerializeField]
     private GameObject buttons;
     [SerializeField]
     private GameObject message;
@@ -16,22 +18,23 @@ public class MainMenuEvent : MonoBehaviour
     private float timeGapBtwnEvent;
 
     private Action events = null;
-    private RectTransform rectTransform;
     private Vector3 inactivePosition = Vector3.up * 300;
-    private Vector3 activePosition = Vector3.zero;
+    private Vector3 activePosition;
 
     private void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = inactivePosition;
+        activePosition = mainTitle.anchoredPosition;
+        mainTitle.anchoredPosition = inactivePosition;
 
         EventStart();
     }
 
     private void EventStart()
     {
-        events = events + GetButtonsOn + GetMessageOn;
+        events += GetButtonsOn;
         ui_Mover.StartMoving(events, activePosition);
+
+        StartCoroutine(GetMessageOn());
     }
 
     private void GetButtonsOn()
@@ -39,8 +42,10 @@ public class MainMenuEvent : MonoBehaviour
         buttons.SetActive(true);
     }
 
-    private void GetMessageOn()
+    private IEnumerator GetMessageOn()
     {
+        yield return new WaitForSeconds(timeGapBtwnEvent);
+
         message.SetActive(true);
     }
 }
