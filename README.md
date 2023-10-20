@@ -23,6 +23,7 @@ A player gets to throw pins(or darts) at a rotating target with pins.
 The rule is to throw all the given pins each level, avoiding other pins on the target.
 If you make it to throwing all the pins without touching other pins on the target, you win.
 As you level up, you have the different number of pins to throw as well as different number of pins spawned on the target.
+![PinCircle_01](https://github.com/Minwoo-K/Unity2D-Study/assets/112778695/33bc1d2b-1fbd-43e3-990e-0bbd3161e8dc)
 
 2) Wave.io
 In Wave.io game, a player is a ball.
