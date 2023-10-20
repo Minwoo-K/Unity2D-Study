@@ -23,6 +23,8 @@ The scene is a game launcher for all games available.
 Each button takes to a corresponding game.
 The buttons aren't interactible until all the UIs show up(with the message "SELECT A GAME TO START")
 
+![GameLauncher](https://github.com/Minwoo-K/Unity2D-Study/assets/112778695/bf2c517c-c0e5-4120-b0c1-62fc7adb92a8)
+
 
 1) Pin Circle
 
