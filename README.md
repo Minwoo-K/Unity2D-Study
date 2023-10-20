@@ -23,9 +23,6 @@ The scene is a game launcher for all games available.
 Each button takes to a corresponding game.
 The buttons aren't interactible until all the UIs show up(with the message "SELECT A GAME TO START")
 
-![GameLauncher](https://github.com/Minwoo-K/Unity2D-Study/assets/112778695/2018e1df-c1a6-4539-9801-f8bf6b0fca3c)
-
-
 
 1) Pin Circle
 
@@ -36,6 +33,7 @@ If you make it to throwing all the pins without touching other pins on the targe
 As you level up, you have the different number of pins to throw as well as different number of pins spawned on the target.
 
 ![PinCircle_01](https://github.com/Minwoo-K/Unity2D-Study/assets/112778695/33bc1d2b-1fbd-43e3-990e-0bbd3161e8dc)
+![PinCircle_02](https://github.com/Minwoo-K/Unity2D-Study/assets/112778695/c7642944-681a-4fdd-9344-4cd7afc6cad1)
 
 
 2) Wave.io
