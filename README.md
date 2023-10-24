@@ -45,6 +45,8 @@ The game has 10 different patterns with different obstacles to avoid.
 And the player can only score when they take a score items.
 As you level up, the ball's speed elevates and the width that the ball moves left and right gets narrower.
 
+![Waveio_play](https://github.com/Minwoo-K/Unity2D-Study/assets/112778695/b8899041-ba3b-44a4-b6b3-15acce91585e)
+
 
 
 3) ZigZag
