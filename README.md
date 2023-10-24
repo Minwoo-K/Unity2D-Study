@@ -8,7 +8,9 @@ Summary: Main Features & Skills
 - Game Data Management using Json files
 - Scene Management
 - UI controls in scripts
+
 This project is to practice and study game development using Unity.
+
 I've named the whole project "Click Casual Games" as the games can be played just by clicks.
 
 
@@ -28,7 +30,7 @@ The buttons aren't interactible until all the UIs show up(with the message "SELE
 
 1) Pin Circle
 
-Pin Circle game is a simple dart game.\n
+Pin Circle game is a simple dart game.
 A player gets to throw pins(or darts) at a rotating target with pins.
 The rule is to throw all the given pins each level, avoiding other pins on the target.
 If you make it to throwing all the pins without touching other pins on the target, you win.
