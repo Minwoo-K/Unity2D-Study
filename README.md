@@ -1,6 +1,6 @@
 
 Unity2D-Study
-Last Updated: 2023-10-20
+Last Updated: 2023-10-24
 
 Summary: Main Features & Skills
 - Unity & C#
@@ -34,8 +34,7 @@ The rule is to throw all the given pins each level, avoiding other pins on the t
 If you make it to throwing all the pins without touching other pins on the target, you win.
 As you level up, you have the different number of pins to throw as well as different number of pins spawned on the target.
 
-![PinCircle_01](https://github.com/Minwoo-K/Unity2D-Study/assets/112778695/33bc1d2b-1fbd-43e3-990e-0bbd3161e8dc)
-![PinCircle_02](https://github.com/Minwoo-K/Unity2D-Study/assets/112778695/c7642944-681a-4fdd-9344-4cd7afc6cad1)
+![PinCircle_play](https://github.com/Minwoo-K/Unity2D-Study/assets/112778695/aa1bc5c2-4c67-4e3e-98eb-f0dc56823fce)
 
 
 2) Wave.io
@@ -46,9 +45,13 @@ The game has 10 different patterns with different obstacles to avoid.
 And the player can only score when they take a score items.
 As you level up, the ball's speed elevates and the width that the ball moves left and right gets narrower.
 
+
+
 3) ZigZag
 
 ZigZag game is a path game.
 A player controls a direction of a ball, left and right, as the path spawns eternally.
 The player can score as they pass a tile and score items.
 As you level up, the speed of the ball increases.
+
+
