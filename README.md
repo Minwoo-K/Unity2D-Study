@@ -28,7 +28,7 @@ The buttons aren't interactible until all the UIs show up(with the message "SELE
 
 1) Pin Circle
 
-Pin Circle game is a simple dart game.
+Pin Circle game is a simple dart game.\n
 A player gets to throw pins(or darts) at a rotating target with pins.
 The rule is to throw all the given pins each level, avoiding other pins on the target.
 If you make it to throwing all the pins without touching other pins on the target, you win.
@@ -56,4 +56,5 @@ A player controls a direction of a ball, left and right, as the path spawns eter
 The player can score as they pass a tile and score items.
 As you level up, the speed of the ball increases.
 
+![ZigZag_play](https://github.com/Minwoo-K/Unity2D-Study/assets/112778695/c57095fa-84cd-4f8a-8a16-50e6116e6e82)
 
