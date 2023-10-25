@@ -2,6 +2,8 @@
 Unity2D-Study
 Last Updated: 2023-10-24
 
+***Disclaimer: The contents in this project are not original of myself. The sources and codes are based on existing games and the project is mock merely for myself to study and practice Unity engine as well as Game Development process.
+
 Summary: Main Features & Skills
 - Unity & C#
 - Singleton
