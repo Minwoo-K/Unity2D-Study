@@ -38,6 +38,12 @@ public class MovementRigidbody2D : MonoBehaviour
         collider2D = GetComponent<Collider2D>();
     }
 
+    private void Update()
+    {
+        UpdateCollision();
+        JumpHeight();
+    }
+
     /// <summary>
     /// Setting X axis velocity
     /// </summary>
@@ -52,5 +58,42 @@ public class MovementRigidbody2D : MonoBehaviour
         rigid2D.velocity = new Vector2(x * moveSpeed, rigid2D.velocity.y);
     }
 
+    private void UpdateCollision()
+    {
+        // Fetch the player object's Collider2D bounds
+        Bounds bounds = collider2D.bounds;
 
+        // Collision Range on the Player's feet
+        collisionSize = new Vector2((bounds.max.x - bounds.min.x) * 0.5f, 0.1f);
+        
+        // Set feetPosition based on the bounds
+        feetPosition = new Vector2(bounds.center.x, bounds.min.y);
+
+        // Create a Collision box to check if player is on ground
+        // If the player is on ground, the function returns true, otherwise false
+        IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundCheckLayer);
+    }
+
+    // Y axis Jump command
+    public void Jump()
+    {
+        if ( IsOnGround == true )
+        {
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+        }
+    }
+
+    private void JumpHeight()
+    {
+        // Longer Jump as setting the gravity scale lower
+        if ( IsLongerJump && rigid2D.velocity.y > 0 )
+        {
+            rigid2D.gravityScale = lowGravityScale;
+        }
+        // Shorter Jump as setting the gravity scale higher
+        else
+        {
+            rigid2D.gravityScale = highGravityScale;
+        }
+    }
 }
