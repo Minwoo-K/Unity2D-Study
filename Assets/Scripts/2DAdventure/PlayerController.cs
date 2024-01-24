@@ -1,0 +1,63 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Adventure_2D
+{
+    public class PlayerController : MonoBehaviour
+    {
+        [SerializeField]
+        private KeyCode jumpKeyCode = KeyCode.Space;
+
+        private MovementRigidbody2D movement;
+
+        private void Awake()
+        {
+            movement = GetComponent<MovementRigidbody2D>();
+        }
+
+        private void Update()
+        {
+            // Key Input (Left/Right direction keys & Left-Ctrl Key)
+            // This activates the direction keys & A/D keys to behave for the player to move
+            // Key A/Left Direction, return -1 & Key D/Right Direction, return 1
+            float x = Input.GetAxisRaw("Horizontal");
+
+            // Input.GetAxisRaw("Sprint"): when the set-up key is pressed, it returns 1
+            float offset = 0.5f + Input.GetAxisRaw("Sprint") * 0.5f;
+
+            // When walking, x is within -0.5 ~ 0.5
+            // When running, x is within -1 ~ 1
+            x *= offset;
+
+            // Player's move (L/R)
+            UpdateMove(x);
+            // Player's Jump
+            UpdateJump();
+        }
+
+        private void UpdateMove(float x)
+        {
+            movement.MoveTo(x);
+        }
+
+        private void UpdateJump()
+        {
+            if ( Input.GetKey(jumpKeyCode) )
+            {
+                movement.Jump();
+            }
+
+            // while pressing the Jump key
+            if ( Input.GetKey(jumpKeyCode) )
+            {
+                movement.IsLongerJump = true;
+            }
+            // when the key is up, done being pressed
+            else if ( Input.GetKeyUp(jumpKeyCode) )
+            {
+                movement.IsLongerJump = false;
+            }
+        }
+    }
+}
