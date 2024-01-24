@@ -60,6 +60,7 @@ namespace Adventure_2D
             // if x is a decimal value(-0.5, 0.5), change it to -1 or 1
             if ( x != 0 ) x = Mathf.Sign(x);
 
+            // This line eventually moves the gameObject
             rigid2D.velocity = new Vector2(x * moveSpeed, rigid2D.velocity.y);
         }
 
