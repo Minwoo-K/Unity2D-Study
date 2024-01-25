@@ -26,6 +26,10 @@ namespace Adventure_2D
 
         private float moveSpeed;                    // Move Speed
 
+        // 
+        private float jumpBufferTime = 0.1f;
+        private float jumpBufferCounter;
+
         private Vector2 collisionSize;              // CollisionSize on the player's head and feet
         private Vector2 feetPosition;               // Player's feet position
 
@@ -47,6 +51,7 @@ namespace Adventure_2D
         {
             UpdateCollision();
             JumpHeight();
+            JumpAdditive();
         }
 
         /// <summary>
@@ -83,10 +88,7 @@ namespace Adventure_2D
         // Y axis Jump command
         public void Jump()
         {
-            if (IsOnGround == true)
-            {
-                rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
-            }
+            jumpBufferCounter = jumpBufferTime;
         }
 
         private void JumpHeight()
@@ -100,6 +102,20 @@ namespace Adventure_2D
             else
             {
                 rigid2D.gravityScale = highGravityScale;
+            }
+        }
+
+        private void JumpAdditive()
+        {
+            if ( jumpBufferCounter > 0 )
+            {
+                jumpBufferCounter -= Time.deltaTime;
+            }
+
+            if ( jumpBufferCounter > 0 )
+            {
+                rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+                jumpBufferCounter = 0;
             }
         }
     }
