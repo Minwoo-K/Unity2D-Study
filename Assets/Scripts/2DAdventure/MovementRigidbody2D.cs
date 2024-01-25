@@ -26,9 +26,13 @@ namespace Adventure_2D
 
         private float moveSpeed;                    // Move Speed
 
-        // 
+        // To be able to jump when jump was commanded right before(within the jumpBufferTime) landing on ground
         private float jumpBufferTime = 0.1f;
         private float jumpBufferCounter;
+
+        // To be able to still jump within the time where the player is off of ground
+        private float hangingTime = 0.2f;
+        private float hangingCounter;
 
         private Vector2 collisionSize;              // CollisionSize on the player's head and feet
         private Vector2 feetPosition;               // Player's feet position
@@ -107,15 +111,19 @@ namespace Adventure_2D
 
         private void JumpAdditive()
         {
+            if ( IsOnGround ) hangingCounter = hangingTime;
+            else              hangingCounter = hangingCounter -= Time.deltaTime;
+
             if ( jumpBufferCounter > 0 )
             {
                 jumpBufferCounter -= Time.deltaTime;
             }
 
-            if ( jumpBufferCounter > 0 )
+            if ( jumpBufferCounter > 0 && hangingCounter > 0 )
             {
                 rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
                 jumpBufferCounter = 0;
+                hangingCounter = 0;
             }
         }
     }
