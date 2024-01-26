@@ -10,10 +10,12 @@ namespace Adventure_2D
         private KeyCode jumpKeyCode = KeyCode.Space;
 
         private MovementRigidbody2D movement;
+        private PlayerAnimator playerAnimator;
 
         private void Awake()
         {
             movement = GetComponent<MovementRigidbody2D>();
+            playerAnimator = GetComponentInChildren<PlayerAnimator>();
         }
 
         private void Update()
@@ -34,6 +36,8 @@ namespace Adventure_2D
             UpdateMove(x);
             // Player's Jump
             UpdateJump();
+            // Animation
+            playerAnimator.UpdateAnimation(x);
         }
 
         private void UpdateMove(float x)

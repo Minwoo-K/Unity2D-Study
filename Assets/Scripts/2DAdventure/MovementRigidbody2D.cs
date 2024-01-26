@@ -43,6 +43,8 @@ namespace Adventure_2D
         public bool IsLongerJump { get; set; } = false;         // Check for a Jump to be longer or regular
         public bool IsOnGround { get; private set; } = false;   // Check whether the player is on ground
 
+        public Vector2 Velocity => rigid2D.velocity;
+
         private void Awake()
         {
             moveSpeed = walkSpeed;
