@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3755948469778950477, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3755948469778950477, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_LocalPosition.x
@@ -372,7 +372,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5031,7 +5031,7 @@ Transform:
   - {fileID: 727097669}
   - {fileID: 678139342}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &663764212
 CapsuleCollider2D:
@@ -5112,6 +5112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 678139342}
+  - component: {fileID: 678139343}
   m_Layer: 0
   m_Name: MovementEffects
   m_TagString: Untagged
@@ -5135,6 +5136,19 @@ Transform:
   m_Father: {fileID: 663764211}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &678139343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678139341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f868034eb44ce04498c69af944a8ee6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footStepEffect: {fileID: 595205809}
 --- !u!1 &727097668
 GameObject:
   m_ObjectHideFlags: 0
