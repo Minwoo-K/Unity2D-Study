@@ -8,10 +8,15 @@ namespace Adventure_2D
     {
         private MovementRigidbody2D movement;
 
+        // Player's foot step effect when walking/running
         [SerializeField]
         private ParticleSystem footStepEffect;
-
         private ParticleSystem.EmissionModule emission;
+
+        // Player's landing effect when landing from a jump/drop
+        [SerializeField]
+        private ParticleSystem landingEffect;
+        private bool wasOnGround;
 
         private void Awake()
         {
@@ -30,6 +35,17 @@ namespace Adventure_2D
             {
                 emission.rateOverTime = 0;
             }
+
+            // If currently on the ground but, WAS on ground a frame before, and player's velocity has become less than 0,
+            // that means the player lands on this frame, which plays the Landing Effect
+            if ( !wasOnGround && movement.IsOnGround && movement.Velocity.y <= 0 )
+            {
+                landingEffect.Stop(); // To avoid playing the effect again and again from repetitive lands
+                landingEffect.Play();
+            }
+
+            // Store the status of player this frame to compare the next frame
+            wasOnGround = movement.IsOnGround;
         }
     }
 }
