@@ -7,19 +7,19 @@ public class StageData : ScriptableObject
 {
     [Header("Camera Constraints")]
     [SerializeField]
-    private float cameraLimitMinX;
+    private float cameraLimitMinX;      // Minimum Limit for Camera
     [SerializeField]
-    private float cameraLimitMaxX;
+    private float cameraLimitMaxX;      // Maximum Limit for Camera
 
     [Header("Player Constraints")]
     [SerializeField]
-    private float playerLimitMinX;
+    private float playerLimitMinX;      // Minimum Limit for the Player
     [SerializeField]
-    private float playerLimitMaxX;
+    private float playerLimitMaxX;      // Maximum Limit for the Player
 
     [Header("Map Constraints")]
     [SerializeField]
-    private float mapLimitMinY;
+    private float mapLimitMinY;         // Minimum Map Limit in Y axis to figure out if the player falls off
 
     // Properties to each one above to let exterior access to them
     public float CameraLimitMinX => cameraLimitMinX;
