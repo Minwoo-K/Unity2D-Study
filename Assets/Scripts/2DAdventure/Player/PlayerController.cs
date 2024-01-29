@@ -7,6 +7,8 @@ namespace Adventure_2D
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
+        private StageData stageData;
+        [SerializeField]
         private KeyCode jumpKeyCode = KeyCode.Space;
 
         private MovementRigidbody2D movement;
@@ -42,7 +44,11 @@ namespace Adventure_2D
 
         private void UpdateMove(float x)
         {
+            // Movement in X axis (left - right)
             movement.MoveTo(x);
+            // Limiting the player's movement range within the game world
+            float limitX = Mathf.Clamp(transform.position.x, stageData.PlayerLimitMinX, stageData.PlayerLimitMaxX);
+            transform.position = new Vector3(limitX, transform.position.y);
         }
 
         private void UpdateJump()

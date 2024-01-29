@@ -9972,6 +9972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f4c7eb8ca0c5e64f804390276872145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageData: {fileID: 11400000, guid: 556858dea58d4d441b22d1400e94b2d7, type: 2}
   jumpKeyCode: 32
 --- !u!1 &678139341
 GameObject:
