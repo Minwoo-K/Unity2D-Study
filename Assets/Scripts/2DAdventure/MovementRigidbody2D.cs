@@ -9,6 +9,8 @@ namespace Adventure_2D
         [Header("LayerMask")]
         [SerializeField]
         private LayerMask groundCheckLayer;         // Layer to check whether the player is on the ground or not
+        [SerializeField]
+        private LayerMask headCollisionLayer;       // Layer that can collide with the player's head
 
         [Header("Move")]
         [SerializeField]
@@ -36,12 +38,14 @@ namespace Adventure_2D
 
         private Vector2 collisionSize;              // CollisionSize on the player's head and feet
         private Vector2 feetPosition;               // Player's feet position
+        private Vector2 headPosition;               // Player's head position
 
         private Rigidbody2D rigid2D;                // Rigidbody2D component
         private Collider2D collider2D;              // Collider2D component
 
         public bool IsLongerJump { get; set; } = false;         // Check for a Jump to be longer or regular
         public bool IsOnGround { get; private set; } = false;   // Check whether the player is on ground
+        public Collider2D colliderOnHead { get; private set;}   // The object that collides with the player on its head
 
         public Vector2 Velocity => rigid2D.velocity;
 
@@ -83,12 +87,16 @@ namespace Adventure_2D
             // Collision Range on the Player's feet
             collisionSize = new Vector2((bounds.max.x - bounds.min.x) * 0.5f, 0.1f);
 
-            // Set feetPosition based on the bounds
+            // Set head/feet collider position based on the bounds
+            headPosition = new Vector2(bounds.center.x, bounds.max.y);
             feetPosition = new Vector2(bounds.center.x, bounds.min.y);
 
             // Create a Collision box to check if player is on ground
             // If the player is on ground, the function returns true, otherwise false
             IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundCheckLayer);
+
+            // If collides, the object's collider component is stored. Otherwise, null
+            colliderOnHead = Physics2D.OverlapBox(headPosition, collisionSize, 0, headCollisionLayer);
         }
 
         // Y axis Jump command
