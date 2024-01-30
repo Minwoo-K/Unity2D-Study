@@ -20,7 +20,7 @@ namespace Adventure_2D
 
         [Header("Jump")]
         [SerializeField]
-        private float jumpForce = 13;               // A Force for jumping
+        private float jumpForce = 15;               // A Force for jumping
         [SerializeField]
         private float lowGravityScale = 2;          // Gravity Scale value for longer jump
         [SerializeField]
@@ -135,6 +135,11 @@ namespace Adventure_2D
                 jumpBufferCounter = 0;
                 hangingCounter = 0;
             }
+        }
+
+        public void CancelVelocityY()
+        {
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
         }
     }
 
