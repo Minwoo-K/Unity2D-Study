@@ -79,6 +79,11 @@ namespace Adventure_2D
             {
                 // cancel the jumpForce
                 movement.CancelVelocityY();
+
+                if ( movement.colliderOnHead.TryGetComponent<TileBase>(out TileBase tile))
+                {
+                    tile.UpdateCollsiion();
+                }
             }
         }
     }
