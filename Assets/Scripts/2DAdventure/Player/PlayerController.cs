@@ -40,6 +40,8 @@ namespace Adventure_2D
             UpdateJump();
             // Animation
             playerAnimator.UpdateAnimation(x);
+            // Collsion Update
+            UpdateCollision();
         }
 
         private void UpdateMove(float x)
