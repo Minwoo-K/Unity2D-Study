@@ -40,8 +40,6 @@ namespace Adventure_2D
             UpdateJump();
             // Animation
             playerAnimator.UpdateAnimation(x);
-            // Head Collision
-            UpdateCollision();
         }
 
         private void UpdateMove(float x)
@@ -72,19 +70,5 @@ namespace Adventure_2D
             }
         }
 
-        private void UpdateCollision()
-        {
-            // If colliding with an object on the head while jumping,
-            if ( movement.Velocity.y >= 0 && movement.colliderOnHead != null )
-            {
-                // cancel the jumpForce
-                movement.CancelVelocityY();
-
-                if ( movement.colliderOnHead.TryGetComponent<TileBase>(out TileBase tile))
-                {
-                    tile.UpdateCollsiion();
-                }
-            }
-        }
     }
 }
