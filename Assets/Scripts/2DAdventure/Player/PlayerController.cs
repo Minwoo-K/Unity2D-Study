@@ -77,6 +77,11 @@ namespace Adventure_2D
             if ( movement.Velocity.y >= 0 && movement.colliderOnHead != null )
             {
                 movement.CancelVelocityY();
+
+                if ( movement.colliderOnHead.TryGetComponent<TileBase>(out var tile) )
+                {
+                    tile.UpdateCollsion();
+                }
             }
         }
     }
