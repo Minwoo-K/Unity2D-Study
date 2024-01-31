@@ -70,5 +70,12 @@ namespace Adventure_2D
             }
         }
 
+        private void UpdateCollision()
+        {
+            if ( movement.Velocity.y >= 0 && movement.colliderOnHead != null )
+            {
+                movement.CancelVelocityY();
+            }
+        }
     }
 }
