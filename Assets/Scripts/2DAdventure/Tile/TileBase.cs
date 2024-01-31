@@ -5,21 +5,24 @@ using UnityEngine;
 public class TileBase : MonoBehaviour
 {
     [SerializeField]
-    private bool bounceable = false;
+    private bool bounceable = false;                    // whether this Tile is bounceable or not
 
-    private Vector3 startPosition;
+    private Vector3 startPosition;                      // Start Position to be saved
 
-    public bool IsHit { private set; get;} = false;
+    public bool IsHit { private set; get;} = false;     // A Flag to avoid bouncing multiple times upon one collision
 
     private void Awake()
     {
+        // Save the start position
         startPosition = transform.position;
     }
 
     public virtual void UpdateCollsiion()
     {
+        // only if bounceable
         if ( bounceable )
         {
+            // Bounce process
             IsHit = true;
 
             StartCoroutine(Bounce());
@@ -29,11 +32,11 @@ public class TileBase : MonoBehaviour
     private IEnumerator Bounce()
     {
         float bounceAmount = 0.35f;
-
+        // Bounce up
         yield return StartCoroutine(MoveInY(startPosition.y, startPosition.y + bounceAmount));
-
+        // Bounce back down
         yield return StartCoroutine(MoveInY(startPosition.y + bounceAmount, startPosition.y));
-        
+        // A Bounce process is done
         IsHit = false;
     }
 
