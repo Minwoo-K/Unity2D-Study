@@ -5219,6 +5219,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6531101587864739552, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: bounceable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531101587864739552, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: items.Array.size
       value: 5
       objectReference: {fileID: 0}

@@ -12,7 +12,7 @@ namespace Adventure_2D
         [SerializeField]
         private GameObject[] items;
         [SerializeField]
-        private int coinCount = 5;
+        private int coinCount;
         [SerializeField]
         private Sprite nonBrokeTile_sprite;
 
@@ -25,8 +25,6 @@ namespace Adventure_2D
             base.UpdateCollsion();
 
             SpawnItem();
-
-            IsHit = false;
         }
 
         private void SpawnItem()

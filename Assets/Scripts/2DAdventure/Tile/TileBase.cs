@@ -23,12 +23,9 @@ namespace Adventure_2D
         {
             Debug.Log("Tile Collision");
 
-            if ( IsHit ) return;
-
-            IsHit = true;
-
             if (bounceable)
             {
+                IsHit = true;
 
                 StartCoroutine(OnBounce());
             }
