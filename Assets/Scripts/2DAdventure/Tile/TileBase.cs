@@ -12,7 +12,7 @@ namespace Adventure_2D
         private Vector3 startPosition;
         private float bouncingAmount = 0.35f;
 
-        public bool isBouncing { private set; get; } = false;
+        public bool IsHit { protected set; get; } = false;
 
         private void Awake()
         {
@@ -21,9 +21,14 @@ namespace Adventure_2D
 
         public virtual void UpdateCollsion()
         {
+            Debug.Log("Tile Collision");
+
+            if ( IsHit ) return;
+
+            IsHit = true;
+
             if (bounceable)
             {
-                isBouncing = true;
 
                 StartCoroutine(OnBounce());
             }
@@ -35,7 +40,7 @@ namespace Adventure_2D
 
             yield return StartCoroutine(MoveInY(startPosition.y + bouncingAmount, startPosition.y));
 
-            isBouncing = false;
+            IsHit = false;
         }
 
         private IEnumerator MoveInY(float startY, float endY)
