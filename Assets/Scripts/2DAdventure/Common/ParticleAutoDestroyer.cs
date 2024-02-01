@@ -4,7 +4,6 @@ namespace Adventure_2D
 {
     public class ParticleAutoDestroyer : MonoBehaviour
     {
-        [SerializeField]
         private ParticleSystem theParticle;
 
         private void Awake()
