@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileBroke : MonoBehaviour
+public class TileBroke : TileBase
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("TileBroke Component")]
+    [SerializeField]
+    private GameObject particle;
 
-    // Update is called once per frame
-    void Update()
+    public override void UpdateCollsion()
     {
-        
+        // Overriden/Inherited function call
+        base.UpdateCollsion();
+        // Spawn the Particle effect
+        Instantiate(particle, transform.position, Quaternion.identity);
+        // Delete the Tile object
+        Destroy(gameObject);
     }
 }
