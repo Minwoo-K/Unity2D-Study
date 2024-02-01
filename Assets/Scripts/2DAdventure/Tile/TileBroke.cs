@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileBroke : TileBase
+namespace Adventure_2D
 {
-    [Header("TileBroke Component")]
-    [SerializeField]
-    private GameObject particle;
-
-    public override void UpdateCollsion()
+    public class TileBroke : TileBase
     {
-        // Overriden/Inherited function call
-        base.UpdateCollsion();
-        // Spawn the Particle effect
-        Instantiate(particle, transform.position, Quaternion.identity);
-        // Delete the Tile object
-        Destroy(gameObject);
+        [Header("TileBroke Component")]
+        [SerializeField]
+        private GameObject particle;
+
+        public override void UpdateCollsion()
+        {
+            // Overriden/Inherited function call
+            base.UpdateCollsion();
+            // Spawn the Particle effect
+            Instantiate(particle, transform.position, Quaternion.identity);
+            // Delete the Tile object
+            Destroy(gameObject);
+        }
     }
 }

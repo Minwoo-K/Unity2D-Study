@@ -1,20 +1,23 @@
 using UnityEngine;
 
-public class ParticleAutoDestroyer : MonoBehaviour
+namespace Adventure_2D
 {
-    [SerializeField]
-    private ParticleSystem theParticle;
-
-    private void Awake()
+    public class ParticleAutoDestroyer : MonoBehaviour
     {
-        theParticle = GetComponent<ParticleSystem>();
-    }
+        [SerializeField]
+        private ParticleSystem theParticle;
 
-    private void Update()
-    {
-        if ( !theParticle.isPlaying )
+        private void Awake()
         {
-            Destroy(gameObject);
+            theParticle = GetComponent<ParticleSystem>();
+        }
+
+        private void Update()
+        {
+            if (!theParticle.isPlaying)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

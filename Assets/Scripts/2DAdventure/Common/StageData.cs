@@ -2,29 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class StageData : ScriptableObject
+namespace Adventure_2D
 {
-    [Header("Camera Constraints")]
-    [SerializeField]
-    private float cameraLimitMinX;      // Minimum Limit for Camera
-    [SerializeField]
-    private float cameraLimitMaxX;      // Maximum Limit for Camera
+    [CreateAssetMenu]
+    public class StageData : ScriptableObject
+    {
+        [Header("Camera Constraints")]
+        [SerializeField]
+        private float cameraLimitMinX;      // Minimum Limit for Camera
+        [SerializeField]
+        private float cameraLimitMaxX;      // Maximum Limit for Camera
 
-    [Header("Player Constraints")]
-    [SerializeField]
-    private float playerLimitMinX;      // Minimum Limit for the Player
-    [SerializeField]
-    private float playerLimitMaxX;      // Maximum Limit for the Player
+        [Header("Player Constraints")]
+        [SerializeField]
+        private float playerLimitMinX;      // Minimum Limit for the Player
+        [SerializeField]
+        private float playerLimitMaxX;      // Maximum Limit for the Player
 
-    [Header("Map Constraints")]
-    [SerializeField]
-    private float mapLimitMinY;         // Minimum Map Limit in Y axis to figure out if the player falls off
+        [Header("Map Constraints")]
+        [SerializeField]
+        private float mapLimitMinY;         // Minimum Map Limit in Y axis to figure out if the player falls off
 
-    // Properties to each one above to let exterior access to them
-    public float CameraLimitMinX => cameraLimitMinX;
-    public float CameraLimitMaxX => cameraLimitMaxX;
-    public float PlayerLimitMinX => playerLimitMinX;
-    public float PlayerLimitMaxX => playerLimitMaxX;
-    public float MapLimitMinY    => mapLimitMinY;
+        // Properties to each one above to let exterior access to them
+        public float CameraLimitMinX => cameraLimitMinX;
+        public float CameraLimitMaxX => cameraLimitMaxX;
+        public float PlayerLimitMinX => playerLimitMinX;
+        public float PlayerLimitMaxX => playerLimitMaxX;
+        public float MapLimitMinY => mapLimitMinY;
+    }
 }

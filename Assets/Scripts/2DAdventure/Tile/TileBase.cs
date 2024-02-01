@@ -2,54 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileBase : MonoBehaviour
+namespace Adventure_2D
 {
-    [SerializeField]
-    private bool bounceable = false;
-
-    private Vector3 startPosition;
-    private float bouncingAmount = 0.35f;
-
-    public bool isBouncing { private set; get; } = false;
-
-    private void Awake()
+    public class TileBase : MonoBehaviour
     {
-        startPosition = transform.position;
-    }
+        [SerializeField]
+        private bool bounceable = false;
 
-    public virtual void UpdateCollsion()
-    {
-        if ( bounceable )
+        private Vector3 startPosition;
+        private float bouncingAmount = 0.35f;
+
+        public bool isBouncing { private set; get; } = false;
+
+        private void Awake()
         {
-            isBouncing = true;
-
-            StartCoroutine( OnBounce() );
+            startPosition = transform.position;
         }
-    }
 
-    public IEnumerator OnBounce()
-    {
-        yield return StartCoroutine(MoveInY(startPosition.y, startPosition.y + bouncingAmount));
-
-        yield return StartCoroutine(MoveInY(startPosition.y + bouncingAmount, startPosition.y ));
-
-        isBouncing = false;
-    }
-
-    private IEnumerator MoveInY(float startY, float endY)
-    {
-        float movingTime = 0.2f;
-        float percent = 0;
-
-        while ( percent < 1 )
+        public virtual void UpdateCollsion()
         {
-            percent += Time.deltaTime / movingTime;
+            if (bounceable)
+            {
+                isBouncing = true;
 
-            Vector3 position = transform.position;
-            position.y = Mathf.Lerp(startY, endY, percent);
-            transform.position = position;
+                StartCoroutine(OnBounce());
+            }
+        }
 
-            yield return null;
+        public IEnumerator OnBounce()
+        {
+            yield return StartCoroutine(MoveInY(startPosition.y, startPosition.y + bouncingAmount));
+
+            yield return StartCoroutine(MoveInY(startPosition.y + bouncingAmount, startPosition.y));
+
+            isBouncing = false;
+        }
+
+        private IEnumerator MoveInY(float startY, float endY)
+        {
+            float movingTime = 0.2f;
+            float percent = 0;
+
+            while (percent < 1)
+            {
+                percent += Time.deltaTime / movingTime;
+
+                Vector3 position = transform.position;
+                position.y = Mathf.Lerp(startY, endY, percent);
+                transform.position = position;
+
+                yield return null;
+            }
         }
     }
 }
