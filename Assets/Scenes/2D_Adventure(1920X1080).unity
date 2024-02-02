@@ -5246,7 +5246,8 @@ PrefabInstance:
       propertyPath: items.Array.data[4]
       value: 
       objectReference: {fileID: 2124676848307923769, guid: 35169605f39295c4c94826dc1fd0eccb, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3431737617361811603, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
 --- !u!1 &595205806
 GameObject:
@@ -10148,7 +10149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 448
   headCollisionLayer:
     serializedVersion: 2
     m_Bits: 128
