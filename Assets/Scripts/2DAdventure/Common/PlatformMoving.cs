@@ -35,12 +35,13 @@ namespace Adventure_2D
         {
             while ( true )
             {
-                yield return StartCoroutine(MoveAToB(transform.position, wayPoints[currentIndex].position));
+                yield return StartCoroutine(MoveAToB(platform.position, wayPoints[currentIndex].position));
+                
+                yield return new WaitForSeconds(waitTime);
 
                 if ( currentIndex >= wayPointsCount - 1 ) currentIndex = 0;
                 else                                      currentIndex ++;
 
-                yield return new WaitForSeconds(waitTime);
             }
         }
 
@@ -52,7 +53,7 @@ namespace Adventure_2D
             while ( percent < 1 )
             {
                 percent += Time.deltaTime / movingTime;
-                transform.position = Vector3.Lerp(A, B, percent);
+                platform.position = Vector3.Lerp(A, B, percent);
 
                 yield return null;
             }
@@ -61,7 +62,7 @@ namespace Adventure_2D
         // When the player is on the platform, they need to move together
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            collision.transform.SetParent(transform);
+            collision.transform.SetParent(platform);
         }
         // When the player is off the platform, they no longer move together
         private void OnCollisionExit2D(Collision2D collision)
