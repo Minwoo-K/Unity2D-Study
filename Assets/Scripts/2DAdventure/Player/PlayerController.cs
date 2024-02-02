@@ -42,6 +42,7 @@ namespace Adventure_2D
             playerAnimator.UpdateAnimation(x);
             // Collsion Update
             UpdateCollisionAbove();
+            UpdateCollisionBelow();
         }
 
         private void UpdateMove(float x)

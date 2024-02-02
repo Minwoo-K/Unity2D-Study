@@ -79,6 +79,8 @@ namespace Adventure_2D
         {
             yield return new WaitForSeconds(respawnTime);
 
+            IsHit = false;
+
             boxCollider.enabled = true;
             rigid2D.isKinematic = true;
             transform.position = originalPosition;
