@@ -7,7 +7,7 @@ namespace Adventure_2D
     public class PlatformMoving : MonoBehaviour
     {
         [SerializeField]
-        private Transform target;           // The Target this platform moves towards
+        private Transform platform;         // The Platform currently moving
         [SerializeField]
         private Transform[] wayPoints;      // Available stations
         [SerializeField]
@@ -21,7 +21,7 @@ namespace Adventure_2D
         private void Awake()
         {
             // Set the first position
-            target.position = wayPoints[currentIndex].position;
+            platform.position = wayPoints[currentIndex].position;
             // Set the Count of wayPoints
             wayPointsCount = wayPoints.Length;
             // Set to the next wayPoint
@@ -35,10 +35,10 @@ namespace Adventure_2D
         {
             while ( true )
             {
-                yield return StartCoroutine(MoveAToB(transform.position, target.position));
+                yield return StartCoroutine(MoveAToB(transform.position, wayPoints[currentIndex].position));
 
-                if ( currentIndex >= wayPointsCount - 1 ) currentIndex++;
-                else                                      currentIndex = 0;
+                if ( currentIndex >= wayPointsCount - 1 ) currentIndex = 0;
+                else                                      currentIndex ++;
 
                 yield return new WaitForSeconds(waitTime);
             }
