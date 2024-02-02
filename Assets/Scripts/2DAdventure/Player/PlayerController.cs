@@ -41,7 +41,7 @@ namespace Adventure_2D
             // Animation
             playerAnimator.UpdateAnimation(x);
             // Collsion Update
-            UpdateCollision();
+            UpdateCollisionAbove();
         }
 
         private void UpdateMove(float x)
@@ -72,7 +72,8 @@ namespace Adventure_2D
             }
         }
 
-        private void UpdateCollision()
+        // Collision on its HEAD
+        private void UpdateCollisionAbove()
         {
             if ( movement.Velocity.y >= 0 && movement.colliderOnHead != null )
             {
@@ -84,5 +85,18 @@ namespace Adventure_2D
                 }
             }
         }
+
+        // Collision on its FEET
+        private void UpdateCollisionBelow()
+        {
+            if ( movement.colliderOnFeet != null )
+            {
+                if ( movement.colliderOnFeet.TryGetComponent<PlatformBase>(out var platform) )
+                {
+                    platform.UpdateCollision(gameObject);
+                }
+            }
+        }
+        
     }
 }

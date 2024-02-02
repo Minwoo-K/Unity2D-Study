@@ -11,6 +11,8 @@ namespace Adventure_2D
         private LayerMask groundCheckLayer;         // Layer to check whether the player is on the ground or not
         [SerializeField]
         private LayerMask headCollisionLayer;       // Layer that can collide with the player's head
+        [SerializeField]
+        private LayerMask feetCollisionLayer;       // Layer that can collide with the player's feet
 
         [Header("Move")]
         [SerializeField]
@@ -46,6 +48,7 @@ namespace Adventure_2D
         public bool IsLongerJump { get; set; } = false;         // Check for a Jump to be longer or regular
         public bool IsOnGround { get; private set; } = false;   // Check whether the player is on ground
         public Collider2D colliderOnHead { get; private set; }  // Collider Info that player's head collides with
+        public Collider2D colliderOnFeet { get; private set; } // Collider Info that player's feet collide with
 
         public Vector2 Velocity => rigid2D.velocity;
 
@@ -94,8 +97,9 @@ namespace Adventure_2D
             // Create a Collision box to check if player is on ground
             // If the player is on ground, the function returns true, otherwise false
             IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundCheckLayer);
-            // Store the collider if anything collides with player's head
+            // Store the collider if anything collides with player's head OR feet
             colliderOnHead = Physics2D.OverlapBox(headPosition, collisionSize, 0, headCollisionLayer);
+            colliderOnFeet = Physics2D.OverlapBox(feetPosition, collisionSize, 0, feetCollisionLayer);
         }
 
         // Y axis Jump command
