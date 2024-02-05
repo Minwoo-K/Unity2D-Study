@@ -92,6 +92,11 @@ namespace Adventure_2D
         {
             if ( movement.colliderOnFeet != null )
             {
+                if ( Input.GetKeyDown(KeyCode.DownArrow) && movement.colliderOnFeet.TryGetComponent<PlatformEffectorExtension>(out var p))
+                {
+                    p.OnDownWay();
+                }
+
                 if ( movement.colliderOnFeet.TryGetComponent<PlatformBase>(out var platform) )
                 {
                     platform.UpdateCollision(gameObject);
