@@ -26,12 +26,20 @@ namespace Adventure_2D
             IsHit = true;
             this.other = other;
 
-
+            animator.SetTrigger("OnJump");
         }
 
         public void JumpAction()
         {
+            other.GetComponent<MovementRigidbody2D>().JumpUp(jumpForce);
+            other = null;
 
+            Invoke(nameof(Reset), resetTime); // Call the function "Reset" in(after) the resetTime
+        }
+
+        private void Reset()
+        {
+            IsHit = false;   
         }
     }
 }
