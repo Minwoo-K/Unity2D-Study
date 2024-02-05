@@ -108,6 +108,11 @@ namespace Adventure_2D
             jumpBufferCounter = jumpBufferTime;
         }
 
+        public void JumpUp(float force)
+        {
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, force);
+        }
+
         private void JumpHeight()
         {
             // Longer Jump as setting the gravity scale lower
