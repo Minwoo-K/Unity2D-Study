@@ -11,7 +11,7 @@ public abstract class ItemBase : MonoBehaviour
 
     private bool allowCollect = true;
 
-    public abstract void UpdateItemTaken();
+    public abstract void UpdateItemTaken(Transform transform);
 
     public void Init()
     {
@@ -43,7 +43,7 @@ public abstract class ItemBase : MonoBehaviour
     {
         if ( allowCollect && collision.CompareTag("Player") )
         {
-            UpdateItemTaken();
+            UpdateItemTaken(collision.transform);
             Destroy(gameObject);
         }
     }
@@ -52,7 +52,7 @@ public abstract class ItemBase : MonoBehaviour
     {
         if (allowCollect && collision.gameObject.CompareTag("Player"))
         {
-            UpdateItemTaken();
+            UpdateItemTaken(collision.transform);
             Destroy(gameObject);
         }
     }
