@@ -4,18 +4,20 @@ using UnityEngine;
 
 namespace Adventure_2D
 {
-    public class RotateInAxis : MonoBehaviour
+    public class RotateBetweenAandB : MonoBehaviour
     {
         [SerializeField]
         private Transform target;
         [SerializeField]
-        private Vector3 axis = Vector3.forward;
+        private float rotateAngle = 40;
         [SerializeField]
-        private float rotateSpeed = 200;
+        private float rotateSpeed;
 
         private void Update()
         {
-            target.Rotate(Time.deltaTime * axis * rotateSpeed);
+            float angle = rotateAngle * Mathf.Sin(Time.time * rotateSpeed);
+
+            target.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
     }
 }
