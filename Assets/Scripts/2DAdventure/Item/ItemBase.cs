@@ -32,7 +32,7 @@ public abstract class ItemBase : MonoBehaviour
         }
 
         allowCollect = true;
-        GetComponent<Collider2D>().isTrigger = true;
+        GetComponent<Collider2D>().isTrigger = false;
 
         yield return new WaitForSeconds(itemAliveTime);
 

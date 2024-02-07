@@ -8,7 +8,7 @@ public class PlayerData : MonoBehaviour
 
     public int Coin
     {
-        set => Mathf.Clamp(coin, 0, 9999);
+        set => coin = Mathf.Clamp(coin, 0, 9999);
         get => coin;
     }
 }

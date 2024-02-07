@@ -34,7 +34,8 @@ namespace Adventure_2D
                 itemType = (ItemType)Random.Range(0, items.Length);
             }
 
-            Instantiate(items[(int)itemType], transform.position, Quaternion.identity);
+            GameObject item = Instantiate(items[(int)itemType], transform.position, Quaternion.identity);
+            item.GetComponent<ItemBase>().Init();
 
             if ( itemType == ItemType.Coin )
             {
