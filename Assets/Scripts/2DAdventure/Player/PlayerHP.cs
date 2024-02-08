@@ -12,13 +12,14 @@ public class PlayerHP : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color          originalColor;
 
-    private bool isInvincible = false;
+    [SerializeField]
     private float invinciblilityTime;
+    private bool isInvincible = false;
 
     private void Awake()
     {
         current = max;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
     }
 
