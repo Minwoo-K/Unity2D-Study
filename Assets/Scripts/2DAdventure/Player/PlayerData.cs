@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour
+namespace Adventure_2D
 {
-    private int coin;
-
-    public int Coin
+    public class PlayerData : MonoBehaviour
     {
-        set => coin = Mathf.Clamp(coin, 0, 9999);
-        get => coin;
+        private int coin;
+
+        public int Coin
+        {
+            set => coin = Mathf.Clamp(coin, 0, 9999);
+            get => coin;
+        }
     }
 }

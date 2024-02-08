@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemInvincibility : ItemBase
+namespace Adventure_2D
 {
-    [SerializeField]
-    private float validTime = 3;
-
-    public override void UpdateItemTaken(Transform transform)
+    public class ItemInvincibility : ItemBase
     {
-        transform.GetComponent<PlayerHP>().TurnOnInvincible(validTime);
+        [SerializeField]
+        private float validTime = 3;
+
+        public override void UpdateItemTaken(Transform transform)
+        {
+            transform.GetComponent<PlayerHP>().TurnOnInvincible(validTime);
+        }
     }
 }

@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemHPPotion : ItemBase
+namespace Adventure_2D
 {
-    public override void UpdateItemTaken(Transform transform)
+    public class ItemHPPotion : ItemBase
     {
-        transform.GetComponent<PlayerHP>().IncreaseHP();
+        public override void UpdateItemTaken(Transform transform)
+        {
+            transform.GetComponent<PlayerHP>().IncreaseHP();
+        }
     }
 }
+

@@ -1,9 +1,13 @@
 using UnityEngine;
 
-public class ItemCoin : ItemBase
+namespace Adventure_2D
 {
-    public override void UpdateItemTaken(Transform transform)
+    public class ItemCoin : ItemBase
     {
-        transform.GetComponent<PlayerData>().Coin ++;
+        public override void UpdateItemTaken(Transform transform)
+        {
+            transform.GetComponent<PlayerData>().Coin++;
+        }
     }
 }
+
