@@ -17,7 +17,7 @@ public class ObstacleBase : MonoBehaviour
         }
         else
         {
-            Debug.Log("Player Health Reduced");
+            collision.GetComponent<PlayerHP>().DecreaseHP();
         }
     }
 }
