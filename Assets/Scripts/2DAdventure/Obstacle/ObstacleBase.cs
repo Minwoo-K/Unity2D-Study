@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleBase : MonoBehaviour
+namespace Adventure_2D
 {
-    [SerializeField]
-    protected bool isInstantDeath = false;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class ObstacleBase : MonoBehaviour
     {
-        if ( collision.CompareTag("Player") == false ) return;
+        [SerializeField]
+        protected bool isInstantDeath = false;
 
-        if ( isInstantDeath )
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("Player Dead");
-        }
-        else
-        {
-            collision.GetComponent<PlayerHP>().DecreaseHP();
+            if (collision.CompareTag("Player") == false) return;
+
+            if (isInstantDeath)
+            {
+                Debug.Log("Player Dead");
+            }
+            else
+            {
+                collision.GetComponent<PlayerHP>().DecreaseHP();
+            }
         }
     }
 }
