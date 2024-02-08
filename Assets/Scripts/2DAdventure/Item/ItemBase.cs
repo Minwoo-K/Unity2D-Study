@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class ItemBase : MonoBehaviour
 {
+    [Header("ItemBase Component")]
     [SerializeField]
     private Vector2 spawningForce = new Vector2(1, 7);
     [SerializeField]

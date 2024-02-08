@@ -23,6 +23,14 @@ public class PlayerHP : MonoBehaviour
         originalColor = spriteRenderer.color;
     }
 
+    public void IncreaseHP()
+    {
+        if ( current < max )
+        {
+            current ++;
+        }
+    }
+
     public void DecreaseHP()
     {
         if ( isInvincible ) return;
