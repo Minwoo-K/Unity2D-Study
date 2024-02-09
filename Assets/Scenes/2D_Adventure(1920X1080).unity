@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 386247494}
   - component: {fileID: 386247496}
   - component: {fileID: 386247495}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LandingEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5372,7 +5372,7 @@ GameObject:
   - component: {fileID: 595205807}
   - component: {fileID: 595205809}
   - component: {fileID: 595205808}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FootStepEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10189,7 +10189,7 @@ GameObject:
   - component: {fileID: 663764216}
   - component: {fileID: 663764217}
   - component: {fileID: 663764218}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -10291,6 +10291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: 556858dea58d4d441b22d1400e94b2d7, type: 2}
   jumpKeyCode: 32
+  fireKeyCode: 122
 --- !u!114 &663764216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10342,7 +10343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 678139342}
   - component: {fileID: 678139343}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MovementEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10392,7 +10393,7 @@ GameObject:
   - component: {fileID: 727097670}
   - component: {fileID: 727097671}
   - component: {fileID: 727097672}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10591,7 +10592,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 916404693}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProjectileSpawningPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
