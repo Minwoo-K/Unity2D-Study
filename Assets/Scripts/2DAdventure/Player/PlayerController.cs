@@ -10,14 +10,20 @@ namespace Adventure_2D
         private StageData stageData;
         [SerializeField]
         private KeyCode jumpKeyCode = KeyCode.Space;
+        [SerializeField]
+        private KeyCode fireKeyCode = KeyCode.Z;
 
         private MovementRigidbody2D movement;
         private PlayerAnimator playerAnimator;
+        private PlayerWeapon weapon;
+
+        private int lastDirectionX = 1;
 
         private void Awake()
         {
             movement = GetComponent<MovementRigidbody2D>();
             playerAnimator = GetComponentInChildren<PlayerAnimator>();
+            weapon = GetComponent<PlayerWeapon>();
         }
 
         private void Update()
@@ -29,6 +35,8 @@ namespace Adventure_2D
 
             // Input.GetAxisRaw("Sprint"): when the set-up key is pressed, it returns 1
             float offset = 0.5f + Input.GetAxisRaw("Sprint") * 0.5f;
+
+            if ( x != 0 ) lastDirectionX = (int)x;
 
             // When walking, x is within -0.5 ~ 0.5
             // When running, x is within -1 ~ 1
@@ -43,6 +51,8 @@ namespace Adventure_2D
             // Collsion Update
             UpdateCollisionAbove();
             UpdateCollisionBelow();
+            // Projectile Update
+            UpdateProjectileAttack();
         }
 
         private void UpdateMove(float x)
@@ -101,6 +111,14 @@ namespace Adventure_2D
                 {
                     platform.UpdateCollision(gameObject);
                 }
+            }
+        }
+
+        private void UpdateProjectileAttack()
+        {
+            if ( Input.GetKeyDown(fireKeyCode))
+            {
+                weapon.FireProjectile(lastDirectionX);
             }
         }
         
