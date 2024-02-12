@@ -27,9 +27,6 @@ namespace Adventure_2D
             {
                 Destroy(gameObject);
             }
-
-            // If this Projectile falls to void, destroy it
-            if ( transform.position.y < -50 ) Destroy(gameObject);
         }
     }
 }
