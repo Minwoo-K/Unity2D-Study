@@ -18,7 +18,7 @@ namespace Adventure_2D
         public int MaxProjectile { get; }   = 10;
         public int CurrentProjectile
         {
-            set => CurrentProjectile = Mathf.Clamp(projectile, 0, MaxProjectile);
+            set => projectile = Mathf.Clamp(value, 0, MaxProjectile);
             get => projectile;
         }
     }

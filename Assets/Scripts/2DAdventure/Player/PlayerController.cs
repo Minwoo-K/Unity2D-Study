@@ -16,6 +16,7 @@ namespace Adventure_2D
         private MovementRigidbody2D movement;
         private PlayerAnimator playerAnimator;
         private PlayerWeapon weapon;
+        private PlayerData playerData;
 
         private int lastDirectionX = 1;
 
@@ -24,6 +25,7 @@ namespace Adventure_2D
             movement = GetComponent<MovementRigidbody2D>();
             playerAnimator = GetComponentInChildren<PlayerAnimator>();
             weapon = GetComponent<PlayerWeapon>();
+            playerData = GetComponent<PlayerData>();
         }
 
         private void Update()
@@ -116,8 +118,9 @@ namespace Adventure_2D
 
         private void UpdateProjectileAttack()
         {
-            if ( Input.GetKeyDown(fireKeyCode))
+            if ( Input.GetKeyDown(fireKeyCode) && playerData.CurrentProjectile > 0 )
             {
+                playerData.CurrentProjectile --;
                 weapon.FireProjectile(lastDirectionX);
             }
         }
