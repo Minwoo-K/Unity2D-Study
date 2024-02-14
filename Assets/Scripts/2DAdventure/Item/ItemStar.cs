@@ -12,7 +12,7 @@ namespace Adventure_2D
 
         public override void UpdateItemTaken(Transform transform)
         {
-            transform.GetComponent<PlayerData>().GrabStar(starIndex);
+            transform.GetComponent<PlayerData>().GetStar(starIndex);
         }
     }
 }

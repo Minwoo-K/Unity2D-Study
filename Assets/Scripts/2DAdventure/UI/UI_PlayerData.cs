@@ -20,6 +20,10 @@ namespace Adventure_2D
         [SerializeField]
         private TextMeshProUGUI projectile_text;
 
+        [Header("STARS")]
+        [SerializeField]
+        private GameObject[] starObjects;
+
         public void SetHP(int index, bool isActive)
         {
             hpImages[index].color = isActive == true ? Color.white : Color.black;
@@ -42,6 +46,11 @@ namespace Adventure_2D
             }
 
             projectile_text.text = $"{currentNumber} / {maxNumber}";
+        }
+
+        public void GetStar(int index)
+        {
+            starObjects[index].SetActive(true);
         }
     }
 }
