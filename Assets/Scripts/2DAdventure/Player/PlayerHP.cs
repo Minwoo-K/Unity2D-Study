@@ -7,6 +7,8 @@ namespace Adventure_2D
     public class PlayerHP : MonoBehaviour
     {
         [SerializeField]
+        private UI_PlayerData ui_PlayerData;
+        [SerializeField]
         private int max = 3;
         [SerializeField]
         private int current;
@@ -29,6 +31,7 @@ namespace Adventure_2D
         {
             if (current < max)
             {
+                ui_PlayerData.SetHP(current, true);
                 current++;
             }
         }
@@ -41,6 +44,7 @@ namespace Adventure_2D
             TurnOnInvincible(1);
 
             current--;
+            ui_PlayerData.SetHP(current, false);
 
             if (current == 0)
             {
