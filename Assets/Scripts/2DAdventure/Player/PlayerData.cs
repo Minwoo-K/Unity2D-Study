@@ -34,9 +34,10 @@ namespace Adventure_2D
             get => projectile;
         }
 
-        public void GrabStar(int index)
+        public void GetStar(int index)
         {
             stars[index] = true;
+            ui_PlayerData.GetStar(index);
         }
 
         private void Awake()
