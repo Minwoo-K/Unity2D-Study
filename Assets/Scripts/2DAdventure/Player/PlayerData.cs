@@ -10,7 +10,7 @@ namespace Adventure_2D
         private UI_PlayerData ui_PlayerData;
 
         private int coin;
-        private int projectile = 0;
+        private int projectile;
         private bool[] stars = new bool[3] { false, false, false };
 
         public int Coin
@@ -26,7 +26,11 @@ namespace Adventure_2D
         public int MaxProjectile { get; }   = 10;
         public int CurrentProjectile
         {
-            set => projectile = Mathf.Clamp(value, 0, MaxProjectile);
+            set
+            {
+                projectile = Mathf.Clamp(value, 0, MaxProjectile);
+                ui_PlayerData.SetProjectile(projectile, MaxProjectile);
+            }
             get => projectile;
         }
 
@@ -38,6 +42,7 @@ namespace Adventure_2D
         private void Awake()
         {
             Coin = 0;
+            CurrentProjectile = 0;
         }
     }
 }

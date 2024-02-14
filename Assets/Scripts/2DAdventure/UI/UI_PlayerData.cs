@@ -12,9 +12,13 @@ namespace Adventure_2D
         [SerializeField]
         private Image[] hpImages;
 
-        [Header("Coin")]
+        [Header("COIN")]
         [SerializeField]
         private TextMeshProUGUI coin_text; 
+
+        [Header("PROJECTILE")]
+        [SerializeField]
+        private TextMeshProUGUI projectile_text;
 
         public void SetHP(int index, bool isActive)
         {
@@ -24,6 +28,20 @@ namespace Adventure_2D
         public void SetCoin(int coin)
         {
             coin_text.text = $"x {coin}";
+        }
+
+        public void SetProjectile(int currentNumber, int maxNumber)
+        {
+            if ( (float)currentNumber / maxNumber <= 0.3f )
+            {
+                projectile_text.color = Color.red;
+            }
+            else
+            {
+                projectile_text.color = Color.white;
+            }
+
+            projectile_text.text = $"{currentNumber} / {maxNumber}";
         }
     }
 }

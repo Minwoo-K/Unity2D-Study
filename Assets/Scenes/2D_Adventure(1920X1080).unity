@@ -12256,6 +12256,7 @@ MonoBehaviour:
   - {fileID: 112950634}
   - {fileID: 1791006359}
   coin_text: {fileID: 543672323}
+  projectile_text: {fileID: 82561140}
 --- !u!1 &2016304101
 GameObject:
   m_ObjectHideFlags: 0
