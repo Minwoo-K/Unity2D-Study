@@ -10814,7 +10814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f542b6c355d8a1a46b2268dc09f3bb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stars: 000000
+  ui_PlayerData: {fileID: 1902326189}
 --- !u!114 &663764217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12255,6 +12255,7 @@ MonoBehaviour:
   - {fileID: 1810165178}
   - {fileID: 112950634}
   - {fileID: 1791006359}
+  coin_text: {fileID: 543672323}
 --- !u!1 &2016304101
 GameObject:
   m_ObjectHideFlags: 0
