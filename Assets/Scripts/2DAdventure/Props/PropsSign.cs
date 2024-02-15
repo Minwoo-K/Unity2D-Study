@@ -2,25 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PropsSign : MonoBehaviour
+namespace Adventure_2D
 {
-    [SerializeField]
-    private GameObject guideObject;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class PropsSign : MonoBehaviour
     {
-        if ( collision.CompareTag("Player") )
+        [SerializeField]
+        private GameObject guideObject;
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            guideObject.SetActive(true);
+            if (collision.CompareTag("Player"))
+            {
+                guideObject.SetActive(true);
+            }
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-
-        if (collision.CompareTag("Player"))
+        private void OnTriggerExit2D(Collider2D collision)
         {
-            guideObject.SetActive(false);
+            if (collision.CompareTag("Player"))
+            {
+                guideObject.SetActive(false);
+            }
         }
     }
 }
+
+

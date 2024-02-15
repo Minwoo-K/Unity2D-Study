@@ -24,6 +24,24 @@ namespace Adventure_2D
             // if ( action != null ) action.Invoke(); ==
             action?.Invoke();
         }
+
+        public static IEnumerator FadeOn(SpriteRenderer sprite, float startAlpha, float endAlpha, float fadeTime = 1, Action action = null)
+        {
+            float percent = 0;
+
+            while (percent < 1)
+            {
+                percent += Time.deltaTime / fadeTime;
+                Color color = sprite.color;
+                color.a = Mathf.Lerp(startAlpha, endAlpha, percent);
+                sprite.color = color;
+
+                yield return null;
+            }
+
+            // if ( action != null ) action.Invoke(); ==
+            action?.Invoke();
+        }
     }
 }
 
