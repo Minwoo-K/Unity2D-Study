@@ -5427,6 +5427,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5232949724851318520, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_text
+      value: Hidden Area
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753430435167701045, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_text
+      value: "Jump Longer by \nPressing Down 'Space'"
+      objectReference: {fileID: 0}
     - target: {fileID: 6085904261132216060, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: starIndex
       value: 2
@@ -5467,9 +5475,17 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7493180027048262975, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_text
+      value: Press 'Space' to Jump
+      objectReference: {fileID: 0}
     - target: {fileID: 7717476630130103266, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: starIndex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382948779860894666, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_text
+      value: Move forward
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3431737617361811603, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
