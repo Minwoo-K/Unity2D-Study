@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAnimatorEvent : MonoBehaviour
 {
     [SerializeField]
-    private Transform parent;
+    private GameObject parent;
 
     public void OnDie()
     {

@@ -22,6 +22,7 @@ public class EnemyCollider : MonoBehaviour
         else if ( collision.CompareTag("PlayerProjectile") )
         {
             enemyBase.OnDie();
+            Destroy(collision.gameObject);
         }
     }
 }
