@@ -15,6 +15,8 @@ public class EnemyCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if ( enemyBase.IsDead ) return;
+
         if ( collision.CompareTag("Player") )
         {
             collision.GetComponent<PlayerHP>().DecreaseHP();

@@ -23,6 +23,10 @@ public class EnemyMushroom : EnemyBase
 
     public override void OnDie()
     {
+        if ( IsDead ) return;
+        
+        IsDead = true;
+
         pathDrawer.Stop();
         animator.SetTrigger("OnDie");
     }
