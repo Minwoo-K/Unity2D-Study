@@ -74,7 +74,7 @@ public class PathDrawer : MonoBehaviour
         else                      direction = 0;
     }
 
-    private void Stop()
+    public void Stop()
     {
         StopAllCoroutines();
     }
