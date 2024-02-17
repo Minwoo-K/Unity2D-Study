@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAnimatorEvent : MonoBehaviour
+public class EnemyMushroomAnimator : MonoBehaviour
 {
     [SerializeField]
     private GameObject parent;
