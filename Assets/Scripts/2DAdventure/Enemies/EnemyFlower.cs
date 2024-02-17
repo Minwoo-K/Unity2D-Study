@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class EnemyFlower : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float firingRate;
+    
+    private Animator animator;
+    private float currentTime = 0;
+
+    private void Awake()
     {
-        
+        animator = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator Start()
     {
-        
+        while ( true )
+        {
+            if ( Time.time - currentTime > firingRate )
+            {
+                animator.SetTrigger("OnFire");
+
+                currentTime = Time.time;
+            }
+
+            yield return null;
+        }
     }
 }

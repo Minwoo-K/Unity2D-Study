@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EnemyFlowerAnimator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject projectilePrefab;
+    [SerializeField]
+    private Transform spawnPoint;
+    //private Vector3 direction;
 
-    // Update is called once per frame
-    void Update()
+    public void FireProjectile()
     {
-        
+        Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
     }
 }
