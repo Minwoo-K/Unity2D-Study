@@ -3,30 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class HiddenArea : MonoBehaviour
+namespace Adventure_2D
 {
-    private Tilemap tilemap;
-
-    private void Awake()
+    public class HiddenArea : MonoBehaviour
     {
-        tilemap = GetComponent<Tilemap>();
-    }
+        private Tilemap tilemap;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if ( collision.CompareTag("Player") )
+        private void Awake()
         {
-            StopAllCoroutines();
-            StartCoroutine(Adventure_2D.FadeEffect.FadeOn(tilemap, tilemap.color.a, 0, tilemap.color.a));
+            tilemap = GetComponent<Tilemap>();
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if ( collision.CompareTag("Player") )
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            StopAllCoroutines();
-            StartCoroutine(Adventure_2D.FadeEffect.FadeOn(tilemap, tilemap.color.a, 1, 1-tilemap.color.a));
+            if (collision.CompareTag("Player"))
+            {
+                StopAllCoroutines();
+                StartCoroutine(FadeEffect.FadeOn(tilemap, tilemap.color.a, 0, tilemap.color.a));
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                StopAllCoroutines();
+                StartCoroutine(FadeEffect.FadeOn(tilemap, tilemap.color.a, 1, 1 - tilemap.color.a));
+            }
         }
     }
 }
