@@ -42,8 +42,9 @@ namespace Adventure_2D
 
             // when damaged, make Player invincible for 1 second
             TurnOnInvincible(1);
+            
+            current = Mathf.Clamp(--current, 0, max);
 
-            current--;
             ui_PlayerData.SetHP(current, false);
 
             if (current == 0)
