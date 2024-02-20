@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Adventure_2D
 {
-    public class EnemyFrog : MonoBehaviour
+    public class EnemyFrog : EnemyBase
     {
         [SerializeField]
         private LayerMask groundLayer;
@@ -51,6 +51,7 @@ namespace Adventure_2D
 
                 if ( movement2D.IsOnGround )
                 {
+                    movement2D.MoveTo(0);
                     animator.SetTrigger("onLanding");
                     StartCoroutine(Idle());
 
@@ -73,6 +74,18 @@ namespace Adventure_2D
                 direction *= -1;
                 spriteRenderer.flipX = !spriteRenderer.flipX;
             }
+        }
+
+        public override void OnDie()
+        {
+            if ( IsDead ) return;
+
+            IsDead = true;
+
+            StopAllCoroutines();
+            float fadeTime = 2;
+            StartCoroutine(FadeEffect.FadeOn(spriteRenderer, 1, 0, fadeTime));
+            Destroy(gameObject, fadeTime);
         }
     }
 }
