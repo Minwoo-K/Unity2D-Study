@@ -2,86 +2,98 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Adventure_2D;
-public class EnemyFrog : EnemyBase
+namespace Adventure_2D
 {
-    [SerializeField]
-    private LayerMask groundLayer;
 
-    private MovementRigidbody2D movement2D;
-    private new Collider2D collider;
-    private Animator animator;
-    private SpriteRenderer spriteRenderer;
-    private int direction = 1;
-
-    private void Awake()
+    public class EnemyFrog : EnemyBase
     {
-        movement2D = GetComponent<MovementRigidbody2D>();
-        animator = GetComponentInChildren<Animator>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        [SerializeField]
+        private LayerMask groundLayer;
 
-        StartCoroutine(Idle());
-    }
+        private MovementRigidbody2D movement2D;
+        private new Collider2D collider;
+        private Animator animator;
+        private SpriteRenderer spriteRenderer;
+        private int direction = -1;
 
-    private IEnumerator Idle()
-    {
-        float waitTime = 2;
-        float current = 0;
-
-        while ( current < waitTime)
+        private void Awake()
         {
-            current += Time.deltaTime;
+            movement2D = GetComponent<MovementRigidbody2D>();
+            collider = GetComponent<Collider2D>();
+            animator = GetComponentInChildren<Animator>();
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-            yield return null;
+            StartCoroutine(Idle());
         }
 
-        movement2D.Jump();
-        animator.SetTrigger("onJump");
-
-        StartCoroutine(Jump());
-    }
-
-    private IEnumerator Jump()
-    {
-        yield return new WaitUntil(()=> !movement2D.IsOnGround );
-
-        while ( true )
+        private IEnumerator Idle()
         {
-            movement2D.MoveTo(direction);
-            animator.SetFloat("velocityY", movement2D.Velocity.y);
+            float waitTime = 2;
+            float current = 0;
 
-            if ( movement2D.IsOnGround )
+            while (current < waitTime)
             {
-                movement2D.MoveTo(0);
-                animator.SetTrigger("onLanding");
+                current += Time.deltaTime;
 
-                StartCoroutine(Idle());
-
-                yield break;
+                yield return null;
             }
+
+            movement2D.Jump();
+            animator.SetTrigger("onJump");
+
+            StartCoroutine(Jump());
         }
 
-        yield return null;
-
-    }
-
-    private void UpdateDirection()
-    {
-        Bounds bound = collider.bounds;
-        Vector2 size = new Vector2(0.1f, (bound.max.y - bound.min.y) * 0.8f);
-        Vector2 position = new Vector2((direction == -1 ? bound.min.x : bound.max.x), bound.center.y);
-
-        // If collided with a groundlayer object,
-        if ( Physics2D.OverlapBox(position, size, 0, groundLayer) )
+        private IEnumerator Jump()
         {
-            direction *= -1;
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            yield return new WaitUntil(() => !movement2D.IsOnGround);
+
+            while (true)
+            {
+                UpdateDirection();
+                movement2D.MoveTo(direction);
+                animator.SetFloat("velocityY", movement2D.Velocity.y);
+
+                if (movement2D.IsOnGround)
+                {
+                    movement2D.MoveTo(0);
+                    animator.SetTrigger("onLanding");
+
+                    StartCoroutine(Idle());
+
+                    yield break;
+                }
+                
+                yield return null;
+            }
+
+
         }
 
-    }
+        private void UpdateDirection()
+        {
+            Bounds bound = collider.bounds;
+            Vector2 size = new Vector2(0.1f, (bound.max.y - bound.min.y) * 0.8f);
+            Vector2 position = new Vector2((direction == -1 ? bound.min.x : bound.max.x), bound.center.y);
 
-    public override void OnDie()
-    {
-        
+            // If collided with a groundlayer object,
+            if (Physics2D.OverlapBox(position, size, 0, groundLayer))
+            {
+                direction *= -1;
+                spriteRenderer.flipX = !spriteRenderer.flipX;
+            }
+
+        }
+
+        public override void OnDie()
+        {
+            if (IsDead) return;
+
+            IsDead = true;
+
+            float fadingTime = 2;
+            StartCoroutine(FadeEffect.FadeOn(spriteRenderer, 1, 0, fadingTime));
+            Destroy(gameObject, fadingTime);
+        }
     }
 }
