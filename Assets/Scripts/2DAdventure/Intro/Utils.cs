@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.SceneManagement;
 
 namespace Adventure_2D
@@ -25,7 +26,12 @@ namespace Adventure_2D
 
         public static void LoadScene(SceneType sceneType)
         {
-            SceneManager.LoadScene(sceneType.ToString());
+            LoadScene(sceneType.ToString());
+        }
+
+        public static void LoadScene(int sceneIndex)
+        {
+            SceneManager.LoadScene(sceneIndex);
         }
     }
 }
