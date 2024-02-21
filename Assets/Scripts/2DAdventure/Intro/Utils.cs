@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace Adventure_2D
 {
-    public enum SceneType { Intro=0, LevelSelection, Game }
+    public enum SceneType { Intro=4, LevelSelection, Game }
 
     public static class Utils
     {
