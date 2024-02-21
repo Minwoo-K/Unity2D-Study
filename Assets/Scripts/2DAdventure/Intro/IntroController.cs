@@ -21,9 +21,9 @@ namespace Adventure_2D
         {
             while ( true )
             {
-                StartCoroutine(FadeEffect.FadeOn(pressAnyKey, 1, 0, textFadingTime));
+                yield return StartCoroutine(FadeEffect.FadeOn(pressAnyKey, 1, 0, textFadingTime));
 
-                StartCoroutine(FadeEffect.FadeOn(pressAnyKey, 0, 1, textFadingTime));
+                yield return StartCoroutine(FadeEffect.FadeOn(pressAnyKey, 0, 1, textFadingTime));
             }
         }
 
@@ -35,7 +35,7 @@ namespace Adventure_2D
             {
                 IsKeyDown = true;
 
-                StartCoroutine(FadeEffect.FadeOn(fadeScreen, 1, 0, 1, EventAfterFadingScreen));
+                StartCoroutine(FadeEffect.FadeOn(fadeScreen, 0, 1, 1, EventAfterFadingScreen));
             }
         }
 

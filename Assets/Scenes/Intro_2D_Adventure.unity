@@ -460,7 +460,7 @@ RectTransform:
   - {fileID: 994904383}
   - {fileID: 965080300}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -772,7 +772,6 @@ GameObject:
   - component: {fileID: 1088379314}
   - component: {fileID: 1088379313}
   - component: {fileID: 1088379312}
-  - component: {fileID: 1088379315}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -844,25 +843,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1088379315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088379311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d6d4e12d8380b4185d8fbd6e372f31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stageData: {fileID: 11400000, guid: 556858dea58d4d441b22d1400e94b2d7, type: 2}
-  target: {fileID: 0}
-  followX: 1
-  followY: 1
-  followZ: 0
 --- !u!1 &1274543084
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,7 +911,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1466011353
 GameObject:
@@ -1185,7 +1167,7 @@ Transform:
   - {fileID: 1466011354}
   - {fileID: 999900198}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1707749273
 MonoBehaviour:
@@ -1210,6 +1192,53 @@ MonoBehaviour:
   backgroundCloud:
     background: {fileID: 1466011355}
     speed: 0.02
+--- !u!1 &1995917989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1995917990}
+  - component: {fileID: 1995917991}
+  m_Layer: 0
+  m_Name: IntroSceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1995917990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995917989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1995917991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995917989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9785b7689e15ba46b31aa132c2d74a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressAnyKey: {fileID: 994904384}
+  textFadingTime: 1
+  fadeScreen: {fileID: 965080301}
 --- !u!1 &2016304101
 GameObject:
   m_ObjectHideFlags: 0
