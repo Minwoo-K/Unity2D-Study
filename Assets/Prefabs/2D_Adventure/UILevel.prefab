@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92930a18b74983d459a096279fe61380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteLevelUnlocked: {fileID: 21300000, guid: 60782db202902bc4781c80ee39bc391d, type: 3}
+  spriteLevelLocked: {fileID: 21300000, guid: 60782db202902bc4781c80ee39bc391d, type: 3}
   levelIcon: {fileID: 7604284852598667611}
   level_Text: {fileID: 7604284851722632089}
   starBackgroundObject: {fileID: 7604284852697180357}
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92930a18b74983d459a096279fe61380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteLevelUnlocked: {fileID: 0}
+  spriteLevelLocked: {fileID: 0}
   levelIcon: {fileID: 0}
   level_Text: {fileID: 0}
   starBackgroundObject: {fileID: 0}
@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92930a18b74983d459a096279fe61380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteLevelUnlocked: {fileID: 0}
+  spriteLevelLocked: {fileID: 0}
   levelIcon: {fileID: 0}
   level_Text: {fileID: 0}
   starBackgroundObject: {fileID: 0}

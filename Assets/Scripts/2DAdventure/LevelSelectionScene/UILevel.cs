@@ -10,7 +10,7 @@ namespace Adventure_2D
     public class UILevel : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField]
-        private Sprite spriteLevelUnlocked;
+        private Sprite spriteLevelLocked;
         [SerializeField]
         private Image levelIcon;
         [SerializeField]
@@ -37,6 +37,7 @@ namespace Adventure_2D
             }
             else
             {
+                levelIcon.sprite = spriteLevelLocked;
                 level_Text.enabled = false;
                 starBackgroundObject.SetActive(false);
 

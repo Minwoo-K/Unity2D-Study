@@ -496,6 +496,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722462fe85f6b0e4aab8ad5f4e9fedac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadingScreen: {fileID: 1001127844}
+  levelUI_Prefab: {fileID: 1362654856697386864, guid: 7cfff13773079064eab9d36190ea86c5, type: 3}
+  levelUI_Parent: {fileID: 1025686636}
 --- !u!4 &866655483
 Transform:
   m_ObjectHideFlags: 0
@@ -762,15 +765,15 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 100
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_CellSize: {x: 200, y: 200}
+  m_Spacing: {x: 70, y: 70}
+  m_Constraint: 1
+  m_ConstraintCount: 5
 --- !u!1 &1088379311
 GameObject:
   m_ObjectHideFlags: 0

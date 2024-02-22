@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ZigZag.unity
     guid: ac1f6f0b5a769a54592491e7c35c0049
+  - enabled: 1
+    path: Assets/Scenes/4_Intro_2D_Adventure.unity
+    guid: 1fbbbcc72e87ba3408736c3174ac476e
+  - enabled: 1
+    path: Assets/Scenes/5_LevelSelection_2D_Adventure.unity
+    guid: c2650838f459418418d49cacfde16f3e
+  - enabled: 1
+    path: Assets/Scenes/6_2D_Adventure(1920X1080).unity
+    guid: 1cb0367c5d48b484e86bd5ec571276c5
   m_configObjects: {}
