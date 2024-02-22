@@ -25,18 +25,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7604284851577068594}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7604284852697180358}
-  m_RootOrder: 0
+  m_Father: {fileID: 7604284852598667610}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -80}
+  m_SizeDelta: {x: 0, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7604284851577068597
 CanvasRenderer:
@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 7604284852598667610}
   - component: {fileID: 7604284852598667612}
   - component: {fileID: 7604284852598667611}
+  - component: {fileID: 1362654856697386864}
   m_Layer: 5
   m_Name: UILevel
   m_TagString: Untagged
@@ -243,6 +244,9 @@ RectTransform:
   m_Children:
   - {fileID: 7604284851722632088}
   - {fileID: 7604284852697180358}
+  - {fileID: 7604284851577068595}
+  - {fileID: 7604284852854602109}
+  - {fileID: 7604284852858528196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -289,6 +293,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1362654856697386864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604284852598667609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92930a18b74983d459a096279fe61380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLevelLocked: {fileID: 21300000, guid: 60782db202902bc4781c80ee39bc391d, type: 3}
+  levelIcon: {fileID: 7604284852598667611}
+  level_Text: {fileID: 7604284851722632089}
+  starBackgroundObject: {fileID: 7604284852697180357}
+  starsObjects:
+  - {fileID: 7604284851577068594}
+  - {fileID: 7604284852854602108}
+  - {fileID: 7604284852858528195}
 --- !u!1 &7604284852697180357
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,10 +342,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7604284851577068595}
-  - {fileID: 7604284852854602109}
-  - {fileID: 7604284852858528196}
+  m_Children: []
   m_Father: {fileID: 7604284852598667610}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -379,6 +400,7 @@ GameObject:
   - component: {fileID: 7604284852854602109}
   - component: {fileID: 7604284852854602111}
   - component: {fileID: 7604284852854602110}
+  - component: {fileID: 678782235863652099}
   m_Layer: 5
   m_Name: Star_02
   m_TagString: Untagged
@@ -393,18 +415,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7604284852854602108}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7604284852697180358}
-  m_RootOrder: 1
+  m_Father: {fileID: 7604284852598667610}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -80}
+  m_SizeDelta: {x: 0, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7604284852854602111
 CanvasRenderer:
@@ -444,6 +466,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &678782235863652099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604284852854602108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92930a18b74983d459a096279fe61380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLevelLocked: {fileID: 0}
+  levelIcon: {fileID: 0}
+  level_Text: {fileID: 0}
+  starBackgroundObject: {fileID: 0}
+  starsObjects: []
 --- !u!1 &7604284852858528195
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +494,7 @@ GameObject:
   - component: {fileID: 7604284852858528196}
   - component: {fileID: 7604284852858528198}
   - component: {fileID: 7604284852858528197}
+  - component: {fileID: 92948257285825613}
   m_Layer: 5
   m_Name: Star_03
   m_TagString: Untagged
@@ -469,18 +509,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7604284852858528195}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7604284852697180358}
-  m_RootOrder: 2
+  m_Father: {fileID: 7604284852598667610}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -80}
+  m_SizeDelta: {x: 0, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7604284852858528198
 CanvasRenderer:
@@ -520,3 +560,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &92948257285825613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604284852858528195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92930a18b74983d459a096279fe61380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLevelLocked: {fileID: 0}
+  levelIcon: {fileID: 0}
+  level_Text: {fileID: 0}
+  starBackgroundObject: {fileID: 0}
+  starsObjects: []
