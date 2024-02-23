@@ -11,7 +11,7 @@ namespace Adventure_2D
         {
             return SceneManager.GetActiveScene().name;
         }
-        /*
+        
         public static void LoadScene(string sceneName="")
         {
             if ( string.IsNullOrEmpty(sceneName) )
@@ -22,7 +22,7 @@ namespace Adventure_2D
             {
                 SceneManager.LoadScene(sceneName);
             }
-        }*/
+        }
 
         public static void LoadScene(SceneType sceneType)
         {
