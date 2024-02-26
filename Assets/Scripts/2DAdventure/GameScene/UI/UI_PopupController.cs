@@ -12,6 +12,10 @@ namespace Adventure_2D
         [SerializeField]
         private GameObject pauseMenu;
 
+        [Header("Level Failed")]
+        [SerializeField]
+        private GameObject levelFailedPanel;
+
         private void SetTimeScale(float time)
         {
             Time.timeScale = time;
@@ -29,6 +33,13 @@ namespace Adventure_2D
             SetTimeScale(1);
             overlayPanel.SetActive(false);
             pauseMenu.SetActive(false);
+        }
+
+        public void LevelFailed()
+        {
+            SetTimeScale(0);
+            overlayPanel.SetActive(true);
+            levelFailedPanel.SetActive(true);
         }
 
         public void Restart()
