@@ -15,7 +15,7 @@ namespace Adventure_2D
 
             if (isInstantDeath)
             {
-                Debug.Log("Player Dead");
+                collision.GetComponent<PlayerController>().OnDie();
             }
             else
             {

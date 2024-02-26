@@ -49,7 +49,7 @@ namespace Adventure_2D
 
             if (current == 0)
             {
-                Debug.Log("Player Dead");
+                gameObject.GetComponent<PlayerController>().OnDie();
             }
         }
 

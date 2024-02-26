@@ -7,6 +7,8 @@ namespace Adventure_2D
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
+        private GameManager gameManager;
+        [SerializeField]
         private StageData stageData;
         [SerializeField]
         private KeyCode jumpKeyCode = KeyCode.Space;
@@ -55,6 +57,8 @@ namespace Adventure_2D
             UpdateCollisionBelow();
             // Projectile Update
             UpdateProjectileAttack();
+            // Check if Player has fallen under ground
+            IsUnderGround();
         }
 
         private void UpdateMove(float x)
@@ -125,5 +129,17 @@ namespace Adventure_2D
             }
         }
         
+        private void IsUnderGround()
+        {
+            if ( transform.position.y < stageData.MapLimitMinY )
+            {
+                gameManager.OnDie();
+            }
+        }
+
+        public void OnDie()
+        {
+            gameManager.OnDie();
+        }
     }
 }
