@@ -141,5 +141,10 @@ namespace Adventure_2D
         {
             gameManager.OnDie();
         }
+
+        public void LevelComplete()
+        {
+
+        }
     }
 }

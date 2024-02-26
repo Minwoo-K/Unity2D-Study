@@ -22,7 +22,6 @@ namespace Adventure_2D
             }
             get => coin;
         }
-
         public int MaxProjectile { get; }   = 10;
         public int CurrentProjectile
         {
@@ -34,16 +33,17 @@ namespace Adventure_2D
             get => projectile;
         }
 
+        private void Awake()
+        {
+            Coin = 0;
+            CurrentProjectile = 0;
+        }
+
         public void GetStar(int index)
         {
             stars[index] = true;
             ui_PlayerData.GetStar(index);
         }
 
-        private void Awake()
-        {
-            Coin = 0;
-            CurrentProjectile = 0;
-        }
     }
 }

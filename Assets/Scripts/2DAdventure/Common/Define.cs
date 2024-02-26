@@ -10,6 +10,7 @@ public static class Define
     public static readonly string   CurrentLevel  = "CURRENT_LEVEL";
     public static readonly string   LevelUnlocked = "LEVEL_UNLOCKED";
     public static readonly string   Stars         = "STARS";
+    public static readonly string   Coins         = "COINCOUNT";
 
     public static (bool, bool[]) LoadLevelData(int level)
     {
@@ -24,5 +25,22 @@ public static class Define
         }
 
         return (isUnlocked, starsEarned);
+    }
+
+    public static void SaveUponLevelComplete(int level, bool[] starsEarned, int coins)
+    {
+        PlayerPrefs.SetInt($"{Coins}", coins);
+
+        //PlayerPrefs.SetInt($"{CurrentLevel}{Stars}")
+
+        if ( level+1 <= MaxLevel )
+        {
+            PlayerPrefs.SetInt($"{level+1}{LevelUnlocked}", 1);
+        }
+
+        for ( int i = 0; i < starsEarned.Length; i++ )
+        {
+            PlayerPrefs.SetInt($"{level}{Stars}{i}", starsEarned[i] == true ? 1 : 0);
+        }
     }
 }

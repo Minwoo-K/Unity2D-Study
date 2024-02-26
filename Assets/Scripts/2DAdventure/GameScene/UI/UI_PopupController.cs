@@ -16,6 +16,12 @@ namespace Adventure_2D
         [SerializeField]
         private GameObject levelFailedPanel;
 
+        [Header("Level Complete")]
+        [SerializeField]
+        private GameObject levelCompletePanel;
+        [SerializeField]
+        private GameObject[] starObjects;
+
         private void SetTimeScale(float time)
         {
             Time.timeScale = time;
@@ -42,6 +48,18 @@ namespace Adventure_2D
             levelFailedPanel.SetActive(true);
         }
 
+        public void LevelComplete(bool[] starsEarned)
+        {
+            SetTimeScale(0);
+            overlayPanel.SetActive(true);
+            levelCompletePanel.SetActive(true);
+
+            for ( int i = 0; i < starsEarned.Length; i ++ )
+            {
+                starObjects[i].SetActive(starsEarned[i]);
+            }
+        }
+
         public void Restart()
         {
             SetTimeScale(1);
@@ -52,6 +70,12 @@ namespace Adventure_2D
         {
             SetTimeScale(1);
             Utils.LoadScene(SceneType.LevelSelection);
+        }
+
+        public void NextLevelButton()
+        {
+            SetTimeScale(1);
+            Utils.LoadScene();
         }
     }
 }

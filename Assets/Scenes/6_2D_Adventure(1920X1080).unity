@@ -500,6 +500,11 @@ MonoBehaviour:
   overlayPanel: {fileID: 788848291}
   pauseMenu: {fileID: 807715249}
   levelFailedPanel: {fileID: 996718435}
+  levelCompletePanel: {fileID: 2028989636}
+  starObjects:
+  - {fileID: 290058002}
+  - {fileID: 2124094884}
+  - {fileID: 317578905}
 --- !u!4 &155125656
 Transform:
   m_ObjectHideFlags: 0
@@ -15111,7 +15116,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1946358574}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 155125655}
+        m_TargetAssemblyTypeName: Adventure_2D.UI_PopupController, Assembly-CSharp
+        m_MethodName: NextLevelButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1946358574
 MonoBehaviour:
   m_ObjectHideFlags: 0
