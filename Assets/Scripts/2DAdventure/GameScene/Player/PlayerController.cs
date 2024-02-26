@@ -144,7 +144,7 @@ namespace Adventure_2D
 
         public void LevelComplete()
         {
-
+            gameManager.LevelComplete();
         }
     }
 }

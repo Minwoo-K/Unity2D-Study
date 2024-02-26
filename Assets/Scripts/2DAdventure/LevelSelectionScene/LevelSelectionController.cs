@@ -38,7 +38,7 @@ namespace Adventure_2D
                 UILevel levelUI = Instantiate(levelUI_Prefab, levelUI_Parent);
                 // (bool, bool[]) levelData = Define.LoadLevelData(level);
                 (bool isUnlocked, bool[] starsEarned) = Define.LoadLevelData(level);
-
+                
                 // levelUI.SetLevel(level, levelData.Item1, levelData.Item2, fadingScreen);
                 levelUI.SetLevel(level, isUnlocked, starsEarned, fadingScreen);
             }

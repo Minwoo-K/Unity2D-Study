@@ -32,10 +32,10 @@ namespace Adventure_2D
             }
             get => projectile;
         }
+        public bool[] StarsEarned => stars;
 
         private void Awake()
         {
-            Coin = 0;
             CurrentProjectile = 0;
         }
 

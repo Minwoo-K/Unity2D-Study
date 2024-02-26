@@ -33,18 +33,18 @@ namespace Adventure_2D
             if ( isUnlocked )
             {
                 level_Text.enabled = true;
-                level_Text.text = level.ToString();
+                level_Text.text = level.ToString(); 
+                
+                for (int i = 0; i < starsObjects.Length; i++)
+                {
+                    starsObjects[i].SetActive(starsEarned[i]);
+                }
             }
             else
             {
                 levelIcon.sprite = spriteLevelLocked;
                 level_Text.enabled = false;
                 starBackgroundObject.SetActive(false);
-
-                for ( int i = 0; i < starsObjects.Length; i ++ )
-                {
-                    starsObjects[i].SetActive(starsEarned[i]);
-                }
             }
         }
 

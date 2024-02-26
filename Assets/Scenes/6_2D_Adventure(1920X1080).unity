@@ -14534,6 +14534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui_Controller: {fileID: 155125655}
+  playerData: {fileID: 663764216}
 --- !u!4 &1660556411
 Transform:
   m_ObjectHideFlags: 0

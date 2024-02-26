@@ -8,7 +8,11 @@ namespace Adventure_2D
     {
         [SerializeField]
         private UI_PopupController ui_Controller;
+        [SerializeField]
+        private PlayerData playerData;
 
+        private int currentLevel = 1;
+        private bool isLevelComplete = false;
         private bool isLevelFailed = false;
 
         public void OnDie()
@@ -18,6 +22,16 @@ namespace Adventure_2D
             isLevelFailed = true;
 
             ui_Controller.LevelFailed();
+        }
+
+        public void LevelComplete()
+        {
+            if ( isLevelComplete ) return;
+
+            isLevelComplete = true;
+
+            ui_Controller.LevelComplete(playerData.StarsEarned);
+            Define.SaveUponLevelComplete(currentLevel, playerData.StarsEarned, playerData.Coin);
         }
     }
 }
