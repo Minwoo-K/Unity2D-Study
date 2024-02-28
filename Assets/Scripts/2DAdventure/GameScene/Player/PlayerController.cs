@@ -9,18 +9,22 @@ namespace Adventure_2D
         [SerializeField]
         private GameManager gameManager;
         [SerializeField]
-        private StageData stageData;
-        [SerializeField]
         private KeyCode jumpKeyCode = KeyCode.Space;
         [SerializeField]
         private KeyCode fireKeyCode = KeyCode.Z;
 
+        private StageData stageData;
         private MovementRigidbody2D movement;
         private PlayerAnimator playerAnimator;
         private PlayerWeapon weapon;
         private PlayerData playerData;
-
         private int lastDirectionX = 1;
+
+        public void Setup(StageData stageData)
+        {
+            this.stageData = stageData;
+            transform.position = stageData.PlayerPosition;
+        }
 
         private void Awake()
         {

@@ -10,6 +10,8 @@ namespace Adventure_2D
         [SerializeField][Range(0, 2)]
         private int starIndex;
 
+        public int StarIndex => starIndex;
+
         public override void UpdateItemTaken(Transform transform)
         {
             transform.GetComponent<PlayerData>().GetStar(starIndex);

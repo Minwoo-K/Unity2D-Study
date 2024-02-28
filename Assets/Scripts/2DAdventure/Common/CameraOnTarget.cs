@@ -5,13 +5,18 @@ namespace Adventure_2D
     public class CameraOnTarget : MonoBehaviour
     {
         [SerializeField]
-        private StageData stageData;            // Level Data
-        [SerializeField]
         private Transform target;               // Target for the Camera to follow
         [SerializeField]
         private bool followX, followY, followZ; // Whether the Camera follow the target in each axis
 
+        private StageData stageData;            // Level Data
         private float offsetY;                  // Offset value between the Target and Camera
+
+        public void Setup(StageData stageData)
+        {
+            this.stageData = stageData;
+            transform.position = new Vector3(stageData.CameraPosition.x, stageData.CameraPosition.y, -10);
+        }
 
         private void Awake()
         {
