@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level01
   m_EditorClassIdentifier: 
   cameraLimitMinX: 0
-  cameraLimitMaxX: 11.5
+  cameraLimitMaxX: 1.5
   playerLimitMinX: -10
   playerLimitMaxX: 11.5
   mapLimitMinY: -8
