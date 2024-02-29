@@ -75,7 +75,17 @@ namespace Adventure_2D
         public void NextLevelButton()
         {
             SetTimeScale(1);
-            Utils.LoadScene();
+
+            int currentLevel = PlayerPrefs.GetInt(Define.CurrentLevel);
+            if (currentLevel <= Define.MaxLevel)
+            {
+                SelectLevelButton();
+            }
+            else
+            {
+                PlayerPrefs.SetInt(Define.CurrentLevel, currentLevel + 1);
+                Utils.LoadScene();
+            }
         }
     }
 }
