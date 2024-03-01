@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Adventure_2D
 {
+    // Reviewed all codes to start over from a scratch
     public class GameManager : MonoBehaviour
     {
         [SerializeField]
