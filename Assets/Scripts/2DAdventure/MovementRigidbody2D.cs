@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovementRigidbody2D : MonoBehaviour
 {
+    // SERIALIZEFILED
     [Header("Layer Masks")]
     [SerializeField]
     private LayerMask groundLayerCheck;
@@ -22,9 +23,18 @@ public class MovementRigidbody2D : MonoBehaviour
     [SerializeField]
     private float highGravityScale;
 
-
+    // PRIVATE VARIABLES
     private float moveSpeed;
+
+    private Vector2 collisionSize;
+    private Vector2 feetPosition;
+
     private Rigidbody2D rigid2D;
+    private Collider2D collider2D;
+
+    // PROPERTIES
+    public bool IsHigherJump { get; set; } = false;
+    public bool IsOnGround   { get; set; } = false;
 
     public void MoveTo(float x)
     {
@@ -43,6 +53,11 @@ public class MovementRigidbody2D : MonoBehaviour
     }
 
     public void JumpHeight()
+    {
+
+    }
+
+    private void UpdateCollision()
     {
 
     }
