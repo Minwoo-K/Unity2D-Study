@@ -44,6 +44,12 @@ public class MovementRigidbody2D : MonoBehaviour
         collider2D = GetComponent<Collider2D>();
     }
 
+    private void Update()
+    {
+        UpdateCollision();
+        UpdateJumpHeight();
+    }
+
     public void MoveTo(float x)
     {
         moveSpeed = Mathf.Abs(x) != 1 ? walkSpeed : runSpeed;
@@ -57,12 +63,23 @@ public class MovementRigidbody2D : MonoBehaviour
 
     public void Jump()
     {
-
+        if ( IsOnGround )
+        {
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+        }
     }
 
-    public void JumpHeight()
+    // Set up Jump Height in the Update function
+    public void UpdateJumpHeight()
     {
-
+        if ( IsHigherJump && IsOnGround )
+        {
+            rigid2D.gravityScale = lowGravityScale;
+        }
+        else
+        {
+            rigid2D.gravityScale = highGravityScale;
+        }
     }
 
     private void UpdateCollision()
