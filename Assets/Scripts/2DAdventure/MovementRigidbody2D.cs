@@ -7,7 +7,7 @@ public class MovementRigidbody2D : MonoBehaviour
     // SERIALIZEFILED
     [Header("Layer Masks")]
     [SerializeField]
-    private LayerMask groundLayerCheck;
+    private LayerMask groundCheckLayer;
 
     [Header("Move")]
     [SerializeField]
@@ -36,6 +36,14 @@ public class MovementRigidbody2D : MonoBehaviour
     public bool IsHigherJump { get; set; } = false;
     public bool IsOnGround   { get; set; } = false;
 
+    private void Awake()
+    {
+        moveSpeed = walkSpeed;
+
+        rigid2D = GetComponent<Rigidbody2D>();
+        collider2D = GetComponent<Collider2D>();
+    }
+
     public void MoveTo(float x)
     {
         moveSpeed = Mathf.Abs(x) != 1 ? walkSpeed : runSpeed;
@@ -59,6 +67,12 @@ public class MovementRigidbody2D : MonoBehaviour
 
     private void UpdateCollision()
     {
+        Bounds bounds = collider2D.bounds;
 
+        collisionSize = new Vector2((bounds.max.x - bounds.min.x)*0.5f, 0.1f);
+
+        feetPosition = new Vector2(bounds.center.x, bounds.min.y);
+
+        IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundCheckLayer);
     }
 }
