@@ -16,8 +16,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Will get 1 if 'd' or rightArrow is pressed, -1 if 'a' or leftArrow is pressed
         float x     = Input.GetAxisRaw("Horizontal");
-        Debug.Log($"Input.GetAxisRaw(Run): {x}");
+        
         // If "Run" button isn't on, the value in the brackets is 0
         float runningParameter = 0.5f + (Input.GetAxisRaw("Run") * 0.5f);
 

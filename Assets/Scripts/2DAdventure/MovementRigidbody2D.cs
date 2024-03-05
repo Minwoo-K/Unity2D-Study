@@ -56,8 +56,6 @@ public class MovementRigidbody2D : MonoBehaviour
 
         if ( x != 0 ) x = Mathf.Sign(x);
 
-        Debug.Log($"x value: {x} -> Mathf.Sign(x): {Mathf.Sign(x)}");
-
         rigid2D.velocity = new Vector2(x * moveSpeed, rigid2D.velocity.y);
     }
 
