@@ -46,8 +46,8 @@ public class MovementRigidbody2D : MonoBehaviour
 
     private void Update()
     {
-        UpdateCollision();
         UpdateJumpHeight();
+        UpdateCollision();
     }
 
     public void MoveTo(float x)
