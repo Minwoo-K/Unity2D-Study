@@ -8,12 +8,12 @@ public class PlayerController : MonoBehaviour
     private KeyCode jumpKeyCode = KeyCode.Space;
 
     private MovementRigidbody2D movement;
-    //private Animator animator;
+    private PlayerAnimator playerAnimator;
 
     private void Awake()
     {
         movement = GetComponent<MovementRigidbody2D>();
-        //animator = GetComponentInChildren<Animator>();
+        playerAnimator = GetComponentInChildren<PlayerAnimator>();
     }
 
     private void Update()
@@ -26,7 +26,12 @@ public class PlayerController : MonoBehaviour
         // Put direction(x) and offset together
         x *= offset;
 
+        // Update Movement
         UpdateMove(x);
+        playerAnimator.UpdateAnimation(x);
+
+        if ( x != 0 ) transform.localScale = new Vector3(( x > 0 ? 1 : -1), 1, 1);
+
         UpdateJump();
     }
 
