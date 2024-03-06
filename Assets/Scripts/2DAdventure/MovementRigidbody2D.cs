@@ -71,7 +71,7 @@ public class MovementRigidbody2D : MonoBehaviour
     // Set up Jump Height in the Update function
     public void UpdateJumpHeight()
     {
-        if ( IsHigherJump && IsOnGround )
+        if ( IsHigherJump && !IsOnGround )
         {
             rigid2D.gravityScale = lowGravityScale;
         }
