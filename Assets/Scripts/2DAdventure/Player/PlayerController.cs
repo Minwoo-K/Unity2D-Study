@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private StageData stageData;
-    [SerializeField]
     private KeyCode jumpKeyCode = KeyCode.Space;
 
     private MovementRigidbody2D movement;
@@ -31,11 +29,6 @@ public class PlayerController : MonoBehaviour
         // Update Movement
         UpdateMove(x);
         playerAnimator.UpdateAnimation(x);
-        /// Limiting Player's movement within the limited range of the game
-        float playerX = transform.position.x;
-        playerX = Mathf.Clamp(playerX, stageData.MinPlayerLimitX, stageData.MaxPlayerLimitX);
-        transform.position = new Vector3(playerX, transform.position.y);
-
 
         // Update Jump
         UpdateJump();
