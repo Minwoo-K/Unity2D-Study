@@ -15,14 +15,26 @@ public class PlayerAnimator : MonoBehaviour
 
     public void UpdateAnimation(float x)
     {
-        x = Mathf.Abs(x);
-        animator.SetFloat("MovementParameter", x);
+        if (x != 0)
+        {
+            SpriteFlipX(x);
+        }
 
         animator.SetBool("isJumping", !movement.IsOnGround);
 
+        // If Jumping
         if ( !movement.IsOnGround )
         {
             animator.SetFloat("velocityY", movement.Velocity.y);
         }
+        else // If moving on the ground
+        {
+            animator.SetFloat("MovementParameter", Mathf.Abs(x));
+        }
+    }
+
+    private void SpriteFlipX(float x)
+    {
+        transform.localScale = new Vector3((x > 0 ? 1 : -1), 1, 1);
     }
 }

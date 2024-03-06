@@ -29,8 +29,7 @@ public class PlayerController : MonoBehaviour
         // Update Movement
         UpdateMove(x);
         playerAnimator.UpdateAnimation(x);
-
-        if ( x != 0 ) transform.localScale = new Vector3(( x > 0 ? 1 : -1), 1, 1);
+        SpriteFlipX(x);
 
         UpdateJump();
     }
@@ -55,5 +54,10 @@ public class PlayerController : MonoBehaviour
         {
             movement.IsHigherJump = false;
         }
+    }
+
+    private void SpriteFlipX(float x)
+    {
+        if (x != 0) transform.localScale = new Vector3((x > 0 ? 1 : -1), 1, 1);
     }
 }
