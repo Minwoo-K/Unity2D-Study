@@ -2,16 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class StageData
+[CreateAssetMenu]
+public class StageData : ScriptableObject
 {
-    private readonly static Vector2 maxPlayerLimit = new Vector2(122.5f, 25f);
-    private readonly static Vector2 minPlayerLimit = new Vector2(-10.5f, -8f);
+    [Header("Player Settings")]
+    [SerializeField]
+    private float maxPlayerLimitX;
+    [SerializeField]
+    private float minPlayerLimitX;
 
-    private readonly static Vector2 maxCameraLimit = new Vector2(114f, 25f);
-    private readonly static Vector2 minCameraLimit = new Vector2(-2f, -8f);
+    [Header("Camera Settings")]
+    [SerializeField]
+    private float maxCameraLimitX;
+    [SerializeField]
+    private float minCameraLimitX;
+    
+    [Header("Map Settings")]
+    [SerializeField]
+    private float maxMapLimitY; 
 
-    public static Vector2 MaxPlayerLimit => maxPlayerLimit;
-    public static Vector2 MinPlayerLimit => minPlayerLimit;
-    public static Vector2 MaxCameraLimit => maxCameraLimit;
-    public static Vector2 MinCameraLimit => minCameraLimit;
+    public float MaxPlayerLimitX => maxPlayerLimitX;
+    public float MinPlayerLimitX => minPlayerLimitX;
+    public float MaxCameraLimitX => maxCameraLimitX;
+    public float MinCameraLimitX => minCameraLimitX;
 }
