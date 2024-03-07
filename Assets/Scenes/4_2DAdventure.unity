@@ -10199,6 +10199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5519d4b120e457946a42c1bef4545235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageData: {fileID: 11400000, guid: 4876f8ba15ce15d4083aedbecbeb1702, type: 2}
   jumpKeyCode: 32
 --- !u!114 &2106836020
 MonoBehaviour:
