@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 61761936}
+  - component: {fileID: 61761937}
   m_Layer: 0
   m_Name: MovementEffects
   m_TagString: Untagged
@@ -156,6 +157,20 @@ Transform:
   m_Father: {fileID: 2106836016}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &61761937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61761935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6360fa5ef64801c45a8c2c93577ec5ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footStepEffect: {fileID: 1477919267}
+  landingEffect: {fileID: 278020409}
 --- !u!1 &278020406
 GameObject:
   m_ObjectHideFlags: 0
