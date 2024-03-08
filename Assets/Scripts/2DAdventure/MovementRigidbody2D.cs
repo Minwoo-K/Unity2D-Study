@@ -8,6 +8,8 @@ public class MovementRigidbody2D : MonoBehaviour
     [Header("Layer Masks")]
     [SerializeField]
     private LayerMask groundCheckLayer;
+    [SerializeField]
+    private LayerMask headCollisionLayer;
 
     [Header("Move")]
     [SerializeField]
@@ -32,11 +34,11 @@ public class MovementRigidbody2D : MonoBehaviour
 
     private Rigidbody2D rigid2D;
     private Collider2D collider2D;
-    private Collider2D collidedWith;
 
     // PROPERTIES
     public bool IsHigherJump { get; set; } = false;
     public bool IsOnGround   { get; set; } = false;
+    public Collider2D HeadCollision { get; private set; }
     public Vector2 Velocity => rigid2D.velocity;
 
     private void Awake()
@@ -90,23 +92,14 @@ public class MovementRigidbody2D : MonoBehaviour
         collisionSize = new Vector2((bounds.max.x - bounds.min.x)*0.5f, 0.1f);
 
         feetPosition = new Vector2(bounds.center.x, bounds.min.y);
+        headPosition = new Vector2(bounds.center.x, bounds.max.y);
 
         IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundCheckLayer);
 
-        headPosition = new Vector2(bounds.center.x, bounds.max.y);
-
-        collidedWith = Physics2D.OverlapBox(headPosition, collisionSize, 0, groundCheckLayer);
-        if ( collidedWith != null )
-        {
-            ResetVelocityY();
-            if (collidedWith.TryGetComponent<Tile_Base>(out var tile))
-            {
-                tile.UponCollision();
-            }
-        }
+        HeadCollision = Physics2D.OverlapBox(headPosition, collisionSize, 0, headCollisionLayer);
     }
 
-    private void ResetVelocityY()
+    public void ResetVelocityY()
     {
         rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
     }

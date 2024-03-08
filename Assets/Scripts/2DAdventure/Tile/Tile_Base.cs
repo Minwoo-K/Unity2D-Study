@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Tile_Base : MonoBehaviour
+public class Tile_Base : MonoBehaviour
 {
-    public abstract void UponCollision();
+    public virtual void UponCollision()
+    {
+        Debug.Log($"{gameObject.name} Tile Collision");
+    }
 }
