@@ -33,8 +33,6 @@ public class PlayerController : MonoBehaviour
         // Update Jump
         UpdateJump();
 
-        // Update Collision on Head
-        UpdateHeadCollision();
     }
 
     private void UpdateMove(float x)
@@ -59,15 +57,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void UpdateHeadCollision()
-    {
-        if ( movement.Velocity.y >= 0 && movement.HeadCollision != null )
-        {
-            movement.ResetVelocityY();
-            if ( movement.HeadCollision.TryGetComponent<Tile_Base>(out var tile) )
-            {
-                tile.UponCollision();
-            }
-        }
-    }
 }
