@@ -28,9 +28,11 @@ public class MovementRigidbody2D : MonoBehaviour
 
     private Vector2 collisionSize;
     private Vector2 feetPosition;
+    private Vector2 headPosition;
 
     private Rigidbody2D rigid2D;
     private Collider2D collider2D;
+    private Collider2D collidedWith;
 
     // PROPERTIES
     public bool IsHigherJump { get; set; } = false;
@@ -90,5 +92,22 @@ public class MovementRigidbody2D : MonoBehaviour
         feetPosition = new Vector2(bounds.center.x, bounds.min.y);
 
         IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundCheckLayer);
+
+        headPosition = new Vector2(bounds.center.x, bounds.max.y);
+
+        collidedWith = Physics2D.OverlapBox(headPosition, collisionSize, 0, groundCheckLayer);
+        if ( collidedWith != null )
+        {
+            ResetVelocityY();
+            if (collidedWith.TryGetComponent<Tile_Base>(out var tile))
+            {
+                tile.UponCollision();
+            }
+        }
+    }
+
+    private void ResetVelocityY()
+    {
+        rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
     }
 }
