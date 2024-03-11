@@ -61,6 +61,13 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateCollision()
     {
-
+        if ( movement.headCollision != null && movement.Velocity.y != 0 )
+        {
+            movement.ResetVelocityY();
+            if ( movement.headCollision.TryGetComponent<Tile_Base>(out var tile) )
+            {
+                tile.UponCollision();
+            }
+        }
     }
 }

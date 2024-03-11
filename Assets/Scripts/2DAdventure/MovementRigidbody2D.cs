@@ -100,4 +100,8 @@ public class MovementRigidbody2D : MonoBehaviour
         headCollision = Physics2D.OverlapBox(headPosition, collisionSize, 0, headCollisionLayer);
     }
 
+    public void ResetVelocityY()
+    {
+        rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
+    }
 }
