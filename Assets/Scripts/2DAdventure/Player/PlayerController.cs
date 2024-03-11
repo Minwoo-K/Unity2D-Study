@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
         // Update Jump
         UpdateJump();
 
+        // Update Collision
+        UpdateCollision();
     }
 
     private void UpdateMove(float x)
@@ -57,4 +59,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void UpdateCollision()
+    {
+
+    }
 }

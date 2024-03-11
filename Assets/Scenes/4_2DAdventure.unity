@@ -10742,7 +10742,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 6
-  m_Depth: -1
+  m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -10859,6 +10859,9 @@ MonoBehaviour:
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 192
+  headCollisionLayer:
+    serializedVersion: 2
+    m_Bits: 128
   walkSpeed: 5
   runSpeed: 8
   jumpForce: 13

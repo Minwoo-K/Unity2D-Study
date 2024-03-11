@@ -8,6 +8,8 @@ public class MovementRigidbody2D : MonoBehaviour
     [Header("Layer Masks")]
     [SerializeField]
     private LayerMask groundCheckLayer;
+    [SerializeField]
+    private LayerMask headCollisionLayer;
 
     [Header("Move")]
     [SerializeField]
@@ -36,6 +38,8 @@ public class MovementRigidbody2D : MonoBehaviour
     // PROPERTIES
     public bool IsHigherJump { get; set; } = false;
     public bool IsOnGround   { get; set; } = false;
+    public Collider2D headCollision { get; private set; }
+
     public Vector2 Velocity => rigid2D.velocity;
 
     private void Awake()
@@ -92,6 +96,8 @@ public class MovementRigidbody2D : MonoBehaviour
         headPosition = new Vector2(bounds.center.x, bounds.max.y);
 
         IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundCheckLayer);
+
+        headCollision = Physics2D.OverlapBox(headPosition, collisionSize, 0, headCollisionLayer);
     }
 
 }
