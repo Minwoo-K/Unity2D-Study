@@ -6,13 +6,16 @@ public class Tile_Item : Tile_Base
 {
     [Header("Tile_Item")]
     [SerializeField]
+    private ItemType itemType = ItemType.Random;
+    [SerializeField]
     private GameObject[] itemList;
     [SerializeField]
     private Sprite noItemSprite;
 
     private int coinNumber = 5;
-    private SpriteRenderer spriteRenderer;
+    private bool isEmpty = false;
 
+    private SpriteRenderer spriteRenderer;
     protected float spawningVelocityY = 3f;
 
     public override void Setup()
@@ -22,39 +25,33 @@ public class Tile_Item : Tile_Base
 
     public override void UponCollision()
     {
+        if ( isEmpty ) return;
+
         base.UponCollision();
 
-        int random = Random.Range(0, itemList.Length);
-        Item_Base item = itemList[random].GetComponent<Item_Base>();
-
-        if (item.GetType() == typeof(Item_Coin))
+        if ( itemType == ItemType.Random )
         {
-            if ( coinNumber > 0)
-            {
-                SpawnItem(item);
-                coinNumber--;
-            }
+            itemType = (ItemType)Random.Range(0, itemList.Length);
+        }
 
-            if ( coinNumber == 0 )
-            {
-                SwitchToNoItemTile();
-            }
-        }
-        else
+        if ( itemType == ItemType.Coin )
         {
-            SpawnItem(item);
-            SwitchToNoItemTile();
+            coinNumber--;
         }
+
+        SpawnItem();
+
+        if ( itemType != ItemType.Coin || coinNumber == 0 ) SwitchToEmptyTile();
     }
 
-    private void SpawnItem(Item_Base item)
+    private void SpawnItem()
     {
-        GameObject go = Instantiate(item.gameObject, transform.position, Quaternion.identity);
-        go.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1, 1), spawningVelocityY);
+        GameObject item = Instantiate(itemList[(int)itemType], transform.position, Quaternion.identity);
     }
 
-    private void SwitchToNoItemTile()
+    private void SwitchToEmptyTile()
     {
+        isEmpty = true;
         spriteRenderer.sprite = noItemSprite;
         bounceable = false;
     }
