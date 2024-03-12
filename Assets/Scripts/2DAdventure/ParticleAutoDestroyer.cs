@@ -13,7 +13,6 @@ public class ParticleAutoDestroyer : MonoBehaviour
 
     private void Update()
     {
-        if ( ! particle.isPlaying )
-            Destroy(gameObject);
+        if ( ! particle.isPlaying ) Destroy(gameObject);
     }
 }
