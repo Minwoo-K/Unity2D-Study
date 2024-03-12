@@ -11,7 +11,6 @@ public abstract class Tile_Base : MonoBehaviour
     private bool    bouncing = false;
     private float   bouncingTime = 0.2f;
     
-    public bool    Hit { get; protected set;} = false;
 
     public abstract void Setup();
 
