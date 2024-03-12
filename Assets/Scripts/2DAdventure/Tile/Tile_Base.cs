@@ -8,9 +8,9 @@ public abstract class Tile_Base : MonoBehaviour
     [SerializeField]
     protected bool  bounceable;
     
-    private bool    bouncing = false;
     private float   bouncingTime = 0.2f;
     
+    public bool Hit { get; protected set; } = false;
 
     public abstract void Setup();
 
@@ -18,14 +18,13 @@ public abstract class Tile_Base : MonoBehaviour
     {
         Debug.Log($"Tile Collision with {name}");
 
+        if ( Hit ) return;
+
+        Hit = true;
+
         if ( bounceable )
         {
-            if ( !bouncing )
-            {
-                bouncing = true;
-
-                StartCoroutine(OnBounce());
-            }
+            StartCoroutine(OnBounce());
         }
     }
 
@@ -38,7 +37,7 @@ public abstract class Tile_Base : MonoBehaviour
 
         yield return StartCoroutine(Bounce(startY+ bouncingAmount, startY));
 
-        bouncing = false;
+        Hit = false;
     }
 
     private IEnumerator Bounce(float start, float end)
