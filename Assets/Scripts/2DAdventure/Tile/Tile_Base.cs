@@ -12,6 +12,11 @@ public abstract class Tile_Base : MonoBehaviour
     
     public bool Hit { get; protected set; } = false;
 
+    private void Awake()
+    {
+        Setup();
+    }
+
     public abstract void Setup();
 
     public virtual void UponCollision()

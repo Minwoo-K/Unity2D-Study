@@ -1,4 +1,4 @@
 using UnityEngine;
 
 
-public enum ItemType { Invincibility, HPPotion, Projectile, Coin, Random }
+public enum ItemType { Coin, Invincibility, HPPotion, Projectile, Random }

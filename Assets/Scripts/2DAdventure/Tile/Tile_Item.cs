@@ -25,7 +25,7 @@ public class Tile_Item : Tile_Base
 
     public override void UponCollision()
     {
-        if ( isEmpty ) return;
+        if ( isEmpty || Hit ) return;
 
         base.UponCollision();
 
@@ -47,6 +47,7 @@ public class Tile_Item : Tile_Base
     private void SpawnItem()
     {
         GameObject item = Instantiate(itemList[(int)itemType], transform.position, Quaternion.identity);
+        Hit = false;
     }
 
     private void SwitchToEmptyTile()
