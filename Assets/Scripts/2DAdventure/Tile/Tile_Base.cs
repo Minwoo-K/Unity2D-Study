@@ -8,13 +8,15 @@ public abstract class Tile_Base : MonoBehaviour
     [SerializeField]
     protected bool  bounceable;
     
-    private float   bouncingTime = 0.2f;
+    [SerializeField]
     private float   startY;
+    private float   bouncingTime = 0.2f;
     
     public bool Hit { get; protected set; } = false;
 
     private void Awake()
     {
+        startY = transform.position.y;
         Setup();
     }
 
@@ -30,7 +32,6 @@ public abstract class Tile_Base : MonoBehaviour
 
         if ( bounceable )
         {
-            startY = transform.position.y;
             StartCoroutine(OnBounce());
         }
     }

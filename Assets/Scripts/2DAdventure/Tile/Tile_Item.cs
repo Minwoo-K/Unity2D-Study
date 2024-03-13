@@ -19,14 +19,9 @@ public class Tile_Item : Tile_Base
     private float collisionCooltime = 0.2f;
     private bool  collisionReady = true;
 
-    private void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
     public override void Setup()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public override void UponCollision()
@@ -69,7 +64,7 @@ public class Tile_Item : Tile_Base
     {
         isEmpty = true;
         spriteRenderer.sprite = emptyTileSprite;
-        //bounceable = false;
+        bounceable = false;
     }
 
     private IEnumerator CollisionCooldown()
