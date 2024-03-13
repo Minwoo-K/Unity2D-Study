@@ -9,6 +9,7 @@ public abstract class Tile_Base : MonoBehaviour
     protected bool  bounceable;
     
     private float   bouncingTime = 0.2f;
+    private float   startY;
     
     public bool Hit { get; protected set; } = false;
 
@@ -21,26 +22,26 @@ public abstract class Tile_Base : MonoBehaviour
 
     public virtual void UponCollision()
     {
-        Debug.Log($"Tile Collision with {name}");
-
         if ( Hit ) return;
+
+        Debug.Log($"Tile Collision with {name}");
 
         Hit = true;
 
         if ( bounceable )
         {
+            startY = transform.position.y;
             StartCoroutine(OnBounce());
         }
     }
 
     private IEnumerator OnBounce()
     {
-        float startY = transform.position.y;
         float bouncingAmount = 0.5f;
 
-        yield return StartCoroutine(Bounce(startY, startY+ bouncingAmount));
+        yield return StartCoroutine(Bounce(startY, startY + bouncingAmount));
 
-        yield return StartCoroutine(Bounce(startY+ bouncingAmount, startY));
+        yield return StartCoroutine(Bounce(startY + bouncingAmount, startY));
 
         Hit = false;
     }
