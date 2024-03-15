@@ -5,37 +5,41 @@ using UnityEngine;
 public class Platform_Moving : MonoBehaviour
 {
     [SerializeField]
-    private Transform[] stops;
+    private Transform   targetPlatform;     // The Platform targeted
     [SerializeField]
-    private float       moveTime;
-
-    private float       waitTime;
+    private Transform[] stops;              // Stop stations
+    [SerializeField]
+    private float       waitTime;           // Waiting Time each station
+    [SerializeField]
+    private float       timeOffset;         // 
+    
+    private int         index;
     private bool        indexUp = true;
 
     private int Index
     {
-        get { return Index; } 
+        get { return index; }
 
-        set 
+        set
         {
-            Index = indexUp ? Index + 1 : Index - 1;
+            if (index == stops.Length - 1) indexUp = false;
+            if (index == 0) indexUp = true;
 
-            if (Index == stops.Length - 1) indexUp = false;
-            if (Index == 0) indexUp = true;
+            index = indexUp ? index + 1 : index - 1;
         }
     }
 
     private void Awake()
     {
-        transform.position = stops[0].position;
-        Index = 1;
+        targetPlatform.position = stops[0].position;
+        index = 1;
     }
 
     private IEnumerator Start()
     {
         while ( true )
         {
-            yield return MoveAtoB(transform.position, stops[Index].position);
+            yield return MoveAtoB(targetPlatform.position, stops[Index].position);
 
             yield return new WaitForSeconds(waitTime);
 
@@ -45,16 +49,15 @@ public class Platform_Moving : MonoBehaviour
 
     private IEnumerator MoveAtoB(Vector3 start, Vector3 end)
     {
-        Vector3 direction = end - start;
-
-        float current = 0, percent = 0;
+        float distance = Vector3.Distance(start, end);
+        float moveTime = distance * timeOffset;
+        float percent = 0;
 
         while ( percent < 1 )
         {
-            current = direction.normalized.magnitude / moveTime;
-            percent += current;
+            percent += Time.deltaTime / moveTime;
 
-            transform.position = Vector3.Lerp(start, end, percent);
+            targetPlatform.position = Vector3.Lerp(start, end, percent);
 
             yield return null;
         }
