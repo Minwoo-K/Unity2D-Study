@@ -5108,6 +5108,14 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5028211411086311327, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: stations.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028211411086311327, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: stations.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7443440863400028131, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: waitTime
       value: 2

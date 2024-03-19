@@ -27,7 +27,7 @@ public class Platform_Moving : MonoBehaviour
 
     private IEnumerator MovingInLoop()
     {
-        while ( true)
+        while ( true )
         {
             yield return StartCoroutine(MoveAToB(target.position, stations[index].position));
 
@@ -53,5 +53,15 @@ public class Platform_Moving : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        collision.transform.parent = target;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        collision.transform.parent = null;
     }
 }
