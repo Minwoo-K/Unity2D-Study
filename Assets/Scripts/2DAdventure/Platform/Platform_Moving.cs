@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Platform_Moving : MonoBehaviour
+public class Platform_Moving : Platform_Base
 {
     [SerializeField]
     private Transform   target;         // The Target to move
@@ -16,7 +16,7 @@ public class Platform_Moving : MonoBehaviour
     private int         index;          // The Current Index
     private bool        increasing;     // Whether the index increases or not
 
-    private void Awake()
+    public override void Setup()
     {
         target.position = stations[0].position;
         index = 1;
@@ -63,5 +63,10 @@ public class Platform_Moving : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         collision.transform.parent = null;
+    }
+
+    public override void UponCollision()
+    {
+        
     }
 }
