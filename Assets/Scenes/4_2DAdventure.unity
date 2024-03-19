@@ -5052,9 +5052,17 @@ PrefabInstance:
       propertyPath: itemType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1373543806386161183, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: respawn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2472952524243840552, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_Name
       value: Level01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602249742733050391, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3755948469778950477, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_RootOrder
@@ -5115,6 +5123,10 @@ PrefabInstance:
     - target: {fileID: 5028211411086311327, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: stations.Array.data[2]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943303837361834595, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: respawn
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7443440863400028131, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: waitTime

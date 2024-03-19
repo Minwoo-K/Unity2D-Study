@@ -35,7 +35,7 @@ public class MovementRigidbody2D : MonoBehaviour
     private Vector2 headPosition;
 
     private Rigidbody2D rigid2D;
-    private Collider2D collider2D;
+    private new Collider2D collider2D;
 
     // PROPERTIES
     public bool IsHigherJump { get; set; } = false;
