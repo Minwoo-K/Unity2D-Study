@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         {
             if ( movement.feetCollision.TryGetComponent<Platform_Base>(out var platform) )
             {
-                platform.UponCollision();
+                platform.UponCollision(gameObject);
             }
         }
     }

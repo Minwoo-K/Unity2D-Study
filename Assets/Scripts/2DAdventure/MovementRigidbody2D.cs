@@ -76,6 +76,14 @@ public class MovementRigidbody2D : MonoBehaviour
         }
     }
 
+    public void Jump(float force)
+    {
+        if ( IsOnGround )
+        {
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, force);
+        }
+    }
+
     // Set up Jump Height in the Update function
     public void UpdateJumpHeight()
     {

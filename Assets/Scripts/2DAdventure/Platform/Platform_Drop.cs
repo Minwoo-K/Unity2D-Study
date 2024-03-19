@@ -24,7 +24,7 @@ public class Platform_Drop : Platform_Base
         rigid2D = GetComponent<Rigidbody2D>();
     }
 
-    public override void UponCollision()
+    public override void UponCollision(GameObject player)
     {
         if ( hasCollided ) return;
 

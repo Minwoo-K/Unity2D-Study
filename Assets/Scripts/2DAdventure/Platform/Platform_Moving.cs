@@ -55,18 +55,13 @@ public class Platform_Moving : Platform_Base
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        collision.transform.parent = target;
-    }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
         collision.transform.parent = null;
     }
 
-    public override void UponCollision()
+    public override void UponCollision(GameObject player)
     {
-        
+        player.transform.parent = target;
     }
 }

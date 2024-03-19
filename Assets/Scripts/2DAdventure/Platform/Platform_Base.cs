@@ -13,5 +13,5 @@ public abstract class Platform_Base : MonoBehaviour
 
     public abstract void Setup();
 
-    public abstract void UponCollision();
+    public abstract void UponCollision(GameObject player);
 }
