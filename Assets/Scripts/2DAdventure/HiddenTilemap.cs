@@ -6,21 +6,27 @@ using UnityEngine.Tilemaps;
 public class HiddenTilemap : MonoBehaviour
 {
     private Tilemap tilemap;
-    private Adventure2D.FadeEffect fadeEffect;
 
     private void Awake()
     {
         tilemap = GetComponent<Tilemap>();
-        fadeEffect = GetComponent<Adventure2D.FadeEffect>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        fadeEffect.FadeOn(tilemap, 1, 0, 2f);
+        if ( collision.CompareTag("Player") )
+        {
+            StopAllCoroutines();
+            StartCoroutine(Adventure2D.FadeEffect.FadeOn(tilemap, tilemap.color.a, 0, tilemap.color.a));
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        fadeEffect.FadeOn(tilemap, 0, 1, 2f);
+        if ( collision.CompareTag("Player") )
+        {
+            StopAllCoroutines();
+            StartCoroutine(Adventure2D.FadeEffect.FadeOn(tilemap, tilemap.color.a, 1, 1-tilemap.color.a));
+        }
     }
 }

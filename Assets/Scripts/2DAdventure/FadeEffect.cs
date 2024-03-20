@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,15 +6,9 @@ using UnityEngine.Tilemaps;
 
 namespace Adventure2D
 {
-    public class FadeEffect : MonoBehaviour
+    public static class FadeEffect
     {
-        public void FadeOn(Tilemap tilemap, float from, float to, float fadingTime)
-        {
-            StopAllCoroutines();
-            StartCoroutine(StartFading(tilemap, from, to, fadingTime));
-        }
-
-        private IEnumerator StartFading(Tilemap tilemap, float from, float to, float fadingTime)
+        public static IEnumerator FadeOn(Tilemap tilemap, float from, float to, float fadingTime=1, Action action =null)
         {
             float percent = 0;
 
