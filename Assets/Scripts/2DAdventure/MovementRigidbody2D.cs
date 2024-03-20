@@ -41,6 +41,7 @@ public class MovementRigidbody2D : MonoBehaviour
     public bool IsHigherJump { get; set; } = false;
     public bool IsOnGround   { get; set; } = false;
     public Collider2D headCollision { get; private set; }
+    public Collider2D feetCollision { get; private set; }
 
     public Vector2 Velocity => rigid2D.velocity;
 
@@ -101,6 +102,7 @@ public class MovementRigidbody2D : MonoBehaviour
         IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundCheckLayer);
 
         headCollision = Physics2D.OverlapBox(headPosition, collisionSize, 0, headCollisionLayer);
+        feetCollision = Physics2D.OverlapBox(feetPosition, collisionSize, 0, feetCollisionLayer);
     }
 
     public void ResetVelocityY()
