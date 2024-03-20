@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 61761936}
   - component: {fileID: 61761937}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MovementEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,6 +171,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   footStepEffect: {fileID: 1477919267}
   landingEffect: {fileID: 278020409}
+--- !u!1 &136316928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3170925232335745381, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+  m_PrefabInstance: {fileID: 429035519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &136316932
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136316928}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 79.5, y: 18}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9, y: 4}
+  m_EdgeRadius: 0
+--- !u!114 &136316933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136316928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02b9c9d3a7eaab4a98794b1de2804e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &136316934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136316928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b80d1b6eb88ef47888dce7940f43ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &278020406
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +237,7 @@ GameObject:
   - component: {fileID: 278020407}
   - component: {fileID: 278020409}
   - component: {fileID: 278020408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LandingEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5052,6 +5107,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 432585014841914567, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1373543806386161183, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: respawn
       value: 0
@@ -5123,6 +5182,10 @@ PrefabInstance:
     - target: {fileID: 5028211411086311327, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: stations.Array.data[2]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265296529182337422, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6943303837361834595, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: respawn
@@ -5241,6 +5304,61 @@ MonoBehaviour:
   x: 1
   y: 1
   z: 0
+--- !u!1 &520793232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2391398209237620194, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+  m_PrefabInstance: {fileID: 429035519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &520793236
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520793232}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 76.5, y: 10}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 4}
+  m_EdgeRadius: 0
+--- !u!114 &520793237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520793232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02b9c9d3a7eaab4a98794b1de2804e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &520793238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520793232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b80d1b6eb88ef47888dce7940f43ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &521092052
 GameObject:
   m_ObjectHideFlags: 0
@@ -5253,7 +5371,7 @@ GameObject:
   - component: {fileID: 521092054}
   - component: {fileID: 521092055}
   - component: {fileID: 521092056}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5665,7 +5783,7 @@ GameObject:
   - component: {fileID: 1477919265}
   - component: {fileID: 1477919267}
   - component: {fileID: 1477919266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FootStepEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10811,7 +10929,7 @@ GameObject:
   - component: {fileID: 2106836017}
   - component: {fileID: 2106836020}
   - component: {fileID: 2106836019}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

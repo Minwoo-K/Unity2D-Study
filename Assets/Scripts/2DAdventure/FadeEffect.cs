@@ -7,7 +7,13 @@ namespace Adventure2D
 {
     public class FadeEffect : MonoBehaviour
     {
-        public IEnumerator OnFade(Tilemap tilemap, float from, float to, float fadingTime)
+        public void FadeOn(Tilemap tilemap, float from, float to, float fadingTime)
+        {
+            StopAllCoroutines();
+            StartCoroutine(StartFading(tilemap, from, to, fadingTime));
+        }
+
+        private IEnumerator StartFading(Tilemap tilemap, float from, float to, float fadingTime)
         {
             float percent = 0;
 
@@ -17,6 +23,7 @@ namespace Adventure2D
 
                 Color color = tilemap.color;
                 color.a = Mathf.Lerp(from, to, percent);
+                tilemap.color = color;
 
                 yield return null;
             }
