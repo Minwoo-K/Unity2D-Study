@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Platform_Moving : MonoBehaviour
+public class Platform_Moving : Platform_Base
 {
     [SerializeField]
     private Transform target;       // The Target to move
@@ -16,7 +16,7 @@ public class Platform_Moving : MonoBehaviour
     private int index = 0;
     private bool indexIncrease = true;
 
-    private void Awake()
+    public override void SetUp()
     {
         target.position = stations[index].position;
         index++;
@@ -52,5 +52,15 @@ public class Platform_Moving : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public override void UponCollision(GameObject player)
+    {
+        player.transform.parent = transform;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        collision.transform.parent = null;
     }
 }
