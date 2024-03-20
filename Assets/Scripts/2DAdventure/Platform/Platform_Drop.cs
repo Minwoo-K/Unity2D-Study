@@ -8,22 +8,28 @@ public class Platform_Drop : Platform_Base
     private bool respawn = true;
     
     private float respawnTime = 2f;
+    private Rigidbody2D rigid2D;
     private Vector3 startPosition;
-
+    
     public override void SetUp()
     {
+        rigid2D = GetComponent<Rigidbody2D>();
         startPosition = transform.position;
     }
 
     public override void UponCollision(GameObject player)
     {
-        
+        if ( hasCollided ) return;
+
+        hasCollided = true;
+
+        StartCoroutine(ShakeAndDrop());
     }
 
     private IEnumerator ShakeAndDrop()
     {
         // Shaking Parameters/Configuration
-        float shakeTime = 2f, shakeAngle = 5f, shakeIntensity = 0.2f, timer = 0;
+        float shakeTime = 1.5f, shakeAngle = 5f, shakeIntensity = 8f, timer = 0;
 
         while ( timer < shakeTime )
         {
@@ -35,11 +41,30 @@ public class Platform_Drop : Platform_Base
             yield return null;
         }
 
-        yield return StartCoroutine(DropAndReset());
+        DropAndReset();
     }
 
-    private IEnumerator DropAndReset()
+    private void DropAndReset()
     {
-        yield return null;
+        // Drop
+        rigid2D.isKinematic = false;
+
+        if ( respawn )
+        {
+            Invoke(nameof(Reset), respawnTime);
+        }
+        else
+        {
+            Destroy(gameObject, respawnTime);
+        }
+    }
+
+    private void Reset()
+    {
+        rigid2D.isKinematic = true;
+        transform.position = startPosition;
+        transform.rotation = Quaternion.identity;
+        rigid2D.velocity = Vector3.zero;
+        hasCollided = false;
     }
 }
