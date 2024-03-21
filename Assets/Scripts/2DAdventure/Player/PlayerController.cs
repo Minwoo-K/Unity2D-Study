@@ -76,6 +76,11 @@ public class PlayerController : MonoBehaviour
             {
                 platform.UponCollision(gameObject);
             }
+
+            if ( Input.GetKeyDown(KeyCode.DownArrow) && movement.feetCollision.TryGetComponent<PlatformEffectorExtension>(out var p) )
+            {
+                p.OnDownWay();
+            }
         }
     }
 }
