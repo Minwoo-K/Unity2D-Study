@@ -16,7 +16,8 @@ public class HiddenArea : MonoBehaviour
     {
         if ( collision.CompareTag("Player") )
         {
-
+            StopAllCoroutines();
+            StartCoroutine(Adventure2D.FadeEffect.FadeOn(tilemap, tilemap.color.a, 0, tilemap.color.a));
         }
     }
 
@@ -24,7 +25,8 @@ public class HiddenArea : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-
+            StopAllCoroutines();
+            StartCoroutine(Adventure2D.FadeEffect.FadeOn(tilemap, tilemap.color.a, 1, 1-tilemap.color.a));
         }
     }
 }
