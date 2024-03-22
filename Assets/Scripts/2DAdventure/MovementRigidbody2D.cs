@@ -18,6 +18,8 @@ public class MovementRigidbody2D : MonoBehaviour
 
     private void Awake()
     {
+        moveSpeed = walkSpeed;
+
         rigid2D = GetComponent<Rigidbody2D>();
     }
 
@@ -28,6 +30,11 @@ public class MovementRigidbody2D : MonoBehaviour
 
     public void MoveInX(float x)
     {
-        
+        // x should be either 0, 0.5, or 1
+        moveSpeed = Mathf.Abs(x) != 1 ? walkSpeed : runSpeed;
+
+        if (x != 0) x = Mathf.Sign(x);
+
+        rigid2D.velocity = new Vector2(x * moveSpeed, rigid2D.velocity.y);
     }
 }
