@@ -9,18 +9,33 @@ public class MovementRigidbody2D : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField]
-    private float walkSpeed;
+    private float walkSpeed;        // Speed in walking
     [SerializeField]
-    private float runSpeed;
+    private float runSpeed;         // Speed in running
 
+    [Header("Jump")]
+    [SerializeField]
+    private float jumpForce;        // Basic Jump Force
+    [SerializeField]
+    private float lowGravityScale;  // Gravity Scale in Higher Jump
+    [SerializeField]
+    private float highGravityScale; // Gravity Scale in Basic Jump
+
+    // Private Variables
     private Rigidbody2D rigid2D;
     private float moveSpeed;
+    private new Collider2D collider;
+    
+    // Properties
+    public bool IsOnGround { get; private set;} = false;
+    public bool IsHigherJump { get; set; } = false;
 
     private void Awake()
     {
         moveSpeed = walkSpeed;
 
         rigid2D = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -36,5 +51,25 @@ public class MovementRigidbody2D : MonoBehaviour
         if (x != 0) x = Mathf.Sign(x);
 
         rigid2D.velocity = new Vector2(x * moveSpeed, rigid2D.velocity.y);
+    }
+
+    public void Jump()
+    {
+        if ( IsOnGround )
+        {
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+        }
+    }
+
+    public void UpdateJumpHeight()
+    {
+        if ( IsHigherJump && !IsOnGround )
+        {
+            rigid2D.gravityScale = lowGravityScale;
+        }
+        else
+        {
+            rigid2D.gravityScale = highGravityScale;
+        }
     }
 }

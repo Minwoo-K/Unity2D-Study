@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private KeyCode jumpKeyCode;
+
     private MovementRigidbody2D movement;
 
     private void Awake()
@@ -23,5 +26,21 @@ public class PlayerController : MonoBehaviour
 
         // Move the Player with the movement based on the xInput
         movement.MoveInX(xInput);
+    }
+
+    private void UpdateJump()
+    {
+        if ( Input.GetKeyDown(jumpKeyCode) )
+        {
+            movement.Jump();
+        }
+        else if ( Input.GetKey(jumpKeyCode) )
+        {
+            movement.IsHigherJump = true;
+        }
+        else if ( Input.GetKeyUp(jumpKeyCode) )
+        {
+            movement.IsHigherJump = false;
+        }
     }
 }
