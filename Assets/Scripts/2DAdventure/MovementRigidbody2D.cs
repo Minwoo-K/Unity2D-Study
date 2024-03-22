@@ -25,6 +25,8 @@ public class MovementRigidbody2D : MonoBehaviour
     private Rigidbody2D rigid2D;
     private float moveSpeed;
     private new Collider2D collider;
+    private Vector2 feetPosition;
+    private Vector2 collisionSize;
     
     // Properties
     public bool IsOnGround { get; private set;} = false;
@@ -40,7 +42,8 @@ public class MovementRigidbody2D : MonoBehaviour
 
     private void Update()
     {
-        
+        UpdateCollision();
+        UpdateJumpHeight();
     }
 
     public void MoveInX(float x)
@@ -71,5 +74,15 @@ public class MovementRigidbody2D : MonoBehaviour
         {
             rigid2D.gravityScale = highGravityScale;
         }
+    }
+
+    private void UpdateCollision()
+    {
+        Bounds bounds = collider.bounds;
+        collisionSize = new Vector2((bounds.max.x - bounds.min.x) * 0.5f, 0.1f);
+        feetPosition = new Vector2(bounds.center.x, bounds.min.y);
+
+        IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundCheckLayers);
+        
     }
 }

@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 458100496623938750, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2472952524243840552, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_Name
       value: Level01
@@ -372,12 +376,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   walkSpeed: 8
   runSpeed: 12
-  jumpForce: 0
-  lowGravityScale: 0
-  highGravityScale: 0
+  jumpForce: 23
+  lowGravityScale: 1.5
+  highGravityScale: 4
 --- !u!114 &740915235
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
 
         // Move the Player with the movement based on the xInput
         movement.MoveInX(xInput);
+
+        // Jump
+        UpdateJump();
     }
 
     private void UpdateJump()
