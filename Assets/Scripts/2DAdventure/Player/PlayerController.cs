@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         UpdateJump();
 
         // Animation
-        UpdateAnimation(xInput);
+        UpdateAnimation(Mathf.Abs(xInput));
 
         UpdateFlipX(xInput);
     }
@@ -57,6 +57,17 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimation(float x)
     {
         animator.SetFloat("velocityX", x);
+
+        if ( ! movement.IsOnGround )
+        {
+            animator.SetBool("IsJumping", true);
+        }
+        else
+        {
+            animator.SetBool("IsJumping", false);
+        }
+
+        animator.SetFloat("velocityY", movement.Velocity.y);
     }
 
     private void UpdateFlipX(float x)
