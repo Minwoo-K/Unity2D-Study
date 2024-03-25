@@ -26,5 +26,24 @@ public class PlayerController : MonoBehaviour
         xInput *= offset;
         // Command movement according to the input
         movement.Move(xInput);
+
+        // Jump
+        UpdateJump();
+    }
+
+    private void UpdateJump()
+    {
+        if ( Input.GetKeyDown(jumpKey) )
+        {
+            movement.Jump();
+        }
+        else if ( Input.GetKey(jumpKey) )
+        {
+            movement.IsHigherJump = true;
+        }
+        else if ( Input.GetKeyUp(jumpKey) )
+        {
+            movement.IsHigherJump = false;
+        }
     }
 }
