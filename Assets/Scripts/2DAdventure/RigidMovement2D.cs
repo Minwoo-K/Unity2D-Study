@@ -25,9 +25,10 @@ public class RigidMovement2D : MonoBehaviour
     private float           moveSpeed;
     private Rigidbody2D     rigid2D;
     private new Collider2D  collider;
-    private Bounds          bounds;
+    
     private Vector2         collisionSize;
     private Vector2         headPosition;
+    private Vector2         feetPosition;
 
     public bool         IsHigherJump { get; set; }
     public bool         IsOnGround  { get; private set; }
@@ -39,7 +40,6 @@ public class RigidMovement2D : MonoBehaviour
 
         rigid2D = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
-        bounds = collider.bounds;
     }
 
     private void Update()
@@ -68,7 +68,7 @@ public class RigidMovement2D : MonoBehaviour
 
     private void UpdateJumpHeight()
     {
-        if ( IsHigherJump && ! IsOnGround )
+        if ( IsHigherJump && !IsOnGround )
         {
             rigid2D.gravityScale = lowGravityScale;
         }
@@ -80,8 +80,11 @@ public class RigidMovement2D : MonoBehaviour
 
     private void UpdateCollision()
     {
+        Bounds bounds = collider.bounds;
         collisionSize = new Vector2((bounds.max.x - bounds.min.x) / 2f, 0.1f);
+        headPosition = new Vector2(bounds.center.x, bounds.max.y);
+        feetPosition = new Vector2(bounds.center.x, bounds.min.y);
 
-        IsOnGround = Physics2D.OverlapBox(headPosition, collisionSize, 0, groundCheckLayer);
+        IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundCheckLayer);;
     }
 }

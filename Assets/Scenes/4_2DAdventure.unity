@@ -374,6 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d51145b0a038c42a3ca2d94a47038b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpKey: 32
 --- !u!114 &740915235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,9 +392,9 @@ MonoBehaviour:
     m_Bits: 64
   walkSpeed: 10
   runSpeed: 15
-  jumpForce: 22
-  lowGravityScale: 10
-  highGravityScale: 15
+  jumpForce: 23
+  lowGravityScale: 5
+  highGravityScale: 8
 --- !u!1 &1540676313
 GameObject:
   m_ObjectHideFlags: 0
