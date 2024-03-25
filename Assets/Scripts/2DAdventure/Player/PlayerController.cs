@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private KeyCode jumpKey;
+
     private RigidMovement2D movement;
 
     private void Awake()

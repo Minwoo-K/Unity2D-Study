@@ -6,17 +6,28 @@ public class RigidMovement2D : MonoBehaviour
 {
     [Header("Layer Management")]
     [SerializeField]
-    private LayerMask groundCheckLayer;
+    private LayerMask   groundCheckLayer;
 
     [Header("Movement")]
     [SerializeField]
-    private float walkSpeed;
+    private float       walkSpeed;
     [SerializeField]
-    private float runSpeed;
+    private float       runSpeed;
 
-    private float moveSpeed;
+    [Header("Jump")]
+    [SerializeField]
+    private float       jumpForce;
+    [SerializeField]
+    private float       lowGravityScale;
+    [SerializeField]
+    private float       highGravityScale;
 
-    public Rigidbody2D rigid2D { get; private set; }
+    private float       moveSpeed;
+    private Rigidbody2D  rigid2D;
+    private new Collider2D collider;
+
+    public bool         IsOnGround  { get; private set; }
+    public bool         IsHigherJump { get; private set; }
 
     private void Awake()
     {
@@ -33,5 +44,13 @@ public class RigidMovement2D : MonoBehaviour
         if ( xInput != 0 ) xInput = Mathf.Sign(xInput);
 
         rigid2D.velocity = new Vector2(xInput * moveSpeed, rigid2D.velocity.y);
+    }
+
+    public void Jump()
+    {
+        if ( IsOnGround )
+        {
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+        }
     }
 }
