@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
     private KeyCode jumpKey;
 
     private RigidMovement2D movement;
+    private Animator animator;
 
     private void Awake()
     {
         movement = GetComponent<RigidMovement2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -29,6 +31,11 @@ public class PlayerController : MonoBehaviour
 
         // Jump
         UpdateJump();
+
+        // Animation
+        UpdateAnimation(xInput);
+
+        UpdateFlipX(xInput);
     }
 
     private void UpdateJump()
@@ -45,5 +52,15 @@ public class PlayerController : MonoBehaviour
         {
             movement.IsHigherJump = false;
         }
+    }
+
+    private void UpdateAnimation(float x)
+    {
+        animator.SetFloat("velocityX", x);
+    }
+
+    private void UpdateFlipX(float x)
+    {
+        if ( x != 0 ) transform.localScale = new Vector3(Mathf.Sign(x), 1, 1);
     }
 }
