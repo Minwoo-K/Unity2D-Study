@@ -16,5 +16,5 @@ MonoBehaviour:
   playerMaxX: 122
   cameraMinX: 0
   cameraMaxX: 112
-  cameraMaxY: 0
+  cameraMaxY: 20
   mapMinY: -8

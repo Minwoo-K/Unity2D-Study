@@ -12,7 +12,6 @@ public class CameraController : MonoBehaviour
     private bool followX, followY;
 
     private float   offsetY;
-    private float   dampVelocity = 0.5f;
 
     private void Awake()
     {
@@ -22,8 +21,8 @@ public class CameraController : MonoBehaviour
     private void LateUpdate()
     {
         float x = followX ? target.position.x : transform.position.x;
-        //float y = followY ? target.position.y + offsetY : transform.position.y;
-        float y = Mathf.SmoothDamp(transform.position.y, target.position.y+offsetY, ref dampVelocity, 0.1f);
+        float y = followY ? target.position.y + offsetY : transform.position.y;
+        //float y = Mathf.SmoothDamp(transform.position.y, target.position.y+offsetY, ref dampVelocity, 0.8f);
 
         x = Mathf.Clamp(x, stageData.CameraMinX, stageData.CameraMaxX);
         y = Mathf.Clamp(y, stageData.MapMinY, stageData.CameraMaxY);
