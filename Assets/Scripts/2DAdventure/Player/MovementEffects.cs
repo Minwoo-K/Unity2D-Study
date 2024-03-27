@@ -6,10 +6,12 @@ public class MovementEffects : MonoBehaviour
 {
     [SerializeField]
     private ParticleSystem footStepEffect;
+    [SerializeField]
+    private GameObject landingEffect;
 
     private ParticleSystem.EmissionModule emission;
-
     private RigidMovement2D movement;
+    private bool WasOnGround { get; set; }
 
     private void Awake()
     {
@@ -19,6 +21,11 @@ public class MovementEffects : MonoBehaviour
 
     private void Update()
     {
+        if ( ! WasOnGround && movement.IsOnGround )
+        {
+            Instantiate(landingEffect, transform.position, Quaternion.identity);
+        }
+
         if ( movement.IsOnGround && movement.Velocity.x != 0 )
         {
             emission.rateOverTime = 30;
@@ -28,5 +35,6 @@ public class MovementEffects : MonoBehaviour
             emission.rateOverTime = 0;
         }
 
+        WasOnGround = movement.IsOnGround;
     }
 }
