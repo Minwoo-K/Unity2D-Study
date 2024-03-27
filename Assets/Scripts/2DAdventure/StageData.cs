@@ -14,6 +14,8 @@ public class StageData : ScriptableObject
     private float cameraMinX;
     [SerializeField]
     private float cameraMaxX;
+    [SerializeField]
+    private float cameraMaxY;
 
     [Header("Other Limits")]
     [SerializeField]
@@ -24,5 +26,6 @@ public class StageData : ScriptableObject
     public float PlayerMaxX => playerMaxX;
     public float CameraMinX => cameraMinX;
     public float CameraMaxX => cameraMaxX;
+    public float CameraMaxY => cameraMaxY;
     public float MapMinY    => mapMinY;
 }

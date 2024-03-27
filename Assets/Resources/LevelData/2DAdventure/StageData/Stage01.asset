@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76a03e9759be9341ab1d895b42f0112, type: 3}
   m_Name: Stage01
   m_EditorClassIdentifier: 
-  playerMinX: 0
-  playerMaxX: 0
+  playerMinX: -10
+  playerMaxX: 122
   cameraMinX: 0
-  cameraMaxX: 0
-  mapMinY: 0
+  cameraMaxX: 112
+  cameraMaxY: 0
+  mapMinY: -8
