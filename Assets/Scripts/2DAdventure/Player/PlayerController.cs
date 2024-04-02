@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
         UpdateAnimation(Mathf.Abs(xInput));
 
         UpdateFlipX(xInput);
+
+        UpdateCollision();
     }
 
     private void UpdateJump()
@@ -73,5 +75,22 @@ public class PlayerController : MonoBehaviour
     private void UpdateFlipX(float x)
     {
         if ( x != 0 ) transform.localScale = new Vector3(Mathf.Sign(x), 1, 1);
+    }
+
+    private void UpdateCollision()
+    {
+        if ( movement.HeadCollision != null && movement.Velocity.y >= 0 )
+        {
+            
+            if ( movement.HeadCollision.TryGetComponent<Tile_Base>(out var tile) )
+            {
+                tile.UponCollision(gameObject);
+            }
+        }
+    }
+
+    private void ResetVelocityY()
+    {
+        
     }
 }
