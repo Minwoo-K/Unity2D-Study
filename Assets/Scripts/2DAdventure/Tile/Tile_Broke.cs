@@ -8,9 +8,9 @@ public class Tile_Broke : Tile_Base
     [SerializeField]
     private GameObject tileBreakingEffect;
 
-    public override void UponCollision(GameObject player)
+    public override void UponCollision()
     {
-        base.UponCollision(player);
+        base.UponCollision();
 
         Instantiate(tileBreakingEffect, transform.position, Quaternion.identity);
 

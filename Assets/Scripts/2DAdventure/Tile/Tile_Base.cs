@@ -17,7 +17,7 @@ public abstract class Tile_Base : MonoBehaviour
         
     }
 
-    public virtual void UponCollision(GameObject player)
+    public virtual void UponCollision()
     {
         if (IsHit) return;
 

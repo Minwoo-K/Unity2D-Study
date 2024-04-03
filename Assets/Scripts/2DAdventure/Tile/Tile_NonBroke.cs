@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Tile_NonBroke : Tile_Base
 {
-    public override void UponCollision(GameObject player)
+    public override void UponCollision()
     {
-        base.UponCollision(player);
+        base.UponCollision();
 
         Debug.Log($"Collided With {name}");
     }
