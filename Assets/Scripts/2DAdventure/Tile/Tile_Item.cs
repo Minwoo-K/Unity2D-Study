@@ -27,8 +27,15 @@ public class Tile_Item : Tile_Base
 
     public override void UponCollision()
     {
+        if ( isEmpty ) return;
+
         base.UponCollision();
 
+        SpawnItem();
+    }
+
+    private void SpawnItem()
+    {
         if (itemType == ItemType.Random)
         {
             int index = Random.Range(0, items.Length - 1);
@@ -36,36 +43,17 @@ public class Tile_Item : Tile_Base
             itemType = (ItemType)index;
         }
 
-        if ( IsHit ) return;
+        Instantiate(items[(int)itemType], transform.position, Quaternion.identity);
 
-        IsHit = true;
-
-        Debug.Log("Spawning an item");
-
-        if ( ! isEmpty )
+        if ( itemType == ItemType.Coin )
         {
-            if (itemType == ItemType.Coin && coinCount != 0)
-            {
-                coinCount--;
-
-                if (coinCount == 0)
-                {
-                    isEmpty = true;
-
-                    spriteRenderer.sprite = emptyTileSprite;
-                }
-            }
-
-            Instantiate(items[(int)itemType], transform.position, Quaternion.identity);
-
-            if ( itemType != ItemType.Coin )
-            {
-                isEmpty = true;
-
-                spriteRenderer.sprite = emptyTileSprite;
-            }
+            coinCount--;
         }
 
-        IsHit = false;
+        if ( itemType != ItemType.Coin || coinCount == 0 )
+        {
+            isEmpty = true;
+            spriteRenderer.sprite = emptyTileSprite;
+        }
     }
 }

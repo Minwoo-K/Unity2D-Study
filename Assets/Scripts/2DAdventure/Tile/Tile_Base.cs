@@ -9,7 +9,6 @@ public class Tile_Base : MonoBehaviour
     protected bool bounceable = false;
 
     // Properties
-    public bool IsBouncing  { get; protected set; } = false;
     public bool IsHit       { get; protected set; } = false;
 
     private void Awake()
@@ -24,11 +23,11 @@ public class Tile_Base : MonoBehaviour
 
     public virtual void UponCollision()
     {
-        if ( IsBouncing ) return;
+        if ( IsHit ) return;
 
         else
         {
-            IsBouncing = true;
+            IsHit = true;
 
             if ( bounceable )
             {
@@ -41,13 +40,11 @@ public class Tile_Base : MonoBehaviour
     {
         float bouncingAmount = 0.35f;
 
-        IsBouncing = true;
-
         yield return StartCoroutine(Bounce(transform.position.y, transform.position.y + bouncingAmount));
 
         yield return StartCoroutine(Bounce(transform.position.y, transform.position.y - bouncingAmount));
 
-        IsBouncing = false;
+        IsHit = false;
     }
 
     private IEnumerator Bounce(float startY, float endY)
