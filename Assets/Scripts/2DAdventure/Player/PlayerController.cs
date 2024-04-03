@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         if ( movement.HeadCollision != null && movement.Velocity.y >= 0 )
         {
-            
+            ResetVelocityY();
             if ( movement.HeadCollision.TryGetComponent<Tile_Base>(out var tile) )
             {
                 tile.UponCollision(gameObject);
@@ -91,6 +91,6 @@ public class PlayerController : MonoBehaviour
 
     private void ResetVelocityY()
     {
-        
+        movement.ResetVelocityY();
     }
 }
