@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Tile_Base : MonoBehaviour
+public class Tile_Base : MonoBehaviour
 {
     [Header("Tile_Base Component")]
     [SerializeField]
@@ -14,37 +14,40 @@ public abstract class Tile_Base : MonoBehaviour
 
     private void Awake()
     {
-        
+        Setup();
+    }
+
+    public virtual void Setup()
+    {
+
     }
 
     public virtual void UponCollision()
     {
-        if (IsHit) return;
+        if ( IsBouncing ) return;
 
         else
-        { 
-            IsHit = true;
+        {
+            IsBouncing = true;
 
-            StartCoroutine(BounceOn());
+            if ( bounceable )
+            {
+                StartCoroutine(BounceOn());
+            }
         }
     }
 
     private IEnumerator BounceOn()
     {
-        if (bounceable && !IsBouncing)
-        {
-            float bouncingAmount = 0.35f;
+        float bouncingAmount = 0.35f;
 
-            IsBouncing = true;
+        IsBouncing = true;
 
-            yield return StartCoroutine(Bounce(transform.position.y, transform.position.y + bouncingAmount));
+        yield return StartCoroutine(Bounce(transform.position.y, transform.position.y + bouncingAmount));
 
-            yield return StartCoroutine(Bounce(transform.position.y, transform.position.y - bouncingAmount));
+        yield return StartCoroutine(Bounce(transform.position.y, transform.position.y - bouncingAmount));
 
-            IsBouncing = false;
-
-            IsHit = false;
-        }
+        IsBouncing = false;
     }
 
     private IEnumerator Bounce(float startY, float endY)
