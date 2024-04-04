@@ -72,6 +72,14 @@ public class RigidMovement2D : MonoBehaviour
         }
     }
 
+    public void Jump(float exteriorJumpForce)
+    {
+        if ( IsOnGround )
+        {
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, exteriorJumpForce);
+        }
+    }
+
     private void UpdateJumpHeight()
     {
         if ( IsHigherJump && !IsOnGround )
