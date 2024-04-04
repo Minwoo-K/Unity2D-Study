@@ -86,6 +86,11 @@ public class PlayerController : MonoBehaviour
             {
                 tile.UponCollision();
             }
+
+            if ( movement.FeetCollision.TryGetComponent<Platform_Base>(out var platform) )
+            {
+                platform.UponCollision(gameObject);
+            }
         }
     }
 

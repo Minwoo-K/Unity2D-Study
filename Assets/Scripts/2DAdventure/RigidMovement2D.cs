@@ -9,6 +9,8 @@ public class RigidMovement2D : MonoBehaviour
     private LayerMask   groundCheckLayer;
     [SerializeField]
     private LayerMask   headCollisionLayer;
+    [SerializeField]
+    private LayerMask   feetCollisionLayer;
 
     [Header("Movement")]
     [SerializeField]
@@ -92,6 +94,7 @@ public class RigidMovement2D : MonoBehaviour
         IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundCheckLayer);
 
         HeadCollision = Physics2D.OverlapBox(headPosition, collisionSize, 0, headCollisionLayer);
+        FeetCollision = Physics2D.OverlapBox(feetPosition, collisionSize, 0, feetCollisionLayer);
     }
 
     public void ResetVelocityY()
