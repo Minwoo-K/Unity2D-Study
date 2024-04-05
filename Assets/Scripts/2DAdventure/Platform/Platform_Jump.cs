@@ -9,6 +9,7 @@ public class Platform_Jump : Platform_Base
 
     private Animator animator;
     private GameObject player;
+    private float coolTime = 0.5f;
 
     public bool IsHit { get; private set; } = false;
 
@@ -33,6 +34,11 @@ public class Platform_Jump : Platform_Base
         player.GetComponent<RigidMovement2D>().Jump(jumpForce);
         player = null;
 
+        Invoke(nameof(Reset), coolTime);
+    }
+
+    private void Reset()
+    {
         IsHit = false;
     }
 }
