@@ -21,7 +21,9 @@ public class PlayerStat : MonoBehaviour
 
     public void DecreaseLife()
     {
-        if ( currentLife > 1 && ! IsInvincible )
+        if ( IsInvincible ) return;
+
+        if ( currentLife >= 1 )
         {
             currentLife--;
 
@@ -29,7 +31,7 @@ public class PlayerStat : MonoBehaviour
 
             if ( currentLife == 0 )
             {
-                Debug.Log("Player Dead, Game Over");
+                PlayerDead();
             }
         }
     }
@@ -41,5 +43,10 @@ public class PlayerStat : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         IsInvincible = false;
+    }
+
+    public void PlayerDead()
+    {
+        Debug.Log("Player Dead, Game Over");
     }
 }
