@@ -655,6 +655,7 @@ GameObject:
   - component: {fileID: 740915235}
   - component: {fileID: 740915234}
   - component: {fileID: 740915236}
+  - component: {fileID: 740915237}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -769,6 +770,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   footStepEffect: {fileID: 937721803}
   landingEffect: {fileID: 8512219068334845373, guid: eea76d79fa64cb54b90de1838f391a0d, type: 3}
+--- !u!114 &740915237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740915230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b2f17161c0f314187309a5629af90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLife: 0
 --- !u!198 &937721803 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7945326969526815195, guid: bdb967fffc1ac7549a76041ddca2f342, type: 3}

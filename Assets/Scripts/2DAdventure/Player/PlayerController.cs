@@ -7,11 +7,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private KeyCode jumpKey;
 
+    private PlayerStat playerStat;
     private RigidMovement2D movement;
     private Animator animator;
 
     private void Awake()
     {
+        playerStat = GetComponent<PlayerStat>();
         movement = GetComponent<RigidMovement2D>();
         animator = GetComponentInChildren<Animator>();
     }
