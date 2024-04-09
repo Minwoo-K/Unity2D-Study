@@ -16,4 +16,19 @@ public class Obstacle_Base : MonoBehaviour
     {
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (instantKill)
+            {
+                collision.GetComponent<PlayerStat>().PlayerDead();
+            }
+            else
+            {
+                collision.GetComponent<PlayerStat>().DecreaseLife();
+            }
+        }
+    }
 }
