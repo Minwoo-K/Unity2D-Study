@@ -754,7 +754,7 @@ MonoBehaviour:
   walkSpeed: 10
   runSpeed: 13
   jumpForce: 23
-  lowGravityScale: 5
+  lowGravityScale: 3.5
   highGravityScale: 8
 --- !u!114 &740915236
 MonoBehaviour:
