@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Base : MonoBehaviour
+public abstract class Item_Base : MonoBehaviour
 {
     [SerializeField]
     private Vector2 spawningForce = new Vector2(1, 7);
     [SerializeField]
     private float   disapperInSeconds = 3;  // Time that the item disappears in
 
-    private bool    collectible = false;    // Whether to be collectible or not
+    private bool    collectible = true;    // Whether to be collectible or not
 
-
+    public abstract void UponTaken(GameObject player);
 
     public void OnSpawning()
     {
@@ -32,9 +32,28 @@ public class Item_Base : MonoBehaviour
         }
 
         collectible = true;
+        GetComponent<Collider2D>().isTrigger = false;
 
         yield return new WaitForSeconds(disapperInSeconds);
 
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ( collectible && collision.CompareTag("Player") )
+        {
+            UponTaken(collision.gameObject);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collectible && collision.gameObject.CompareTag("Player"))
+        {
+            UponTaken(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 }

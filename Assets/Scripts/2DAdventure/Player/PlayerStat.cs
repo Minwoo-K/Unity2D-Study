@@ -9,14 +9,22 @@ public class PlayerStat : MonoBehaviour
 
     private readonly int maxLife = 3;
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private int coin;
 
     public bool IsInvincible { get; private set; } = false;
     public int CurrentLife => currentLife;
+    public int Coin
+    {
+        set { coin = Mathf.Clamp(value, 0, 9999); }
+        get => coin;
+    }
 
     private void Awake()
     {
         currentLife = maxLife;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        coin = 0;
     }
 
     public void DecreaseLife()
