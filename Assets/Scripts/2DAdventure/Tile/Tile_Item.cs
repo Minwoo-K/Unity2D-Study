@@ -43,7 +43,11 @@ public class Tile_Item : Tile_Base
             itemType = (ItemType)index;
         }
 
-        Instantiate(items[(int)itemType], transform.position, Quaternion.identity);
+        GameObject item = Instantiate(items[(int)itemType], transform.position, Quaternion.identity);
+        if ( item.TryGetComponent<Item_Base>(out var itemSpawned) )
+        {
+            itemSpawned.OnSpawning();
+        }
 
         if ( itemType == ItemType.Coin )
         {
