@@ -20,6 +20,18 @@ public class Item_Base : MonoBehaviour
 
     private IEnumerator SpawningProcess()
     {
-        yield return null;
+        collectible = false;
+
+        var rigid = GetComponent<Rigidbody2D>();
+        rigid.isKinematic = false;
+        rigid.velocity = new Vector2((Random.Range(-spawningForce.x, spawningForce.x)), spawningForce.y);
+
+        while ( rigid.velocity.y > 0 )
+        {
+            yield return null;
+        }
+
+        collectible = true;
+        
     }
 }
