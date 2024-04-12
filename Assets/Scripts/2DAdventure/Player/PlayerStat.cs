@@ -6,8 +6,10 @@ public class PlayerStat : MonoBehaviour
 {
     [SerializeField]
     private int currentLife;
+    
+    private readonly int    maxLife = 3;
+    private readonly float  invincibleTime = 3f;
 
-    private readonly int maxLife = 3;
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private int coin;
@@ -44,7 +46,13 @@ public class PlayerStat : MonoBehaviour
         }
     }
 
-    public IEnumerator Invincibility(float time)
+    public void InvincibilityOn()
+    {
+        StopCoroutine("Invincibility");
+        StartCoroutine(Invincibility(invincibleTime));
+    }
+
+    private IEnumerator Invincibility(float time)
     {
         IsInvincible = true;
 
@@ -55,6 +63,8 @@ public class PlayerStat : MonoBehaviour
 
     public void PlayerDead()
     {
+        if ( IsInvincible ) return; 
+
         Debug.Log("Player Dead, Game Over");
     }
 }
