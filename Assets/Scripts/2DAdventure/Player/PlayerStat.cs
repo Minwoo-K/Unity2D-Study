@@ -34,6 +34,11 @@ public class PlayerStat : MonoBehaviour
         coin = 0;
     }
 
+    public void IncreaseLife()
+    {
+        if ( currentLife+1 <= maxLife ) currentLife++;
+    }
+
     public void DecreaseLife()
     {
         if ( IsInvincible ) return;
