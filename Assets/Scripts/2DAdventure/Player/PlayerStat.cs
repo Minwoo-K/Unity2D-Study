@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class PlayerStat : MonoBehaviour
 {
+    // HP section
     [SerializeField]
     private int currentLife;
-    
     private readonly int    maxLife = 3;
+    public int CurrentLife => currentLife;
+    
+    // Item - Invincibility
     private readonly float  invincibleTime = 3f;
+    public bool IsInvincible { get; private set; } = false;
 
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer  spriteRenderer;
+    private Color           originalColor;
+
+    // Item - Coin
     [SerializeField]
     private int coin;
-
-    public bool IsInvincible { get; private set; } = false;
-    public int CurrentLife => currentLife;
     public int Coin
     {
         set { coin = Mathf.Clamp(value, 0, 9999); }
@@ -25,7 +29,8 @@ public class PlayerStat : MonoBehaviour
     private void Awake()
     {
         currentLife = maxLife;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
         coin = 0;
     }
 
@@ -56,7 +61,23 @@ public class PlayerStat : MonoBehaviour
     {
         IsInvincible = true;
 
-        yield return new WaitForSeconds(time);
+        float timeLasting = invincibleTime;
+        
+        while ( timeLasting > 0 )
+        {
+            timeLasting -= Time.deltaTime;
+
+            float blinkSpeed = 10;
+
+            Color color = spriteRenderer.color;
+            color.a = Mathf.SmoothStep(0, 1, Mathf.PingPong(Time.time * blinkSpeed, 1));
+
+            spriteRenderer.color = color;
+
+            yield return null;
+        }
+
+        spriteRenderer.color = originalColor;
 
         IsInvincible = false;
     }
