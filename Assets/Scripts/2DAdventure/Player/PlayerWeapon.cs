@@ -9,9 +9,24 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField]
     private Transform spawningPoint;
 
+    // Item - Projectile
+    private int projectileCount;
+    private readonly int maxProjectile = 9;
+    
+    public void LoadProjectile()
+    {
+        projectileCount += 3;
+        if ( projectileCount > maxProjectile ) projectileCount = maxProjectile;
+    }
+
     public void FireProjectile(float direction)
     {
-        GameObject clone = Instantiate(projectile, spawningPoint.position, Quaternion.identity);
-        clone.GetComponent<Projectile>().Setup(direction);
+        if ( projectileCount > 0 )
+        {
+            GameObject clone = Instantiate(projectile, spawningPoint.position, Quaternion.identity);
+            clone.GetComponent<Projectile>().Setup(direction);
+
+            projectileCount--;
+        }
     }
 }
