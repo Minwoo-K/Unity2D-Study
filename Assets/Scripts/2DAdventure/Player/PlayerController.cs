@@ -6,16 +6,21 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private KeyCode jumpKey;
+    [SerializeField]
+    private KeyCode weaponFireKey;
 
     private PlayerStat playerStat;
     private RigidMovement2D movement;
+    private PlayerWeapon weapon;
     private Animator animator;
+    private float       lastDirectionX;
 
     private void Awake()
     {
-        playerStat = GetComponent<PlayerStat>();
-        movement = GetComponent<RigidMovement2D>();
-        animator = GetComponentInChildren<Animator>();
+        playerStat  = GetComponent<PlayerStat>();
+        movement    = GetComponent<RigidMovement2D>();
+        weapon      = GetComponent<PlayerWeapon>();
+        animator    = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -31,6 +36,8 @@ public class PlayerController : MonoBehaviour
         // Command movement according to the input
         movement.Move(xInput);
 
+        if ( xInput != 0 ) lastDirectionX = xInput;
+
         // Jump
         UpdateJump();
 
@@ -40,8 +47,16 @@ public class PlayerController : MonoBehaviour
         UpdateFlipX(xInput);
 
         UpdateCollision();
+
+        UpdateFireWeapon();
     }
 
+    private void ResetVelocityY()
+    {
+        movement.ResetVelocityY();
+    }
+
+    // Branched Update Methods
     private void UpdateJump()
     {
         if ( Input.GetKeyDown(jumpKey) )
@@ -99,8 +114,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ResetVelocityY()
+    private void UpdateFireWeapon()
     {
-        movement.ResetVelocityY();
+        if ( Input.GetKeyDown(weaponFireKey) )
+        {
+            weapon.FireProjectile(lastDirectionX);
+        }
     }
 }

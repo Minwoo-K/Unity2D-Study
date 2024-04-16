@@ -656,6 +656,7 @@ GameObject:
   - component: {fileID: 740915234}
   - component: {fileID: 740915236}
   - component: {fileID: 740915237}
+  - component: {fileID: 740915238}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -731,6 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpKey: 32
+  weaponFireKey: 122
 --- !u!114 &740915235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -785,6 +787,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLife: 0
   coin: 0
+--- !u!114 &740915238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740915230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3115d4a0fbee6494b94df4d67b13f69d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1525834141232532242, guid: 02199bcecb4f63843a0c1f0e3b2a28c0, type: 3}
+  spawningPoint: {fileID: 1702651525}
 --- !u!198 &937721803 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7945326969526815195, guid: bdb967fffc1ac7549a76041ddca2f342, type: 3}
