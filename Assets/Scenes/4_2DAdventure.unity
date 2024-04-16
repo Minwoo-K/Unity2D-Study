@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 740915236}
   - component: {fileID: 740915237}
   - component: {fileID: 740915238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -966,7 +966,7 @@ GameObject:
   - component: {fileID: 1540676315}
   - component: {fileID: 1540676314}
   - component: {fileID: 1540676316}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1070,7 +1070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1702651525}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProjectileSpawningPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
@@ -1268,6 +1268,10 @@ PrefabInstance:
     - target: {fileID: 7945326969526815193, guid: bdb967fffc1ac7549a76041ddca2f342, type: 3}
       propertyPath: m_Name
       value: FootStepEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945326969526815193, guid: bdb967fffc1ac7549a76041ddca2f342, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7945326969526815196, guid: bdb967fffc1ac7549a76041ddca2f342, type: 3}
       propertyPath: m_RootOrder
