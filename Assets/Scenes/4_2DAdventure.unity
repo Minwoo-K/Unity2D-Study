@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 582767686728896986, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: index
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2472952524243840552, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_Name
       value: Level01
@@ -189,6 +193,10 @@ PrefabInstance:
     - target: {fileID: 4298739414270915432, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: itemType
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049491965862995346, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: index
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
@@ -787,6 +795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLife: 0
   coin: 0
+  stars: 000000
 --- !u!114 &740915238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,6 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1525834141232532242, guid: 02199bcecb4f63843a0c1f0e3b2a28c0, type: 3}
   spawningPoint: {fileID: 1702651525}
+  projectileCount: 0
 --- !u!198 &937721803 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7945326969526815195, guid: bdb967fffc1ac7549a76041ddca2f342, type: 3}

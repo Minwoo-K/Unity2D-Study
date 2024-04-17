@@ -7,15 +7,8 @@ public class PlayerStat : MonoBehaviour
     // HP section
     [SerializeField]
     private int currentLife;
-    private readonly int    maxLife = 3;
+    private readonly int maxLife = 3;
     public int CurrentLife => currentLife;
-    
-    // Item - Invincibility
-    private readonly float  invincibleTime = 3f;
-    public bool IsInvincible { get; private set; } = false;
-
-    private SpriteRenderer  spriteRenderer;
-    private Color           originalColor;
 
     // Item - Coin
     [SerializeField]
@@ -25,6 +18,18 @@ public class PlayerStat : MonoBehaviour
         set { coin = Mathf.Clamp(value, 0, 9999); }
         get => coin;
     }
+
+    // Item - Star
+    [SerializeField]
+    private bool[] stars = new bool[3] { false, false, false };
+
+    // Item - Invincibility
+    private readonly float  invincibleTime = 3f;
+    public bool IsInvincible { get; private set; } = false;
+
+    private SpriteRenderer  spriteRenderer;
+    private Color           originalColor;
+
 
     private void Awake()
     {
@@ -60,6 +65,11 @@ public class PlayerStat : MonoBehaviour
     {
         StopCoroutine("Invincibility");
         StartCoroutine(Invincibility(invincibleTime));
+    }
+
+    public void StarEarned(int index)
+    {
+        stars[index] = true;
     }
 
     private IEnumerator Invincibility(float time)
