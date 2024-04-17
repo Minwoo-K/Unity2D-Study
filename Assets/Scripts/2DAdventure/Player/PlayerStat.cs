@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerStat : MonoBehaviour
 {
+    [SerializeField]
+    private UI_Manager uiManager;
+
+    [Header("Player Stat/Data")]
     // HP section
     [SerializeField]
     private int currentLife;
@@ -30,7 +34,6 @@ public class PlayerStat : MonoBehaviour
     private SpriteRenderer  spriteRenderer;
     private Color           originalColor;
 
-
     private void Awake()
     {
         currentLife = maxLife;
@@ -42,6 +45,8 @@ public class PlayerStat : MonoBehaviour
     public void IncreaseLife()
     {
         if ( currentLife+1 <= maxLife ) currentLife++;
+
+        uiManager.UpdateHP();
     }
 
     public void DecreaseLife()
@@ -59,6 +64,8 @@ public class PlayerStat : MonoBehaviour
                 PlayerDead();
             }
         }
+
+        uiManager.UpdateHP();
     }
 
     public void InvincibilityOn()
