@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,14 @@ public class UI_Manager : MonoBehaviour
     // Player HP
     [SerializeField]
     private Image[] playerHP = new Image[3];
+    // Coin
+    [SerializeField]
+    private TextMeshProUGUI coinCount;
+
+    private void Awake()
+    {
+        UpdateCoin();
+    }
 
     public void UpdateHP()
     {
@@ -28,7 +37,7 @@ public class UI_Manager : MonoBehaviour
 
     public void UpdateCoin()
     {
-
+        coinCount.text = $"x {playerStat.Coin}";
     }
 
     public void UpdateProjectile()

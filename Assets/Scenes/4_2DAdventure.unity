@@ -1062,6 +1062,7 @@ MonoBehaviour:
   - {fileID: 989956426}
   - {fileID: 598750528}
   - {fileID: 1201426104}
+  coinCount: {fileID: 5717921}
 --- !u!4 &607113322
 Transform:
   m_ObjectHideFlags: 0
@@ -1275,7 +1276,7 @@ MonoBehaviour:
     m_Bits: 256
   walkSpeed: 10
   runSpeed: 13
-  jumpForce: 23
+  jumpForce: 22
   lowGravityScale: 3.5
   highGravityScale: 8
 --- !u!114 &740915236

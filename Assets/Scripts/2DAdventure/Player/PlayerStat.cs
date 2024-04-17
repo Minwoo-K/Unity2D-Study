@@ -19,7 +19,11 @@ public class PlayerStat : MonoBehaviour
     private int coin;
     public int Coin
     {
-        set { coin = Mathf.Clamp(value, 0, 9999); }
+        set
+        {
+            coin = Mathf.Clamp(value, 0, 9999);
+            uiManager.UpdateCoin();
+        }
         get => coin;
     }
 
