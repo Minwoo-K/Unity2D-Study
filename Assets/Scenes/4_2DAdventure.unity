@@ -273,6 +273,10 @@ PrefabInstance:
       propertyPath: index
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2346321379493486576, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2472952524243840552, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_Name
       value: Level01
@@ -325,10 +329,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4246303436583570935, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4298739414270915432, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: itemType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5753430435167701045, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_text
+      value: Press Down "Space" to jump higher
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762055024660776791, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7493180027048262975, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_text
+      value: '"Space" to jump'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493180027048262975, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7493180027048262975, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8499120154609316445, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 9049491965862995346, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: index
       value: 2
