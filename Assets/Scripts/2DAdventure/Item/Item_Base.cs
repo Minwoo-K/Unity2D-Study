@@ -7,7 +7,7 @@ public abstract class Item_Base : MonoBehaviour
     [SerializeField]
     private Vector2 spawningForce = new Vector2(1, 7);
     [SerializeField]
-    private float   disapperInSeconds = 3;  // Time that the item disappears in
+    private float   disappearInSeconds = 3;  // Time that the item disappears in
 
     private bool    collectible = true;    // Whether to be collectible or not
 
@@ -34,7 +34,7 @@ public abstract class Item_Base : MonoBehaviour
         collectible = true;
         GetComponent<Collider2D>().isTrigger = false;
 
-        yield return new WaitForSeconds(disapperInSeconds);
+        yield return new WaitForSeconds(disappearInSeconds);
 
         Destroy(gameObject);
     }
