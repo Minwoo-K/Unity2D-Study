@@ -20,6 +20,9 @@ public class UI_Manager : MonoBehaviour
     // Projectile
     [SerializeField]
     private TextMeshProUGUI projectileCount;
+    // Stars
+    [SerializeField]
+    private GameObject[] stars = new GameObject[3];
 
 
     private void Awake()
@@ -52,8 +55,8 @@ public class UI_Manager : MonoBehaviour
         projectileCount.text = $"{number}/9";
     }
 
-    public void UpdateStars()
+    public void UpdateStars(int index)
     {
-
+        stars[index].SetActive(true);
     }
 }

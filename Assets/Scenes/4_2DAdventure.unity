@@ -891,7 +891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &564212322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1062,6 +1062,10 @@ MonoBehaviour:
   - {fileID: 1201426104}
   coinCount: {fileID: 5717921}
   projectileCount: {fileID: 224018176}
+  stars:
+  - {fileID: 754222323}
+  - {fileID: 763374712}
+  - {fileID: 564212321}
 --- !u!4 &607113322
 Transform:
   m_ObjectHideFlags: 0
@@ -1276,7 +1280,7 @@ MonoBehaviour:
   walkSpeed: 10
   runSpeed: 13
   jumpForce: 22
-  lowGravityScale: 3.5
+  lowGravityScale: 5.5
   highGravityScale: 8
 --- !u!114 &740915236
 MonoBehaviour:
@@ -1341,7 +1345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &754222324
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1417,7 +1421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &763374713
 RectTransform:
   m_ObjectHideFlags: 0

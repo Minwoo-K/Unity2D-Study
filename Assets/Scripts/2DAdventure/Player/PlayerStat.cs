@@ -81,6 +81,7 @@ public class PlayerStat : MonoBehaviour
     public void StarEarned(int index)
     {
         stars[index] = true;
+        uiManager.UpdateStars(index);
     }
 
     public void ProjectileEarned(int number)
