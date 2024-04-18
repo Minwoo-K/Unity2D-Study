@@ -5,19 +5,25 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     [SerializeField]
+    private PlayerStat playerStat;
+    [SerializeField]
     private GameObject projectile;
     [SerializeField]
     private Transform spawningPoint;
 
     // Item - Projectile
     [SerializeField]
-    private int projectileCount;
+    private int projectileCount = 0;
     private readonly int maxProjectile = 9;
+
+    public int ProjectileCount => projectileCount;
     
     public void LoadProjectile()
     {
         projectileCount += 3;
         if ( projectileCount > maxProjectile ) projectileCount = maxProjectile;
+
+        playerStat.ProjectileEarned(projectileCount);
     }
 
     public void FireProjectile(float direction)
@@ -28,5 +34,7 @@ public class PlayerWeapon : MonoBehaviour
         clone.GetComponent<Projectile>().Setup(direction);
 
         projectileCount--;
+
+        playerStat.ProjectileEarned(projectileCount);
     }
 }

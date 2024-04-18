@@ -190,8 +190,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -208,13 +208,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
+  m_fontSize: 50
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 60
-  m_fontStyle: 0
+  m_fontSizeMax: 50
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -575,9 +575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'x 9
-
-'
+  m_text: 0/9
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67c11f0724ef8404ca518dec2339b0d4, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 5514c0630b2e4d242bed73dae838f112, type: 2}
@@ -586,8 +584,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -604,13 +602,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
+  m_fontSize: 50
   m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 60
-  m_fontStyle: 0
+  m_fontSizeMax: 50
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1063,6 +1061,7 @@ MonoBehaviour:
   - {fileID: 598750528}
   - {fileID: 1201426104}
   coinCount: {fileID: 5717921}
+  projectileCount: {fileID: 224018176}
 --- !u!4 &607113322
 Transform:
   m_ObjectHideFlags: 0
@@ -1321,6 +1320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3115d4a0fbee6494b94df4d67b13f69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStat: {fileID: 740915237}
   projectile: {fileID: 1525834141232532242, guid: 02199bcecb4f63843a0c1f0e3b2a28c0, type: 3}
   spawningPoint: {fileID: 1702651525}
   projectileCount: 0

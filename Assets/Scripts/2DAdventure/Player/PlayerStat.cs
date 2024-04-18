@@ -83,6 +83,11 @@ public class PlayerStat : MonoBehaviour
         stars[index] = true;
     }
 
+    public void ProjectileEarned(int number)
+    {
+        uiManager.UpdateProjectile(number);
+    }
+
     private IEnumerator Invincibility(float time)
     {
         IsInvincible = true;

@@ -6,14 +6,21 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
 {
+    [Header("Reference(s)")]
     [SerializeField]
-    private PlayerStat playerStat;
+    private PlayerStat      playerStat;
+
+    [Header("UI Variables")]
     // Player HP
     [SerializeField]
     private Image[] playerHP = new Image[3];
     // Coin
     [SerializeField]
     private TextMeshProUGUI coinCount;
+    // Projectile
+    [SerializeField]
+    private TextMeshProUGUI projectileCount;
+
 
     private void Awake()
     {
@@ -40,9 +47,9 @@ public class UI_Manager : MonoBehaviour
         coinCount.text = $"x {playerStat.Coin}";
     }
 
-    public void UpdateProjectile()
+    public void UpdateProjectile(int number)
     {
-
+        projectileCount.text = $"{number}/9";
     }
 
     public void UpdateStars()
