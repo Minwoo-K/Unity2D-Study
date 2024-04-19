@@ -15,10 +15,6 @@ public class FollowPath : MonoBehaviour
     // Private Variables
     private int currentIndex;
     private bool indexIncreasing;
-    private int direction;
-
-    // Properties
-    public int Direction => direction;
 
     public void Awake()
     {
@@ -60,11 +56,5 @@ public class FollowPath : MonoBehaviour
 
             yield return null;
         }
-    }
-
-    private void SetDirection(float start, float end)
-    {
-        if ( end - start != 0 ) direction = (int)Mathf.Sign(end-start);
-        else                    direction = 0;
     }
 }
