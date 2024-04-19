@@ -15,11 +15,16 @@ public class FollowPath : MonoBehaviour
     // Private Variables
     private int currentIndex;
     private bool indexIncreasing;
+    private int direction;
+
+    // Properties
+    public int Direction => direction;
 
     public void Awake()
     {
         currentIndex = 0;
         indexIncreasing = true;
+        direction = 0;
         transform.position = stations[currentIndex].position;
 
         StartCoroutine(MovingInLoop());
@@ -57,4 +62,9 @@ public class FollowPath : MonoBehaviour
         }
     }
 
+    private void SetDirection(float start, float end)
+    {
+        if ( end - start != 0 ) direction = (int)Mathf.Sign(end-start);
+        else                    direction = 0;
+    }
 }
