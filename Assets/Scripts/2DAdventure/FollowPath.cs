@@ -20,7 +20,6 @@ public class FollowPath : MonoBehaviour
     {
         currentIndex = 0;
         indexIncreasing = true;
-        direction = 0;
         transform.position = stations[currentIndex].position;
 
         StartCoroutine(MovingInLoop());
