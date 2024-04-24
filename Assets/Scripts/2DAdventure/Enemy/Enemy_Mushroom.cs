@@ -20,4 +20,19 @@ public class Enemy_Mushroom : MonoBehaviour
         spriteRenderer.flipX = followPath.Direction == 1 ? true : false;
         animator.SetFloat("MoveSpeed", (int)followPath.State);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ( collision.CompareTag("Player") )
+        {
+            collision.GetComponent<PlayerStat>().DecreaseLife();
+        }
+
+        if ( collision.CompareTag("PlayerProjectile") )
+        {
+            Destroy(collision.gameObject);
+            followPath.Stop();
+            animator.SetTrigger("IsDead");
+        }
+    }
 }
