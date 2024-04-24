@@ -30,7 +30,9 @@ public class Enemy_Mushroom : MonoBehaviour
 
         if ( collision.CompareTag("PlayerProjectile") )
         {
+            followPath.Stop();
             animator.SetTrigger("IsDead");
+            Destroy(collision.gameObject);
         }
     }
 }
