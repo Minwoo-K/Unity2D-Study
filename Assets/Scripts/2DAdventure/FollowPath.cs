@@ -6,11 +6,13 @@ public class FollowPath : MonoBehaviour
 {
     // Serialize Fields
     [SerializeField]
-    private Transform[] stations;     // Stations where the platform stays for the given waiting time
+    private Transform   target;     // To Specify the transform object
     [SerializeField]
-    private float waitingTime;    // The Waiting Time once the platform reaches a station
+    private Transform[] stations;   // Stations where the platform stays for the given waiting time
     [SerializeField]
-    private float speedOffset;    // An offset value to set time of the platform moving one to another. The bigger the value, the slower
+    private float waitingTime;      // The Waiting Time once the platform reaches a station
+    [SerializeField]
+    private float speedOffset;      // An offset value to set time of the platform moving one to another. The bigger the value, the slower
 
     // Private Variables
     private int currentIndex;
@@ -20,7 +22,7 @@ public class FollowPath : MonoBehaviour
     {
         currentIndex = 0;
         indexIncreasing = true;
-        transform.position = stations[currentIndex].position;
+        target.position = stations[currentIndex].position;
 
         StartCoroutine(MovingInLoop());
     }
@@ -34,7 +36,7 @@ public class FollowPath : MonoBehaviour
 
             currentIndex = indexIncreasing ? ++currentIndex : --currentIndex;
 
-            yield return StartCoroutine(MoveAToB(transform.position, stations[currentIndex].position));
+            yield return StartCoroutine(MoveAToB(target.position, stations[currentIndex].position));
 
             yield return new WaitForSeconds(waitingTime);
         }
@@ -51,7 +53,7 @@ public class FollowPath : MonoBehaviour
             percent += Time.deltaTime / movingTime;
 
             Vector3 position = Vector3.Lerp(A, B, percent);
-            transform.position = position;
+            target.position = position;
 
             yield return null;
         }
