@@ -15,4 +15,9 @@ public class Enemy_Mushroom : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
+    private void Update()
+    {
+        spriteRenderer.flipX = followPath.Direction == 1 ? true : false;
+        animator.SetFloat("MoveSpeed", (int)followPath.State);
+    }
 }
