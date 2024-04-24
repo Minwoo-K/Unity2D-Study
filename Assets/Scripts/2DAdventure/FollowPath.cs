@@ -10,13 +10,17 @@ public class FollowPath : MonoBehaviour
     [SerializeField]
     private Transform[] stations;   // Stations where the platform stays for the given waiting time
     [SerializeField]
-    private float waitingTime;      // The Waiting Time once the platform reaches a station
+    private float       waitingTime;      // The Waiting Time once the platform reaches a station
     [SerializeField]
-    private float speedOffset;      // An offset value to set time of the platform moving one to another. The bigger the value, the slower
+    private float       speedOffset;      // An offset value to set time of the platform moving one to another. The bigger the value, the slower
 
     // Private Variables
-    private int currentIndex;
-    private bool indexIncreasing;
+    private int         currentIndex;
+    private bool        indexIncreasing;
+    private float       direction;
+
+    // Properties
+    public float        Direction => direction;
 
     public void Awake()
     {

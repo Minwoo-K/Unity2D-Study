@@ -14,4 +14,17 @@ public class Enemy_Mushroom : MonoBehaviour
         spriteRenderer =    GetComponentInChildren<SpriteRenderer>();
         animator =          GetComponentInChildren<Animator>();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ( collision.CompareTag("Player") )
+        {
+            collision.GetComponent<PlayerStat>().DecreaseLife();
+        }
+
+        if ( collision.CompareTag("PlayerProjectile") )
+        {
+            animator.SetTrigger("IsDead");
+        }
+    }
 }
