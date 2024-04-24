@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum State { Idle = 0, Move }
+
 public class FollowPath : MonoBehaviour
 {
     // Serialize Fields
@@ -15,14 +17,15 @@ public class FollowPath : MonoBehaviour
     private float       speedOffset;      // An offset value to set time of the platform moving one to another. The bigger the value, the slower
 
     // Private Variables
+    private State       state = State.Idle;
     private int         currentIndex;
     private bool        indexIncreasing;
-    private float       direction;
+    private int         direction;
 
     // Properties
-    public float        Direction => direction;
+    public int          Direction => direction;
 
-    public void Awake()
+    private void Awake()
     {
         currentIndex = 0;
         indexIncreasing = true;
@@ -52,6 +55,9 @@ public class FollowPath : MonoBehaviour
         float movingTime = distance * speedOffset;
         float percent = 0;
 
+        SetDirection(A.x, B.x);
+        state = State.Move;
+
         while (percent < 1)
         {
             percent += Time.deltaTime / movingTime;
@@ -61,5 +67,18 @@ public class FollowPath : MonoBehaviour
 
             yield return null;
         }
+
+        state = State.Idle;
+    }
+
+    private void SetDirection(float start, float end)
+    {
+        if ( end - start != 0 ) direction = (int)Mathf.Sign(end - start);
+        else                    direction = 0;
+    }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
     }
 }
