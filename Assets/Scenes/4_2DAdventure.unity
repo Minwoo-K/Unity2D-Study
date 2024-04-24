@@ -337,6 +337,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5232949724851318520, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_text
+      value: Hidden Area
+      objectReference: {fileID: 0}
     - target: {fileID: 5753430435167701045, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_text
       value: Press Down "Space" to jump higher
@@ -357,6 +361,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8382948779860894666, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_text
+      value: Move Forward to reveal hidden area
+      objectReference: {fileID: 0}
     - target: {fileID: 8499120154609316445, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
