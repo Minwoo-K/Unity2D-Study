@@ -1483,9 +1483,9 @@ MonoBehaviour:
     m_Bits: 256
   walkSpeed: 10
   runSpeed: 13
-  jumpForce: 22
-  lowGravityScale: 5.5
-  highGravityScale: 8
+  jumpForce: 16
+  lowGravityScale: 3
+  highGravityScale: 4
 --- !u!114 &740915236
 MonoBehaviour:
   m_ObjectHideFlags: 0
