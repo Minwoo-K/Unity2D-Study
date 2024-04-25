@@ -51,17 +51,24 @@ public class Enemy_Frog : MonoBehaviour
         movement.Jump();
         animator.SetTrigger("OnJumping");
 
-        while ( !movement.IsOnGround )
+        yield return new WaitUntil(()=> !movement.IsOnGround);
+
+        while ( true )
         {
+            movement.Move(direction);
             animator.SetFloat("VelocityY", movement.Velocity.y);
+            
+            if (movement.IsOnGround)
+            {
+                movement.Move(0);
+                animator.SetTrigger("OnLanding");
+
+                yield break;
+            }
 
             yield return null;
         }
 
-        if ( movement.IsOnGround )
-        {
-            animator.SetTrigger("OnLanding");
-        }
     }
 
     private void UpdateDirection()
