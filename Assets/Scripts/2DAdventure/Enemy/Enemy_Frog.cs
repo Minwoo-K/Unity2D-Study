@@ -55,6 +55,7 @@ public class Enemy_Frog : MonoBehaviour
 
         while ( true )
         {
+            UpdateDirection();
             movement.Move(direction);
             animator.SetFloat("VelocityY", movement.Velocity.y);
             
