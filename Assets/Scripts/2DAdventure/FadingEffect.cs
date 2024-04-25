@@ -20,4 +20,20 @@ public static class FadingEffect
             yield return null;
         }
     }
+
+    public static IEnumerator FadeOn(SpriteRenderer spriteRenderer, float from, float to, float fadeTime)
+    {
+        float percent = 0;
+
+        while (percent < 1)
+        {
+            percent += Time.deltaTime / fadeTime;
+
+            Color color = spriteRenderer.color;
+            color.a = Mathf.Lerp(from, to, percent);
+            spriteRenderer.color = color;
+
+            yield return null;
+        }
+    }
 }

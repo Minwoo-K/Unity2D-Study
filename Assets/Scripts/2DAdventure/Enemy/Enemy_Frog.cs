@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Frog : MonoBehaviour
+public class Enemy_Frog : Enemy_Base
 {
     [SerializeField]
     private LayerMask groundLayerMask;
@@ -83,5 +83,17 @@ public class Enemy_Frog : MonoBehaviour
             direction *= -1;
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
+    }
+
+    public override void OnDead()
+    {
+        if (IsDead) return;
+
+        IsDead = true;
+        StopAllCoroutines();
+        float fadeTime = 2f;
+        StartCoroutine(FadingEffect.FadeOn(spriteRenderer, 1, 0, fadeTime));
+        
+        Destroy(gameObject, fadeTime);
     }
 }

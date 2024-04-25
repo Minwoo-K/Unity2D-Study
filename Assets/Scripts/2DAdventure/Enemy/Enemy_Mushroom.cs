@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Mushroom : MonoBehaviour
+public class Enemy_Mushroom : Enemy_Base
 {
     private FollowPath      followPath;
     private SpriteRenderer  spriteRenderer;
@@ -21,18 +21,13 @@ public class Enemy_Mushroom : MonoBehaviour
         animator.SetFloat("MoveSpeed", (int)followPath.State);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public override void OnDead()
     {
-        if ( collision.CompareTag("Player") )
-        {
-            collision.GetComponent<PlayerStat>().DecreaseLife();
-        }
+        if ( IsDead ) return;
 
-        if ( collision.CompareTag("PlayerProjectile") )
-        {
-            Destroy(collision.gameObject);
-            followPath.Stop();
-            animator.SetTrigger("IsDead");
-        }
+        IsDead = true;
+        followPath.Stop();
+        animator.SetTrigger("IsDead");
     }
+
 }
