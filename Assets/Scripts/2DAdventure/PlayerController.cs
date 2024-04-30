@@ -5,26 +5,29 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private KeyCode jumpKeyCode;
+    private KeyCode             jumpKeyCode;
 
     private RigidbodyMovement2D movement;
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer      spriteRenderer;
+    private PlayerAnimator      playerAnimator;
 
     private void Awake()
     {
         movement = GetComponent<RigidbodyMovement2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        playerAnimator = GetComponentInChildren<PlayerAnimator>();
     }
 
     private void Update()
     {
+        // Movement
         float xInput = Input.GetAxisRaw("Horizontal");
         UpdateSpriteFlipX(xInput);
         float offset = 0.5f + (Input.GetAxis("Run") * 0.5f);
         xInput *= offset;
-
         movement.Move(xInput);
 
+        // Jump
         UpdateJump();
     }
 
@@ -49,5 +52,10 @@ public class PlayerController : MonoBehaviour
         {
             movement.IsHigherJump = false;
         }
+    }
+
+    private void UpdateAnimation()
+    {
+
     }
 }

@@ -26,7 +26,8 @@ public class RigidbodyMovement2D : MonoBehaviour
     private Rigidbody2D rigid2D;
     private new Collider2D collider2D;
 
-    public bool IsHigherJump = false;
+    public bool IsHigherJump { get; set; } = false;
+    public bool IsOnGround { get; private set; } = true;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class RigidbodyMovement2D : MonoBehaviour
     private void Update()
     {
         UpdateJumpHeight();
+        UpdateCollisionBelow();
     }
 
     public void Move(float xInput)
@@ -58,5 +60,14 @@ public class RigidbodyMovement2D : MonoBehaviour
     private void UpdateJumpHeight()
     {
         rigid2D.gravityScale = IsHigherJump ? lowGravityScale : highGravityScale;
+    }
+
+    private void UpdateCollisionBelow()
+    {
+        Bounds bounds = collider2D.bounds;
+        Vector2 position = new Vector2(bounds.center.x, bounds.min.y);
+        Vector2 size = new Vector2((bounds.max.x - bounds.min.x), 0.1f);
+
+        IsOnGround = Physics2D.OverlapBox(position, size, 0, groundCheckLayer);
     }
 }
