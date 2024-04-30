@@ -13,10 +13,20 @@ public class RigidbodyMovement2D : MonoBehaviour
     [SerializeField]
     private float runSpeed;
 
+    [Header("Jump")]
+    [SerializeField]
+    private float jumpForce;
+    [SerializeField]
+    private float lowGravityScale;
+    [SerializeField]
+    private float highGravityScale;
+
     private float moveSpeed;
     
     private Rigidbody2D rigid2D;
     private new Collider2D collider2D;
+
+    public bool IsHigherJump = false;
 
     private void Awake()
     {
@@ -25,16 +35,28 @@ public class RigidbodyMovement2D : MonoBehaviour
         moveSpeed = walkSpeed;
     }
 
+    private void Update()
+    {
+        UpdateJumpHeight();
+    }
+
     public void Move(float xInput)
     {
         // (xInput) 0: Idle / 0.5: Walk / 1: Run
         moveSpeed = Mathf.Abs(xInput) == 1 ? runSpeed : walkSpeed;
 
-        if ( xInput != 0 )
-        {
-            xInput = Mathf.Sign(xInput);
-        }
+        if ( xInput != 0 ) xInput = Mathf.Sign(xInput);
 
         rigid2D.velocity = new Vector2(xInput * moveSpeed, rigid2D.velocity.y);
+    }
+
+    public void Jump()
+    {
+        rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+    }
+
+    private void UpdateJumpHeight()
+    {
+        rigid2D.gravityScale = IsHigherJump ? lowGravityScale : highGravityScale;
     }
 }
