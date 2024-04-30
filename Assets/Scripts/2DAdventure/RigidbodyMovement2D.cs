@@ -27,6 +27,14 @@ public class RigidbodyMovement2D : MonoBehaviour
 
     public void Move(float xInput)
     {
+        // (xInput) 0: Idle / 0.5: Walk / 1: Run
+        moveSpeed = Mathf.Abs(xInput) == 1 ? runSpeed : walkSpeed;
+
+        if ( xInput != 0 )
+        {
+            xInput = Mathf.Sign(xInput);
+        }
+
         rigid2D.velocity = new Vector2(xInput * moveSpeed, rigid2D.velocity.y);
     }
 }
