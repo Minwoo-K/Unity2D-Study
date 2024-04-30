@@ -223,13 +223,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   walkSpeed: 8
   runSpeed: 10
   jumpForce: 18
   lowGravityScale: 3.5
   highGravityScale: 6
-  IsHigherJump: 0
 --- !u!1 &497738388
 GameObject:
   m_ObjectHideFlags: 0

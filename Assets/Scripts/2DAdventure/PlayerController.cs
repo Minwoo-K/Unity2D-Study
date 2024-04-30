@@ -9,13 +9,14 @@ public class PlayerController : MonoBehaviour
 
     private RigidbodyMovement2D movement;
     private SpriteRenderer      spriteRenderer;
-    private PlayerAnimator      playerAnimator;
+    private Animator            animator;
+    private bool                wasOnGround = true;
 
     private void Awake()
     {
         movement = GetComponent<RigidbodyMovement2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        playerAnimator = GetComponentInChildren<PlayerAnimator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -26,6 +27,9 @@ public class PlayerController : MonoBehaviour
         float offset = 0.5f + (Input.GetAxis("Run") * 0.5f);
         xInput *= offset;
         movement.Move(xInput);
+
+        // Animation
+        UpdateAnimation(xInput);
 
         // Jump
         UpdateJump();
@@ -54,8 +58,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void UpdateAnimation()
+    private void UpdateAnimation(float x)
     {
+        animator.SetFloat("VelocityX", Mathf.Abs(x));
 
+        if ( wasOnGround && !movement.IsOnGround )
+        {
+            animator.SetBool("IsJumping", true);
+        }
+
+        wasOnGround = movement.IsOnGround;
+
+        if ( movement.IsOnGround )
+        {
+            animator.SetBool("IsJumping", false);
+        }
+
+        animator.SetFloat("VelocityY", movement.Velocity.y);
     }
 }

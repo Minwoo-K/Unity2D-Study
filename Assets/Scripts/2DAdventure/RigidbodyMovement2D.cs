@@ -28,6 +28,7 @@ public class RigidbodyMovement2D : MonoBehaviour
 
     public bool IsHigherJump { get; set; } = false;
     public bool IsOnGround { get; private set; } = true;
+    public Vector2 Velocity => rigid2D.velocity;
 
     private void Awake()
     {
