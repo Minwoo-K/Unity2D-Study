@@ -243,7 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8cc832b293c88409a7792f5fcb8268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 1004940609}
+  movingEffect: {fileID: 1004940609}
+  landingEffectPrefab: {fileID: 3576228612435508546, guid: 75cfa7c8752b067498e85cc30f822f6b, type: 3}
 --- !u!1 &497738388
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class MovementEffect : MonoBehaviour
 {
+    // Moving Effect
     [SerializeField]
-    private ParticleSystem particle;
-
+    private ParticleSystem movingEffect;
     private ParticleSystem.EmissionModule emission;
+
+    // LandingEffect
+    [SerializeField]
+    private GameObject landingEffectPrefab;
+
+    // Necessary Variables
     private RigidbodyMovement2D movement;
+    private bool wasOnGround = true;
 
     private void Awake()
     {
-        emission = particle.emission;
+        emission = movingEffect.emission;
         movement = GetComponent<RigidbodyMovement2D>();
     }
 
@@ -22,5 +29,12 @@ public class MovementEffect : MonoBehaviour
             emission.rateOverTime = 30;
         else
             emission.rateOverTime = 0;
+
+        if ( !wasOnGround && movement.IsOnGround )
+        {
+            Instantiate(landingEffectPrefab, transform.position, Quaternion.identity);
+        }
+
+        wasOnGround = movement.IsOnGround;
     }
 }
