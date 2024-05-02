@@ -16,4 +16,5 @@ MonoBehaviour:
   playerMaxLimitX: 122
   cameraMinLimitX: 0
   cameraMaxLimitX: 112
+  cameraMaxLimitY: 20
   mapMinLimitY: -8
