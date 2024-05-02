@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
+    private StageData stageData;
+    [SerializeField]
     private KeyCode             jumpKeyCode;
 
     private RigidbodyMovement2D movement;
@@ -27,6 +29,9 @@ public class PlayerController : MonoBehaviour
         float offset = 0.5f + (Input.GetAxis("Run") * 0.5f);
         xInput *= offset;
         movement.Move(xInput);
+
+        float x = Mathf.Clamp(transform.position.x, stageData.PlayerMinLimitX, stageData.PlayerMaxLimitX);
+        transform.position = new Vector3(x, transform.position.y, 0);
 
         // Animation
         UpdateAnimation(xInput);
