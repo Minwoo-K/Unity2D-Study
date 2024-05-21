@@ -193,7 +193,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f2d21a712bb0fd74bb25fabb4f12d485, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -347,7 +347,6 @@ MonoBehaviour:
   target: {fileID: 139141784}
   x: 1
   y: 1
-  z: 0
 --- !u!1001 &1004940607
 PrefabInstance:
   m_ObjectHideFlags: 0
