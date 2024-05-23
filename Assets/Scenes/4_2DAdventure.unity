@@ -354,7 +354,6 @@ GameObject:
   m_Component:
   - component: {fileID: 147540712}
   - component: {fileID: 147540711}
-  - component: {fileID: 147540710}
   m_Layer: 0
   m_Name: ParallaxCamera
   m_TagString: Untagged
@@ -362,14 +361,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &147540710
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147540709}
-  m_Enabled: 1
 --- !u!20 &147540711
 Camera:
   m_ObjectHideFlags: 0
