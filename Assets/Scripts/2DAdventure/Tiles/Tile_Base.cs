@@ -23,12 +23,12 @@ public class Tile_Base : MonoBehaviour
 
     private IEnumerator OnBounce()
     {
-        float bouncingAmount = 1f;
-        float bouncingTime = 0.2f;
+        float bouncingAmount = 0.5f;
+        float bouncingTime = 0.3f;
 
         yield return StartCoroutine(MoveInY(transform.position.y, transform.position.y+bouncingAmount, bouncingTime / 2f));
 
-        yield return StartCoroutine(MoveInY(transform.position.y+bouncingAmount, transform.position.y, bouncingTime / 2f));
+        yield return StartCoroutine(MoveInY(transform.position.y, transform.position.y-bouncingAmount, bouncingTime / 2f));
 
         IsHit = false;
     }
@@ -36,7 +36,6 @@ public class Tile_Base : MonoBehaviour
     private IEnumerator MoveInY(float startY, float endY, float time)
     {
         float percent = 0;
-        
 
         while ( percent < 1 )
         {

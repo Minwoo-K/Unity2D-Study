@@ -69,10 +69,15 @@ public class RigidbodyMovement2D : MonoBehaviour
         rigid2D.gravityScale = IsHigherJump ? lowGravityScale : highGravityScale;
     }
 
+    private void CancelVelocityY()
+    {
+        rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
+    }
+
     private void UpdateCollision()
     {
         Bounds bounds = collider2D.bounds;
-        Vector2 size = new Vector2((bounds.max.x - bounds.min.x), 0.1f);
+        Vector2 size = new Vector2((bounds.max.x - bounds.min.x)*0.5f, 0.1f);
         Vector2 feetPosition = new Vector2(bounds.center.x, bounds.min.y);
         Vector2 headPosition = new Vector2(bounds.center.x, bounds.max.y);
 
@@ -82,7 +87,8 @@ public class RigidbodyMovement2D : MonoBehaviour
         headCollision = Physics2D.OverlapBox(headPosition, size, 0, headCollisionLayer);
         if ( headCollision != null )
         {
-            if ( headCollision.TryGetComponent(out Tile_Base tile ) )
+            CancelVelocityY();
+            if ( headCollision.TryGetComponent(out Tile_Base tile ) && !tile.IsHit )
             {
                 tile.UpdateCollision();
             }
