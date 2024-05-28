@@ -325,6 +325,9 @@ MonoBehaviour:
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 64
+  headCollisionLayer:
+    serializedVersion: 2
+    m_Bits: 128
   walkSpeed: 8
   runSpeed: 10
   jumpForce: 18
