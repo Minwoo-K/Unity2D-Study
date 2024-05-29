@@ -10,5 +10,13 @@ public class Tile_Broke : Tile_Base
     public override void UpdateCollision()
     {
         base.UpdateCollision();
+
+        if ( IsHit ) return;
+
+        IsHit = true;
+
+        Instantiate(tileBreakEffect, transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
     }
 }
