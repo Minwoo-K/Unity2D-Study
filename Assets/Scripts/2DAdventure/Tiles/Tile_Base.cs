@@ -9,7 +9,7 @@ public class Tile_Base : MonoBehaviour
 
     public bool IsHit { get; protected set; } = false;
 
-    public void UpdateCollision()
+    public virtual void UpdateCollision()
     {
         if ( bounceable )
         {
