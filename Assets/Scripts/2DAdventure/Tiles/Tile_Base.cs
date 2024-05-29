@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tile_Base : MonoBehaviour
 {
     [SerializeField]
-    private bool bounceable;
+    protected bool bounceable;
 
     public bool IsHit { get; protected set; } = false;
 
