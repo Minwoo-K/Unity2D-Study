@@ -81,9 +81,7 @@ public class RigidbodyMovement2D : MonoBehaviour
         Vector2 feetPosition = new Vector2(bounds.center.x, bounds.min.y);
         Vector2 headPosition = new Vector2(bounds.center.x, bounds.max.y);
 
-        feetCollision = Physics2D.OverlapBox(feetPosition, size, 0, groundCheckLayer);
-        IsOnGround = feetCollision != null ? true : false;
-
+        // Head Collision
         headCollision = Physics2D.OverlapBox(headPosition, size, 0, headCollisionLayer);
         if ( headCollision != null )
         {
@@ -91,6 +89,17 @@ public class RigidbodyMovement2D : MonoBehaviour
             if ( headCollision.TryGetComponent(out Tile_Base tile ) && !tile.IsHit )
             {
                 tile.UpdateCollision();
+            }
+        }
+
+        // Feet Collision
+        feetCollision = Physics2D.OverlapBox(feetPosition, size, 0, groundCheckLayer);
+        IsOnGround = feetCollision != null ? true : false;
+        if ( feetCollision != null )
+        {
+            if ( feetCollision.TryGetComponent(out Platform_Base platform))
+            {
+                platform.UpdateCollision();
             }
         }
     }
