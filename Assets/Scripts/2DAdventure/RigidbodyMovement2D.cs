@@ -100,7 +100,7 @@ public class RigidbodyMovement2D : MonoBehaviour
         {
             if ( feetCollision.TryGetComponent(out Platform_Base platform))
             {
-                platform.UpdateCollision();
+                platform.UpdateCollision(transform);
             }
         }
     }

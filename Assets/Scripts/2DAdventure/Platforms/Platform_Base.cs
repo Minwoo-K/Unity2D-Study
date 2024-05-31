@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class Platform_Base : MonoBehaviour
 {
-    public abstract void UpdateCollision();
+    public abstract void UpdateCollision(Transform player);
 }
