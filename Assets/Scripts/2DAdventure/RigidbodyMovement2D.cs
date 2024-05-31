@@ -61,7 +61,8 @@ public class RigidbodyMovement2D : MonoBehaviour
 
     public void Jump()
     {
-        rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+        if ( IsOnGround )
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
     }
 
     private void UpdateJumpHeight()
