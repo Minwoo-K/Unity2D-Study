@@ -8,9 +8,10 @@ public class Platform_Moving : Platform_Base
     private Transform   targetPlatform;
     [SerializeField]
     private Transform[] stations;
-
     [SerializeField]
     private float       timeSet;            // Time Setter to define how long it takes. The higher the longer time.
+    [SerializeField]
+    private float       stayingTime;        // Time to stay once reached at a station
 
     private int index = 0;
     private bool indexIncreasing = true;
@@ -20,11 +21,6 @@ public class Platform_Moving : Platform_Base
         transform.position = stations[index].position;
 
         StartCoroutine(MoveInLoop());
-    }
-
-    public override void UpdateCollision()
-    {
-        
     }
 
     private IEnumerator MoveInLoop()
@@ -43,7 +39,7 @@ public class Platform_Moving : Platform_Base
     private IEnumerator MoveAToB(Vector3 A, Vector3 B)
     {
         float distance = Vector3.Distance(A, B);
-        float movingTime = distance * timeSet;
+        float movingTime = distance * timeSet; // Time = Distance * TimeSetter. If distance 5, if timeSet is 2, it takes 10s to move
 
         float percent = 0;
 
@@ -55,5 +51,12 @@ public class Platform_Moving : Platform_Base
 
             yield return null;
         }
+
+        yield return new WaitForSeconds(stayingTime);
+    }
+
+    public override void UpdateCollision()
+    {
+
     }
 }
