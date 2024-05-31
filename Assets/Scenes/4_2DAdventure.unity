@@ -1024,6 +1024,18 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8648670897409050246, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: timeSet
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648670897409050246, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: movingTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648670897409050246, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: movingOffset
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6765461421292294896, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}

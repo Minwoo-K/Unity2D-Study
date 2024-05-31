@@ -4,8 +4,56 @@ using UnityEngine;
 
 public class Platform_Moving : Platform_Base
 {
+    [SerializeField]
+    private Transform   targetPlatform;
+    [SerializeField]
+    private Transform[] stations;
+
+    [SerializeField]
+    private float       timeSet;            // Time Setter to define how long it takes. The higher the longer time.
+
+    private int index = 0;
+    private bool indexIncreasing = true;
+
+    private void Awake()
+    {
+        transform.position = stations[index].position;
+
+        StartCoroutine(MoveInLoop());
+    }
+
     public override void UpdateCollision()
     {
         
+    }
+
+    private IEnumerator MoveInLoop()
+    {
+        while ( true )
+        {
+            index = indexIncreasing ? ++index : --index;
+
+            if (index + 1 == stations.Length) indexIncreasing = false;
+            else if (index == 0) indexIncreasing = true;
+
+            yield return StartCoroutine(MoveAToB(targetPlatform.position, stations[index].position));
+        }
+    }
+
+    private IEnumerator MoveAToB(Vector3 A, Vector3 B)
+    {
+        float distance = Vector3.Distance(A, B);
+        float movingTime = distance * timeSet;
+
+        float percent = 0;
+
+        while ( percent < 1 )
+        {
+            percent += Time.deltaTime / movingTime;
+
+            targetPlatform.position = Vector3.Lerp(A, B, percent);
+
+            yield return null;
+        }
     }
 }
