@@ -9,6 +9,15 @@ public class Platform_Drop : Platform_Base
     [SerializeField]
     private bool respawn;
 
+    private Rigidbody2D rigid2D;
+    private Vector3 startPosition;
+
+    public override void Setup()
+    {
+        rigid2D = GetComponent<Rigidbody2D>();
+        startPosition = transform.position;
+    }
+
     public override void UpdateCollision(Transform player)
     {
         if ( player.CompareTag("Player") )
@@ -19,7 +28,7 @@ public class Platform_Drop : Platform_Base
 
     private IEnumerator ShakeOn()
     {
-        float shakeTime = 3f, shakeAngle = 10f, shakeIntensity = 0.8f, shakeSpeed = 12f, percent = 0;
+        float shakeTime = 2f, shakeAngle = 10f, shakeIntensity = 0.8f, shakeSpeed = 25f, percent = 0;
 
         while ( percent < 1 )
         {
@@ -31,5 +40,28 @@ public class Platform_Drop : Platform_Base
 
             yield return null;
         }
+
+        yield return StartCoroutine(Drop());
     }
+
+    private IEnumerator Drop()
+    {
+        transform.rotation = Quaternion.identity;
+        rigid2D.isKinematic = false;
+
+        yield return new WaitForSeconds(fallingTime);
+
+        if ( respawn )
+        {
+            rigid2D.isKinematic = true;
+            rigid2D.velocity = Vector2.zero;
+            transform.position = startPosition;
+        }
+        else
+        {
+            rigid2D.velocity = Vector2.zero;
+            gameObject.SetActive(false);
+        }
+    }
+
 }

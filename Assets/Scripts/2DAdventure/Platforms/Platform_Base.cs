@@ -4,5 +4,12 @@ using UnityEngine;
 
 public abstract class Platform_Base : MonoBehaviour
 {
+    private void Awake()
+    {
+        Setup();
+    }
+
+    public abstract void Setup();
+
     public abstract void UpdateCollision(Transform player);
 }

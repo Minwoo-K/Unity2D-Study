@@ -16,13 +16,6 @@ public class Platform_Moving : Platform_Base
     private int index = 0;
     private bool indexIncreasing = true;
 
-    private void Awake()
-    {
-        transform.position = stations[index].position;
-
-        StartCoroutine(MoveInLoop());
-    }
-
     private IEnumerator MoveInLoop()
     {
         while ( true )
@@ -53,6 +46,13 @@ public class Platform_Moving : Platform_Base
         }
 
         yield return new WaitForSeconds(stayingTime);
+    }
+
+    public override void Setup()
+    {
+        transform.position = stations[index].position;
+
+        StartCoroutine(MoveInLoop());
     }
 
     public override void UpdateCollision(Transform player)
