@@ -1019,6 +1019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level01
       objectReference: {fileID: 0}
+    - target: {fileID: 2555620300137432249, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: m_RotationalOffset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3315934219743581693, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: itemType
       value: 4

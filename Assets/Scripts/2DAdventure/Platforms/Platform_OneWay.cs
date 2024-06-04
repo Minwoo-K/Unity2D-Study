@@ -13,8 +13,11 @@ public class Platform_OneWay : MonoBehaviour
 
     public void UpdateCollision(Transform player)
     {
-        effector.rotationalOffset = 90;
-        Invoke("Reset", 1f);
+        if ( player.CompareTag("Player") )
+        {
+            effector.rotationalOffset = 180;
+            Invoke("Reset", 1f);
+        }
     }
 
     private void Reset()

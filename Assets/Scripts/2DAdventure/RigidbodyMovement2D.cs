@@ -108,6 +108,13 @@ public class RigidbodyMovement2D : MonoBehaviour
             {
                 platform.UpdateCollision(transform);
             }
+            else if ( feetCollision.TryGetComponent(out Platform_OneWay p))
+            {
+                if ( Input.GetKeyDown(KeyCode.DownArrow) )
+                {
+                    p.UpdateCollision(transform);
+                }
+            }
         }
     }
 }
