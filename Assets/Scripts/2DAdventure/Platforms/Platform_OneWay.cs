@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Platform_OneWay : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private PlatformEffector2D effector;
+
+    public void Awake()
     {
-        
+        effector = GetComponent<PlatformEffector2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateCollision(Transform player)
     {
-        
+        effector.rotationalOffset = 90;
+        Invoke("Reset", 1f);
+    }
+
+    private void Reset()
+    {
+        effector.rotationalOffset = 0;
     }
 }
