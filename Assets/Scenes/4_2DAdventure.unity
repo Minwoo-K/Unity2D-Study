@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 139141788}
   - component: {fileID: 139141787}
   - component: {fileID: 139141789}
+  - component: {fileID: 139141790}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -347,6 +348,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingEffect: {fileID: 1004940609}
   landingEffectPrefab: {fileID: 3576228612435508546, guid: 75cfa7c8752b067498e85cc30f822f6b, type: 3}
+--- !u!114 &139141790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139141783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe2a8bda6c0b1b40aff66ca9983c2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &147540709
 GameObject:
   m_ObjectHideFlags: 0

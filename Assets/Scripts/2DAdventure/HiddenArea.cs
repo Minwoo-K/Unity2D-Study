@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class HiddenArea : MonoBehaviour
 {
-    private float   fadingTime = 1.5f;
+    private float   fadingTime = 1f;
     
     private Tilemap tilemap;
 
