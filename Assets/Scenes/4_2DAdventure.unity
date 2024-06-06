@@ -1112,6 +1112,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5030326014309107981, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: swingingSpeed
+      value: 1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6309789580010581225, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: itemType
       value: 1
