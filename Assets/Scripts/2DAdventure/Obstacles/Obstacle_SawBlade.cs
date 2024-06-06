@@ -6,4 +6,11 @@ public class Obstacle_SawBlade : MonoBehaviour
 {
     [SerializeField]
     private Transform target;
+    [SerializeField]
+    private Transform[] stations;
+
+    private void LoopBtwnStations()
+    {
+
+    }
 }
