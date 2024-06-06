@@ -8,7 +8,7 @@ public class Platform_Moving : Platform_Base
     
     public override void Setup()
     {
-        itpl = GetComponent<InterpolateBtwnStations>();
+        itpl = GetComponentInParent<InterpolateBtwnStations>();
 
         itpl.StartInterpolation();
     }
