@@ -7,10 +7,12 @@ public class PlayerStatus : MonoBehaviour
     private readonly int    maxHP = 3;
     private readonly float  invincibilityTime = 3f;
 
+    [SerializeField]
     private int hp;
     private int coin;
     private SpriteRenderer spriteRenderer;
-
+    
+    public bool IsInvincible { get; private set; } = false;
     public int HP   => hp;
     public int Coin => coin;
 
@@ -22,7 +24,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void DecreaseHP()
     {
-        if (hp > 0)
+        if (hp > 0 && !IsInvincible)
         {
             hp--;
             StartCoroutine(GetInvincible());
@@ -43,21 +45,22 @@ public class PlayerStatus : MonoBehaviour
 
     public IEnumerator GetInvincible()
     {
-        float timer = 0; 
+        float timer = 0, blinkSpeed = 10f;
         Color color = spriteRenderer.color;
 
         while ( timer < invincibilityTime )
         {
+            IsInvincible = true;
+
             timer += Time.deltaTime;
 
-            color.a = 0;
-            spriteRenderer.color = color;
-            color.a = 1; 
+            color.a = Mathf.SmoothStep(1, 0, Mathf.PingPong(Time.time * blinkSpeed, 1));
             spriteRenderer.color = color;
 
             yield return null;
         }
 
+        IsInvincible = false;
         color.a = 1;
         spriteRenderer.color = color;
     }
