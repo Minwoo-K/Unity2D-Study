@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Obstacle_SawBlade : MonoBehaviour
 {
-    [SerializeField]
-    private Transform target;
-    [SerializeField]
-    private Transform[] stations;
+    private InterpolateBtwnStations itpl;
 
-    private void LoopBtwnStations()
+    private void Awake()
     {
+        itpl = GetComponent<InterpolateBtwnStations>();
 
+        itpl.StartInterpolation();
     }
 }
