@@ -9,6 +9,7 @@ public class PlayerStatus : MonoBehaviour
 
     [SerializeField]
     private int hp;
+    [SerializeField]
     private int coin;
     private SpriteRenderer spriteRenderer;
     
@@ -19,6 +20,7 @@ public class PlayerStatus : MonoBehaviour
     private void Awake()
     {
         hp = maxHP;
+        coin = 0;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -36,6 +38,12 @@ public class PlayerStatus : MonoBehaviour
     public void GetCoin()
     {
         coin++;
+    }
+
+    public void GetHPPotion()
+    {
+        hp++;
+        if ( hp > maxHP ) hp = maxHP;
     }
 
     public void PlayerDead()
