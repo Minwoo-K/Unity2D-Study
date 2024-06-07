@@ -29,7 +29,7 @@ public class PlayerStatus : MonoBehaviour
         if (hp > 0 && !IsInvincible)
         {
             hp--;
-            StartCoroutine(GetInvincible());
+            GetInvincible();   
         }
 
         if ( hp == 0 ) PlayerDead();
@@ -51,7 +51,13 @@ public class PlayerStatus : MonoBehaviour
         Debug.Log("Game Over");
     }
 
-    public IEnumerator GetInvincible()
+    public void GetInvincible()
+    {
+        StopAllCoroutines();
+        StartCoroutine(InvincibilityOn());
+    }
+
+    private IEnumerator InvincibilityOn()
     {
         float timer = 0, blinkSpeed = 10f;
         Color color = spriteRenderer.color;
