@@ -236,7 +236,8 @@ GameObject:
   - component: {fileID: 139141787}
   - component: {fileID: 139141789}
   - component: {fileID: 139141790}
-  m_Layer: 0
+  - component: {fileID: 139141791}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -257,6 +258,7 @@ Transform:
   m_Children:
   - {fileID: 1835603123}
   - {fileID: 1004940608}
+  - {fileID: 1458865721}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -311,6 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: 359bc79fe82799c46b13aebe8fbc63fb, type: 2}
   jumpKeyCode: 32
+  shootingKeyCode: 122
 --- !u!114 &139141788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +365,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   coin: 0
+--- !u!114 &139141791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139141783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739309f6e54ed9c4e80a1caee8fa0268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 511273499281609503, guid: 1ce0411e12ab2e343bf63eb66817c59c, type: 3}
+  spawningPoint: {fileID: 1458865721}
 --- !u!1 &147540709
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,6 +880,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovementEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 5877751503175093525, guid: da2097af86dd54047af1342f78e477b6, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2097af86dd54047af1342f78e477b6, type: 3}
 --- !u!4 &1004940608 stripped
@@ -1034,6 +1055,37 @@ MonoBehaviour:
   - renderer: {fileID: 1912782251}
     offsetSpeed: 0.01
   targetCamera: {fileID: 497738391}
+--- !u!1 &1458865720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1458865721}
+  m_Layer: 10
+  m_Name: ProjectileSpawningPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1458865721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458865720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 139141784}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1472073216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1253,7 +1305,7 @@ GameObject:
   - component: {fileID: 1835603123}
   - component: {fileID: 1835603124}
   - component: {fileID: 1835603125}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

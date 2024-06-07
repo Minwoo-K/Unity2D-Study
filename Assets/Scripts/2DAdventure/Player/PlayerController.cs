@@ -5,20 +5,25 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private StageData stageData;
+    private StageData   stageData;
     [SerializeField]
-    private KeyCode             jumpKeyCode;
+    private KeyCode     jumpKeyCode;
+    [SerializeField]
+    private KeyCode     shootingKeyCode;
 
     private RigidbodyMovement2D movement;
     private SpriteRenderer      spriteRenderer;
     private Animator            animator;
+    private PlayerWeapon        weapon;
     private bool                wasOnGround = true;
+    private int                 lastDirectionX = 1;
 
     private void Awake()
     {
         movement = GetComponent<RigidbodyMovement2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
+        weapon = GetComponent<PlayerWeapon>();
     }
 
     private void Update()
@@ -27,6 +32,9 @@ public class PlayerController : MonoBehaviour
         float xInput = Input.GetAxisRaw("Horizontal");
         UpdateSpriteFlipX(xInput);
         float offset = 0.5f + (Input.GetAxis("Run") * 0.5f);
+        
+        if ( xInput != 0) lastDirectionX = (int)xInput;
+
         xInput *= offset;
         movement.Move(xInput);
 
@@ -38,6 +46,9 @@ public class PlayerController : MonoBehaviour
 
         // Jump
         UpdateJump();
+
+        // Shooting a Projectile
+        UpdateAttack(lastDirectionX);
     }
 
     private void UpdateSpriteFlipX(float x)
@@ -80,5 +91,13 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetFloat("VelocityY", movement.Velocity.y);
+    }
+
+    private void UpdateAttack(float x)
+    {
+        if (Input.GetKeyDown(shootingKeyCode))
+        {
+            weapon.ShootProjectile(x);
+        }
     }
 }

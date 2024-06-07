@@ -19,7 +19,7 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (movement.IsOnGround) movement.Jump();
 
-        if ( movement.Velocity.x < startSpeed ) // when colliding with something
+        if ( Mathf.Abs(movement.Velocity.x) < startSpeed ) // when colliding with something
         {
             Destroy(gameObject);
         }

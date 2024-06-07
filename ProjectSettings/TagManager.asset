@@ -14,8 +14,8 @@ TagManager:
   - Ground
   - Tile
   - Platform
-  - 
-  - 
+  - PlayerProjectile
+  - Player
   - 
   - 
   - 
