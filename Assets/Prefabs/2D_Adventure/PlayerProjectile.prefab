@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 511273499281609500}
   - component: {fileID: 511273499281609498}
   - component: {fileID: 511273499281609501}
+  - component: {fileID: 2245840185431657628}
+  - component: {fileID: 5895241343576834863}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -154,3 +156,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &2245840185431657628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511273499281609503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac80ad9c53089c4fa4c46268debd9a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheckLayer:
+    serializedVersion: 2
+    m_Bits: 192
+  headCollisionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  walkSpeed: 10
+  runSpeed: 10
+  jumpForce: 6
+  lowGravityScale: 1.5
+  highGravityScale: 1.5
+--- !u!114 &5895241343576834863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511273499281609503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac5df13db5b4f4a4f8c641c8debc659e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
