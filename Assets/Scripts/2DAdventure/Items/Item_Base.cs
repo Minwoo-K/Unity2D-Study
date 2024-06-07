@@ -11,6 +11,7 @@ public abstract class Item_Base : MonoBehaviour
         if ( collision.CompareTag("Player") )
         {
             UpdateCollision(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 }

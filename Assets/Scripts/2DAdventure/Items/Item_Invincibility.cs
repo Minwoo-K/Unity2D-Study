@@ -6,6 +6,6 @@ public class Item_Invincibility : Item_Base
 {
     public override void UpdateCollision(GameObject player)
     {
-        
+        player.GetComponent<PlayerStatus>().GetInvincible();
     }
 }

@@ -7,6 +7,5 @@ public class Item_HPPotion : Item_Base
     public override void UpdateCollision(GameObject player)
     {
         player.GetComponent<PlayerStatus>().GetHPPotion();
-        Destroy(gameObject);
     }
 }
