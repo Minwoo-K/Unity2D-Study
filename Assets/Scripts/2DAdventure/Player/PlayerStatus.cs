@@ -11,6 +11,8 @@ public class PlayerStatus : MonoBehaviour
     private int hp;
     [SerializeField]
     private int coin;
+    [SerializeField]
+    private bool[] stars = { false, false, false };
     private SpriteRenderer spriteRenderer;
     
     public bool IsInvincible { get; private set; } = false;
@@ -55,6 +57,13 @@ public class PlayerStatus : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(InvincibilityOn());
+    }
+
+    public void FillStar(int index)
+    {
+        if ( 2 < index || index < 0 ) return;
+
+        stars[index] = true;
     }
 
     private IEnumerator InvincibilityOn()
