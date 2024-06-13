@@ -365,6 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   coin: 0
+  stars: 000000
 --- !u!114 &139141791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 511273499281609503, guid: 1ce0411e12ab2e343bf63eb66817c59c, type: 3}
   spawningPoint: {fileID: 1458865721}
+  projectileCount: 0
 --- !u!1 &147540709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,6 +1099,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 465019981578486849, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: index
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2472952524243840552, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_Name
       value: Level01
@@ -1180,6 +1186,10 @@ PrefabInstance:
     - target: {fileID: 6906886747592011165, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355371194295218185, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
+      propertyPath: index
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8648670897409050246, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: timeSet
