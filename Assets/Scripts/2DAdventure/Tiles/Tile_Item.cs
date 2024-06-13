@@ -65,6 +65,7 @@ public class Tile_Item : Tile_Base
 
     private void SpawnItem(int index)
     {
-        Instantiate(itemList[index], transform.position, Quaternion.identity);
+        GameObject item = Instantiate(itemList[index], transform.position, Quaternion.identity);
+        item.GetComponent<Item_Base>().Setup();
     }
 }
