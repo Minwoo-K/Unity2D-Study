@@ -419,6 +419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 511273499281609503, guid: 1ce0411e12ab2e343bf63eb66817c59c, type: 3}
   spawningPoint: {fileID: 1458865721}
+  ui_controller: {fileID: 1125062764}
   projectileCount: 0
 --- !u!1 &147540709
 GameObject:
@@ -1694,6 +1695,7 @@ MonoBehaviour:
   - {fileID: 818985399}
   - {fileID: 1742512596}
   coinCountUI: {fileID: 1706710250}
+  projectileCountUI: {fileID: 186735285}
 --- !u!4 &1125062765
 Transform:
   m_ObjectHideFlags: 0

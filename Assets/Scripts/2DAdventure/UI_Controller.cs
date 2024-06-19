@@ -10,6 +10,8 @@ public class UI_Controller : MonoBehaviour
     private Image[] hps;
     [SerializeField]
     private TextMeshProUGUI coinCountUI;
+    [SerializeField]
+    private TextMeshProUGUI projectileCountUI;
 
     private int coin = 0;
 
@@ -34,9 +36,9 @@ public class UI_Controller : MonoBehaviour
         coinCountUI.text = $"x {coin}";
     }
 
-    public void UpdateProjectile()
+    public void UpdateProjectile(int count)
     {
-
+        projectileCountUI.text = $"{count}/9"; // Projectile Count Max is 9
     }
 
     public void UpdateStar()

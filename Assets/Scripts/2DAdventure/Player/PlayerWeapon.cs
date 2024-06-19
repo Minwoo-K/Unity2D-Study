@@ -8,6 +8,8 @@ public class PlayerWeapon : MonoBehaviour
     private GameObject  projectilePrefab;
     [SerializeField]
     private Transform   spawningPoint;
+    [SerializeField]
+    private UI_Controller ui_controller;
 
     private readonly int maxProjectileCount = 9;
     [SerializeField]
@@ -17,6 +19,8 @@ public class PlayerWeapon : MonoBehaviour
     {
         projectileCount += 3;
         if (projectileCount >= maxProjectileCount) projectileCount = maxProjectileCount;
+
+        ui_controller.UpdateProjectile(projectileCount);
     }
 
     public void ShootProjectile(float direction)
@@ -26,5 +30,7 @@ public class PlayerWeapon : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, spawningPoint.position, Quaternion.identity);
         projectile.GetComponent<PlayerProjectile>().Spawned(direction);
         projectileCount--;
+
+        ui_controller.UpdateProjectile(projectileCount);
     }
 }
