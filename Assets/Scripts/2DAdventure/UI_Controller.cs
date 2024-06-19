@@ -6,14 +6,16 @@ using UnityEngine.UI;
 
 public class UI_Controller : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerStatus playerStatus;
     [SerializeField, Tooltip("Must be 3 at all times")]
     private Image[] hps;
     [SerializeField]
     private TextMeshProUGUI coinCountUI;
     [SerializeField]
     private TextMeshProUGUI projectileCountUI;
-
-    private int coin = 0;
+    [SerializeField, Tooltip("Must be 3 at all times")]
+    private GameObject[] starUI;
 
     public void UpdateHP(int count)
     {
@@ -32,8 +34,7 @@ public class UI_Controller : MonoBehaviour
 
     public void UpdateCoin()
     {
-        coin++;
-        coinCountUI.text = $"x {coin}";
+        coinCountUI.text = $"x {playerStatus.Coin}";
     }
 
     public void UpdateProjectile(int count)
@@ -43,6 +44,11 @@ public class UI_Controller : MonoBehaviour
 
     public void UpdateStar()
     {
+        bool[] stars = playerStatus.Stars;
 
+        for ( int i = 0; i < stars.Length; i++ )
+        {
+            starUI[i].SetActive(stars[i]);
+        }
     }
 }

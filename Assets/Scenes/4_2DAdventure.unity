@@ -1602,7 +1602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1102998970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1690,12 +1690,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f6e634f35bdb941804e058506ed87a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStatus: {fileID: 139141790}
   hps:
   - {fileID: 903398664}
   - {fileID: 818985399}
   - {fileID: 1742512596}
   coinCountUI: {fileID: 1706710250}
   projectileCountUI: {fileID: 186735285}
+  starUI:
+  - {fileID: 1102998969}
+  - {fileID: 1259096191}
+  - {fileID: 1566671363}
 --- !u!4 &1125062765
 Transform:
   m_ObjectHideFlags: 0
@@ -1826,7 +1831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1259096192
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2243,7 +2248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1566671364
 RectTransform:
   m_ObjectHideFlags: 0

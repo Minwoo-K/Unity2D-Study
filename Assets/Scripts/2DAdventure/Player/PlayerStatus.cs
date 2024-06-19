@@ -69,6 +69,8 @@ public class PlayerStatus : MonoBehaviour
         if ( 2 < index || index < 0 ) return;
 
         stars[index] = true;
+
+        ui_controller.UpdateStar();
     }
 
     private IEnumerator InvincibilityOn()
