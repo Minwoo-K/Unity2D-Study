@@ -8,16 +8,18 @@ public class PlayerStatus : MonoBehaviour
     private readonly float  invincibilityTime = 3f;
 
     [SerializeField]
-    private int hp;
-    [SerializeField]
-    private int coin;
-    [SerializeField]
     private bool[] stars = { false, false, false };
+    [SerializeField]
+    private UI_Controller ui_controller;
+
+    private int hp;
+    private int coin;
     private SpriteRenderer spriteRenderer;
-    
+
     public bool IsInvincible { get; private set; } = false;
     public int HP   => hp;
     public int Coin => coin;
+    public bool[] Stars => stars;
 
     private void Awake()
     {
@@ -31,21 +33,23 @@ public class PlayerStatus : MonoBehaviour
         if (hp > 0 && !IsInvincible)
         {
             hp--;
-            GetInvincible();   
+            GetInvincible();
+            ui_controller.UpdateHP(hp);
         }
 
         if ( hp == 0 ) PlayerDead();
-    }
-
-    public void GetCoin()
-    {
-        coin++;
     }
 
     public void GetHPPotion()
     {
         hp++;
         if ( hp > maxHP ) hp = maxHP;
+        ui_controller.UpdateHP(hp);
+    }
+
+    public void GetCoin()
+    {
+        coin++;
     }
 
     public void PlayerDead()
