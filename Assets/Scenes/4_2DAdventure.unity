@@ -300,7 +300,7 @@ Transform:
   - {fileID: 1004940608}
   - {fileID: 1458865721}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &139141785
 CapsuleCollider2D:
@@ -1693,6 +1693,7 @@ MonoBehaviour:
   - {fileID: 903398664}
   - {fileID: 818985399}
   - {fileID: 1742512596}
+  coinCountUI: {fileID: 1706710250}
 --- !u!4 &1125062765
 Transform:
   m_ObjectHideFlags: 0
@@ -1700,13 +1701,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125062763}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1223116384
 GameObject:
@@ -1918,7 +1919,7 @@ Transform:
   - {fileID: 121877609}
   - {fileID: 1223116385}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1265435489
 MonoBehaviour:
@@ -2113,7 +2114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3755948469778950477, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3755948469778950477, guid: b611333fb2a5d4f419dd332e08d60089, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2464,7 +2465,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x 0000
+  m_text: x 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d078710c806ea37439c2c0c7779eacf7, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: f2189620463947c41b65b522eb70b496, type: 2}

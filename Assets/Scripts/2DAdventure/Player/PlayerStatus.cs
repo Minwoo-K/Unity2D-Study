@@ -50,6 +50,7 @@ public class PlayerStatus : MonoBehaviour
     public void GetCoin()
     {
         coin++;
+        ui_controller.UpdateCoin();
     }
 
     public void PlayerDead()
