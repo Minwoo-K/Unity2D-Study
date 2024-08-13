@@ -47,5 +47,22 @@ public class MovementRigid2D : MonoBehaviour
     public void MoveTo(float x)
     {
         // if Absolute value of x is 0.5, walking. if 1, running
+        moveSpeed = Mathf.Abs(x) != 1 ? walkSpeed : runSpeed;
+
+        if ( x != 0 ) x = Mathf.Sign(x);
+
+        rigid2D.velocity = new Vector2(moveSpeed * x, rigid2D.velocity.y);
+    }
+
+    private void UpdateCollision()
+    {
+        Bounds bounds = collider2D.bounds;
+
+        headPosition = new Vector2(bounds.center.x, bounds.max.y);
+        feetPosition = new Vector2(bounds.center.x, bounds.min.y);
+
+        collisionSize = new Vector2((bounds.max.x - bounds.min.x) * 0.5f, 0.1f);
+
+        IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundLayer);
     }
 }
