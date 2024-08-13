@@ -44,6 +44,12 @@ public class MovementRigid2D : MonoBehaviour
         collider2D = GetComponent<Collider2D>();
     }
 
+    private void Update()
+    {
+        UpdateCollision();
+        UpdateJumpHeight();
+    }
+
     public void MoveTo(float x)
     {
         // if Absolute value of x is 0.5, walking. if 1, running
@@ -52,6 +58,14 @@ public class MovementRigid2D : MonoBehaviour
         if ( x != 0 ) x = Mathf.Sign(x);
 
         rigid2D.velocity = new Vector2(moveSpeed * x, rigid2D.velocity.y);
+    }
+
+    public void Jump()
+    {
+        if ( IsOnGround )
+        {
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+        }
     }
 
     private void UpdateCollision()
@@ -64,17 +78,10 @@ public class MovementRigid2D : MonoBehaviour
         collisionSize = new Vector2((bounds.max.x - bounds.min.x) * 0.5f, 0.1f);
 
         IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundLayer);
+        Debug.Log($"IsOnGround: {IsOnGround}");
     }
 
-    public void Jump()
-    {
-        if ( IsOnGround )
-        {
-            rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
-        }
-    }
-
-    public void JumpHeight()
+    public void UpdateJumpHeight()
     {
         if ( IsHigherJump && rigid2D.velocity.y > 0)
         {
