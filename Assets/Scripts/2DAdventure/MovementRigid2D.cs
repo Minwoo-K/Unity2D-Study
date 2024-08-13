@@ -33,7 +33,7 @@ public class MovementRigid2D : MonoBehaviour
     private Collider2D collider2D;          // Collider component on this object
 
     // Public
-    public bool IsLongJump { set; get; } = false; // A switch to turn on when long jump
+    public bool IsHigherJump { set; get; } = false; // A switch to turn on when long jump
     public bool IsOnGround { set; get; } = false; // A switch to turn on when on ground
 
     private void Awake()
@@ -64,5 +64,25 @@ public class MovementRigid2D : MonoBehaviour
         collisionSize = new Vector2((bounds.max.x - bounds.min.x) * 0.5f, 0.1f);
 
         IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundLayer);
+    }
+
+    public void Jump()
+    {
+        if ( IsOnGround )
+        {
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+        }
+    }
+
+    public void JumpHeight()
+    {
+        if ( IsHigherJump && rigid2D.velocity.y > 0)
+        {
+            rigid2D.gravityScale = lowGravityScale;
+        }
+        else
+        {
+            rigid2D.gravityScale = highGravityScale;
+        }
     }
 }
