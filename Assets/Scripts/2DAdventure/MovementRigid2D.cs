@@ -23,6 +23,10 @@ public class MovementRigid2D : MonoBehaviour
     // Private Variables
     private float moveSpeed;
     private Rigidbody2D rigid2D;
+    private Collider2D collider;
+    private Vector2 collisionSize;
+    //private Vector2 headPosition;
+    private Vector2 feetPosition;
 
     // Properties
     public bool IsOnGround { get; set; } = false;
@@ -33,11 +37,13 @@ public class MovementRigid2D : MonoBehaviour
         moveSpeed = walkSpeed;
 
         rigid2D = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
         UpdateJumpHeight();
+        UpdateCollision();
     }
 
     public void MoveTo(float input)
@@ -66,6 +72,11 @@ public class MovementRigid2D : MonoBehaviour
 
     private void UpdateCollision()
     {
+        Bounds bounds = collider.bounds;
 
+        feetPosition = new Vector2(bounds.center.x, bounds.min.y);
+        collisionSize = new Vector2(bounds.max.x - bounds.min.x, 0.1f);
+
+        IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundLayers);
     }
 }
