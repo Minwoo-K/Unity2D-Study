@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // SerializeField
+    [SerializeField]
+    private KeyCode jumpKeyCode = KeyCode.Space;
+
     private MovementRigid2D movement;
 
     private void Awake()
@@ -17,11 +21,28 @@ public class PlayerController : MonoBehaviour
         float offset = 0.5f + Input.GetAxisRaw("Run") * 0.5f;
         x *= offset;
 
-        MoveTo(x);
+        UpdateMove(x);
+        UpdateJump();
     }
 
-    private void MoveTo(float input)
+    private void UpdateMove(float input)
     {
         movement.MoveTo(input);
+    }
+
+    private void UpdateJump()
+    {
+        if ( Input.GetKeyDown(jumpKeyCode) )
+        {
+            movement.Jump();
+        }
+        else if ( Input.GetKey(jumpKeyCode) )
+        {
+            movement.IsLongJump = true;
+        }
+        else if ( Input.GetKeyUp(jumpKeyCode) )
+        {
+            movement.IsLongJump = false;
+        }
     }
 }
