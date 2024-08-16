@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     private KeyCode jumpKeyCode = KeyCode.Space;
 
     private MovementRigid2D movement;
-    private SpriteRenderer  spriteRenderer;
 
     private void Awake()
     {
@@ -25,16 +24,10 @@ public class PlayerController : MonoBehaviour
         x *= offset;
 
         UpdateMove(x);
-        UpdateSprite(x);
+        
         UpdateJump();
     }
 
-    private void UpdateSprite(float input)
-    {
-        if ( input == 0 ) return;
-
-        spriteRenderer.flipX = input < 0 ? true : false;
-    }
 
     private void UpdateMove(float input)
     {
