@@ -11,13 +11,11 @@ public class PlayerController : MonoBehaviour
 
     private MovementRigid2D movement;
     private SpriteRenderer  spriteRenderer;
-    private Animator        animator;
 
     private void Awake()
     {
         movement = GetComponent<MovementRigid2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -29,7 +27,6 @@ public class PlayerController : MonoBehaviour
         UpdateMove(x);
         UpdateSprite(x);
         UpdateJump();
-        UpdateAnimation(x);
     }
 
     private void UpdateSprite(float input)
@@ -58,14 +55,5 @@ public class PlayerController : MonoBehaviour
         {
             movement.IsLongJump = false;
         }
-    }
-    private void UpdateAnimation(float input)
-    {
-        animator.SetFloat("Input", Mathf.Abs(input));
-
-        if ( movement.IsOnGround )  animator.SetBool("IsJumping", false);
-        else                        animator.SetBool("IsJumping", true);
-
-        animator.SetFloat("VelocityY", movement.Velocity.y);
     }
 }
