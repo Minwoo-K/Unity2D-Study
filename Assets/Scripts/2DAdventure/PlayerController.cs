@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
         UpdateMove(x);
         UpdateSprite(x);
         UpdateJump();
+        UpdateAnimation(x);
     }
 
     private void UpdateSprite(float input)
@@ -40,9 +42,6 @@ public class PlayerController : MonoBehaviour
     private void UpdateMove(float input)
     {
         movement.MoveTo(input);
-
-        // Animator
-        animator.SetFloat("Input", Mathf.Abs(input));
     }
 
     private void UpdateJump()
@@ -59,5 +58,14 @@ public class PlayerController : MonoBehaviour
         {
             movement.IsLongJump = false;
         }
+    }
+    private void UpdateAnimation(float input)
+    {
+        animator.SetFloat("Input", Mathf.Abs(input));
+
+        if ( movement.IsOnGround )  animator.SetBool("IsJumping", false);
+        else                        animator.SetBool("IsJumping", true);
+
+        animator.SetFloat("VelocityY", movement.Velocity.y);
     }
 }

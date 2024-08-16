@@ -31,6 +31,7 @@ public class MovementRigid2D : MonoBehaviour
     // Properties
     public bool IsOnGround { get; set; } = false;
     public bool IsLongJump { get; set; } = false;
+    public Vector2 Velocity => rigid2D.velocity;
 
     private void Awake()
     {
