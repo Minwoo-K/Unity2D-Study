@@ -63,5 +63,8 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimation(float input)
     {
         animator.SetFloat("InputX", Mathf.Abs(input));
+
+        animator.SetBool("IsJumping", !movement.IsOnGround);
+        animator.SetFloat("VelocityY", movement.Velocity.y);
     }
 }
