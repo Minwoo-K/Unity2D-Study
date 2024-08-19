@@ -23,7 +23,7 @@ public class MovementRigid2D : MonoBehaviour
     // Private Variables
     private float moveSpeed;
     private Rigidbody2D rigid2D;
-    private Collider2D collider;
+    private new Collider2D collider;
     private Vector2 collisionSize;
     //private Vector2 headPosition;
     private Vector2 feetPosition;
