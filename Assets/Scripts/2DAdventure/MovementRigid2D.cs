@@ -25,12 +25,12 @@ public class MovementRigid2D : MonoBehaviour
     private Rigidbody2D rigid2D;
     private new Collider2D collider;
     private Vector2 collisionSize;
-    //private Vector2 headPosition;
-    private Vector2 feetPosition;
 
     // Properties
     public bool IsOnGround { get; set; } = false;
     public bool IsLongJump { get; set; } = false;
+    //public Vector2 HeadPosition { get; private set; }
+    public Vector2 FeetPosition { get; private set; }
     public Vector2 Velocity => rigid2D.velocity;
 
     private void Awake()
@@ -75,9 +75,9 @@ public class MovementRigid2D : MonoBehaviour
     {
         Bounds bounds = collider.bounds;
 
-        feetPosition = new Vector2(bounds.center.x, bounds.min.y);
+        FeetPosition = new Vector2(bounds.center.x, bounds.min.y);
         collisionSize = new Vector2(bounds.max.x - bounds.min.x, 0.1f);
 
-        IsOnGround = Physics2D.OverlapBox(feetPosition, collisionSize, 0, groundLayers);
+        IsOnGround = Physics2D.OverlapBox(FeetPosition, collisionSize, 0, groundLayers);
     }
 }

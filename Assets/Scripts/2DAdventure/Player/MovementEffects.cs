@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class MovementEffects : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private GameObject landingEffect;
+
+    private MovementRigid2D movement;
+
+    private bool wasOnGround = false;
+
+    private void Awake()
     {
-        
+        movement = GetComponent<MovementRigid2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if ( !wasOnGround && movement.IsOnGround ) 
+            Instantiate(landingEffect, movement.FeetPosition, Quaternion.identity);
+
+        wasOnGround = movement.IsOnGround;
     }
 }
