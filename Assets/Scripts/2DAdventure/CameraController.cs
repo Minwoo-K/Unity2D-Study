@@ -9,18 +9,24 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private Transform target;
     [SerializeField]
-    private Vector3 offsetFromTarget;
+    private bool x, y, z;       // Whether to follow the target in the axis
+
+    private float offsetYFromTarget;
 
     private void Awake()
     {
-        
+        offsetYFromTarget = Mathf.Abs(transform.position.y - target.position.y);
     }
 
     private void LateUpdate()
     {
-        transform.position = target.position + offsetFromTarget;
-        float x = transform.position.x;
-        x = Mathf.Clamp(x, stageData.CameraMinX, stageData.CameraMaxX);
-        transform.position = new Vector3(x, transform.position.y, transform.position.z);
+        transform.position = new Vector3( x ? target.position.x : transform.position.x, 
+                                          y ? target.position.y + offsetYFromTarget : transform.position.y, 
+                                          z ? target.position.z : transform.position.z);
+
+        // Range Adjustment
+        float posX = transform.position.x;
+        posX = Mathf.Clamp(posX, stageData.CameraMinX, stageData.CameraMaxX);
+        transform.position = new Vector3(posX, transform.position.y, transform.position.z);
     }
 }
