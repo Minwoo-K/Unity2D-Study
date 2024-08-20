@@ -222,7 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: 32e44f80cc34e6f4083dab82d553cd67, type: 2}
   target: {fileID: 1115189114}
-  offsetFromTarget: {x: 0, y: 0, z: -10}
+  offsetFromTarget: {x: 0, y: 3, z: -10}
 --- !u!1001 &785671336
 PrefabInstance:
   m_ObjectHideFlags: 0

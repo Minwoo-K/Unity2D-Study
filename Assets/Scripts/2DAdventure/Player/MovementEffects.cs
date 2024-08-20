@@ -29,7 +29,7 @@ public class MovementEffects : MonoBehaviour
         if ( !wasOnGround && movement.IsOnGround ) 
             Instantiate(landingEffect, movement.FeetPosition, Quaternion.identity);
 
-        if ( movement.Velocity.x != 0 )
+        if ( movement.Velocity.x != 0 && movement.IsOnGround )
         {
             emission.rateOverTime = 30;
         }
