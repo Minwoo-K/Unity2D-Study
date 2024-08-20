@@ -443,6 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9691819cba44c2540bda4d6e48902c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageData: {fileID: 11400000, guid: 32e44f80cc34e6f4083dab82d553cd67, type: 2}
   jumpKeyCode: 32
 --- !u!114 &1115189118
 MonoBehaviour:

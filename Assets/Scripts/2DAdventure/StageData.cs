@@ -5,17 +5,25 @@ using UnityEngine;
 [CreateAssetMenu]
 public class StageData : ScriptableObject
 {
+    // Variables
     [Header("Player Movement Range")]
     [SerializeField]
-    private float PlayerMinX;
+    private float playerMinX;
     [SerializeField]
-    private float PlayerMaxX;
+    private float playerMaxX;
     [Header("Camera Movement Range")]
     [SerializeField]
-    private float CameraMinX;
+    private float cameraMinX;
     [SerializeField]
-    private float CameraMaxX;
+    private float cameraMaxX;
     [Header("Map Range")]
     [SerializeField]
-    private float MapMinY;
+    private float mapMinY;
+
+    // Properties
+    public float PlayerMinX => playerMinX;
+    public float PlayerMaxX => playerMaxX;
+    public float CameraMinX => cameraMinX;
+    public float CameraMaxX => cameraMaxX;
+    public float MapMinY => mapMinY;
 }

@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     // SerializeField
     [SerializeField]
+    private StageData stageData;
+    [SerializeField]
     private KeyCode jumpKeyCode = KeyCode.Space;
 
     private MovementRigid2D movement;
@@ -42,6 +44,9 @@ public class PlayerController : MonoBehaviour
     private void UpdateMove(float input)
     {
         movement.MoveTo(input);
+        float x = transform.position.x;
+        x = Mathf.Clamp(x, stageData.PlayerMinX, stageData.PlayerMaxX);
+        transform.position = new Vector3(x, transform.position.y, transform.position.z);
     }
 
     private void UpdateJump()
