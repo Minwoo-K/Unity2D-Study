@@ -225,6 +225,7 @@ MonoBehaviour:
   x: 1
   y: 1
   z: 0
+  offsetYFromTarget: 0
 --- !u!1001 &785671336
 PrefabInstance:
   m_ObjectHideFlags: 0
