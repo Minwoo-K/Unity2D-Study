@@ -76,7 +76,7 @@ public class MovementRigid2D : MonoBehaviour
         Bounds bounds = collider.bounds;
 
         FeetPosition = new Vector2(bounds.center.x, bounds.min.y);
-        collisionSize = new Vector2(bounds.max.x - bounds.min.x, 0.1f);
+        collisionSize = new Vector2((bounds.max.x - bounds.min.x) * 0.5f, 0.1f);
 
         IsOnGround = Physics2D.OverlapBox(FeetPosition, collisionSize, 0, groundLayers);
     }
