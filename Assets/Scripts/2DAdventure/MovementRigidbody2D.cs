@@ -16,6 +16,11 @@ public class MovementRigidbody2D : MonoBehaviour
 
     private float           moveSpeed;
 
+    private Vector2 headPosition;
+    private Vector2 feetPosition;
+
+    public bool IsOnGround { get; private set; } = false;
+
     private void Awake()
     {
         rigid2D = GetComponent<Rigidbody2D>();
