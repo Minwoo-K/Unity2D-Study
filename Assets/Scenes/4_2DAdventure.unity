@@ -176,7 +176,13 @@ MonoBehaviour:
   backgroundCloud:
     background: {fileID: 768772901}
     moveSpeed: 0.02
-  backgrounds: []
+  backgrounds:
+  - background: {fileID: 2066270343}
+    moveSpeed: 0.03
+  - background: {fileID: 941501185}
+    moveSpeed: 0.02
+  - background: {fileID: 587389666}
+    moveSpeed: 0.01
 --- !u!1 &497738388
 GameObject:
   m_ObjectHideFlags: 0
