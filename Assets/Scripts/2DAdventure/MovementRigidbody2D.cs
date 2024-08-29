@@ -20,6 +20,7 @@ public class MovementRigidbody2D : MonoBehaviour
     private Vector2 feetPosition;
 
     public bool IsOnGround { get; private set; } = false;
+    public Vector2 Velocity => rigid2D.velocity;
 
     private void Awake()
     {
@@ -36,5 +37,10 @@ public class MovementRigidbody2D : MonoBehaviour
     private void UpdateCollision()
     {
 
+    }
+
+    public void MoveTo(float x)
+    {
+        rigid2D.velocity = new Vector2(moveSpeed * x, rigid2D.velocity.y);
     }
 }
