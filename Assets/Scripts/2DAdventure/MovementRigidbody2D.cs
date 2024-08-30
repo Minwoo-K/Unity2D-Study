@@ -32,6 +32,7 @@ public class MovementRigidbody2D : MonoBehaviour
     private Vector2 collisionSize;
 
     public bool IsOnGround { get; private set; } = false;
+    public bool IsLongJump { get; set; } = false;
     public Vector2 Velocity => rigid2D.velocity;
 
     private void Awake()
@@ -39,12 +40,13 @@ public class MovementRigidbody2D : MonoBehaviour
         rigid2D = GetComponent<Rigidbody2D>();
         collider = GetComponentInChildren<Collider2D>();
         moveSpeed = walkSpeed;
-        rigid2D.gravityScale = lowGravityScale;
+        rigid2D.gravityScale = highGravityScale;
     }
 
     private void Update()
     {
         UpdateCollision();
+        UpdateJumpHeight();
     }
 
     private void UpdateCollision()
@@ -67,6 +69,18 @@ public class MovementRigidbody2D : MonoBehaviour
         if ( IsOnGround )
         {
             rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
+        }
+    }
+
+    private void UpdateJumpHeight()
+    {
+        if ( IsLongJump )
+        {
+            rigid2D.gravityScale = lowGravityScale;
+        }
+        else
+        {
+            rigid2D.gravityScale = highGravityScale;
         }
     }
 }

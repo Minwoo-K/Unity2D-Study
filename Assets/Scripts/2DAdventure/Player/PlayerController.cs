@@ -36,5 +36,13 @@ public class PlayerController : MonoBehaviour
         {
             movement.Jump();
         }
+        else if ( Input.GetKey(jumpKeyCode) )
+        {
+            movement.IsLongJump = true;
+        }
+        else if ( Input.GetKeyUp(jumpKeyCode) )
+        {
+            movement.IsLongJump = false;
+        }
     }
 }
