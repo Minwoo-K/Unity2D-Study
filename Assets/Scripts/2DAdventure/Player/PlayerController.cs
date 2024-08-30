@@ -22,10 +22,19 @@ public class PlayerController : MonoBehaviour
         inputX *= offsetX;
 
         UpdateMove(inputX);
+        UpdateJump();
     }
 
     private void UpdateMove(float inputX)
     {
         movement.MoveTo(inputX);
+    }
+
+    private void UpdateJump()
+    {
+        if ( Input.GetKeyDown(jumpKeyCode) )
+        {
+            movement.Jump();
+        }
     }
 }

@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49e5c9d8b94cc44694a55dda8eaa811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpKeyCode: 0
+  jumpKeyCode: 32
 --- !u!114 &666635799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,8 +291,11 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  walkSpeed: 8
-  runSpeed: 13
+  walkSpeed: 13
+  runSpeed: 18
+  jumpForce: 13
+  lowGravityScale: 2
+  highGravityScale: 3.5
 --- !u!1001 &1019202488
 PrefabInstance:
   m_ObjectHideFlags: 0
