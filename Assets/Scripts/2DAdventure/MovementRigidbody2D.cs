@@ -38,7 +38,7 @@ public class MovementRigidbody2D : MonoBehaviour
     private void Awake()
     {
         rigid2D = GetComponent<Rigidbody2D>();
-        collider = GetComponentInChildren<Collider2D>();
+        collider = GetComponent<Collider2D>();
         moveSpeed = walkSpeed;
         rigid2D.gravityScale = highGravityScale;
     }
