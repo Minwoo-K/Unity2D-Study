@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
         if ( !movement.IsOnGround && movement.Velocity.y != 0 ) 
             animator.SetBool("IsJumping", true);
-        else                        
+        else
             animator.SetBool("IsJumping", false);
 
         animator.SetFloat("VelocityY", movement.Velocity.y);
