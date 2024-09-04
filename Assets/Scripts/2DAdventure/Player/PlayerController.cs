@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
     private KeyCode jumpKeyCode;
 
     private MovementRigidbody2D movement;
+    private Animator animator;
 
     private void Awake()
     {
         movement = GetComponent<MovementRigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
         UpdateMove(inputX);
         UpdateJump();
+        UpdateAnimation(inputX);
     }
 
     private void UpdateMove(float inputX)
@@ -44,5 +47,17 @@ public class PlayerController : MonoBehaviour
         {
             movement.IsLongJump = false;
         }
+    }
+
+    private void UpdateAnimation(float inputX)
+    {
+        animator.SetFloat("VelocityX", inputX);
+
+        if ( !movement.IsOnGround && movement.Velocity.y != 0 ) 
+            animator.SetBool("IsJumping", true);
+        else                        
+            animator.SetBool("IsJumping", false);
+
+        animator.SetFloat("VelocityY", movement.Velocity.y);
     }
 }
