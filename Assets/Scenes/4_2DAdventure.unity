@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementEffect: {fileID: 879040618}
+  landingEffect: {fileID: 8883435588392728757, guid: 75cfa7c8752b067498e85cc30f822f6b, type: 3}
 --- !u!1001 &879040616
 PrefabInstance:
   m_ObjectHideFlags: 0
