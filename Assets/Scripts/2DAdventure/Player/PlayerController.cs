@@ -8,11 +8,16 @@ public class PlayerController : MonoBehaviour
     private KeyCode jumpKeyCode;
 
     private MovementRigidbody2D movement;
+    private SpriteRenderer sprite;
     private Animator animator;
 
     private void Awake()
     {
+        // Get Component
         movement = GetComponent<MovementRigidbody2D>();
+
+        // Get Component in the object's children
+        sprite = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -23,9 +28,16 @@ public class PlayerController : MonoBehaviour
         
         inputX *= offsetX;
 
+        UpdateFlipX(inputX);
         UpdateMove(inputX);
         UpdateJump();
         UpdateAnimation(inputX);
+    }
+
+    private void UpdateFlipX(float inputX)
+    {
+        if ( inputX < 0 )       sprite.flipX = true;
+        else if ( inputX > 0 )  sprite.flipX = false;
     }
 
     private void UpdateMove(float inputX)
@@ -51,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimation(float inputX)
     {
-        animator.SetFloat("VelocityX", inputX);
+        animator.SetFloat("VelocityX", Mathf.Abs(inputX));
 
         if ( !movement.IsOnGround && movement.Velocity.y != 0 ) 
             animator.SetBool("IsJumping", true);
