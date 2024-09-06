@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafc5a5f977dafb41be4387b64825bcd, type: 3}
-  m_Name: Stage01
+  m_Script: {fileID: 11500000, guid: 1ea5ff3d258031542a29e8125198f5f7, type: 3}
+  m_Name: StageData01
   m_EditorClassIdentifier: 
-  playerMinX: -9.5
-  playerMaxX: 122.5
+  playerMinX: -10
+  playerMaxX: 122
   cameraMinX: 0
-  cameraMaxX: 112.5
+  cameraMaxX: 112
   mapMinY: -8
